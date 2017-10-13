@@ -34,10 +34,6 @@ public class AppFilter extends BaseFilter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		super.init(filterConfig);
-		System.out.println("---> init() is start");
-		System.out.println("---> FilterName is ... " + filterConfig.getFilterName());
-		System.out.println("---> ServletContext is ... " + filterConfig.getServletContext());
-		System.out.println("---> Class is ... " + filterConfig.getClass());
 	}
 
 	/**

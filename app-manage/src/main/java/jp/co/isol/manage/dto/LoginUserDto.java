@@ -14,7 +14,7 @@ import lombok.ToString;
 
 /**
  * @author kou1210hei<br>
- * ログインユーザのEntityクラス
+ * ログインユーザのDto
  *
  */
 @Entity
