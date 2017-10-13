@@ -7,15 +7,17 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.isol.manage.view.View;
+import jp.co.isol.manage.web.config.AppConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
-
 
 /**
  * @author kou1210hei<br>
@@ -41,7 +43,9 @@ public class LoginController {
 		LOG.info("---> LoginController start");
 
 		HttpSession session = request.getSession();
-		AppSessionManager.getInstance().removeKey(session, AppSessionKey.ID);
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppSessionManager sessionManager = (AppSessionManager) context.getBean("appSessionManager");
+		sessionManager.removeKey(session, AppSessionKey.ID);
 
 		return View.LOGIN.getName();
 	}

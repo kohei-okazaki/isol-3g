@@ -18,7 +18,8 @@ import jp.co.isol.manage.view.View;
 
 
 /**
- * メール通知機能コントローラ
+ * メール通知機能コントローラクラス<br>
+ *
  */
 @Controller
 public class NoticeMailController {

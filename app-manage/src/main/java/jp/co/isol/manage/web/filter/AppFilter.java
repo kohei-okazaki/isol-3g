@@ -12,7 +12,11 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import jp.co.isol.common.web.filter.BaseFilter;
+import jp.co.isol.manage.web.config.AppConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
@@ -34,10 +38,6 @@ public class AppFilter extends BaseFilter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		super.init(filterConfig);
-		System.out.println("---> init() is start");
-		System.out.println("---> FilterName is ... " + filterConfig.getFilterName());
-		System.out.println("---> ServletContext is ... " + filterConfig.getServletContext());
-		System.out.println("---> Class is ... " + filterConfig.getClass());
 	}
 
 	/**
@@ -55,7 +55,9 @@ public class AppFilter extends BaseFilter {
 		System.out.println(request.getRequestURI() + " : " + new Date());
 
 		HttpSession session = request.getSession();
-		String session_id = AppSessionManager.getInstance().getValue(session, AppSessionKey.ID);
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppSessionManager sessionManager = (AppSessionManager) context.getBean("appSessionManager");
+		String session_id = sessionManager.getValue(session, AppSessionKey.ID);
 
 		System.out.println("session_id = " + session_id);
 		chain.doFilter(req, resp);

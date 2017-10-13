@@ -4,11 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.service.LoginUserSearchService;
+import jp.co.isol.manage.web.config.AppConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
@@ -44,7 +47,9 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public void registSession(HttpServletRequest request, LoginUserForm loginForm) {
 		HttpSession session = request.getSession();
-		AppSessionManager.getInstance().setAttribute(session, AppSessionKey.ID, loginForm.getId());
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppSessionManager sessionManager = (AppSessionManager) context.getBean("appSessionManager");
+		sessionManager.setAttribute(session, AppSessionKey.ID, loginForm.getId());
 	}
 
 }

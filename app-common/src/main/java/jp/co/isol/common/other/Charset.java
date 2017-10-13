@@ -1,6 +1,8 @@
 package jp.co.isol.common.other;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 
 public enum Charset {
 
@@ -8,9 +10,10 @@ public enum Charset {
 	UTF_8("UTF-8");
 
 	@Getter
+	@Setter(value = AccessLevel.PRIVATE)
 	private String name;
 
 	private Charset(String name) {
-		this.name = name;
+		setName(name);
 	}
 }

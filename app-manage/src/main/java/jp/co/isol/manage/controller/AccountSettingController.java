@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
+import jp.co.isol.manage.web.config.AppConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
@@ -44,7 +47,9 @@ public class AccountSettingController {
 
 		// セッションからIDを取得
 		HttpSession session = request.getSession();
-		String id = AppSessionManager.getInstance().getValue(session, AppSessionKey.ID);
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppSessionManager sessionManager = (AppSessionManager) context.getBean("appSessionManager");
+		String id = sessionManager.getValue(session, AppSessionKey.ID);
 
 		model.addAttribute("id", id);
 

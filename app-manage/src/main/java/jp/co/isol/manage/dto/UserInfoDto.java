@@ -15,7 +15,7 @@ import lombok.ToString;
 
 /**
  * @author kou1210hei<br>
- * ユーザ情報を保持するentity
+ * ユーザ情報を保持するDto
  */
 @Entity
 @Table(name = "USER_INFO")

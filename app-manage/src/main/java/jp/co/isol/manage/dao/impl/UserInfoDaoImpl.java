@@ -25,7 +25,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	@Override
 	public List<UserInfoDto> getUserAllData() {
 
-		List<UserInfoDto> result = new ArrayList<UserInfoDto>();
+		List<UserInfoDto> dtoList = new ArrayList<UserInfoDto>();
 		int maxCount = 15;
 		for (int i = 0; i < maxCount; i++) {
 			UserInfoDto mocEntity = new UserInfoDto();
@@ -44,9 +44,9 @@ public class UserInfoDaoImpl implements UserInfoDao {
 				mocEntity.setBmi(new BigDecimal(12).setScale(1, BigDecimal.ROUND_HALF_UP));
 				mocEntity.setStandardWeight(new BigDecimal(64.2).setScale(1, BigDecimal.ROUND_HALF_UP));
 			}
-			result.add(mocEntity);
+			dtoList.add(mocEntity);
 		}
-		return result;
+		return dtoList;
 	}
 
 	/**

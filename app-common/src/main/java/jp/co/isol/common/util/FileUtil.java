@@ -6,4 +6,10 @@ public class FileUtil {
 	public static final String SEPARATOR = "\\";
 	public static final String SUFFIX_XLS = ".xls";
 
+	/**
+	 * インスタンス生成を制限
+	 */
+	private FileUtil() {
+	}
+
 }

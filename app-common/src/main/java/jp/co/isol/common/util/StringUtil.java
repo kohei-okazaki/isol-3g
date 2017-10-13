@@ -20,6 +20,12 @@ public class StringUtil {
 	public static final String NEW_LINE = "\r\n";
 
 	/**
+	 * インスタンス生成を制限
+	 */
+	private StringUtil() {
+	}
+
+	/**
 	 * 区切りたい文字列を区切り文字で、区切ったリストを返す
 	 * @param target
 	 * @param delim

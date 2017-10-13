@@ -7,6 +7,12 @@ import java.util.Locale;
 public class DateUtil {
 
 	/**
+	 * インスタンス生成を制限
+	 */
+	private DateUtil() {
+	}
+
+	/**
 	 * 取得したlocaleの時間から書式を整えた時間を返却
 	 * @param locale
 	 * @return 時刻
