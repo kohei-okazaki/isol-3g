@@ -1,0 +1,203 @@
+.main {
+	margin: 20px;
+	padding: 20px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+table.custom {
+	border: 67;
+	width: 500px;
+	background-color: #daf7d7;
+	cellpadding: 1;
+	cellspacing: 1;
+}
+
+tr.headercolor {
+	background-color: #dcdcdc;
+}
+
+tr.datacolor {
+	background-color: #f5f5f5;
+}
+
+.attention {
+	color: #ff8080;
+	font-size: 60%;
+}
+
+.top-one {
+	background: #009dff;
+	position: fixed;
+	z-index: 1031;
+	top: 0;
+	left: 0;
+	height: 4px;
+	transition: all 1s;
+	width: 0;
+	overflow: hidden;
+}
+
+.top-two {
+	background: #009dff;
+	position: fixed;
+	z-index: 1031;
+	top: 0;
+	right: 0;
+	transform: rotate(180deg);
+	height: 4px;
+	transition: all 1s;
+	width: 0;
+	overflow: hidden;
+}
+
+.colors {
+	width: 100%;
+	height: 4px;
+}
+
+input[type="submit"] {
+	width: 100px;
+	height: 40px;
+	background: #32cd32;
+	border: 0;
+	padding: 1.5%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
+	color: #fff;
+	cursor: pointer;
+	transition: background .3s;
+	-webkit-transition: background .3s;
+}
+
+input[type="reset"] {
+	width: 100px;
+	height: 40px;
+	background: #32cd32;
+	border: 0;
+	padding: 1.5%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
+	color: #fff;
+	cursor: pointer;
+	transition: background .3s;
+	-webkit-transition: background .3s;
+}
+
+/* type=submitをマウスオーバーしたとき */
+input[type="submit"]:hover {
+	background: #80ff80;
+}
+
+input[type="reset"]:hover {
+	background: #80ff80;
+}
+
+/* 入力タグをクリックしたとき */
+input[type="text"]:focus {
+	background: #ffffca;
+}
+
+/* type=imageをマウスオーバーしたとき */
+.menuicon:hover {
+	-webkit-transform: scale(1.5);
+	-moz-transform: scale(1.5);
+	-o-transform: scale(1.5);
+	-ms-transform: scale(1.5);
+	transform: scale(1.5);
+}
+
+/* ヘッダーアイコン */
+.headericon {
+	width: 50px;
+	height: 50px;
+}
+
+/* メニューアイコン */
+.menuicon {
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+}
+
+.menuicon img {
+	-moz-transition: -moz-transform 3.0s linear;
+	-webkit-transition: -webkit-transform 3.0s linear;
+	-o-transition: -o-transform 3.0s linear;
+	-ms-transition: -ms-transform 3.0s linear;
+	transition: transform 3.0s linear;
+}
+
+.menuicon img:hover {
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+/* 戻るボタン */
+.browseBack {
+	width: 20px;
+	height: 20px;
+}
+
+.logout {
+	width: 10%;
+	height: 10%;
+}
+
+.logout:hover {
+	display: none;
+}
+
+
+.menu ul li ul {
+	display: none;
+}
+
+.menu ul li:hover ul {
+	display: block;
+}
+
+
+/* Menu */
+header {
+    margin-bottom: 13em;
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+}
+ul > li {
+    display: inline-block;
+}
+ul > li > a {
+    padding: 15px 30px;
+    display: block;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+ul > li > span {
+    margin-left: 1.2em;
+}
+ul > li:hover > a {
+    background-color: #efefef;
+    color: #444;
+}
+
+/* Submenu */
+ul li ul {
+    position: absolute;
+    top: 48px;
+    left: 0;
+}
+ul li ul li {
+    display: block;
+}
+ul li ul li a {
+    background-color: #efefef;
+    color: #444;
+}
+ul li ul li a:hover {
+	background: #80ff80;;
+}
