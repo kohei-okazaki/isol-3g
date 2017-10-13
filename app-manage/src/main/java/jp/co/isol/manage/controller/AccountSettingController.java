@@ -19,7 +19,7 @@ import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
- * 健康管理_アカウント設定コントローラ
+ * 健康管理_アカウント設定コントローラ<br>
  *
  */
 @Controller
