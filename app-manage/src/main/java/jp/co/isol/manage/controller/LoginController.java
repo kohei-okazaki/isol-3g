@@ -44,7 +44,7 @@ public class LoginController {
 
 		HttpSession session = request.getSession();
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppSessionManager sessionManager = (AppSessionManager) context.getBean("appSessionManager");
+		AppSessionManager sessionManager = context.getBean("appSessionManager", AppSessionManager.class);
 		sessionManager.removeKey(session, AppSessionKey.ID);
 
 		return View.LOGIN.getName();
