@@ -26,6 +26,11 @@ public class MailUtil {
 
 	public static final String SMTP_SOCKET_PORT = "mail.smtp.socketFactory.port";
 
+	/**
+	 * インスタンス生成を制限
+	 */
+	private MailUtil() {
+	}
 
 
 

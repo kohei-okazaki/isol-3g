@@ -5,6 +5,12 @@ import java.math.BigDecimal;
 public class NumberUtil {
 
 	/**
+	 * インスタンス生成を制限
+	 */
+	private NumberUtil() {
+	}
+
+	/**
 	 * 単位を以下に変換する</br>
 	 * cm → m
 	 * @param target

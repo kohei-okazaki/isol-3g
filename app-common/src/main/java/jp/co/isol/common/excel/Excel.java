@@ -10,7 +10,7 @@ import jp.co.isol.common.message.Message;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.FIELD, ElementType.TYPE} )
+@Target({ ElementType.FIELD, ElementType.TYPE })
 public @interface Excel {
 
 	/**
