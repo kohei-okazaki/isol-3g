@@ -13,12 +13,6 @@ import jp.co.isol.common.util.StringUtil;
  */
 public class AppSessionManager {
 
-	private static AppSessionManager instance = new AppSessionManager();
-
-	public static AppSessionManager getInstance() {
-		return instance;
-	}
-
 	/**
 	 * sessionにセットする<br>
 	 * @param session
