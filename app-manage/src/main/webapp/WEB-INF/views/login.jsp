@@ -10,7 +10,7 @@
 <title>健康管理アプリ_ログイン画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/loginLayout.css">
-<script type="text/javascript" src="resources/js/menu.js"></script>
+<script type="text/javascript" src="resources/js/app.js"></script>
 </head>
 <body>
 <c:if test="${errorMessage != null}">
