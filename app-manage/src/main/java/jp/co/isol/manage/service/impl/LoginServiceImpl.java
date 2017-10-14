@@ -48,7 +48,7 @@ public class LoginServiceImpl implements LoginService {
 	public void registSession(HttpServletRequest request, LoginUserForm loginForm) {
 		HttpSession session = request.getSession();
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppSessionManager sessionManager = (AppSessionManager) context.getBean("appSessionManager");
+		AppSessionManager sessionManager = context.getBean("appSessionManager", AppSessionManager.class);
 		sessionManager.setAttribute(session, AppSessionKey.ID, loginForm.getId());
 	}
 

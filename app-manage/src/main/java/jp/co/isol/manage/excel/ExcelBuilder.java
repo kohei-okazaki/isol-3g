@@ -19,7 +19,7 @@ import jp.co.isol.manage.form.MenuForm;
 
 /**
  * @author kou1210hei<br>
- * Excel生成クラス
+ * Excel生成クラス<br>
  *
  */
 @Excel(sheetName = "ユーザ情報", headerNames = {Message.WEIGHT, Message.HEIGHT, Message.BMI, Message.STANDARDWEIGHT})
@@ -42,11 +42,12 @@ public class ExcelBuilder extends BaseExcelBuilder {
 	 * @param workbook
 	 * @param req
 	 * @param resp
-	 * @see org.springframework.web.servlet.view.document.AbstractExcelView#buildExcelDocument(java.util.Map, org.apache.poi.hssf.usermodel.HSSFWorkbook, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
-	public void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest req,
-			HttpServletResponse resp) throws Exception {
+	public void buildExcelDocument(Map<String, Object> model
+								, Workbook workbook
+								, HttpServletRequest req
+								, HttpServletResponse resp) throws Exception {
 
 		String fileName = new String("sample.xls".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
 		resp.setHeader("Content-Desposition", "attachment; filename=" + fileName);

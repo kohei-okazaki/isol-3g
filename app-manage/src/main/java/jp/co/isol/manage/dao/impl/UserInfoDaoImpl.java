@@ -28,23 +28,23 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		List<UserInfoDto> dtoList = new ArrayList<UserInfoDto>();
 		int maxCount = 15;
 		for (int i = 0; i < maxCount; i++) {
-			UserInfoDto mocEntity = new UserInfoDto();
-			mocEntity.setHeight(new BigDecimal(170.2).setScale(1, BigDecimal.ROUND_HALF_UP));
-			mocEntity.setWeight(new BigDecimal(61.3).setScale(1, BigDecimal.ROUND_HALF_UP));
-			mocEntity.setBmi(new BigDecimal(16).setScale(1, BigDecimal.ROUND_HALF_UP));
-			mocEntity.setStandardWeight(new BigDecimal(58.6).setScale(1, BigDecimal.ROUND_HALF_UP));
+			UserInfoDto dto = new UserInfoDto();
+			dto.setHeight(new BigDecimal(170.2).setScale(1, BigDecimal.ROUND_HALF_UP));
+			dto.setWeight(new BigDecimal(61.3).setScale(1, BigDecimal.ROUND_HALF_UP));
+			dto.setBmi(new BigDecimal(16).setScale(1, BigDecimal.ROUND_HALF_UP));
+			dto.setStandardWeight(new BigDecimal(58.6).setScale(1, BigDecimal.ROUND_HALF_UP));
 			if (i % 3 == 0) {
-				mocEntity.setHeight(new BigDecimal(170.1).setScale(1, BigDecimal.ROUND_HALF_UP));
-				mocEntity.setWeight(new BigDecimal(59.4).setScale(1, BigDecimal.ROUND_HALF_UP));
-				mocEntity.setBmi(new BigDecimal(15).setScale(1, BigDecimal.ROUND_HALF_UP));
-				mocEntity.setStandardWeight(new BigDecimal(61.0).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setHeight(new BigDecimal(170.1).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setWeight(new BigDecimal(59.4).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setBmi(new BigDecimal(15).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setStandardWeight(new BigDecimal(61.0).setScale(1, BigDecimal.ROUND_HALF_UP));
 			} else if (i == 7) {
-				mocEntity.setHeight(new BigDecimal(170.4).setScale(1, BigDecimal.ROUND_HALF_UP));
-				mocEntity.setWeight(new BigDecimal(63.5).setScale(1, BigDecimal.ROUND_HALF_UP));
-				mocEntity.setBmi(new BigDecimal(12).setScale(1, BigDecimal.ROUND_HALF_UP));
-				mocEntity.setStandardWeight(new BigDecimal(64.2).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setHeight(new BigDecimal(170.4).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setWeight(new BigDecimal(63.5).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setBmi(new BigDecimal(12).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setStandardWeight(new BigDecimal(64.2).setScale(1, BigDecimal.ROUND_HALF_UP));
 			}
-			dtoList.add(mocEntity);
+			dtoList.add(dto);
 		}
 		return dtoList;
 	}

@@ -56,7 +56,7 @@ public class AppFilter extends BaseFilter {
 
 		HttpSession session = request.getSession();
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppSessionManager sessionManager = (AppSessionManager) context.getBean("appSessionManager");
+		AppSessionManager sessionManager = context.getBean("appSessionManager", AppSessionManager.class);
 		String session_id = sessionManager.getValue(session, AppSessionKey.ID);
 
 		System.out.println("session_id = " + session_id);

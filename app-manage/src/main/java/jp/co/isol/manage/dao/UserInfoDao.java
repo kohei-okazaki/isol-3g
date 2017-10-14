@@ -19,7 +19,7 @@ public interface UserInfoDao {
 	public List<UserInfoDto> getUserAllData();
 
 	/**
-	 * IDで指定されたレコードを返す
+	 * 引数で指定されたIDのレコードを返す
 	 * @param id
 	 * @return レコード
 	 */
