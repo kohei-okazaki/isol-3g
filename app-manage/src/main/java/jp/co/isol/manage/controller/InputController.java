@@ -4,9 +4,9 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.InputService;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
+import jp.co.isol.manage.web.config.AppConfig;
 
 /**
  * 健康管理_入力画面コントローラ
@@ -32,8 +34,6 @@ public class InputController {
 	@Autowired
 	private LoginService loginService;
 
-	private static final Logger LOG = LoggerFactory.getLogger(InputController.class.getSimpleName());
-
 	/**
 	 * 入力画面
 	 * @param locale
@@ -45,7 +45,9 @@ public class InputController {
 	@RequestMapping(value = "/input.html", method = RequestMethod.POST)
 	public String input(Locale locale, Model model, LoginUserForm loginForm, HttpServletRequest request) {
 
-		LOG.info("---> InputController start");
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppLogger logger = context.getBean(AppLogger.class);
+		logger.info(this.getClass(), "#input start");
 
 		if (loginService.misMatch(loginForm)) {
 			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");
@@ -76,7 +78,9 @@ public class InputController {
 	@RequestMapping(value = "/input-confirm.html", method = RequestMethod.POST)
 	public String confirm(Locale locale, Model model, MenuForm form) {
 
-		LOG.info("[INFO] -----> confirm");
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppLogger logger = context.getBean(AppLogger.class);
+		logger.info(this.getClass(), "#confirm start");
 
 		// 時刻取得
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));

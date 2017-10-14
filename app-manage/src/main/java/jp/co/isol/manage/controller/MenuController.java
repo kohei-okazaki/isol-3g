@@ -3,9 +3,9 @@ package jp.co.isol.manage.controller;
 import java.util.Locale;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.dao.UserInfoDao;
 import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.MenuService;
 import jp.co.isol.manage.service.UserInfoSearchService;
 import jp.co.isol.manage.view.View;
+import jp.co.isol.manage.web.config.AppConfig;
 
 /**
  * 健康管理_メニュー画面コントローラ
@@ -33,8 +35,6 @@ public class MenuController {
 	@Autowired
 	private UserInfoDao userInfoDao;
 
-	private static final Logger LOG = LoggerFactory.getLogger(MenuController.class.getSimpleName());
-
 	/**
 	 * メニュー画面
 	 * @param locale
@@ -45,7 +45,9 @@ public class MenuController {
 	@RequestMapping(value = "/menu.html", method = RequestMethod.POST)
 	public String menu(Locale locale, Model model, MenuForm form) {
 
-		LOG.info("---> MenuController start");
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppLogger logger = context.getBean(AppLogger.class);
+		logger.info(this.getClass(), "# menu start");
 
 		// 時刻取得
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
@@ -87,7 +89,9 @@ public class MenuController {
 	@RequestMapping(value = "/menu/fileDownload.html", method = RequestMethod.GET)
 	public ModelAndView excelDownload(Map<String, Object> model, MenuForm form) {
 
-		LOG.info("-----> excel file download start");
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppLogger logger = context.getBean(AppLogger.class);
+		logger.info(this.getClass(), "# menu start");
 
 		return new ModelAndView(menuService.fileDownload(form));
 
