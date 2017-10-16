@@ -49,13 +49,13 @@ public class InputController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "#input start");
 
-		if (loginService.misMatch(loginForm)) {
+		if (loginService.invalidPassword(loginForm)) {
 			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");
 			return View.LOGIN.getName();
 		}
 
 		// セッションにIDを登録する。
-		loginService.registSession(request, loginForm);
+		loginService.registSession(request.getSession(), loginForm);
 
 		// 時刻取得
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));

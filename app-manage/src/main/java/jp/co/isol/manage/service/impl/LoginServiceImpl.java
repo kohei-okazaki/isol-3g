@@ -1,6 +1,5 @@
 package jp.co.isol.manage.service.impl;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +31,7 @@ public class LoginServiceImpl implements LoginService {
 	 * @return 判定結果
 	 */
 	@Override
-	public boolean misMatch(LoginUserForm LoginUserForm) {
-
+	public boolean invalidPassword(LoginUserForm LoginUserForm) {
 		String inputPassword = LoginUserForm.getPassword();
 		String userPassword = loginSearchService.getLoginUserEntity(LoginUserForm.getId()).getPassword();
 		return !inputPassword.equals(userPassword);
@@ -45,10 +43,9 @@ public class LoginServiceImpl implements LoginService {
 	 * @param loginForm
 	 */
 	@Override
-	public void registSession(HttpServletRequest request, LoginUserForm loginForm) {
-		HttpSession session = request.getSession();
+	public void registSession(HttpSession session, LoginUserForm loginForm) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppSessionManager sessionManager = context.getBean("appSessionManager", AppSessionManager.class);
+		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
 		sessionManager.setAttribute(session, AppSessionKey.ID, loginForm.getId());
 	}
 

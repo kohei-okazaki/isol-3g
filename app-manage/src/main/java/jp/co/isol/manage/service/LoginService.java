@@ -1,6 +1,6 @@
 package jp.co.isol.manage.service;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import jp.co.isol.manage.form.LoginUserForm;
 
@@ -15,7 +15,7 @@ public interface LoginService {
 	 * @param loginForm
 	 * @return 判定結果
 	 */
-	public boolean misMatch(LoginUserForm loginForm);
+	public boolean invalidPassword(LoginUserForm loginForm);
 
 
 	/**
@@ -23,6 +23,6 @@ public interface LoginService {
 	 * @param request
 	 * @param loginForm
 	 */
-	public void registSession(HttpServletRequest request, LoginUserForm loginForm);
+	public void registSession(HttpSession session, LoginUserForm loginForm);
 
 }
