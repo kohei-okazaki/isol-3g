@@ -30,7 +30,7 @@ public class AppSessionManager {
 	 * @param key
 	 * @return value
 	 */
-	public String getValue(HttpSession session, AppSessionKey key) {
+	public String getAttribute(HttpSession session, AppSessionKey key) {
 
 		Object value = session.getAttribute(key.getName());
 		return Objects.isNull(value) ? StringUtil.TEMP : value.toString();
