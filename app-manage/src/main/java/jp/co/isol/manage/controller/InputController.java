@@ -85,12 +85,18 @@ public class InputController {
 		// 時刻取得
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
 
+		if (inputService.hasError(form)) {
+			// 入力情報に誤りがある場合
+			logger.warn(this.getClass(), "入力情報に誤りがあります");
+			return View.ERROR.getName();
+		}
+
 		// 入力情報を設定
 		model.addAttribute("form", form);
 
 		model.addAttribute("page", PageView.CONFIRM.getValue());
 
-		return inputService.hasError(form) ? View.ERROR.getName() : View.INPUT.getName();
+		return View.INPUT.getName();
 	}
 
 }
