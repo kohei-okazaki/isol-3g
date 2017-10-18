@@ -4,6 +4,11 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * @author kou1210hei<br>
+ * 時間関係のutilクラス<br>
+ *
+ */
 public class DateUtil {
 
 	/**
@@ -20,7 +25,7 @@ public class DateUtil {
 	public static String getFormattedTime(Locale locale) {
 
 		DateFormat format = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		return format.format(new Date()).replaceAll(" JST", "").trim();
+		return format.format(new Date()).replaceAll(" JST", StringUtil.TEMP).trim();
 
 	}
 }
