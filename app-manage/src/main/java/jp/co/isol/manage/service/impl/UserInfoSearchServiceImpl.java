@@ -24,7 +24,7 @@ public class UserInfoSearchServiceImpl implements UserInfoSearchService {
 	 * @return 全ユーザ情報
 	 */
 	@Override
-	public List<UserInfoDto> getUserAllData() {
+	public List<UserInfoDto> findUserAllData() {
 		return userInfoDao.getUserAllData();
 	}
 
@@ -34,7 +34,7 @@ public class UserInfoSearchServiceImpl implements UserInfoSearchService {
 	 * @return ログインユーザ情報
 	 */
 	@Override
-	public UserInfoDto getUserInfoEntity(String id) {
+	public UserInfoDto findUserInfoEntity(String id) {
 		return userInfoDao.getUserInfoById(id);
 	}
 

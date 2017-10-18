@@ -35,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
 	public boolean misMatch(LoginUserForm LoginUserForm) {
 
 		String inputPassword = LoginUserForm.getPassword();
-		String userPassword = loginSearchService.getLoginUserEntity(LoginUserForm.getId()).getPassword();
+		String userPassword = loginSearchService.findLoginUserEntity(LoginUserForm.getId()).getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 

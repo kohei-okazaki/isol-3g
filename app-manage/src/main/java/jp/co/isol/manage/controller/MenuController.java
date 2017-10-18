@@ -56,7 +56,7 @@ public class MenuController {
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
 
 		// Daoから前回の体重を取得
-		model.addAttribute("beforeWeight", userInfoSearchService.getUserInfoEntity("1").getWeight());
+		model.addAttribute("beforeWeight", userInfoSearchService.findUserInfoEntity("1").getWeight());
 
 		// 入力情報.体重を取得
 		model.addAttribute("inputWeight", form.getWeight());

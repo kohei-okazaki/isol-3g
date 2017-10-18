@@ -37,7 +37,7 @@ public class MenuServiceImpl implements MenuService {
 	public String getDiffMessage(MenuForm form) {
 
 		double formWeight = form.getWeight().doubleValue();
-		UserInfoDto dto = userInfoSearchService.getUserInfoEntity("1");
+		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
 		double dbWeight = dto.getWeight().doubleValue();
 		return formWeight < dbWeight ? Message.DOWN.getName() : Message.UP.getName();
 
@@ -81,7 +81,7 @@ public class MenuServiceImpl implements MenuService {
 	public double getDiffWeight(MenuForm form) {
 
 		double nowWeight = form.getWeight().doubleValue();
-		UserInfoDto dto = userInfoSearchService.getUserInfoEntity("1");
+		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
 		double beforeWeight = dto.getWeight().doubleValue();
 		return calcService.calcDiffWeight(beforeWeight, nowWeight);
 

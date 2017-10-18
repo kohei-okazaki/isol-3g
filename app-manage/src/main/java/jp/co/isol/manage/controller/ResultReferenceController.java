@@ -50,7 +50,7 @@ public class ResultReferenceController {
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
 
 		// 全ユーザ情報を取得する
-		model.addAttribute("allDataList", userInfoSearchService.getUserAllData());
+		model.addAttribute("allDataList", userInfoSearchService.findUserAllData());
 
 		return View.RESULT_REFFERNCE.getName();
 	}
@@ -65,7 +65,7 @@ public class ResultReferenceController {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
-		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.getUserAllData()));
+		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.findUserAllData()));
 	}
 
 }
