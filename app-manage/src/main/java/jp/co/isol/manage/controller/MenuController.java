@@ -16,6 +16,7 @@ import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.dao.UserInfoDao;
 import jp.co.isol.manage.form.MenuForm;
 import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.MenuService;
 import jp.co.isol.manage.service.UserInfoSearchService;
 import jp.co.isol.manage.view.View;
@@ -34,6 +35,8 @@ public class MenuController {
 	private UserInfoSearchService userInfoSearchService;
 	@Autowired
 	private UserInfoDao userInfoDao;
+	@Autowired
+	private FileDownloadService fileDownloadService;
 
 	/**
 	 * メニュー画面
@@ -93,7 +96,7 @@ public class MenuController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# menu start");
 
-		return new ModelAndView(menuService.fileDownload(form));
+		return new ModelAndView(fileDownloadService.execute(form));
 
 	}
 

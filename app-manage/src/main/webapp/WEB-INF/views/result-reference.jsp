@@ -46,6 +46,17 @@
 		</table>
 	</div>
 	<br><br>
+	<table class="custom">
+		<tr>
+			<td>
+				<form action="/isol/menu/result-reference-download.html" method="get">
+					<div align="center">
+						<input class="menuicon" type="image" src="../resources/image/icon_xlsx.png">
+					</div>
+				</form>
+			</td>
+		</tr>
+	</table>
 	<hr>
 
 	<img class="browseBack" alt="戻る" src="../resources/image/icon_browseBack.jpg" onclick="history.back()">

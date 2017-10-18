@@ -9,13 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.UserInfoSearchService;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
-
 
 /**
  * @author kou1210hei<br>
@@ -27,8 +29,16 @@ public class ResultReferenceController {
 
 	@Autowired
 	private UserInfoSearchService userInfoSearchService;
+	@Autowired
+	private FileDownloadService fileDownloadService;
 
 
+	/**
+	 * 結果照会画面
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/menu/result-reference.html", method = RequestMethod.POST)
 	public String resultReference(Locale locale, Model model) {
 
@@ -43,6 +53,19 @@ public class ResultReferenceController {
 		model.addAttribute("allDataList", userInfoSearchService.getUserAllData());
 
 		return View.RESULT_REFFERNCE.getName();
+	}
+
+	/**
+	 * ファイルダウンロードを実行する
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "/menu/result-reference-download.html", method = RequestMethod.GET)
+	public ModelAndView excelDownload(@SessionAttribute String id) {
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppLogger logger = context.getBean(AppLogger.class);
+		logger.info(this.getClass(), "# excelDownload start");
+		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.getUserAllData()));
 	}
 
 }
