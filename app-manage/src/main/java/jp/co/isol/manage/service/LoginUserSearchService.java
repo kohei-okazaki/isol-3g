@@ -9,5 +9,5 @@ public interface LoginUserSearchService {
 	 * @param id
 	 * @return ログイン情報
 	 */
-	public LoginUserDto getLoginUserEntity(String id);
+	public LoginUserDto findLoginUserEntity(String id);
 }

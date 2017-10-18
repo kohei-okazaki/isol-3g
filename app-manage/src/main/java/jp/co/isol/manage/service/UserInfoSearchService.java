@@ -15,12 +15,12 @@ public interface UserInfoSearchService {
 	 * 全ユーザ情報を取得する
 	 * @return 全ユーザ情報
 	 */
-	public List<UserInfoDto> getUserAllData();
+	public List<UserInfoDto> findUserAllData();
 
 	/**
 	 * 指定されたIDからユーザ情報を取得する
 	 * @param id
 	 * @return ログインユーザ情報
 	 */
-	public UserInfoDto getUserInfoEntity(String id);
+	public UserInfoDto findUserInfoEntity(String id);
 }

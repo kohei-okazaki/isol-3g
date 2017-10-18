@@ -19,7 +19,7 @@ public class LoginUserSearchServiceImpl implements LoginUserSearchService {
 	 * @return ログイン情報
 	 */
 	@Override
-	public LoginUserDto getLoginUserEntity(String id) {
+	public LoginUserDto findLoginUserEntity(String id) {
 		return loginUserDao.getLoginUserInfo(id);
 	}
 

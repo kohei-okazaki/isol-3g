@@ -16,6 +16,7 @@ import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.dao.UserInfoDao;
 import jp.co.isol.manage.form.MenuForm;
 import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.MenuService;
 import jp.co.isol.manage.service.UserInfoSearchService;
 import jp.co.isol.manage.view.View;
@@ -34,6 +35,8 @@ public class MenuController {
 	private UserInfoSearchService userInfoSearchService;
 	@Autowired
 	private UserInfoDao userInfoDao;
+	@Autowired
+	private FileDownloadService fileDownloadService;
 
 	/**
 	 * メニュー画面
@@ -53,7 +56,7 @@ public class MenuController {
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
 
 		// Daoから前回の体重を取得
-		model.addAttribute("beforeWeight", userInfoSearchService.getUserInfoEntity("1").getWeight());
+		model.addAttribute("beforeWeight", userInfoSearchService.findUserInfoEntity("1").getWeight());
 
 		// 入力情報.体重を取得
 		model.addAttribute("inputWeight", form.getWeight());
@@ -93,7 +96,7 @@ public class MenuController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# menu start");
 
-		return new ModelAndView(menuService.fileDownload(form));
+		return new ModelAndView(fileDownloadService.execute(form));
 
 	}
 

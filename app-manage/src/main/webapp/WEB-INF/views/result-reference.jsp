@@ -12,7 +12,7 @@
 <title>健康アプリ_結果照会画面</title>
 <link rel="icon" type="image/png" href="../resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="../resources/css/layout.css">
-<script type="text/javascript" src="../resources/js/menu.js"></script>
+<script type="text/javascript" src="../resources/js/app.js"></script>
 </head>
 
 <body class="main">
@@ -46,6 +46,17 @@
 		</table>
 	</div>
 	<br><br>
+	<table class="custom">
+		<tr>
+			<td>
+				<form action="/isol/menu/result-reference-download.html" method="get">
+					<div align="center">
+						<input class="menuicon" type="image" src="../resources/image/icon_xlsx.png">
+					</div>
+				</form>
+			</td>
+		</tr>
+	</table>
 	<hr>
 
 	<img class="browseBack" alt="戻る" src="../resources/image/icon_browseBack.jpg" onclick="history.back()">
