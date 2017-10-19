@@ -17,7 +17,7 @@ public class AppLogger extends BaseLogger {
 	 */
 	@Override
 	public void info(Class<?> clazz) {
-		log.info("実行 -----> " + clazz.getSimpleName());
+		this.info(clazz, "");
 	}
 
 	/**
@@ -26,7 +26,7 @@ public class AppLogger extends BaseLogger {
 	 */
 	@Override
 	public void debug(Class<?> clazz) {
-		log.info("実行 -----> " + clazz.getSimpleName());
+		this.debug(clazz, "");
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class AppLogger extends BaseLogger {
 	 */
 	@Override
 	public void error(Class<?> clazz) {
-		log.info("実行 -----> " + clazz.getSimpleName());
+		this.error(clazz, "");
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class AppLogger extends BaseLogger {
 	 */
 	@Override
 	public void warn(Class<?> clazz) {
-		log.info("実行 -----> " + clazz.getSimpleName());
+		this.warn(clazz, "");
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class AppLogger extends BaseLogger {
 	 */
 	@Override
 	public void debug(Class<?> clazz, String message) {
-		log.info("実行 -----> " + clazz.getSimpleName(), message);
+		log.debug("実行 -----> " + clazz.getSimpleName(), message);
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class AppLogger extends BaseLogger {
 	 */
 	@Override
 	public void error(Class<?> clazz, String message) {
-		log.info("実行 -----> " + clazz.getSimpleName(), message);
+		log.error("実行 -----> " + clazz.getSimpleName(), message);
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class AppLogger extends BaseLogger {
 	 */
 	@Override
 	public void warn(Class<?> clazz, String message) {
-		log.info("実行 -----> " + clazz.getSimpleName(), message);
+		log.warn("実行 -----> " + clazz.getSimpleName(), message);
 	}
 
 }
