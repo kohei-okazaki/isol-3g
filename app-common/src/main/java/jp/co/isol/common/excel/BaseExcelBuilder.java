@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
@@ -37,12 +36,12 @@ public abstract class BaseExcelBuilder extends AbstractXlsxView {
 	 * @param sheet
 	 * @param cell
 	 */
-	protected abstract void setHeader(Sheet sheet, Cell cell);
+	protected abstract void setHeader(Sheet sheet);
 
 	/**
 	 * データを設定する<br>
 	 * @param sheet
 	 * @param cell
 	 */
-	protected abstract void setData(Sheet sheet, Cell cell);
+	protected abstract void setData(Sheet sheet);
 }

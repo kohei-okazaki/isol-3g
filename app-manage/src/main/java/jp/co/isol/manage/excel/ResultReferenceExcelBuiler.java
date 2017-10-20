@@ -56,23 +56,22 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
 
 		// ヘッダーを設定
-		setHeader(sheet, cell);
+		setHeader(sheet);
 
 		// データを設定
-		setData(sheet, cell);
+		setData(sheet);
 	}
 
 	/**
 	 * ヘッダーを設定する<br>
 	 * @param sheet
-	 * @param cell
 	 */
 	@Override
-	protected void setHeader(Sheet sheet, Cell cell) {
+	protected void setHeader(Sheet sheet) {
 		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
 		for (int i = 0; i < headerNameList.size(); i++) {
 			String headerName = headerNameList.get(i).getName();
-			cell = ExcelUtil.getCell(sheet, 0, i);
+			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
 		}
 	}
@@ -80,14 +79,13 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	/**
 	 * データを設定する<br>
 	 * @param sheet
-	 * @param cell
 	 */
 	@Override
-	protected void setData(Sheet sheet, Cell cell) {
+	protected void setData(Sheet sheet) {
 
 		for (int i = 0; i < historyList.size(); i++) {
 			UserInfoDto dto = historyList.get(i);
-			cell = ExcelUtil.getCell(sheet, i + 1, 0);
+			Cell cell = ExcelUtil.getCell(sheet, i + 1, 0);
 			ExcelUtil.setText(cell, dto.getHeight().toString());
 			cell = ExcelUtil.getCell(sheet, i + 1, 1);
 			ExcelUtil.setText(cell, dto.getWeight().toString());

@@ -52,28 +52,26 @@ public class MenuExcelBuilder extends BaseExcelBuilder {
 		String fileName = new String("sample.xls".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
 		resp.setHeader("Content-Desposition", "attachment; filename=" + fileName);
 
-		Cell cell = null;
 		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
 
 		// ヘッダーを設定
-		setHeader(sheet, cell);
+		setHeader(sheet);
 
 		// データを設定
-		setData(sheet, cell);
+		setData(sheet);
 
 	}
 
 	/**
 	 * ヘッダーを設定する<br>
 	 * @param sheet
-	 * @param cell
 	 */
 	@Override
-	protected void setHeader(Sheet sheet, Cell cell) {
+	protected void setHeader(Sheet sheet) {
 		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
 		for (int i = 0; i < headerNameList.size(); i++) {
 			String headerName = headerNameList.get(i).getName();
-			cell = ExcelUtil.getCell(sheet, 0, i);
+			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
 		}
 	}
@@ -81,11 +79,10 @@ public class MenuExcelBuilder extends BaseExcelBuilder {
 	/**
 	 * データを設定する<br>
 	 * @param sheet
-	 * @param cell
 	 */
 	@Override
-	protected void setData(Sheet sheet, Cell cell) {
-		cell = ExcelUtil.getCell(sheet, 1, 0);
+	protected void setData(Sheet sheet) {
+		Cell cell = ExcelUtil.getCell(sheet, 1, 0);
 		ExcelUtil.setText(cell, form.getHeight().toString());
 		cell = ExcelUtil.getCell(sheet, 1, 1);
 		ExcelUtil.setText(cell, form.getWeight().toString());
