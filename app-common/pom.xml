@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>jp.co</groupId>
-	<artifactId>isol</artifactId>
+	<artifactId>app-common</artifactId>
 	<name>app-common</name>
 	<packaging>jar</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
