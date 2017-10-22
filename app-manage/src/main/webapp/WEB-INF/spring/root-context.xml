@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-						http://www.springframework.org/schema/beans/spring-beans.xsd">
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.w3.org/2001/XMLSchema-instance
+						http://www.w3.org/2001/XMLSchema-instance/spring-beans.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
+<!-- 	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:user-service>
+				<sec:user name="hoge" password="HOGE" authorities="ROLE_USER" />
+			</sec:user-service>
+		</sec:authentication-provider>
+	</sec:authentication-manager> -->
 
 </beans>

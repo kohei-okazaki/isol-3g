@@ -17,7 +17,7 @@ public class LoginUserDaoImpl implements LoginUserDao {
 	@Override
 	public LoginUserDto getLoginUserInfo(String id) {
 		LoginUserDto dto = new LoginUserDto();
-		dto.setId(id);
+		dto.setLoginId(id);
 		dto.setPassword("password");
 		return dto;
 	}

@@ -34,14 +34,12 @@ public abstract class BaseExcelBuilder extends AbstractXlsxView {
 	/**
 	 * ヘッダーを設定する<br>
 	 * @param sheet
-	 * @param cell
 	 */
 	protected abstract void setHeader(Sheet sheet);
 
 	/**
 	 * データを設定する<br>
 	 * @param sheet
-	 * @param cell
 	 */
 	protected abstract void setData(Sheet sheet);
 }
