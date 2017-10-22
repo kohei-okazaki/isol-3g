@@ -8,12 +8,12 @@
 						http://www.w3.org/2001/XMLSchema-instance/spring-beans.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<sec:authentication-manager>
+<!-- 	<sec:authentication-manager>
 		<sec:authentication-provider>
 			<sec:user-service>
 				<sec:user name="hoge" password="HOGE" authorities="ROLE_USER" />
 			</sec:user-service>
 		</sec:authentication-provider>
-	</sec:authentication-manager>
+	</sec:authentication-manager> -->
 
 </beans>
