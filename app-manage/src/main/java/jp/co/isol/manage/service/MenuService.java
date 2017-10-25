@@ -1,7 +1,5 @@
 package jp.co.isol.manage.service;
 
-import org.springframework.web.servlet.View;
-
 import jp.co.isol.manage.form.MenuForm;
 
 /**
@@ -38,13 +36,6 @@ public interface MenuService {
 	 * @return 体重差
 	 */
 	public double getDiffWeight(MenuForm form);
-
-	/**
-	 * メニュー画面のフォームから必要な内容をExcelに書き込んでダウンロード
-	 * @param form
-	 * @return View
-	 */
-	public View fileDownload(MenuForm form);
 
 
 }

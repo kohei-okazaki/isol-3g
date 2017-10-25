@@ -19,6 +19,7 @@ import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.MenuService;
 import jp.co.isol.manage.service.UserInfoSearchService;
+import jp.co.isol.manage.service.annotation.Menu;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
 
@@ -36,7 +37,8 @@ public class MenuController {
 	@Autowired
 	private UserInfoDao userInfoDao;
 	@Autowired
-	private FileDownloadService fileDownloadService;
+	@Menu
+	private FileDownloadService<MenuForm> fileDownloadService;
 
 	/**
 	 * メニュー画面
@@ -58,11 +60,7 @@ public class MenuController {
 		// Daoから前回の体重を取得
 		model.addAttribute("beforeWeight", userInfoSearchService.findUserInfoEntity("1").getWeight());
 
-		// 入力情報.体重を取得
-		model.addAttribute("inputWeight", form.getWeight());
-
-		// 入力情報.身長を取得
-		model.addAttribute("inputHeight", form.getHeight());
+		model.addAttribute("form", form);
 
 		// 入力情報.身長から標準体重を計算
 		model.addAttribute("standardWeight", menuService.getStandardWeight(form));

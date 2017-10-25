@@ -2,14 +2,12 @@ package jp.co.isol.manage.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.View;
 
 import jp.co.isol.common.message.Message;
-import jp.co.isol.common.util.NumberUtil;
+import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.form.MenuForm;
 import jp.co.isol.manage.service.CalcService;
-import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.MenuService;
 import jp.co.isol.manage.service.UserInfoSearchService;
 
@@ -23,8 +21,6 @@ public class MenuServiceImpl implements MenuService {
 
 	@Autowired
 	private CalcService calcService;
-	@Autowired
-	private FileDownloadService fileDownloadService;
 	@Autowired
 	private UserInfoSearchService userInfoSearchService;
 
@@ -52,7 +48,7 @@ public class MenuServiceImpl implements MenuService {
 	public double getStandardWeight(MenuForm form) {
 
 		// 入力情報の身長がセンチメートルなので単位とdouble型に変換
-		double height = NumberUtil.convertMeter(form.getHeight()).doubleValue();
+		double height = CalcUtil.convertMeter(form.getHeight()).doubleValue();
 		return calcService.calcStandardWeight(height);
 
 	}
@@ -66,7 +62,7 @@ public class MenuServiceImpl implements MenuService {
 	public double getBmi(MenuForm form) {
 
 		// 入力情報の身長がセンチメートルなので単位とdouble型に変換
-		double height = NumberUtil.convertMeter(form.getHeight()).doubleValue();
+		double height = CalcUtil.convertMeter(form.getHeight()).doubleValue();
 		double weight = form.getWeight().doubleValue();
 		return calcService.calcBmi(height, weight);
 
@@ -84,17 +80,6 @@ public class MenuServiceImpl implements MenuService {
 		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
 		double beforeWeight = dto.getWeight().doubleValue();
 		return calcService.calcDiffWeight(beforeWeight, nowWeight);
-
-	}
-
-	/**
-	 * メニュー画面のフォームから必要な内容をExcelに書き込んでダウンロード
-	 * @param form
-	 */
-	@Override
-	public View fileDownload(MenuForm form) {
-		// ファイルダウンロード処理実施
-		return fileDownloadService.execute(form);
 
 	}
 
