@@ -42,13 +42,13 @@
 		<c:out value="完了しました" />
 	</c:if>
 	<div align="center">
-		<c:out value="今のあなたの身長(${inputHeight}cm)の" />
+		<c:out value="今のあなたの身長(${form.height}cm)の" />
 		<br>
 		<c:out value="標準体重は${standardWeight}kgです。" />
 		<br>
 		<c:out value="前回より${diffWeight}kg ${resultMessage}" />
 		<br>
-		<c:out value="${beforeWeight}kg→${inputWeight}kg" />
+		<c:out value="${beforeWeight}kg→${form.weight}kg" />
 		<br><br><br>
 		<table class="custom">
 			<tr class="headercolor">
@@ -66,8 +66,8 @@
 				<td align="center">
 				<!-- 通知  -->
 					<form action="/isol/menu/notice.html" method="post">
-						<input type="hidden" name="height" value="${inputHeight}">
-						<input type="hidden" name="weight" value="${inputWeight}">
+						<input type="hidden" name="height" value="${form.height}">
+						<input type="hidden" name="weight" value="${form.weight}">
 						<input type="hidden" name="standardWeight" value="${standardWeight}">
 						<input type="hidden" name="bmi" value="${bmi}">
 						<div>
@@ -79,8 +79,8 @@
 				<td align="center">
 				<!-- 出力 -->
 					<form action="/isol/menu/fileDownload.html" method="get">
-						<input type="hidden" name="height" value="${inputHeight}">
-						<input type="hidden" name="weight" value="${inputWeight}">
+						<input type="hidden" name="height" value="${form.height}">
+						<input type="hidden" name="weight" value="${form.weight}">
 						<input type="hidden" name="standardWeight" value="${standardWeight}">
 						<input type="hidden" name="bmi" value="${bmi}">
 						<div>

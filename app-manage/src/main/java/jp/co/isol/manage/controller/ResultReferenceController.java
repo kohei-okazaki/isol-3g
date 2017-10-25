@@ -1,5 +1,6 @@
 package jp.co.isol.manage.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.util.DateUtil;
+import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.UserInfoSearchService;
+import jp.co.isol.manage.service.annotation.Reference;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
 
@@ -30,7 +33,8 @@ public class ResultReferenceController {
 	@Autowired
 	private UserInfoSearchService userInfoSearchService;
 	@Autowired
-	private FileDownloadService fileDownloadService;
+	@Reference
+	private FileDownloadService<List<UserInfoDto>> fileDownloadService;
 
 
 	/**

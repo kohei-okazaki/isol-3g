@@ -2,12 +2,12 @@ package jp.co.isol.common.util;
 
 import java.math.BigDecimal;
 
-public class NumberUtil {
+public class CalcUtil {
 
 	/**
 	 * インスタンス生成を制限
 	 */
-	private NumberUtil() {
+	private CalcUtil() {
 	}
 
 	/**

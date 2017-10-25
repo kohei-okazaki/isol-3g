@@ -33,7 +33,7 @@ public class StringUtil {
 	 */
 	public static List<String> toStrList(String target, String delim) {
 
-		if (target == null || "".equals(target)) {
+		if (target == null || TEMP.equals(target)) {
 			return null;
 		}
 		List<String> result = new ArrayList<String>();
