@@ -23,7 +23,7 @@ public interface UserInfoDao {
 	 * @param id
 	 * @return レコード
 	 */
-	public UserInfoDto getUserInfoById(String id);
+	public UserInfoDto getUserInfoByUserId(String id);
 
 	/**
 	 * ユーザ情報を登録する

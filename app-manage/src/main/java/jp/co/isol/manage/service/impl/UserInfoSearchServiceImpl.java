@@ -34,8 +34,8 @@ public class UserInfoSearchServiceImpl implements UserInfoSearchService {
 	 * @return ログインユーザ情報
 	 */
 	@Override
-	public UserInfoDto findUserInfoEntity(String id) {
-		return userInfoDao.getUserInfoById(id);
+	public UserInfoDto findUserInfoEntity(String userId) {
+		return userInfoDao.getUserInfoByUserId(userId);
 	}
 
 }

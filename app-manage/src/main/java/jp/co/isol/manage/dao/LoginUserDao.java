@@ -15,7 +15,7 @@ public interface LoginUserDao {
 	 * @param id
 	 * @return LoginUserEntity
 	 */
-	public LoginUserDto getLoginUserInfo(String id);
+	public LoginUserDto getLoginUserInfoByUserId(String userId);
 
 
 	/**

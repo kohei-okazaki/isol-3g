@@ -19,8 +19,8 @@ public class LoginUserSearchServiceImpl implements LoginUserSearchService {
 	 * @return ログイン情報
 	 */
 	@Override
-	public LoginUserDto findLoginUserEntity(String id) {
-		return loginUserDao.getLoginUserInfo(id);
+	public LoginUserDto findLoginUserEntity(String userId) {
+		return loginUserDao.getLoginUserInfoByUserId(userId);
 	}
 
 }

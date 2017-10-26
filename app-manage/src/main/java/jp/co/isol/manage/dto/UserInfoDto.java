@@ -22,38 +22,44 @@ import lombok.ToString;
 @ToString
 public class UserInfoDto implements Serializable {
 
-	// ID
+	/** データID */
 	@Id
-	@Column(name = "ID", nullable = false, length = 3)
+	@Column(name = "DATA_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
-	private String id;
+	private String dataId;
 
-	// 身長
+	/** ユーザID */
+	@Column(name = "USER_ID", nullable = false, length = 3)
+	@Setter
+	@Getter
+	private String userId;
+
+	/** 身長 */
 	@Column(name = "HEIGHT", nullable = false)
 	@Setter
 	@Getter
 	private BigDecimal height;
 
-	// 体重
+	/** 体重 */
 	@Column(name = "WEIGHT", nullable = false)
 	@Setter
 	@Getter
 	private BigDecimal weight;
 
-	// BMI
+	/** BMI */
 	@Column(name = "BMI", nullable = false)
 	@Setter
 	@Getter
 	private BigDecimal bmi;
 
-	// 標準体重
+	/** 標準体重 */
 	@Column(name = "STANDARD_WEIGHT", nullable = false)
 	@Setter
 	@Getter
 	private BigDecimal standardWeight;
 
-	// 登録日時
+	/** 登録日時 */
 	@Column(name = "RECORD_DATE", nullable = false)
 	@Setter
 	@Getter
