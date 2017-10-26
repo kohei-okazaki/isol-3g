@@ -2,6 +2,7 @@ package jp.co.isol.manage.excel;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,7 +50,7 @@ public class MenuExcelBuilder extends BaseExcelBuilder {
 								, HttpServletRequest req
 								, HttpServletResponse resp) throws Exception {
 
-		String fileName = new String("sample.xls".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
+		String fileName = new String("sample.xlsx".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
 		resp.setHeader("Content-Desposition", "attachment; filename=" + fileName);
 
 		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
@@ -69,11 +70,11 @@ public class MenuExcelBuilder extends BaseExcelBuilder {
 	@Override
 	protected void setHeader(Sheet sheet) {
 		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
-		for (int i = 0; i < headerNameList.size(); i++) {
+		Stream.iterate(0, i -> i++).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i).getName();
 			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
-		}
+		});
 	}
 
 	/**
