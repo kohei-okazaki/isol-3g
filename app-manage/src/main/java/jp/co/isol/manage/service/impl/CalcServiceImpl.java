@@ -23,7 +23,7 @@ public class CalcServiceImpl implements CalcService {
 	 */
 	@Override
 	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
-		return height.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
+		return weight.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
 	}
 
 	/**

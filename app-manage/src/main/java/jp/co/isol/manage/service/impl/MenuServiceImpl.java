@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.message.Message;
+import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.form.MenuForm;
 import jp.co.isol.manage.service.CalcService;
@@ -49,9 +50,7 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public BigDecimal getDiffWeight(MenuForm form) {
 
-		double nowWeight = form.getWeight().doubleValue();
 		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
-		double beforeWeight = dto.getWeight().doubleValue();
 		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 
 	}
@@ -63,8 +62,8 @@ public class MenuServiceImpl implements MenuService {
 		dto.setUserId(userId);
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
-		dto.setBmi(calcService.calcBmi(form.getHeight(), form.getWeight()));
-		dto.setStandardWeight(calcService.calcStandardWeight(form.getHeight()));
+		dto.setBmi(calcService.calcBmi(CalcUtil.convertMeter(form.getHeight()), form.getWeight()));
+		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeter(form.getHeight())));
 		dto.setRecordDate(new Date());
 		return dto;
 	}
