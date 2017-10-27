@@ -22,10 +22,8 @@ public class CalcServiceImpl implements CalcService {
 	 * @return BMIを計算(小数第2位を四捨五入する)
 	 */
 	@Override
-	public double calcBmi(double height, double weight) {
-
-		BigDecimal bmi = new BigDecimal(weight / (height * height));
-		return bmi.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
+		return height.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
 	}
 
 	/**
@@ -34,10 +32,8 @@ public class CalcServiceImpl implements CalcService {
 	 * @return 標準体重を計算(小数第2位を四捨五入する)
 	 */
 	@Override
-	public double calcStandardWeight(double height) {
-
-		BigDecimal standardWeight = new BigDecimal(height * height * 22);
-		return standardWeight.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+	public BigDecimal calcStandardWeight(BigDecimal height) {
+		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
 	}
 
 	/**
@@ -47,11 +43,8 @@ public class CalcServiceImpl implements CalcService {
 	 * @return 体重の差(小数第2位を四捨五入する)
 	 */
 	@Override
-	public double calcDiffWeight(double before, double now) {
-
-		// 体重差取得
-		BigDecimal diff = new BigDecimal(Math.abs(now - before));
-		return diff.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+	public BigDecimal calcDiffWeight(BigDecimal before, BigDecimal now) {
+		return now.subtract(before).abs().setScale(1, BigDecimal.ROUND_HALF_UP);
 	}
 
 }

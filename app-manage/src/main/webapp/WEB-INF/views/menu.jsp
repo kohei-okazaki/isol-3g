@@ -42,13 +42,13 @@
 		<c:out value="完了しました" />
 	</c:if>
 	<div align="center">
-		<c:out value="今のあなたの身長(${form.height}cm)の" />
+		<c:out value="今のあなたの身長(${dto.height}cm)の" />
 		<br>
-		<c:out value="標準体重は${standardWeight}kgです。" />
+		<c:out value="標準体重は${dto.standardWeight}kgです。" />
 		<br>
 		<c:out value="前回より${diffWeight}kg ${resultMessage}" />
 		<br>
-		<c:out value="${beforeWeight}kg→${form.weight}kg" />
+		<c:out value="${beforeWeight}kg→${dto.weight}kg" />
 		<br><br><br>
 		<table class="custom">
 			<tr class="headercolor">
@@ -56,8 +56,8 @@
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
 			<tr class="datacolor">
-				<td align="center"><c:out value="${standardWeight}" /></td>
-				<td align="center"><c:out value="${bmi}" /></td>
+				<td align="center"><c:out value="${dto.standardWeight}" /></td>
+				<td align="center"><c:out value="${dto.bmi}" /></td>
 			</tr>
 		</table>
 		<br><br><br>
@@ -66,10 +66,10 @@
 				<td align="center">
 				<!-- 通知  -->
 					<form action="/isol/menu/notice.html" method="post">
-						<input type="hidden" name="height" value="${form.height}">
-						<input type="hidden" name="weight" value="${form.weight}">
-						<input type="hidden" name="standardWeight" value="${standardWeight}">
-						<input type="hidden" name="bmi" value="${bmi}">
+						<input type="hidden" name="height" value="${dto.height}">
+						<input type="hidden" name="weight" value="${dto.weight}">
+						<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
+						<input type="hidden" name="bmi" value="${dto.bmi}">
 						<div>
 							<input class="menuicon" type="image" src="resources/image/icon_mail.png">
 						</div>
@@ -79,10 +79,10 @@
 				<td align="center">
 				<!-- 出力 -->
 					<form action="/isol/menu/fileDownload.html" method="get">
-						<input type="hidden" name="height" value="${form.height}">
-						<input type="hidden" name="weight" value="${form.weight}">
-						<input type="hidden" name="standardWeight" value="${standardWeight}">
-						<input type="hidden" name="bmi" value="${bmi}">
+						<input type="hidden" name="height" value="${dto.height}">
+						<input type="hidden" name="weight" value="${dto.weight}">
+						<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
+						<input type="hidden" name="bmi" value="${dto.bmi}">
 						<div>
 							<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
 						</div>

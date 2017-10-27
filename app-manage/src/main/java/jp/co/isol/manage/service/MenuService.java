@@ -1,5 +1,8 @@
 package jp.co.isol.manage.service;
 
+import java.math.BigDecimal;
+
+import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.form.MenuForm;
 
 /**
@@ -17,25 +20,17 @@ public interface MenuService {
 	public String getDiffMessage(MenuForm form);
 
 	/**
-	 * フォームから標準体重を返却<br>
-	 * @param form
-	 * @return 標準体重
+	 * 入力情報を計算し、Dtoにつめる<br>
+	 * @return
 	 */
-	public double getStandardWeight(MenuForm form);
+	public UserInfoDto convertUserInfo(MenuForm form, String userId);
 
 	/**
-	 * フォームからBMIを返却<br>
+	 * 体重差を返す<br>
 	 * @param form
-	 * @return BMI
+	 * @return
 	 */
-	public double getBmi(MenuForm form);
-
-	/**
-	 * フォームから体重差を返却
-	 * @param form
-	 * @return 体重差
-	 */
-	public double getDiffWeight(MenuForm form);
+	public BigDecimal getDiffWeight(MenuForm form);
 
 
 }

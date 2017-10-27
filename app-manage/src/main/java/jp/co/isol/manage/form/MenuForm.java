@@ -3,6 +3,8 @@ package jp.co.isol.manage.form;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,10 +15,11 @@ import lombok.Setter;
  */
 public class MenuForm implements Serializable {
 
-	/** ID */
+	/** ユーザID */
+	@Column(name = "USER_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
-	private String id;
+	private String userId;
 
 	/** 身長 */
 	@Setter

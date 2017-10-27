@@ -3,6 +3,8 @@ package jp.co.isol.manage.controller;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.dao.UserInfoDao;
+import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.form.MenuForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
@@ -22,6 +25,8 @@ import jp.co.isol.manage.service.UserInfoSearchService;
 import jp.co.isol.manage.service.annotation.Menu;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.session.AppSessionKey;
+import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
  * 健康管理_メニュー画面コントローラ
@@ -48,11 +53,19 @@ public class MenuController {
 	 * @return View
 	 */
 	@RequestMapping(value = "/menu.html", method = RequestMethod.POST)
-	public String menu(Locale locale, Model model, MenuForm form) {
+	public String menu(Locale locale, Model model, MenuForm form, HttpServletRequest request) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# menu start");
+
+
+		AppSessionManager manager = context.getBean(AppSessionManager.class);
+		String userId = manager.getAttribute(request.getSession(), AppSessionKey.USER_ID);
+		UserInfoDto dto = menuService.convertUserInfo(form, userId);
+
+		// 入力画面から入力した情報を登録する
+		userInfoDao.registUserUnfo(dto);
 
 		// 時刻取得
 		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
@@ -60,22 +73,13 @@ public class MenuController {
 		// Daoから前回の体重を取得
 		model.addAttribute("beforeWeight", userInfoSearchService.findUserInfoEntity("1").getWeight());
 
-		model.addAttribute("form", form);
-
-		// 入力情報.身長から標準体重を計算
-		model.addAttribute("standardWeight", menuService.getStandardWeight(form));
-
-		// 「入力情報.身長」と「入力情報.体重」からBMIを計算
-		model.addAttribute("bmi", menuService.getBmi(form));
+		model.addAttribute("dto", dto);
 
 		// 入力した今の体重と前回入力した体重の差を設定
 		model.addAttribute("diffWeight", menuService.getDiffWeight(form));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
 		model.addAttribute("resultMessage", menuService.getDiffMessage(form));
-
-		// 入力画面から入力した情報を登録する
-		userInfoDao.registUserUnfo(form);
 
 		return View.MENU.getName();
 

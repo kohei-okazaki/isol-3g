@@ -1,10 +1,12 @@
 package jp.co.isol.manage.service.impl;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.message.Message;
-import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.form.MenuForm;
 import jp.co.isol.manage.service.CalcService;
@@ -40,47 +42,31 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	/**
-	 * フォームから標準体重を返却<br>
-	 * @param form
-	 * @return 標準体重
-	 */
-	@Override
-	public double getStandardWeight(MenuForm form) {
-
-		// 入力情報の身長がセンチメートルなので単位とdouble型に変換
-		double height = CalcUtil.convertMeter(form.getHeight()).doubleValue();
-		return calcService.calcStandardWeight(height);
-
-	}
-
-	/**
-	 * フォームからBMIを返却<br>
-	 * @param form
-	 * @return BMI
-	 */
-	@Override
-	public double getBmi(MenuForm form) {
-
-		// 入力情報の身長がセンチメートルなので単位とdouble型に変換
-		double height = CalcUtil.convertMeter(form.getHeight()).doubleValue();
-		double weight = form.getWeight().doubleValue();
-		return calcService.calcBmi(height, weight);
-
-	}
-
-	/**
 	 * フォームから体重差を返却
 	 * @param form
 	 * @return 体重差
 	 */
 	@Override
-	public double getDiffWeight(MenuForm form) {
+	public BigDecimal getDiffWeight(MenuForm form) {
 
 		double nowWeight = form.getWeight().doubleValue();
 		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
 		double beforeWeight = dto.getWeight().doubleValue();
-		return calcService.calcDiffWeight(beforeWeight, nowWeight);
+		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 
+	}
+
+	@Override
+	public UserInfoDto convertUserInfo(MenuForm form, String userId) {
+
+		UserInfoDto dto = new UserInfoDto();
+		dto.setUserId(userId);
+		dto.setHeight(form.getHeight());
+		dto.setWeight(form.getWeight());
+		dto.setBmi(calcService.calcBmi(form.getHeight(), form.getWeight()));
+		dto.setStandardWeight(calcService.calcStandardWeight(form.getHeight()));
+		dto.setRecordDate(new Date());
+		return dto;
 	}
 
 }

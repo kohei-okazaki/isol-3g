@@ -50,14 +50,14 @@ public class AppFilter extends BaseFilter {
 	 */
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
-		// TODO
+
 		HttpServletRequest request = (HttpServletRequest) req;
 		System.out.println(request.getRequestURI() + " : " + new Date());
 
 		HttpSession session = request.getSession();
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppSessionManager sessionManager = context.getBean("appSessionManager", AppSessionManager.class);
-		String session_id = sessionManager.getAttribute(session, AppSessionKey.ID);
+		String session_id = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
 
 		System.out.println("session_id = " + session_id);
 		chain.doFilter(req, resp);
