@@ -30,8 +30,11 @@ import jp.co.isol.manage.web.config.AppConfig;
 @Controller
 public class ResultReferenceController {
 
+	/** ユーザ情報検索サービス */
 	@Autowired
 	private UserInfoSearchService userInfoSearchService;
+
+	/** ファイルダウンロードサービス */
 	@Autowired
 	@Reference
 	private FileDownloadService<List<UserInfoDto>> fileDownloadService;
