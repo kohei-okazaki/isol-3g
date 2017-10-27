@@ -39,7 +39,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		sessionManager.removeKey(session, AppSessionKey.ID);
+		sessionManager.removeKey(session, AppSessionKey.USER_ID);
 
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# login start");

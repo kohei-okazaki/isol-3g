@@ -47,7 +47,7 @@ public class AccountSettingController {
 		// セッションからIDを取得
 		HttpSession session = request.getSession();
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		String id = sessionManager.getAttribute(session, AppSessionKey.ID);
+		String id = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
 
 		model.addAttribute("id", id);
 

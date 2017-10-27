@@ -10,8 +10,8 @@ import lombok.Setter;
  */
 public enum AppSessionKey {
 
-	/** ID */
-	ID("id");
+	/** ユーザID */
+	USER_ID("userId");
 
 	@Setter(value = AccessLevel.PRIVATE)
 	@Getter

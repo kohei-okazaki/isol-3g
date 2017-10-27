@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.isol.manage.dao.UserInfoDao;
 import jp.co.isol.manage.dto.UserInfoDto;
-import jp.co.isol.manage.form.MenuForm;
 
 /**
  * @author kou1210hei<br>
@@ -68,7 +67,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	 * @param menuForm
 	 */
 	@Override
-	public void registUserUnfo(MenuForm menuForm) {
+	public void registUserUnfo(UserInfoDto dto) {
 		// TODO 登録処理を追加すること
 	}
 

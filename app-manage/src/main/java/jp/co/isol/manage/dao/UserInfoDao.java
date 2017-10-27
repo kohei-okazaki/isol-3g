@@ -3,7 +3,6 @@ package jp.co.isol.manage.dao;
 import java.util.List;
 
 import jp.co.isol.manage.dto.UserInfoDto;
-import jp.co.isol.manage.form.MenuForm;
 
 
 /**
@@ -27,8 +26,8 @@ public interface UserInfoDao {
 
 	/**
 	 * ユーザ情報を登録する
-	 * @param menuForm
+	 * @param dto
 	 */
-	public void registUserUnfo(MenuForm menuForm);
+	public void registUserUnfo(UserInfoDto dto);
 
 }
