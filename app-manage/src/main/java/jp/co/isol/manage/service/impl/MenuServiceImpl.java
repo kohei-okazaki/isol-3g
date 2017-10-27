@@ -33,12 +33,19 @@ public class MenuServiceImpl implements MenuService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public String getDiffMessage(MenuForm form) {
+	public Message getDiffMessage(MenuForm form) {
 
-		double formWeight = form.getWeight().doubleValue();
 		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
-		double dbWeight = dto.getWeight().doubleValue();
-		return formWeight < dbWeight ? Message.DOWN.getName() : Message.UP.getName();
+		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
+			// 変化なしの場合
+			return Message.EQUAL;
+		} else if (form.getWeight().compareTo(dto.getWeight()) == 1) {
+			// 増加した場合
+			return Message.UP;
+		} else {
+			// 現象した場合
+			return Message.DOWN;
+		}
 
 	}
 
@@ -55,6 +62,10 @@ public class MenuServiceImpl implements MenuService {
 
 	}
 
+	/**
+	 * 入力情報を計算し、Dtoにつめる<br>
+	 * @return
+	 */
 	@Override
 	public UserInfoDto convertUserInfo(MenuForm form, String userId) {
 

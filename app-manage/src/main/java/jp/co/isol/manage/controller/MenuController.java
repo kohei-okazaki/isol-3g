@@ -80,7 +80,7 @@ public class MenuController {
 		model.addAttribute("diffWeight", menuService.getDiffWeight(form));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", menuService.getDiffMessage(form));
+		model.addAttribute("resultMessage", menuService.getDiffMessage(form).getName());
 
 		return View.MENU.getName();
 

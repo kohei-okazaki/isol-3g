@@ -15,7 +15,8 @@ public enum Message {
 	BMI("BMI"),
 	STANDARDWEIGHT("標準体重"),
 	UP("増えました"),
-	DOWN("減りました");
+	DOWN("減りました"),
+	EQUAL("変化なしです");
 
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)

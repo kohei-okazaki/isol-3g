@@ -2,6 +2,7 @@ package jp.co.isol.manage.service;
 
 import java.math.BigDecimal;
 
+import jp.co.isol.common.message.Message;
 import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.form.MenuForm;
 
@@ -17,7 +18,7 @@ public interface MenuService {
 	 * @param form
 	 * @return 体重差のメッセージ
 	 */
-	public String getDiffMessage(MenuForm form);
+	public Message getDiffMessage(MenuForm form);
 
 	/**
 	 * 入力情報を計算し、Dtoにつめる<br>
