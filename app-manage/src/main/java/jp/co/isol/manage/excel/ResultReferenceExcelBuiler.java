@@ -2,6 +2,7 @@ package jp.co.isol.manage.excel;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,7 +53,6 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 		String fileName = new String("sample.xlsx".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
 		resp.setHeader("Content-Desposition", "attachment; filename=" + fileName);
 
-		Cell cell = null;
 		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
 
 		// ヘッダーを設定
@@ -69,11 +69,11 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void setHeader(Sheet sheet) {
 		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
-		for (int i = 0; i < headerNameList.size(); i++) {
+		Stream.iterate(0, i -> i++).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i).getName();
 			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
-		}
+		});
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void setData(Sheet sheet) {
 
-		for (int i = 0; i < historyList.size(); i++) {
+		Stream.iterate(0, i -> i++).limit(this.historyList.size()).forEach(i -> {
 			UserInfoDto dto = historyList.get(i);
 			Cell cell = ExcelUtil.getCell(sheet, i + 1, 0);
 			ExcelUtil.setText(cell, dto.getHeight().toString());
@@ -93,7 +93,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 			ExcelUtil.setText(cell, dto.getBmi().toString());
 			cell = ExcelUtil.getCell(sheet, i + 1, 3);
 			ExcelUtil.setText(cell, dto.getStandardWeight().toString());
-		}
+		});
 
 	}
 

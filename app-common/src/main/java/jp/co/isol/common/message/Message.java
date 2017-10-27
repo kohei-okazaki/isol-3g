@@ -22,7 +22,7 @@ public enum Message {
 	private String name;
 
 	private Message(String name) {
-		this.name = name;
+		setName(name);
 	}
 
 }

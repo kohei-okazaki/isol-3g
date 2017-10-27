@@ -15,9 +15,9 @@ import jp.co.isol.manage.form.LoginUserForm;
 public class LoginUserDaoImpl implements LoginUserDao {
 
 	@Override
-	public LoginUserDto getLoginUserInfo(String id) {
+	public LoginUserDto getLoginUserInfoByUserId(String userId) {
 		LoginUserDto dto = new LoginUserDto();
-		dto.setLoginId(id);
+		dto.setUserId(userId);
 		dto.setPassword("password");
 		return dto;
 	}

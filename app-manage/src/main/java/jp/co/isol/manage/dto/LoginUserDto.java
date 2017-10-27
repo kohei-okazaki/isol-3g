@@ -23,10 +23,10 @@ import lombok.ToString;
 public class LoginUserDto implements Serializable {
 
 	@Id
-	@Column(name = "LOGIN_ID", nullable = false, length = 3)
+	@Column(name = "USER_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
-	private String loginId;
+	private String userId;
 
 	@Column(name = "PASSWORD", nullable = false)
 	@Setter

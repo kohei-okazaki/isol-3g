@@ -1,6 +1,7 @@
 package jp.co.isol.common.util;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class CalcUtil {
 
@@ -17,9 +18,7 @@ public class CalcUtil {
 	 * @return メートル
 	 */
 	public static BigDecimal convertMeter(BigDecimal target) {
-		double value = target.doubleValue();
-		value = value / 100;
-		return new BigDecimal(value);
+		return target.divide(new BigDecimal("100"), 2, RoundingMode.HALF_UP);
 	}
 
 	/**
@@ -29,9 +28,7 @@ public class CalcUtil {
 	 * @return センチメートル
 	 */
 	public static BigDecimal convertCentiMeter(BigDecimal target) {
-		double value = target.doubleValue();
-		value = value / 100;
-		return new BigDecimal(value);
+		return target.multiply(new BigDecimal("100"));
 	}
 
 }
