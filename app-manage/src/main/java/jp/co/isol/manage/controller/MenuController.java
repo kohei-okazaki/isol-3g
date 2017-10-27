@@ -73,6 +73,7 @@ public class MenuController {
 		// Daoから前回の体重を取得
 		model.addAttribute("beforeWeight", userInfoSearchService.findUserInfoEntity("1").getWeight());
 
+		// Dtoを設定する
 		model.addAttribute("dto", dto);
 
 		// 入力した今の体重と前回入力した体重の差を設定
