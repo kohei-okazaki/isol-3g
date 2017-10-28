@@ -54,14 +54,14 @@ public class ResultReferenceController {
 		logger.info(this.getClass(), "# resultReference start");
 
 		// ログイン中のユーザの全レコードを検索する
-		model.addAttribute("allDataList", userInfoSearchService.findUserAllDataByUserId(userId));
+		model.addAttribute("allDataList", userInfoSearchService.findUserInfoByUserId(userId));
 
 		return View.RESULT_REFFERNCE.getName();
 	}
 
 	/**
 	 * ファイルダウンロードを実行する
-	 * @param id
+	 * @param userId
 	 * @return
 	 * @throws ParseException
 	 */
@@ -72,7 +72,7 @@ public class ResultReferenceController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
 
-		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.findUserAllDataByUserId(userId)));
+		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.findUserInfoByUserId(userId)));
 	}
 
 }

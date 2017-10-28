@@ -16,7 +16,7 @@ public interface UserInfoSearchService {
 	 * 全ユーザ情報を取得する
 	 * @return 全ユーザ情報
 	 */
-	public List<UserInfoDto> findUserAllDataByUserId(String userId) throws ParseException;
+	public List<UserInfoDto> findUserInfoByUserId(String userId) throws ParseException;
 
 	/**
 	 * 指定されたIDからユーザ情報を取得する

@@ -69,9 +69,10 @@ public class MenuController {
 		userInfoDao.registUserUnfo(dto);
 
 		// Daoから前回の体重を取得
-		List<UserInfoDto> dtoList = userInfoSearchService.findUserAllDataByUserId(userId);
-		int i = dtoList.size();
-		UserInfoDto lastDto = dtoList.get(dtoList.size());
+		List<UserInfoDto> dtoList = userInfoSearchService.findUserInfoByUserId(userId);
+
+		int lastIndex = dtoList.size() - 1;
+		UserInfoDto lastDto = dtoList.get(lastIndex);
 		model.addAttribute("beforeWeight", lastDto.getWeight());
 
 		// Dtoを設定する

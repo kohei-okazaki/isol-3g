@@ -70,7 +70,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void setHeader(Sheet sheet) {
 		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
-		Stream.iterate(0, i -> i++).limit(headerNameList.size()).forEach(i -> {
+		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i).getName();
 			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
@@ -84,7 +84,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void setData(Sheet sheet) {
 
-		Stream.iterate(0, i -> i++).limit(this.historyList.size()).forEach(i -> {
+		Stream.iterate(0, i -> ++i).limit(this.historyList.size()).forEach(i -> {
 			UserInfoDto dto = historyList.get(i);
 			Cell cell = ExcelUtil.getCell(sheet, i + 1, 0);
 			ExcelUtil.setText(cell, dto.getHeight().toString());

@@ -32,7 +32,9 @@
 								<li><a href="#">ひ孫メニュー2</a></li>
 							</ul>
 						</li>
-						<li><a href="#">孫メニュー2</a></li>
+						<li>
+							<a href="#">孫メニュー2</a>
+						</li>
 					</ul>
 				</li>
 				<li><a href="#">子メニュー2</a>
@@ -50,7 +52,8 @@
 						<li><a href="#">孫メニュー3</a>
 							<ul>
 								<li><a href="#">ひ孫メニュー</a></li>
-							</ul></li>
+							</ul>
+						</li>
 						<li><a href="#">孫メニュー4</a></li>
 					</ul>
 				</li>
@@ -62,7 +65,9 @@
 						<li><a href="#">孫メニュー4</a></li>
 					</ul>
 				</li>
-				<li><a href="/isol/menu.html">メニュー画面</a></li>
+				<li>
+					<a href="/isol/menu.html">メニュー画面</a>
+				</li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>
@@ -71,7 +76,9 @@
 				<li><a href="#">出力設定</a></li>
 			</ul>
 		</li>
-		<li><a href="/isol/login.html"> ログアウト </a></li>
+		<li>
+			<a href="/isol/login.html"> ログアウト </a>
+		</li>
 	</ul>
 
 	<img class="browseBack" alt="戻る" src="../resources/image/icon_browseBack.jpg" onclick="history.back()">
@@ -83,6 +90,7 @@
 				<th align="center"><c:out value="体重" /></th>
 				<th align="center"><c:out value="標準体重" /></th>
 				<th align="center"><c:out value="BMI" /></th>
+				<th align="center"><c:out value="登録日時" /></th>
 			</tr>
 			<c:forEach var="result" items="${allDataList}">
 				<tr class="datacolor">
@@ -90,12 +98,13 @@
 					<td align="center"><c:out value="${result.weight}" /></td>
 					<td align="center"><c:out value="${result.standardWeight}" /></td>
 					<td align="center"><c:out value="${result.bmi}" /></td>
+					<td align="center"><c:out value="${result.recordDate}" /></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 	<br><br>
-	<table class="custom">
+	<table>
 		<tr>
 			<td>
 				<form action="/isol/menu/result-reference-download.html" method="get">

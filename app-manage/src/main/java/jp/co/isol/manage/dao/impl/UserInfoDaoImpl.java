@@ -35,19 +35,23 @@ public class UserInfoDaoImpl implements UserInfoDao {
 			dto.setDataId(String.valueOf(i));
 			dto.setUserId(userId);
 			if (i % 3 == 0) {
-				dto.setHeight(new BigDecimal(170.1).setScale(1, BigDecimal.ROUND_HALF_UP));
-				dto.setWeight(new BigDecimal(59.4).setScale(1, BigDecimal.ROUND_HALF_UP));
-				dto.setBmi(new BigDecimal(15).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setHeight(new BigDecimal(176.8).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setWeight(new BigDecimal(64.9).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setBmi(new BigDecimal(15.7).setScale(1, BigDecimal.ROUND_HALF_UP));
 				dto.setStandardWeight(new BigDecimal(61.0).setScale(1, BigDecimal.ROUND_HALF_UP));
 				dto.setRecordDate(DateUtil.formatDate("2017/03/02 01:23:45"));
 			} else if (i == 7) {
-				dto.setHeight(new BigDecimal(170.4).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setHeight(new BigDecimal(176.4).setScale(1, BigDecimal.ROUND_HALF_UP));
 				dto.setWeight(new BigDecimal(63.5).setScale(1, BigDecimal.ROUND_HALF_UP));
-				dto.setBmi(new BigDecimal(12).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setBmi(new BigDecimal(18.7).setScale(1, BigDecimal.ROUND_HALF_UP));
 				dto.setStandardWeight(new BigDecimal(64.2).setScale(1, BigDecimal.ROUND_HALF_UP));
 				dto.setRecordDate(DateUtil.formatDate("2017/10/12 12:23:45"));
 			} else {
-
+				dto.setHeight(new BigDecimal(176.5).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setWeight(new BigDecimal(63.5).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setBmi(new BigDecimal(18.9).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setStandardWeight(new BigDecimal(64.2).setScale(1, BigDecimal.ROUND_HALF_UP));
+				dto.setRecordDate(DateUtil.formatDate("2017/10/15 15:45:45"));
 			}
 			dtoList.add(dto);
 		}
