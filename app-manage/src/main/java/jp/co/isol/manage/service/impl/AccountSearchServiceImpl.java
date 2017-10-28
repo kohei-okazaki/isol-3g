@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.dao.LoginUserDao;
-import jp.co.isol.manage.dto.LoginUserDto;
-import jp.co.isol.manage.service.LoginUserSearchService;
+import jp.co.isol.manage.dto.AccountDto;
+import jp.co.isol.manage.service.AccountSearchService;
 
 @Service
-public class LoginUserSearchServiceImpl implements LoginUserSearchService {
+public class AccountSearchServiceImpl implements AccountSearchService {
 
 	@Autowired
 	private LoginUserDao loginUserDao;
@@ -19,7 +19,7 @@ public class LoginUserSearchServiceImpl implements LoginUserSearchService {
 	 * @return ログイン情報
 	 */
 	@Override
-	public LoginUserDto findLoginUserEntity(String userId) {
+	public AccountDto findAccountByUserId(String userId) {
 		return loginUserDao.getLoginUserInfoByUserId(userId);
 	}
 

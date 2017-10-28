@@ -1,6 +1,6 @@
 package jp.co.isol.manage.dao;
 
-import jp.co.isol.manage.dto.LoginUserDto;
+import jp.co.isol.manage.dto.AccountDto;
 import jp.co.isol.manage.form.LoginUserForm;
 
 /**
@@ -15,7 +15,7 @@ public interface LoginUserDao {
 	 * @param id
 	 * @return LoginUserEntity
 	 */
-	public LoginUserDto getLoginUserInfoByUserId(String userId);
+	public AccountDto getLoginUserInfoByUserId(String userId);
 
 
 	/**

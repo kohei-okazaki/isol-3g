@@ -3,7 +3,7 @@ package jp.co.isol.manage.dao.impl;
 import org.springframework.stereotype.Repository;
 
 import jp.co.isol.manage.dao.LoginUserDao;
-import jp.co.isol.manage.dto.LoginUserDto;
+import jp.co.isol.manage.dto.AccountDto;
 import jp.co.isol.manage.form.LoginUserForm;
 
 /**
@@ -15,8 +15,8 @@ import jp.co.isol.manage.form.LoginUserForm;
 public class LoginUserDaoImpl implements LoginUserDao {
 
 	@Override
-	public LoginUserDto getLoginUserInfoByUserId(String userId) {
-		LoginUserDto dto = new LoginUserDto();
+	public AccountDto getLoginUserInfoByUserId(String userId) {
+		AccountDto dto = new AccountDto();
 		dto.setUserId(userId);
 		dto.setPassword("password");
 		return dto;

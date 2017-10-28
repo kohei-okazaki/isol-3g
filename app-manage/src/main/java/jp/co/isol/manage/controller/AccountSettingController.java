@@ -3,6 +3,7 @@ package jp.co.isol.manage.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
@@ -23,6 +25,9 @@ import jp.co.isol.manage.web.session.AppSessionManager;
  */
 @Controller
 public class AccountSettingController {
+
+	@Autowired
+	private AccountSearchService loginuserSearchService;
 
 	/**
 	 * アカウント設定入力画面

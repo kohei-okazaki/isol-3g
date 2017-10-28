@@ -8,8 +8,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.LoginService;
-import jp.co.isol.manage.service.LoginUserSearchService;
 import jp.co.isol.manage.web.config.AppConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
@@ -23,7 +23,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
-	private LoginUserSearchService loginSearchService;
+	private AccountSearchService loginSearchService;
 
 	/**
 	 * ログイン情報と入力情報を照合する
@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean invalidPassword(LoginUserForm LoginUserForm) {
 		String inputPassword = LoginUserForm.getPassword();
-		String userPassword = loginSearchService.findLoginUserEntity(LoginUserForm.getUserId()).getPassword();
+		String userPassword = loginSearchService.findAccountByUserId(LoginUserForm.getUserId()).getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 

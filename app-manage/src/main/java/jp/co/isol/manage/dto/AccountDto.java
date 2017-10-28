@@ -20,7 +20,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "LOGIN_USER")
 @ToString(exclude = "password")
-public class LoginUserDto implements Serializable {
+public class AccountDto implements Serializable {
 
 	/** ユーザID */
 	@Id
