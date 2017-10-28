@@ -26,6 +26,7 @@ import jp.co.isol.manage.dto.UserInfoDto;
 @Excel(sheetName = "ユーザ情報", headerNames = {Message.WEIGHT, Message.HEIGHT, Message.BMI, Message.STANDARDWEIGHT})
 public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 
+	/** 購入履歴情報リスト */
 	private List<UserInfoDto> historyList;
 
 	/**

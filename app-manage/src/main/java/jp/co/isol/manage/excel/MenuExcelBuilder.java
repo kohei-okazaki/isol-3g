@@ -26,6 +26,7 @@ import jp.co.isol.manage.form.MenuForm;
 @Excel(sheetName = "ユーザ情報", headerNames = {Message.WEIGHT, Message.HEIGHT, Message.BMI, Message.STANDARDWEIGHT})
 public class MenuExcelBuilder extends BaseExcelBuilder {
 
+	/** 入力フォームクラス */
 	private MenuForm form;
 
 	/**
