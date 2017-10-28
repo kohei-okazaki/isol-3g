@@ -29,7 +29,6 @@
 		</h1>
 	</c:if>
 
-	<c:out value="${serverTime}" />
 	<hr>
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 	<!-- 入力画面 -->
@@ -80,6 +79,8 @@
 			<table>
 				<tr>
 					<td><input type="submit" value="確定"></td>
+					<td><c:out value="　　" /></td>
+					<td><input type="button" value="戻る" onclick="history.back()"></td>
 				</tr>
 			</table>
 		</form>

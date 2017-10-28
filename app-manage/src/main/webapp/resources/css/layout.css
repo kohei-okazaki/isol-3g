@@ -83,12 +83,30 @@ input[type="reset"] {
 	-webkit-transition: background .3s;
 }
 
+input[type="button"] {
+	width: 100px;
+	height: 40px;
+	background: #32cd32;
+	border: 0;
+	padding: 1.5%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
+	color: #fff;
+	cursor: pointer;
+	transition: background .3s;
+	-webkit-transition: background .3s;
+}
+
 /* type=submitをマウスオーバーしたとき */
 input[type="submit"]:hover {
 	background: #80ff80;
 }
 
 input[type="reset"]:hover {
+	background: #80ff80;
+}
+
+input[type="button"]:hover {
 	background: #80ff80;
 }
 
@@ -244,11 +262,11 @@ ul>li:hover>a {
 }
 
 #dropmenu>li:hover>a {
-	background: #9ee718;
+	background: #80ff80;
 }
 
 #dropmenu>li:hover li:hover>a {
-	background: #9ee718;
+	background: #80ff80;
 }
 
 #dropmenu li:hover>ul>li {
@@ -271,7 +289,7 @@ ul>li:hover>a {
 }
 
 #dropmenu li:hover ul li ul li:hover>a {
-	background: #9ee718;
+	background: #80ff80;
 }
 
 #dropmenu li ul li ul:before {
