@@ -24,51 +24,28 @@
 		<ul id="dropmenu">
 		<li><a href="#">MENU</a>
 			<ul>
-				<li><a href="#">子メニュー1</a>
+				<li><a href="#">ユーザ情報</a>
 					<ul>
-						<li><a href="#">孫メニュー1</a>
-							<ul>
-								<li><a href="#">ひ孫メニュー1</a></li>
-								<li><a href="#">ひ孫メニュー2</a></li>
-							</ul>
-						</li>
-						<li><a href="#">孫メニュー2</a></li>
+						<li><a href="/isol/input.html">入力</a></li>
+						<li><a href="/isol/result-reference.html">照会</a></li>
 					</ul>
 				</li>
-				<li><a href="#">子メニュー2</a>
+				<li><a href="#">通知</a>
 					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a></li>
-						<li><a href="#">孫メニュー4</a></li>
+						<li><a href="/isol/notice.html">メール</a></li>
 					</ul>
 				</li>
-				<li><a href="#">子メニュー3</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a>
-							<ul>
-								<li><a href="#">ひ孫メニュー</a></li>
-							</ul></li>
-						<li><a href="#">孫メニュー4</a></li>
-					</ul>
-				</li>
-				<li><a href="#">子メニュー4</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a></li>
-						<li><a href="#">孫メニュー4</a></li>
-					</ul>
-				</li>
-				<li><a href="/isol/menu.html">メニュー画面</a></li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>
 			<ul>
-				<li><a href="/isol/account-setting-input.html">アカウント設定</a></li>
 				<li><a href="#">出力設定</a></li>
+				<li><a href="#">アカウント</a>
+					<ul>
+						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
+						<li><a href="/isol/account-create-input.html">新規作成</a></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li><a href="/isol/login.html"> ログアウト </a></li>
@@ -82,8 +59,29 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<td><c:out value="ID" /></td>
-					<td><c:out value="${session.userId}" /></td>
+					<th><c:out value="削除" /></th>
+					<td width="250px">
+						<div class="radio">
+							<input type="radio" name="deleteFlag" id="true" value="1" checked="">
+							<label for="true">する</label>
+							<input type="radio" name="deleteFlag" id="false" value="0">
+							<label for="false" class="switch-off">しない</label>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<th><c:out value="ユーザID" /></th>
+					<td><input type="text" name="userId" value="${dto.userId}" /></td>
+				</tr>
+				<tr>
+					<th><c:out value="パスワード" /></th>
+					<td><input type="text" name="password" value="${dto.password}" /></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td><input type="submit" value="確認" /></td>
 				</tr>
 			</table>
 		</div>
