@@ -1,5 +1,6 @@
 package jp.co.isol.manage.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import jp.co.isol.manage.dto.UserInfoDto;
@@ -15,12 +16,12 @@ public interface UserInfoSearchService {
 	 * 全ユーザ情報を取得する
 	 * @return 全ユーザ情報
 	 */
-	public List<UserInfoDto> findUserAllData();
+	public List<UserInfoDto> findUserAllDataByUserId(String userId) throws ParseException;
 
 	/**
 	 * 指定されたIDからユーザ情報を取得する
 	 * @param id
 	 * @return ログインユーザ情報
 	 */
-	public UserInfoDto findUserInfoEntity(String id);
+	public UserInfoDto findUserInfoByDataId(String dataId) throws ParseException;
 }

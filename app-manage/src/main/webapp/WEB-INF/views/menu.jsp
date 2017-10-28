@@ -19,23 +19,60 @@
 		<img class="headericon" alt="入力" src="resources/image/icon_menu.jpg">
 		<c:out value="メニュー画面" />
 	</h1>
-	<c:out value="${serverTime}" />
+
 	<hr>
-	<header class="menu">
-	<ul>
-		<li>
-			<a href="#"> 設定  <span>▼</span></a>
+	<ul id="dropmenu">
+		<li><a href="#">MENU</a>
 			<ul>
-				<li><a href="/isol/account-setting.html"> アカウント設定 </a></li>
-				<li><a href="/isol/notice-setting.html"> 各通知設定 </a></li>
+				<li><a href="#">子メニュー1</a>
+					<ul>
+						<li><a href="#">孫メニュー1</a>
+							<ul>
+								<li><a href="#">ひ孫メニュー1</a></li>
+								<li><a href="#">ひ孫メニュー2</a></li>
+							</ul>
+						</li>
+						<li><a href="#">孫メニュー2</a></li>
+					</ul>
+				</li>
+				<li><a href="#">子メニュー2</a>
+					<ul>
+						<li><a href="#">孫メニュー1</a></li>
+						<li><a href="#">孫メニュー2</a></li>
+						<li><a href="#">孫メニュー3</a></li>
+						<li><a href="#">孫メニュー4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">子メニュー3</a>
+					<ul>
+						<li><a href="#">孫メニュー1</a></li>
+						<li><a href="#">孫メニュー2</a></li>
+						<li><a href="#">孫メニュー3</a>
+							<ul>
+								<li><a href="#">ひ孫メニュー</a></li>
+							</ul></li>
+						<li><a href="#">孫メニュー4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">子メニュー4</a>
+					<ul>
+						<li><a href="#">孫メニュー1</a></li>
+						<li><a href="#">孫メニュー2</a></li>
+						<li><a href="#">孫メニュー3</a></li>
+						<li><a href="#">孫メニュー4</a></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
-		<li><a href="#"> Menu02 </a></li>
-		<li><a href="#"> Menu03 </a></li>
+		<li><a href="#">設定</a>
+			<ul>
+				<li><a href="/isol/account-setting-input.html">アカウント設定</a></li>
+				<li><a href="#">出力設定</a></li>
+			</ul>
+		</li>
 		<li><a href="/isol/login.html"> ログアウト </a></li>
 	</ul>
-	</header>
-	<hr>
+
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 	<c:if test="${page == 2}">
 		<c:out value="完了しました" />

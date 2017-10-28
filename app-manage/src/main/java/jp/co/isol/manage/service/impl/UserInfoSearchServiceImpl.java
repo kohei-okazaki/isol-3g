@@ -1,5 +1,6 @@
 package jp.co.isol.manage.service.impl;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +23,22 @@ public class UserInfoSearchServiceImpl implements UserInfoSearchService {
 	/**
 	 * 全ユーザ情報を取得する
 	 * @return 全ユーザ情報
+	 * @throws ParseException
 	 */
 	@Override
-	public List<UserInfoDto> findUserAllData() {
-		return userInfoDao.getUserAllData();
+	public List<UserInfoDto> findUserAllDataByUserId(String userId) throws ParseException {
+		return userInfoDao.getUserInfoByUserId(userId);
 	}
 
 	/**
-	 * 指定されたIDからユーザ情報を取得する
+	 * 指定されたデータIDからユーザ情報を取得する
 	 * @param id
 	 * @return ログインユーザ情報
+	 * @throws ParseException
 	 */
 	@Override
-	public UserInfoDto findUserInfoEntity(String userId) {
-		return userInfoDao.getUserInfoByUserId(userId);
+	public UserInfoDto findUserInfoByDataId(String dataId) throws ParseException {
+		return userInfoDao.getUserInfoByDataId(dataId);
 	}
 
 }

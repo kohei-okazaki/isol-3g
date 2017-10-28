@@ -14,7 +14,7 @@
 </head>
 <body>
 <c:if test="${errorMessage != null}">
-	<c:out value="${errorMessage}" />
+	<div align="center"><c:out value="${errorMessage}" /></div>
 </c:if>
 	<fieldset>
 		<h1>健康管理アプリ</h1>

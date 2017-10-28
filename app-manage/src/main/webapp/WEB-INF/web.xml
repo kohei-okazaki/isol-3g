@@ -53,7 +53,9 @@
 		<url-pattern>/menu/fileDownload.html</url-pattern>
 		<url-pattern>/menu/result-reference.html</url-pattern>
 		<url-pattern>/menu/result-reference-download.html</url-pattern>
-		<url-pattern>/account-setting.html</url-pattern>
+		<url-pattern>/account-setting-input.html</url-pattern>
+		<url-pattern>/account-setting-confirm.html</url-pattern>
+		<url-pattern>/account-setting-complete.html</url-pattern>
 		<url-pattern>/notice-setting.html</url-pattern>
 	</servlet-mapping>
 

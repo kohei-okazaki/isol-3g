@@ -1,7 +1,5 @@
 package jp.co.isol.manage.controller;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -34,7 +32,7 @@ public class LoginController {
 	 * @return ログイン画面
 	 */
 	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
-	public String login(Locale locale, Model model, HttpServletRequest request) {
+	public String login(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);

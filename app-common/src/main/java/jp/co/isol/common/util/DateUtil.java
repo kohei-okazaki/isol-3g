@@ -1,6 +1,8 @@
 package jp.co.isol.common.util;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -10,6 +12,8 @@ import java.util.Locale;
  *
  */
 public class DateUtil {
+
+	public static final String YYYY_MM_DD_HH_MI_SS = "yyyy/MM/dd hh:mm:ss";
 
 	/**
 	 * インスタンス生成を制限
@@ -27,5 +31,16 @@ public class DateUtil {
 		DateFormat format = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		return format.format(new Date()).replaceAll(" JST", StringUtil.TEMP).trim();
 
+	}
+
+	/**
+	 * 文字列型の日付を
+	 * @param target
+	 * @return
+	 * @throws ParseException
+	 */
+	public static Date formatDate(String target) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat(YYYY_MM_DD_HH_MI_SS);
+		return sdf.parse(target);
 	}
 }

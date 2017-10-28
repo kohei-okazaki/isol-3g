@@ -33,9 +33,8 @@ public class MenuServiceImpl implements MenuService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public Message getDiffMessage(MenuForm form) {
+	public Message getDiffMessage(MenuForm form, UserInfoDto dto) {
 
-		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
 			return Message.EQUAL;
@@ -50,14 +49,14 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	/**
-	 * フォームから体重差を返却
+	 * 最後に入力した体重とフォームから体重差を返却
 	 * @param form
+	 * @param dto
 	 * @return 体重差
 	 */
 	@Override
-	public BigDecimal getDiffWeight(MenuForm form) {
+	public BigDecimal getDiffWeight(MenuForm form, UserInfoDto dto) {
 
-		UserInfoDto dto = userInfoSearchService.findUserInfoEntity("1");
 		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 
 	}

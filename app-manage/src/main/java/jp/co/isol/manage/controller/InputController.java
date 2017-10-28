@@ -1,7 +1,5 @@
 package jp.co.isol.manage.controller;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.form.MenuForm;
 import jp.co.isol.manage.log.AppLogger;
@@ -43,7 +40,7 @@ public class InputController {
 	 * @return 遷移先を返却
 	 */
 	@RequestMapping(value = "/input.html", method = RequestMethod.POST)
-	public String input(Locale locale, Model model, LoginUserForm loginForm, HttpServletRequest request) {
+	public String input(Model model, LoginUserForm loginForm, HttpServletRequest request) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
@@ -56,9 +53,6 @@ public class InputController {
 
 		// セッションにIDを登録する。
 		loginService.registSession(request.getSession(), loginForm);
-
-		// 時刻取得
-		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
 
 		// 入力フォームの初期化
 		model.addAttribute("menuForm", new MenuForm());
@@ -76,14 +70,11 @@ public class InputController {
 	 * @return 確認画面
 	 */
 	@RequestMapping(value = "/input-confirm.html", method = RequestMethod.POST)
-	public String confirm(Locale locale, Model model, MenuForm form) {
+	public String confirm(Model model, MenuForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "#confirm start");
-
-		// 時刻取得
-		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
 
 		if (inputService.hasError(form)) {
 			// 入力情報に誤りがある場合

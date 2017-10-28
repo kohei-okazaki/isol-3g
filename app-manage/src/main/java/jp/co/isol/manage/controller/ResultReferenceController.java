@@ -1,7 +1,7 @@
 package jp.co.isol.manage.controller;
 
+import java.text.ParseException;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
@@ -45,19 +44,17 @@ public class ResultReferenceController {
 	 * @param locale
 	 * @param model
 	 * @return
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/menu/result-reference.html", method = RequestMethod.POST)
-	public String resultReference(Locale locale, Model model) {
+	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# resultReference start");
 
-		// 時刻取得
-		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
-
-		// 全ユーザ情報を取得する
-		model.addAttribute("allDataList", userInfoSearchService.findUserAllData());
+		// ログイン中のユーザの全レコードを検索する
+		model.addAttribute("allDataList", userInfoSearchService.findUserAllDataByUserId(userId));
 
 		return View.RESULT_REFFERNCE.getName();
 	}
@@ -66,13 +63,16 @@ public class ResultReferenceController {
 	 * ファイルダウンロードを実行する
 	 * @param id
 	 * @return
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/menu/result-reference-download.html", method = RequestMethod.GET)
-	public ModelAndView excelDownload(@SessionAttribute String id) {
+	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
+
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
-		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.findUserAllData()));
+
+		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.findUserAllDataByUserId(userId)));
 	}
 
 }

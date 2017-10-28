@@ -1,6 +1,7 @@
 package jp.co.isol.manage.controller;
 
-import java.util.Locale;
+import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.dao.UserInfoDao;
 import jp.co.isol.manage.dto.UserInfoDto;
 import jp.co.isol.manage.form.MenuForm;
@@ -51,9 +51,10 @@ public class MenuController {
 	 * @param model
 	 * @param form
 	 * @return View
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/menu.html", method = RequestMethod.POST)
-	public String menu(Locale locale, Model model, MenuForm form, HttpServletRequest request) {
+	public String menu(Model model, MenuForm form, HttpServletRequest request) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
@@ -67,20 +68,20 @@ public class MenuController {
 		// 入力画面から入力した情報を登録する
 		userInfoDao.registUserUnfo(dto);
 
-		// 時刻取得
-		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
-
 		// Daoから前回の体重を取得
-		model.addAttribute("beforeWeight", userInfoSearchService.findUserInfoEntity("1").getWeight());
+		List<UserInfoDto> dtoList = userInfoSearchService.findUserAllDataByUserId(userId);
+		int i = dtoList.size();
+		UserInfoDto lastDto = dtoList.get(dtoList.size());
+		model.addAttribute("beforeWeight", lastDto.getWeight());
 
 		// Dtoを設定する
 		model.addAttribute("dto", dto);
 
 		// 入力した今の体重と前回入力した体重の差を設定
-		model.addAttribute("diffWeight", menuService.getDiffWeight(form));
+		model.addAttribute("diffWeight", menuService.getDiffWeight(form, lastDto));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", menuService.getDiffMessage(form).getName());
+		model.addAttribute("resultMessage", menuService.getDiffMessage(form, lastDto).getName());
 
 		return View.MENU.getName();
 
@@ -101,6 +102,18 @@ public class MenuController {
 
 		return new ModelAndView(fileDownloadService.execute(form));
 
+	}
+
+	/**
+	 * getでメニュー画面に遷移する<br>
+	 * @param locale
+	 * @param model
+	 * @param userId
+	 * @return
+	 */
+	@RequestMapping(value = "/menu.html", method = RequestMethod.GET)
+	public String menu() {
+		return View.MENU.getName();
 	}
 
 }
