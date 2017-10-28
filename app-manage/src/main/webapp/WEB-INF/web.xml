@@ -58,6 +58,9 @@
 		<url-pattern>/account-setting-confirm.html</url-pattern>
 		<url-pattern>/account-setting-complete.html</url-pattern>
 		<url-pattern>/notice-setting.html</url-pattern>
+		<url-pattern>/account-create-input.html</url-pattern>
+		<url-pattern>/account-create-confirm.html</url-pattern>
+		<url-pattern>/account-create-complete.html</url-pattern>
 	</servlet-mapping>
 
 	<filter>
