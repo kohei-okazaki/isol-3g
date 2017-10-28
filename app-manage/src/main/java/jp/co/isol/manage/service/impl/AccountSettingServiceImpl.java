@@ -3,7 +3,7 @@ package jp.co.isol.manage.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.manage.dao.LoginUserDao;
+import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.service.AccountSettingService;
 
@@ -11,7 +11,7 @@ import jp.co.isol.manage.service.AccountSettingService;
 public class AccountSettingServiceImpl implements AccountSettingService {
 
 	@Autowired
-	private LoginUserDao loginUserDao;
+	private AccountDao accountDao;
 
 	/**
 	 * IDで指定されたアカウントのパスワードを変更する<br>
@@ -19,7 +19,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void changePassword(LoginUserForm form) {
-		loginUserDao.updateLoginUserInfo(form);
+		accountDao.updateLoginUserInfo(form);
 	}
 
 }

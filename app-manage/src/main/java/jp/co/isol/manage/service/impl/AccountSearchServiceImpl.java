@@ -3,7 +3,7 @@ package jp.co.isol.manage.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.manage.dao.LoginUserDao;
+import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.dto.AccountDto;
 import jp.co.isol.manage.service.AccountSearchService;
 
@@ -11,7 +11,7 @@ import jp.co.isol.manage.service.AccountSearchService;
 public class AccountSearchServiceImpl implements AccountSearchService {
 
 	@Autowired
-	private LoginUserDao loginUserDao;
+	private AccountDao accountDao;
 
 	/**
 	 * IDからログイン情報を取得する
@@ -20,7 +20,7 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	 */
 	@Override
 	public AccountDto findAccountByUserId(String userId) {
-		return loginUserDao.getLoginUserInfoByUserId(userId);
+		return accountDao.getLoginUserInfoByUserId(userId);
 	}
 
 }

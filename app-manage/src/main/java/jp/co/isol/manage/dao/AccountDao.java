@@ -8,7 +8,7 @@ import jp.co.isol.manage.form.LoginUserForm;
  * ログインユーザ情報のDaoインターフェイス
  *
  */
-public interface LoginUserDao {
+public interface AccountDao {
 
 	/**
 	 * 引数で指定されたIDのログインユーザ情報を取得する

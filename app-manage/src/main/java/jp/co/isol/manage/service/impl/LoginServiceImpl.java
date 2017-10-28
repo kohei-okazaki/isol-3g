@@ -23,7 +23,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
-	private AccountSearchService loginSearchService;
+	private AccountSearchService accountSearchService;
 
 	/**
 	 * ログイン情報と入力情報を照合する
@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean invalidPassword(LoginUserForm LoginUserForm) {
 		String inputPassword = LoginUserForm.getPassword();
-		String userPassword = loginSearchService.findAccountByUserId(LoginUserForm.getUserId()).getPassword();
+		String userPassword = accountSearchService.findAccountByUserId(LoginUserForm.getUserId()).getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 
