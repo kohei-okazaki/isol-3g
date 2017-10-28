@@ -328,11 +328,11 @@ ul>li:hover>a {
 	cursor: pointer;
 	margin: 0;
 	padding: 8px 16px;
-	background-color: #BBDEFB;
+	background-color: #80ff80;
 	color: #FFF;
 	text-align: center;
 	transition: 0.2s;
-	width: 70px;
+	width: 93px;
 }
 
 .radio label:first-of-type {
@@ -344,5 +344,5 @@ ul>li:hover>a {
 }
 
 .radio input[type="radio"]:checked+label {
-	background-color: #2196F3;
+	background-color: #32cd32;
 }

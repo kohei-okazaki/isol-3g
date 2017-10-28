@@ -72,11 +72,11 @@
 
 				<tr>
 					<th><c:out value="ユーザID" /></th>
-					<td><input type="text" name="userId" value="${dto.userId}" /></td>
+					<td><input type="text" name="userId" value="${dto.userId}" required="required" /></td>
 				</tr>
 				<tr>
 					<th><c:out value="パスワード" /></th>
-					<td><input type="text" name="password" value="${dto.password}" /></td>
+					<td><input type="text" name="password" value="${dto.password}" required="required" /></td>
 				</tr>
 			</table>
 			<table>

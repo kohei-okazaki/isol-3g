@@ -9,8 +9,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.view.PageView;
@@ -34,12 +35,11 @@ public class AccountSettingController {
 	 * アカウント設定入力画面
 	 * @param locale
 	 * @param model
-	 * @param loginForm
 	 * @param request
 	 * @return アカウント設定入力画面
 	 */
-	@RequestMapping(value = "/account-setting-input.html")
-	public String accountSetttingInput(Model model, LoginUserForm loginForm, HttpServletRequest request) {
+	@RequestMapping(value = "/account-setting-input.html", method = RequestMethod.GET)
+	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
@@ -51,6 +51,21 @@ public class AccountSettingController {
 		String userId = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
 
 		model.addAttribute("dto", accountSearchService.findAccountByUserId(userId));
+
+		model.addAttribute("page", PageView.INPUT.getValue());
+
+		return View.ACCOUNT_SETTING.getName();
+	}
+
+	/**
+	 * アカウント設定確認画面
+	 * @param model
+	 * @param request
+	 * @param form
+	 * @return
+	 */
+	@RequestMapping(value = "/account-setting-confirm.html", method = RequestMethod.POST)
+	public String accountsettingConfirm(Model model, HttpServletRequest request, AccountSettingForm form) {
 
 		model.addAttribute("page", PageView.INPUT.getValue());
 
