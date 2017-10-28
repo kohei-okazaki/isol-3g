@@ -22,6 +22,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 @Service
 public class LoginServiceImpl implements LoginService {
 
+	/** アカウント検索サービス */
 	@Autowired
 	private AccountSearchService accountSearchService;
 

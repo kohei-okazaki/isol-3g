@@ -19,6 +19,12 @@ import jp.co.isol.manage.web.config.AppConfig;
 @Controller
 public class NoticeSettingController {
 
+	/**
+	 * 通知設定入力画面
+	 * @param model
+	 * @param loginForm
+	 * @return
+	 */
 	@RequestMapping(value = "/notice-setting.html")
 	public String noticeSetttingInput(Model model, LoginUserForm loginForm) {
 

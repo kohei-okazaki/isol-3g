@@ -26,8 +26,9 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 @Controller
 public class AccountSettingController {
 
+	/** アカウント検索サービス */
 	@Autowired
-	private AccountSearchService loginuserSearchService;
+	private AccountSearchService accountSearchService;
 
 	/**
 	 * アカウント設定入力画面
@@ -49,7 +50,7 @@ public class AccountSettingController {
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
 		String userId = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
 
-		model.addAttribute("userId", userId);
+		model.addAttribute("dto", accountSearchService.findAccountByUserId(userId));
 
 		model.addAttribute("page", PageView.INPUT.getValue());
 
