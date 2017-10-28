@@ -37,7 +37,7 @@ public class NoticeMailController {
 	 * @param form
 	 * @return View
 	 */
-	@RequestMapping(value = "/notice.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
 	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, UserInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);

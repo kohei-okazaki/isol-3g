@@ -39,7 +39,7 @@ public class AccountSettingController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "#accountSetttingInput start");
 
-		// セッションからIDを取得
+		// セッションからユーザIDを取得
 		HttpSession session = request.getSession();
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
 		String userId = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
