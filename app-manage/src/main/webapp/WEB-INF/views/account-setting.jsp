@@ -79,12 +79,14 @@
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">
 		<form action="/isol/account-setting-confirm.html" method="post">
+		<div align="center">
 			<table border="1">
 				<tr>
 					<td><c:out value="ID" /></td>
-					<td><c:out value="${id}" /></td>
+					<td><c:out value="${session.userId}" /></td>
 				</tr>
 			</table>
+		</div>
 		</form>
 	</c:if>
 

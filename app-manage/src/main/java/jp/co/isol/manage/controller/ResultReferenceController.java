@@ -46,7 +46,7 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/menu/result-reference.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/result-reference.html", method = RequestMethod.GET)
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -65,7 +65,7 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/menu/result-reference-download.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/result-reference-download.html", method = RequestMethod.GET)
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);

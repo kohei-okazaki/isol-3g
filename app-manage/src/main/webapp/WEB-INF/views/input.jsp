@@ -28,6 +28,12 @@
 			<c:out value="確認画面" />
 		</h1>
 	</c:if>
+	<c:if test="${page == 2}">
+		<h1 class="title">
+			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
+			<c:out value="完了画面" />
+		</h1>
+	</c:if>
 
 	<hr>
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
@@ -65,7 +71,7 @@
 	<c:if test="${page == 1}">
 	<br>
 	<div align="center">
-		<form action="/isol/menu.html" method="post">
+		<form action="/isol/input-complete.html" method="post">
 			<c:out value="身長：" />
 			<input type="text" name="height" value="${form.height}" size="6" disabled="disabled">
 			<input type="hidden" name="height" value="${form.height}" />
@@ -86,8 +92,76 @@
 		</form>
 	</div>
 	</c:if>
-	<hr>
 
+	<!-- 完了画面 -->
+	<c:if test="${page == 2}">
+	<div align="center">
+		<c:out value="今のあなたの身長(${dto.height}cm)の" />
+		<br>
+		<c:out value="標準体重は${dto.standardWeight}kgです。" />
+		<br>
+		<c:out value="前回より${diffWeight}kg ${resultMessage}" />
+		<br>
+		<c:out value="${beforeWeight}kg→${dto.weight}kg" />
+		<br><br><br>
+		<table class="custom">
+			<tr class="headercolor">
+				<th align="center"><c:out value="標準体重" /></th>
+				<th align="center"><c:out value="BMI" /></th>
+			</tr>
+			<tr class="datacolor">
+				<td align="center"><c:out value="${dto.standardWeight}" /></td>
+				<td align="center"><c:out value="${dto.bmi}" /></td>
+			</tr>
+		</table>
+		<br><br>
+
+
+		<table>
+			<tr>
+				<td align="center">
+				<!-- 通知  -->
+				<form action="/isol/notice.html" method="post">
+					<input type="hidden" name="height" value="${dto.height}">
+					<input type="hidden" name="weight" value="${dto.weight}">
+					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
+					<input type="hidden" name="bmi" value="${dto.bmi}">
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_mail.png">
+					</div>
+				</form>
+				</td>
+				<td>　　</td>
+				<td align="center">
+				<!-- 出力 -->
+				<form action="/isol/fileDownload.html" method="get">
+					<input type="hidden" name="height" value="${dto.height}">
+					<input type="hidden" name="weight" value="${dto.weight}">
+					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
+					<input type="hidden" name="bmi" value="${dto.bmi}">
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
+					</div>
+				</form>
+				</td>
+				<td>　　</td>
+				<td align="center">
+				<!-- メニュー画面へ -->
+				<form action="/isol/menu.html" method="get">
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_menu.jpg">
+					</div>
+				</form>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+	</c:if>
+
+	<br><br>
+
+	<hr>
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 
 </body>

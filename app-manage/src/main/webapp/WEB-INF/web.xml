@@ -48,11 +48,12 @@
 		<url-pattern>/login.html</url-pattern>
 		<url-pattern>/input.html</url-pattern>
 		<url-pattern>/input-confirm.html</url-pattern>
+		<url-pattern>/input-complete.html</url-pattern>
 		<url-pattern>/menu.html</url-pattern>
-		<url-pattern>/menu/notice.html</url-pattern>
-		<url-pattern>/menu/fileDownload.html</url-pattern>
-		<url-pattern>/menu/result-reference.html</url-pattern>
-		<url-pattern>/menu/result-reference-download.html</url-pattern>
+		<url-pattern>/notice.html</url-pattern>
+		<url-pattern>/fileDownload.html</url-pattern>
+		<url-pattern>/result-reference.html</url-pattern>
+		<url-pattern>/result-reference-download.html</url-pattern>
 		<url-pattern>/account-setting-input.html</url-pattern>
 		<url-pattern>/account-setting-confirm.html</url-pattern>
 		<url-pattern>/account-setting-complete.html</url-pattern>

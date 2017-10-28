@@ -42,9 +42,9 @@ public class AccountSettingController {
 		// セッションからIDを取得
 		HttpSession session = request.getSession();
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		String id = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
+		String userId = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
 
-		model.addAttribute("id", id);
+		model.addAttribute("userId", userId);
 
 		model.addAttribute("page", PageView.INPUT.getValue());
 

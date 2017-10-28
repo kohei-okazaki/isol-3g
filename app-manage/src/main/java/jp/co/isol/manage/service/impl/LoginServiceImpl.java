@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean invalidPassword(LoginUserForm LoginUserForm) {
 		String inputPassword = LoginUserForm.getPassword();
-		String userPassword = loginSearchService.findLoginUserEntity(LoginUserForm.getId()).getPassword();
+		String userPassword = loginSearchService.findLoginUserEntity(LoginUserForm.getUserId()).getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 
@@ -46,7 +46,7 @@ public class LoginServiceImpl implements LoginService {
 	public void registSession(HttpSession session, LoginUserForm loginForm) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		sessionManager.setAttribute(session, AppSessionKey.USER_ID, loginForm.getId());
+		sessionManager.setAttribute(session, AppSessionKey.USER_ID, loginForm.getUserId());
 	}
 
 }

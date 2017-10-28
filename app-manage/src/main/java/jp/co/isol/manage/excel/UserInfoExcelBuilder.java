@@ -16,24 +16,24 @@ import jp.co.isol.common.excel.Excel;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
-import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.form.UserInfoInputForm;
 
 /**
  * @author kou1210hei<br>
  * メニュー画面Excel生成クラス<br>
  *
  */
-@Excel(sheetName = "ユーザ情報", headerNames = {Message.WEIGHT, Message.HEIGHT, Message.BMI, Message.STANDARDWEIGHT})
-public class MenuExcelBuilder extends BaseExcelBuilder {
+@Excel(sheetName = "ユーザ情報", headerNames = {Message.HEIGHT, Message.WEIGHT, Message.BMI, Message.STANDARDWEIGHT})
+public class UserInfoExcelBuilder extends BaseExcelBuilder {
 
 	/** 入力フォームクラス */
-	private MenuForm form;
+	private UserInfoInputForm form;
 
 	/**
 	 * コンストラクタ<br>
 	 * @param form
 	 */
-	public MenuExcelBuilder(MenuForm form) {
+	public UserInfoExcelBuilder(UserInfoInputForm form) {
 		this.form = form;
 	}
 
@@ -71,7 +71,7 @@ public class MenuExcelBuilder extends BaseExcelBuilder {
 	@Override
 	protected void setHeader(Sheet sheet) {
 		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
-		Stream.iterate(0, i -> i++).limit(headerNameList.size()).forEach(i -> {
+		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i).getName();
 			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);

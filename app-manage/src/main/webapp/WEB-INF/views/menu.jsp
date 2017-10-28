@@ -24,120 +24,38 @@
 	<ul id="dropmenu">
 		<li><a href="#">MENU</a>
 			<ul>
-				<li><a href="#">子メニュー1</a>
+				<li><a href="#">ユーザ情報</a>
 					<ul>
-						<li><a href="#">孫メニュー1</a>
-							<ul>
-								<li><a href="#">ひ孫メニュー1</a></li>
-								<li><a href="#">ひ孫メニュー2</a></li>
-							</ul>
-						</li>
-						<li><a href="#">孫メニュー2</a></li>
+						<li><a href="/isol/input.html">入力</a></li>
+						<li><a href="/isol/result-reference.html">照会</a></li>
 					</ul>
 				</li>
-				<li><a href="#">子メニュー2</a>
+				<li><a href="#">通知</a>
 					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a></li>
-						<li><a href="#">孫メニュー4</a></li>
-					</ul>
-				</li>
-				<li><a href="#">子メニュー3</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a>
-							<ul>
-								<li><a href="#">ひ孫メニュー</a></li>
-							</ul></li>
-						<li><a href="#">孫メニュー4</a></li>
-					</ul>
-				</li>
-				<li><a href="#">子メニュー4</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a></li>
-						<li><a href="#">孫メニュー4</a></li>
+						<li><a href="/isol/notice.html">メール</a></li>
 					</ul>
 				</li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>
 			<ul>
-				<li><a href="/isol/account-setting-input.html">アカウント設定</a></li>
 				<li><a href="#">出力設定</a></li>
+				<li><a href="#">アカウント</a>
+					<ul>
+						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
+						<li><a href="#">新規作成</a></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
-		<li><a href="/isol/login.html"> ログアウト </a></li>
+		<li><a href="/isol/login.html">ログアウト</a></li>
 	</ul>
 
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
-	<c:if test="${page == 2}">
-		<c:out value="完了しました" />
-	</c:if>
-	<div align="center">
-		<c:out value="今のあなたの身長(${dto.height}cm)の" />
-		<br>
-		<c:out value="標準体重は${dto.standardWeight}kgです。" />
-		<br>
-		<c:out value="前回より${diffWeight}kg ${resultMessage}" />
-		<br>
-		<c:out value="${beforeWeight}kg→${dto.weight}kg" />
-		<br><br><br>
-		<table class="custom">
-			<tr class="headercolor">
-				<th align="center"><c:out value="標準体重" /></th>
-				<th align="center"><c:out value="BMI" /></th>
-			</tr>
-			<tr class="datacolor">
-				<td align="center"><c:out value="${dto.standardWeight}" /></td>
-				<td align="center"><c:out value="${dto.bmi}" /></td>
-			</tr>
-		</table>
-		<br><br><br>
-		<table>
-			<tr>
-				<td align="center">
-				<!-- 通知  -->
-					<form action="/isol/menu/notice.html" method="post">
-						<input type="hidden" name="height" value="${dto.height}">
-						<input type="hidden" name="weight" value="${dto.weight}">
-						<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
-						<input type="hidden" name="bmi" value="${dto.bmi}">
-						<div>
-							<input class="menuicon" type="image" src="resources/image/icon_mail.png">
-						</div>
-					</form>
-				</td>
-				<td>　　</td>
-				<td align="center">
-				<!-- 出力 -->
-					<form action="/isol/menu/fileDownload.html" method="get">
-						<input type="hidden" name="height" value="${dto.height}">
-						<input type="hidden" name="weight" value="${dto.weight}">
-						<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
-						<input type="hidden" name="bmi" value="${dto.bmi}">
-						<div>
-							<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
-						</div>
-					</form>
-				</td>
-				<td>　　</td>
-				<td align="center">
-				<!-- 結果照会 -->
-					<form action="/isol/menu/result-reference.html" method="post">
-						<div>
-							<input class="menuicon" type="image" src="resources/image/icon_reference.png">
-						</div>
-					</form>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<hr>
 
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<hr>
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 
 </body>

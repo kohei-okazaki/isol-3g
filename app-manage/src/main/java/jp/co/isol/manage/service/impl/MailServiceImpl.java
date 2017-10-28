@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.common.other.MailAuthenticator;
 import jp.co.isol.common.util.MailUtil;
 import jp.co.isol.common.util.StringUtil;
-import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.form.UserInfoInputForm;
 import jp.co.isol.manage.service.MailService;
 
 /**
@@ -33,7 +33,7 @@ public class MailServiceImpl implements MailService {
 	 *
 	 */
 	@Override
-	public void sendMail(MenuForm form) {
+	public void sendMail(UserInfoInputForm form) {
 
 		Properties prop = new Properties();
 		prop.setProperty(MailUtil.SMTP_HOST, "smtp.gmail.com");
@@ -90,7 +90,7 @@ public class MailServiceImpl implements MailService {
 	 * 本文を作成する
 	 * @param form
 	 */
-	private String createBody(MenuForm form) {
+	private String createBody(UserInfoInputForm form) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("身長　：　" + form.getHeight() + StringUtil.NEW_LINE);
 		sb.append("体重　：　" + form.getWeight() + StringUtil.NEW_LINE);

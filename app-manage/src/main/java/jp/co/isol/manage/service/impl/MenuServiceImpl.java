@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.UserInfoDto;
-import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.form.UserInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.MenuService;
-import jp.co.isol.manage.service.UserInfoSearchService;
 
 /**
  * @author kou1210hei<br>
@@ -24,8 +23,6 @@ public class MenuServiceImpl implements MenuService {
 
 	@Autowired
 	private CalcService calcService;
-	@Autowired
-	private UserInfoSearchService userInfoSearchService;
 
 	/**
 	 * 入力した体重と最後に入力した体重との差を表示する<br>
@@ -33,8 +30,7 @@ public class MenuServiceImpl implements MenuService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public Message getDiffMessage(MenuForm form, UserInfoDto dto) {
-
+	public Message getDiffMessage(UserInfoInputForm form, UserInfoDto dto) {
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
 			return Message.EQUAL;
@@ -45,7 +41,6 @@ public class MenuServiceImpl implements MenuService {
 			// 現象した場合
 			return Message.DOWN;
 		}
-
 	}
 
 	/**
@@ -55,10 +50,8 @@ public class MenuServiceImpl implements MenuService {
 	 * @return 体重差
 	 */
 	@Override
-	public BigDecimal getDiffWeight(MenuForm form, UserInfoDto dto) {
-
+	public BigDecimal getDiffWeight(UserInfoInputForm form, UserInfoDto dto) {
 		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
-
 	}
 
 	/**
@@ -66,7 +59,7 @@ public class MenuServiceImpl implements MenuService {
 	 * @return
 	 */
 	@Override
-	public UserInfoDto convertUserInfo(MenuForm form, String userId) {
+	public UserInfoDto convertUserInfo(UserInfoInputForm form, String userId) {
 
 		UserInfoDto dto = new UserInfoDto();
 		dto.setUserId(userId);
