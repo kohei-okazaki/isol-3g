@@ -36,6 +36,27 @@
 	</c:if>
 
 	<hr>
+
+	<ul id="dropmenu">
+		<li><a href="#">MENU</a>
+			<ul>
+				<li><a href="/isol/menu.html">メニュー戻る</a></li>
+			</ul>
+		</li>
+		<li><a href="#">設定</a>
+			<ul>
+				<li><a href="#">出力設定</a></li>
+				<li><a href="#">アカウント</a>
+					<ul>
+						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
+						<li><a href="#">新規作成</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href="/isol/login.html">ログアウト</a></li>
+	</ul>
+
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">

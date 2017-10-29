@@ -30,11 +30,7 @@
 						<li><a href="/isol/result-reference.html">照会</a></li>
 					</ul>
 				</li>
-				<li><a href="#">通知</a>
-					<ul>
-						<li><a href="/isol/notice.html">メール</a></li>
-					</ul>
-				</li>
+				<li><a href="/isol/menu.html">メニュー戻る</a></li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>
@@ -65,6 +61,17 @@
 							<input type="radio" name="deleteFlag" id="true" value="1" checked="">
 							<label for="true">する</label>
 							<input type="radio" name="deleteFlag" id="false" value="0">
+							<label for="false" class="switch-off">しない</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><c:out value="アカウント停止" /></th>
+					<td width="250px">
+						<div class="radio">
+							<input type="radio" name="inavalidFlag" id="true" value="1" checked="">
+							<label for="true">する</label>
+							<input type="radio" name="inavalidFlag" id="false" value="0">
 							<label for="false" class="switch-off">しない</label>
 						</div>
 					</td>

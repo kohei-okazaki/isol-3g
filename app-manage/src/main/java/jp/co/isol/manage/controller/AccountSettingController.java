@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.AccountSearchService;
+import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
@@ -30,6 +31,9 @@ public class AccountSettingController {
 	/** アカウント検索サービス */
 	@Autowired
 	private AccountSearchService accountSearchService;
+	/** アカウント設定サービス */
+	@Autowired
+	private AccountSettingService accountSettingService;
 
 	/**
 	 * アカウント設定入力画面
@@ -60,14 +64,19 @@ public class AccountSettingController {
 	/**
 	 * アカウント設定確認画面
 	 * @param model
-	 * @param request
 	 * @param form
 	 * @return
 	 */
 	@RequestMapping(value = "/account-setting-confirm.html", method = RequestMethod.POST)
-	public String accountsettingConfirm(Model model, HttpServletRequest request, AccountSettingForm form) {
+	public String accountsettingConfirm(Model model, AccountSettingForm form) {
 
-		model.addAttribute("page", PageView.INPUT.getValue());
+		if (form.isDeleteFlag()) {
+			// アカウントを削除する場合
+			accountSettingService.deleteAccount(form);
+		}
+
+
+		model.addAttribute("page", PageView.CONFIRM.getValue());
 
 		return View.ACCOUNT_SETTING.getName();
 	}

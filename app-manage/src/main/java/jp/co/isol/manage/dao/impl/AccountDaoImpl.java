@@ -14,6 +14,11 @@ import jp.co.isol.manage.form.LoginUserForm;
 @Repository
 public class AccountDaoImpl implements AccountDao {
 
+	/**
+	 * 引数で指定されたIDのログインユーザ情報を取得する
+	 * @param id
+	 * @return LoginUserEntity
+	 */
 	@Override
 	public AccountDto getLoginUserInfoByUserId(String userId) {
 		AccountDto dto = new AccountDto();
@@ -22,14 +27,30 @@ public class AccountDaoImpl implements AccountDao {
 		return dto;
 	}
 
+	/**
+	 * ログインユーザ情報を登録する
+	 */
 	@Override
 	public void registLoginUserInfo() {
 		// TODO 登録処理を追加すること
 	}
 
+	/**
+	 * 引数で指定されたIDのログインユーザ情報を更新する
+	 * @param form
+	 */
 	@Override
 	public void updateLoginUserInfo(LoginUserForm form) {
 		// TODO 更新処理を追加すること
+	}
+
+	/**
+	 * 指定されたアカウントの削除を行う<br>
+	 * @param userId
+	 */
+	@Override
+	public void deleteLoginUserInfo(String userId) {
+		// TODO 削除処理を追加すること
 	}
 
 }

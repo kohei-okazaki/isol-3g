@@ -12,11 +12,11 @@ table.custom {
 	cellspacing: 1;
 }
 
-tr.headercolor {
+.headercolor {
 	background-color: #dcdcdc;
 }
 
-tr.datacolor {
+.datacolor {
 	background-color: #f5f5f5;
 }
 

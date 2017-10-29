@@ -30,4 +30,10 @@ public interface AccountDao {
 	 */
 	public void updateLoginUserInfo(LoginUserForm form);
 
+	/**
+	 * 指定されたアカウントの削除を行う<br>
+	 * @param userId
+	 */
+	public void deleteLoginUserInfo(String userId);
+
 }
