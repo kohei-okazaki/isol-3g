@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
-import jp.co.isol.manage.excel.MenuExcelBuilder;
-import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.excel.UserInfoExcelBuilder;
+import jp.co.isol.manage.form.UserInfoInputForm;
 import jp.co.isol.manage.service.FileDownloadService;
 
 /**
@@ -14,8 +14,8 @@ import jp.co.isol.manage.service.FileDownloadService;
  * メニュー画面ファイルダウンロードサービス実装クラス
  *
  */
-@Service(value = "menu")
-public class MenuFileDownloadServiceImpl implements FileDownloadService<MenuForm> {
+@Service(value = "UserInfoInput")
+public class UserInfoFileDownloadServiceImpl implements FileDownloadService<UserInfoInputForm> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -25,9 +25,9 @@ public class MenuFileDownloadServiceImpl implements FileDownloadService<MenuForm
 	 * @return View
 	 */
 	@Override
-	public View execute(MenuForm form) {
+	public View execute(UserInfoInputForm form) {
 		init();
-		return new MenuExcelBuilder(form);
+		return new UserInfoExcelBuilder(form);
 	}
 
 	private void init() {

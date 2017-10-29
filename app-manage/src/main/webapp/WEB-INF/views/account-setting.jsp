@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page session="false"%>
 
 <html>
 
@@ -20,22 +19,79 @@
 		<img class="headericon" alt="アカウント設定" src="resources/image/icon_reference.png">
 		<c:out value="アカウント設定画面" />
 	</h1>
-	<div>
-		<c:out value="${serverTime}" />
-	</div>
+
 	<hr>
+		<ul id="dropmenu">
+		<li><a href="#">MENU</a>
+			<ul>
+				<li><a href="#">ユーザ情報</a>
+					<ul>
+						<li><a href="/isol/input.html">入力</a></li>
+						<li><a href="/isol/result-reference.html">照会</a></li>
+					</ul>
+				</li>
+				<li><a href="/isol/menu.html">メニュー戻る</a></li>
+			</ul>
+		</li>
+		<li><a href="#">設定</a>
+			<ul>
+				<li><a href="#">出力設定</a></li>
+				<li><a href="#">アカウント</a>
+					<ul>
+						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
+						<li><a href="/isol/account-create-input.html">新規作成</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href="/isol/login.html"> ログアウト </a></li>
+	</ul>
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 	<br><br>
 
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">
 		<form action="/isol/account-setting-confirm.html" method="post">
+		<div align="center">
 			<table border="1">
 				<tr>
-					<td><c:out value="ID" /></td>
-					<td><c:out value="${id}" /></td>
+					<th><c:out value="削除" /></th>
+					<td width="250px">
+						<div class="radio">
+							<input type="radio" name="deleteFlag" id="true" value="1" checked="">
+							<label for="true">する</label>
+							<input type="radio" name="deleteFlag" id="false" value="0">
+							<label for="false" class="switch-off">しない</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><c:out value="アカウント停止" /></th>
+					<td width="250px">
+						<div class="radio">
+							<input type="radio" name="inavalidFlag" id="true" value="1" checked="">
+							<label for="true">する</label>
+							<input type="radio" name="inavalidFlag" id="false" value="0">
+							<label for="false" class="switch-off">しない</label>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<th><c:out value="ユーザID" /></th>
+					<td><input type="text" name="userId" value="${dto.userId}" required="required" /></td>
+				</tr>
+				<tr>
+					<th><c:out value="パスワード" /></th>
+					<td><input type="text" name="password" value="${dto.password}" required="required" /></td>
 				</tr>
 			</table>
+			<table>
+				<tr>
+					<td><input type="submit" value="確認" /></td>
+				</tr>
+			</table>
+		</div>
 		</form>
 	</c:if>
 

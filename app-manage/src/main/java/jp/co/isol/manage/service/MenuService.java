@@ -2,8 +2,9 @@ package jp.co.isol.manage.service;
 
 import java.math.BigDecimal;
 
+import jp.co.isol.common.message.Message;
 import jp.co.isol.manage.dto.UserInfoDto;
-import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.form.UserInfoInputForm;
 
 /**
  * @author kou1210hei<br>
@@ -15,22 +16,24 @@ public interface MenuService {
 	/**
 	 * 入力した体重と最後に入力した体重との差を表示する<br>
 	 * @param form
+	 * @param dto
 	 * @return 体重差のメッセージ
 	 */
-	public String getDiffMessage(MenuForm form);
+	public Message getDiffMessage(UserInfoInputForm form, UserInfoDto dto);
 
 	/**
 	 * 入力情報を計算し、Dtoにつめる<br>
 	 * @return
 	 */
-	public UserInfoDto convertUserInfo(MenuForm form, String userId);
+	public UserInfoDto convertUserInfo(UserInfoInputForm form, String userId);
 
 	/**
-	 * 体重差を返す<br>
+	 * 最後に入力した体重とフォームから体重差を返却
 	 * @param form
-	 * @return
+	 * @param dto
+	 * @return 体重差
 	 */
-	public BigDecimal getDiffWeight(MenuForm form);
+	public BigDecimal getDiffWeight(UserInfoInputForm form, UserInfoDto dto);
 
 
 }

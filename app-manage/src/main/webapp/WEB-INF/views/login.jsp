@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page session="false"%>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,19 +13,22 @@
 <script type="text/javascript" src="resources/js/app.js"></script>
 </head>
 <body>
+
 <c:if test="${errorMessage != null}">
-	<c:out value="${errorMessage}" />
+	<div align="center"><c:out value="${errorMessage}" /></div>
 </c:if>
+
 	<fieldset>
 		<h1>健康管理アプリ</h1>
-		<form action="/isol/input.html" method="post">
+		<form action="/isol/menu.html" method="post">
 			<div class="iconUser"></div>
-			<input type="text" name="id" placeholder="ID" required>
+			<input type="text" name="userId" placeholder="ユーザID" required>
 			<br><br>
 			<div class="iconPassword"></div>
 			<input type="password" name="password" placeholder="パスワード" required>
 			<input type="submit" value="ログイン">
 		</form>
 	</fieldset>
+
 </body>
 </html>

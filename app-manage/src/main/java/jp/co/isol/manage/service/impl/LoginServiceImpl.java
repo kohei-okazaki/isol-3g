@@ -8,8 +8,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.LoginService;
-import jp.co.isol.manage.service.LoginUserSearchService;
 import jp.co.isol.manage.web.config.AppConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
@@ -22,8 +22,9 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 @Service
 public class LoginServiceImpl implements LoginService {
 
+	/** アカウント検索サービス */
 	@Autowired
-	private LoginUserSearchService loginSearchService;
+	private AccountSearchService accountSearchService;
 
 	/**
 	 * ログイン情報と入力情報を照合する
@@ -33,7 +34,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean invalidPassword(LoginUserForm LoginUserForm) {
 		String inputPassword = LoginUserForm.getPassword();
-		String userPassword = loginSearchService.findLoginUserEntity(LoginUserForm.getId()).getPassword();
+		String userPassword = accountSearchService.findAccountByUserId(LoginUserForm.getUserId()).getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 
@@ -46,7 +47,7 @@ public class LoginServiceImpl implements LoginService {
 	public void registSession(HttpSession session, LoginUserForm loginForm) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		sessionManager.setAttribute(session, AppSessionKey.USER_ID, loginForm.getId());
+		sessionManager.setAttribute(session, AppSessionKey.USER_ID, loginForm.getUserId());
 	}
 
 }

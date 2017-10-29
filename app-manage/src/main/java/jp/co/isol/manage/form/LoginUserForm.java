@@ -15,7 +15,7 @@ public class LoginUserForm implements Serializable {
 	/** ID */
 	@Setter
 	@Getter
-	private String Id;
+	private String userId;
 
 	/** パスワード */
 	@Setter

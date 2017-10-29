@@ -1,7 +1,6 @@
 package jp.co.isol.manage.controller;
 
-import java.util.Locale;
-import java.util.Map;
+import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,21 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.isol.common.util.DateUtil;
-import jp.co.isol.manage.dao.UserInfoDao;
-import jp.co.isol.manage.dto.UserInfoDto;
-import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.log.AppLogger;
-import jp.co.isol.manage.service.FileDownloadService;
-import jp.co.isol.manage.service.MenuService;
-import jp.co.isol.manage.service.UserInfoSearchService;
-import jp.co.isol.manage.service.annotation.Menu;
+import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
-import jp.co.isol.manage.web.session.AppSessionKey;
-import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
  * 健康管理_メニュー画面コントローラ
@@ -36,14 +26,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 public class MenuController {
 
 	@Autowired
-	private MenuService menuService;
-	@Autowired
-	private UserInfoSearchService userInfoSearchService;
-	@Autowired
-	private UserInfoDao userInfoDao;
-	@Autowired
-	@Menu
-	private FileDownloadService<MenuForm> fileDownloadService;
+	private LoginService loginService;
 
 	/**
 	 * メニュー画面
@@ -51,56 +34,36 @@ public class MenuController {
 	 * @param model
 	 * @param form
 	 * @return View
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/menu.html", method = RequestMethod.POST)
-	public String menu(Locale locale, Model model, MenuForm form, HttpServletRequest request) {
+	public String menu(Model model, HttpServletRequest request, LoginUserForm loginForm) throws ParseException {
+
+		if (loginService.invalidPassword(loginForm)) {
+			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");
+			return View.LOGIN.getName();
+		}
+		// セッションにIDを登録する。
+		loginService.registSession(request.getSession(), loginForm);
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# menu start");
-
-
-		AppSessionManager manager = context.getBean(AppSessionManager.class);
-		String userId = manager.getAttribute(request.getSession(), AppSessionKey.USER_ID);
-		UserInfoDto dto = menuService.convertUserInfo(form, userId);
-
-		// 入力画面から入力した情報を登録する
-		userInfoDao.registUserUnfo(dto);
-
-		// 時刻取得
-		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
-
-		// Daoから前回の体重を取得
-		model.addAttribute("beforeWeight", userInfoSearchService.findUserInfoEntity("1").getWeight());
-
-		// Dtoを設定する
-		model.addAttribute("dto", dto);
-
-		// 入力した今の体重と前回入力した体重の差を設定
-		model.addAttribute("diffWeight", menuService.getDiffWeight(form));
-
-		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", menuService.getDiffMessage(form));
 
 		return View.MENU.getName();
 
 	}
 
 	/**
-	 * エクセルをダウンロードする<br>
+	 * getでメニュー画面に遷移する<br>
+	 * @param locale
 	 * @param model
-	 * @param form
-	 * @return ModelAndView
+	 * @param userId
+	 * @return
 	 */
-	@RequestMapping(value = "/menu/fileDownload.html", method = RequestMethod.GET)
-	public ModelAndView excelDownload(Map<String, Object> model, MenuForm form) {
-
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
-		logger.info(this.getClass(), "# menu start");
-
-		return new ModelAndView(fileDownloadService.execute(form));
-
+	@RequestMapping(value = "/menu.html", method = RequestMethod.GET)
+	public String menu() {
+		return View.MENU.getName();
 	}
 
 }

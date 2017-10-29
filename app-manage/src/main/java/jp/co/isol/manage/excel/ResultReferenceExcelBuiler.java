@@ -23,9 +23,10 @@ import jp.co.isol.manage.dto.UserInfoDto;
  * 結果照会画面Excel生成クラス<br>
  *
  */
-@Excel(sheetName = "ユーザ情報", headerNames = {Message.WEIGHT, Message.HEIGHT, Message.BMI, Message.STANDARDWEIGHT})
+@Excel(sheetName = "ユーザ情報", headerNames = {Message.HEIGHT, Message.WEIGHT, Message.BMI, Message.STANDARDWEIGHT})
 public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 
+	/** 購入履歴情報リスト */
 	private List<UserInfoDto> historyList;
 
 	/**
@@ -69,7 +70,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void setHeader(Sheet sheet) {
 		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
-		Stream.iterate(0, i -> i++).limit(headerNameList.size()).forEach(i -> {
+		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i).getName();
 			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
@@ -83,15 +84,16 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void setData(Sheet sheet) {
 
-		Stream.iterate(0, i -> i++).limit(this.historyList.size()).forEach(i -> {
+		Stream.iterate(0, i -> ++i).limit(this.historyList.size()).forEach(i -> {
 			UserInfoDto dto = historyList.get(i);
-			Cell cell = ExcelUtil.getCell(sheet, i + 1, 0);
+			final int ROW_POSITION = i + 1;
+			Cell cell = ExcelUtil.getCell(sheet, ROW_POSITION, 0);
 			ExcelUtil.setText(cell, dto.getHeight().toString());
-			cell = ExcelUtil.getCell(sheet, i + 1, 1);
+			cell = ExcelUtil.getCell(sheet, ROW_POSITION, 1);
 			ExcelUtil.setText(cell, dto.getWeight().toString());
-			cell = ExcelUtil.getCell(sheet, i + 1, 2);
+			cell = ExcelUtil.getCell(sheet, ROW_POSITION, 2);
 			ExcelUtil.setText(cell, dto.getBmi().toString());
-			cell = ExcelUtil.getCell(sheet, i + 1, 3);
+			cell = ExcelUtil.getCell(sheet, ROW_POSITION, 3);
 			ExcelUtil.setText(cell, dto.getStandardWeight().toString());
 		});
 

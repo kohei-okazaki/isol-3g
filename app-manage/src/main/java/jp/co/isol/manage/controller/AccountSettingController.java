@@ -1,19 +1,20 @@
 package jp.co.isol.manage.controller;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.isol.common.util.DateUtil;
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.service.AccountSearchService;
+import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
@@ -27,31 +28,55 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 @Controller
 public class AccountSettingController {
 
+	/** アカウント検索サービス */
+	@Autowired
+	private AccountSearchService accountSearchService;
+	/** アカウント設定サービス */
+	@Autowired
+	private AccountSettingService accountSettingService;
+
 	/**
-	 * 設定画面
+	 * アカウント設定入力画面
 	 * @param locale
 	 * @param model
-	 * @param loginForm
 	 * @param request
-	 * @return アカウント設定画面
+	 * @return アカウント設定入力画面
 	 */
-	@RequestMapping(value = "/account-setting.html")
-	public String accountSetttingInput(Locale locale, Model model, LoginUserForm loginForm, HttpServletRequest request) {
+	@RequestMapping(value = "/account-setting-input.html", method = RequestMethod.GET)
+	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "#accountSetttingInput start");
 
-		model.addAttribute("serverTime", DateUtil.getFormattedTime(locale));
-
-		// セッションからIDを取得
+		// セッションからユーザIDを取得
 		HttpSession session = request.getSession();
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		String id = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
+		String userId = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
 
-		model.addAttribute("id", id);
+		model.addAttribute("dto", accountSearchService.findAccountByUserId(userId));
 
 		model.addAttribute("page", PageView.INPUT.getValue());
+
+		return View.ACCOUNT_SETTING.getName();
+	}
+
+	/**
+	 * アカウント設定確認画面
+	 * @param model
+	 * @param form
+	 * @return
+	 */
+	@RequestMapping(value = "/account-setting-confirm.html", method = RequestMethod.POST)
+	public String accountsettingConfirm(Model model, AccountSettingForm form) {
+
+		if (form.isDeleteFlag()) {
+			// アカウントを削除する場合
+			accountSettingService.deleteAccount(form);
+		}
+
+
+		model.addAttribute("page", PageView.CONFIRM.getValue());
 
 		return View.ACCOUNT_SETTING.getName();
 	}

@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.isol.manage.form.MenuForm;
+import jp.co.isol.manage.form.UserInfoInputForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.MailService;
 import jp.co.isol.manage.view.PageView;
@@ -37,8 +37,8 @@ public class NoticeMailController {
 	 * @param form
 	 * @return View
 	 */
-	@RequestMapping(value = "/menu/notice.html", method = RequestMethod.POST)
-	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, MenuForm form) {
+	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
+	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, UserInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);

@@ -20,19 +20,22 @@ import lombok.ToString;
 @Entity
 @Table(name = "LOGIN_USER")
 @ToString(exclude = "password")
-public class LoginUserDto implements Serializable {
+public class AccountDto implements Serializable {
 
+	/** ユーザID */
 	@Id
 	@Column(name = "USER_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
 	private String userId;
 
+	/** パスワード */
 	@Column(name = "PASSWORD", nullable = false)
 	@Setter
 	@Getter
 	private String password;
 
+	/** 登録日時 */
 	@Column(name = "RECORD_DATE", nullable = false)
 	@Setter
 	@Getter
