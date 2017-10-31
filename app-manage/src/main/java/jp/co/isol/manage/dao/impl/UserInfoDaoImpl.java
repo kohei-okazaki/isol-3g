@@ -21,6 +21,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 
 	/**
 	 * 指定したユーザIDのユーザ情報を全検索
+	 * @param userId
 	 * @return result
 	 * @throws ParseException
 	 */
@@ -59,8 +60,8 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	}
 
 	/**
-	 * IDで指定されたレコードを返す
-	 * @param id
+	 * 指定されたデータIDに対応するレコードを返す
+	 * @param dateId
 	 * @return レコード
 	 * @throws ParseException
 	 */
@@ -80,7 +81,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 
 	/**
 	 * ユーザ情報を登録する<br>
-	 * @param menuForm
+	 * @param dto
 	 */
 	@Override
 	public void registUserUnfo(UserInfoDto dto) {

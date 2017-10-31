@@ -5,8 +5,8 @@ import jp.co.isol.manage.dto.AccountDto;
 public interface AccountSearchService {
 
 	/**
-	 * IDからログイン情報を取得する
-	 * @param id
+	 * ユーザIDからログイン情報を取得する
+	 * @param userId
 	 * @return ログイン情報
 	 */
 	public AccountDto findAccountByUserId(String userId);

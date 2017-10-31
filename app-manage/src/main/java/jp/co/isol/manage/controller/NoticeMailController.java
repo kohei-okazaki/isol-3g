@@ -42,7 +42,7 @@ public class NoticeMailController {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
-
+		logger.info(this.getClass(), "# mail execute start");
 
 		mailService.sendMail(form);
 

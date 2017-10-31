@@ -21,7 +21,7 @@ public interface UserInfoDao {
 
 	/**
 	 * 引数で指定されたIDのレコードを返す
-	 * @param id
+	 * @param dataId
 	 * @return レコード
 	 */
 	public UserInfoDto getUserInfoByDataId(String dataId) throws ParseException;

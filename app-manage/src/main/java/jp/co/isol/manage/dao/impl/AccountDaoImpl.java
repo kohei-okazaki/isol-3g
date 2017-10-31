@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.dto.AccountDto;
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.AccountSettingForm;
 
 /**
  * @author kou1210hei<br>
@@ -16,7 +16,7 @@ public class AccountDaoImpl implements AccountDao {
 
 	/**
 	 * 引数で指定されたIDのログインユーザ情報を取得する
-	 * @param id
+	 * @param userId
 	 * @return LoginUserEntity
 	 */
 	@Override
@@ -36,11 +36,11 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	/**
-	 * 引数で指定されたIDのログインユーザ情報を更新する
+	 * 引数で指定されたアカウントを更新する
 	 * @param form
 	 */
 	@Override
-	public void updateLoginUserInfo(LoginUserForm form) {
+	public void updateLoginUserInfo(AccountSettingForm form) {
 		// TODO 更新処理を追加すること
 	}
 

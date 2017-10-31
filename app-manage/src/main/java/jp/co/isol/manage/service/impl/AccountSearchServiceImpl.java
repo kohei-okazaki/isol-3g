@@ -14,8 +14,8 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	private AccountDao accountDao;
 
 	/**
-	 * IDからログイン情報を取得する
-	 * @param id
+	 * ユーザIDからログイン情報を取得する
+	 * @param userId
 	 * @return ログイン情報
 	 */
 	@Override

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.form.AccountSettingForm;
-import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.service.AccountSettingService;
 
 @Service
@@ -19,7 +18,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 * @param form
 	 */
 	@Override
-	public void changePassword(LoginUserForm form) {
+	public void changePassword(AccountSettingForm form) {
 		accountDao.updateLoginUserInfo(form);
 	}
 

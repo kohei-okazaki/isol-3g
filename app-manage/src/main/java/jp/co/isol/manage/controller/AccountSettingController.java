@@ -73,7 +73,11 @@ public class AccountSettingController {
 		if (form.isDeleteFlag()) {
 			// アカウントを削除する場合
 			accountSettingService.deleteAccount(form);
+			return View.ACCOUNT_SETTING.getName();
 		}
+
+		// アカウントを更新する
+		accountSettingService.changePassword(form);
 
 
 		model.addAttribute("page", PageView.CONFIRM.getValue());
