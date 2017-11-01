@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.isol.common.message.Message;
-import jp.co.isol.manage.dto.UserInfoDto;
+import jp.co.isol.manage.dto.HealthInfoDto;
 import lombok.Getter;
 
 /**
@@ -21,7 +21,7 @@ public class FileMessage {
 		messageList = new ArrayList<String>();
 	}
 
-	public void setFileMessageList(UserInfoDto dto) {
+	public void setFileMessageList(HealthInfoDto dto) {
 		messageList.add("計算結果");
 		messageList.add(Message.HEIGHT.getName() + " : " + dto.getHeight());
 		messageList.add(Message.WEIGHT.getName() + " : " + dto.getWeight());

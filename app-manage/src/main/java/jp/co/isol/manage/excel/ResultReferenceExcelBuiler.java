@@ -16,7 +16,7 @@ import jp.co.isol.common.excel.Excel;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
-import jp.co.isol.manage.dto.UserInfoDto;
+import jp.co.isol.manage.dto.HealthInfoDto;
 
 /**
  * @author kou1210hei<br>
@@ -27,13 +27,13 @@ import jp.co.isol.manage.dto.UserInfoDto;
 public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 
 	/** 購入履歴情報リスト */
-	private List<UserInfoDto> historyList;
+	private List<HealthInfoDto> historyList;
 
 	/**
 	 * コンストラクタ<br>
 	 * @param historyList
 	 */
-	public ResultReferenceExcelBuiler(List<UserInfoDto> historyList) {
+	public ResultReferenceExcelBuiler(List<HealthInfoDto> historyList) {
 		this.historyList = historyList;
 	}
 
@@ -85,7 +85,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	protected void setData(Sheet sheet) {
 
 		Stream.iterate(0, i -> ++i).limit(this.historyList.size()).forEach(i -> {
-			UserInfoDto dto = historyList.get(i);
+			HealthInfoDto dto = historyList.get(i);
 			final int ROW_POSITION = i + 1;
 			Cell cell = ExcelUtil.getCell(sheet, ROW_POSITION, 0);
 			ExcelUtil.setText(cell, dto.getHeight().toString());

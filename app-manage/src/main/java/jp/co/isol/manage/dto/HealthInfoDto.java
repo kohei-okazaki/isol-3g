@@ -20,7 +20,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "USER_INFO")
 @ToString
-public class UserInfoDto implements Serializable {
+public class HealthInfoDto implements Serializable {
 
 	/** データID */
 	@Id

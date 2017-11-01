@@ -8,8 +8,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import jp.co.isol.common.util.DateUtil;
-import jp.co.isol.manage.dao.UserInfoDao;
-import jp.co.isol.manage.dto.UserInfoDto;
+import jp.co.isol.manage.dao.HealthInfoDao;
+import jp.co.isol.manage.dto.HealthInfoDto;
 
 /**
  * @author kou1210hei<br>
@@ -17,7 +17,7 @@ import jp.co.isol.manage.dto.UserInfoDto;
  *
  */
 @Repository
-public class UserInfoDaoImpl implements UserInfoDao {
+public class HealthInfoDaoImpl implements HealthInfoDao {
 
 	/**
 	 * 指定したユーザIDのユーザ情報を全検索
@@ -26,13 +26,13 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	 * @throws ParseException
 	 */
 	@Override
-	public List<UserInfoDto> getUserInfoByUserId(String userId) throws ParseException {
+	public List<HealthInfoDto> getUserInfoByUserId(String userId) throws ParseException {
 
 		// FIXME
-		List<UserInfoDto> dtoList = new ArrayList<UserInfoDto>();
+		List<HealthInfoDto> dtoList = new ArrayList<HealthInfoDto>();
 		int maxCount = 13;
 		for (int i = 0; i < maxCount; i++) {
-			UserInfoDto dto = new UserInfoDto();
+			HealthInfoDto dto = new HealthInfoDto();
 			dto.setDataId(String.valueOf(i));
 			dto.setUserId(userId);
 			if (i % 3 == 0) {
@@ -66,10 +66,10 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	 * @throws ParseException
 	 */
 	@Override
-	public UserInfoDto getUserInfoByDataId(String dateId) throws ParseException {
+	public HealthInfoDto getUserInfoByDataId(String dateId) throws ParseException {
 
 		// FIXME
-		UserInfoDto dto = new UserInfoDto();
+		HealthInfoDto dto = new HealthInfoDto();
 		dto.setDataId(dateId);
 		dto.setHeight(new BigDecimal(170.2).setScale(1, BigDecimal.ROUND_HALF_UP));
 		dto.setWeight(new BigDecimal(61.3).setScale(1, BigDecimal.ROUND_HALF_UP));
@@ -84,7 +84,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	 * @param dto
 	 */
 	@Override
-	public void registUserUnfo(UserInfoDto dto) {
+	public void registUserUnfo(HealthInfoDto dto) {
 		// TODO 登録処理を追加すること
 	}
 

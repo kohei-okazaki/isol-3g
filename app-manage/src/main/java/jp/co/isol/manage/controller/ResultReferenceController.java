@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.isol.manage.dto.UserInfoDto;
+import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.UserInfoSearchService;
@@ -36,7 +36,7 @@ public class ResultReferenceController {
 	/** ファイルダウンロードサービス */
 	@Autowired
 	@Reference
-	private FileDownloadService<List<UserInfoDto>> fileDownloadService;
+	private FileDownloadService<List<HealthInfoDto>> fileDownloadService;
 
 
 	/**

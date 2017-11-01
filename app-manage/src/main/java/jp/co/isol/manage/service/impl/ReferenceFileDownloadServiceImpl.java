@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
-import jp.co.isol.manage.dto.UserInfoDto;
+import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.excel.ResultReferenceExcelBuiler;
 import jp.co.isol.manage.service.FileDownloadService;
 
@@ -17,7 +17,7 @@ import jp.co.isol.manage.service.FileDownloadService;
  *
  */
 @Service(value = "reference")
-public class ReferenceFileDownloadServiceImpl implements FileDownloadService<List<UserInfoDto>> {
+public class ReferenceFileDownloadServiceImpl implements FileDownloadService<List<HealthInfoDto>> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -27,7 +27,7 @@ public class ReferenceFileDownloadServiceImpl implements FileDownloadService<Lis
 	 * @return
 	 */
 	@Override
-	public View execute(List<UserInfoDto> historyList) {
+	public View execute(List<HealthInfoDto> historyList) {
 		init();
 		return new ResultReferenceExcelBuiler(historyList);
 	}
