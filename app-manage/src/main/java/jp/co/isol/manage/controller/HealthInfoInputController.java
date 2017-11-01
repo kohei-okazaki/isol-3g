@@ -63,7 +63,7 @@ public class HealthInfoInputController {
 
 		model.addAttribute("page", PageView.INPUT.getValue());
 
-		return View.INPUT.getName();
+		return View.HEALTH_INFO_INPUT.getName();
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class HealthInfoInputController {
 
 		model.addAttribute("page", PageView.CONFIRM.getValue());
 
-		return View.INPUT.getName();
+		return View.HEALTH_INFO_INPUT.getName();
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class HealthInfoInputController {
 		model.addAttribute("resultMessage", inputService.getDiffMessage(form, lastDto).getName());
 
 		model.addAttribute("page", PageView.COMPLETE.getValue());
-		return View.INPUT.getName();
+		return View.HEALTH_INFO_INPUT.getName();
 	}
 
 

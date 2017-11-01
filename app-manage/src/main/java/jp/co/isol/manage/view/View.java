@@ -12,7 +12,7 @@ import lombok.Setter;
 public enum View {
 
 	LOGIN("login"),
-	INPUT("input"),
+	HEALTH_INFO_INPUT("healthInfoInput"),
 	MENU("menu"),
 	ERROR("error"),
 	RESULT_REFFERNCE("result-reference"),
