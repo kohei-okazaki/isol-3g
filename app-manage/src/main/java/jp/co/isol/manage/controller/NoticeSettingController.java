@@ -13,7 +13,7 @@ import jp.co.isol.manage.web.config.AppConfig;
 
 /**
  * @author kou1210hei<br>
- * 通知設定コントローラクラス<br>
+ * 健康管理_通知設定コントローラクラス<br>
  *
  */
 @Controller

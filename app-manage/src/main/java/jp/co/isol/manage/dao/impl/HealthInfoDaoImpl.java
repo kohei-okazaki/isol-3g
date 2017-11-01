@@ -84,7 +84,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	 * @param dto
 	 */
 	@Override
-	public void registUserUnfo(HealthInfoDto dto) {
+	public void registHealthInfo(HealthInfoDto dto) {
 		// TODO 登録処理を追加すること
 	}
 

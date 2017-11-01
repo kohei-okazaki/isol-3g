@@ -19,7 +19,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void changePassword(AccountSettingForm form) {
-		accountDao.updateLoginUserInfo(form);
+		accountDao.updateAccountDto(form);
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void deleteAccount(AccountSettingForm form) {
-		accountDao.deleteLoginUserInfo(form.getUserId());
+		accountDao.deleteAccountDto(form.getUserId());
 	}
 
 }

@@ -30,6 +30,6 @@ public interface HealthInfoDao {
 	 * ユーザ情報を登録する
 	 * @param dto
 	 */
-	public void registUserUnfo(HealthInfoDto dto);
+	public void registHealthInfo(HealthInfoDto dto);
 
 }

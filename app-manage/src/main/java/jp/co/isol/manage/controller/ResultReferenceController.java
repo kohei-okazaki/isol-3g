@@ -23,7 +23,7 @@ import jp.co.isol.manage.web.config.AppConfig;
 
 /**
  * @author kou1210hei<br>
- * 結果照会画面コントローラクラス<br>
+ * 健康管理_結果照会画面コントローラクラス<br>
  *
  */
 @Controller

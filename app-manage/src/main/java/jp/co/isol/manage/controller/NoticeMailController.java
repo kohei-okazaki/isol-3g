@@ -20,7 +20,7 @@ import jp.co.isol.manage.web.config.AppConfig;
 
 
 /**
- * メール通知機能コントローラクラス<br>
+ * 健康管理_メール通知機能コントローラクラス<br>
  *
  */
 @Controller

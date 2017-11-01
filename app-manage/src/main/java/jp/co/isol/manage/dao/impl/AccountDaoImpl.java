@@ -40,7 +40,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * @param form
 	 */
 	@Override
-	public void updateLoginUserInfo(AccountSettingForm form) {
+	public void updateAccountDto(AccountSettingForm form) {
 		// TODO 更新処理を追加すること
 	}
 
@@ -49,7 +49,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * @param userId
 	 */
 	@Override
-	public void deleteLoginUserInfo(String userId) {
+	public void deleteAccountDto(String userId) {
 		// TODO 削除処理を追加すること
 	}
 

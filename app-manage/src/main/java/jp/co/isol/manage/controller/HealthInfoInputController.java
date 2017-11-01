@@ -115,7 +115,7 @@ public class HealthInfoInputController {
 		HealthInfoDto dto = inputService.convertUserInfo(form, userId);
 
 		// 入力画面から入力した情報を登録する
-		userInfoDao.registUserUnfo(dto);
+		userInfoDao.registHealthInfo(dto);
 
 		// Daoから前回の体重を取得
 		List<HealthInfoDto> dtoList = userInfoSearchService.findUserInfoByUserId(userId);
