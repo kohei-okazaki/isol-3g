@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.isol.manage.dao.UserInfoDao;
-import jp.co.isol.manage.dto.UserInfoDto;
+import jp.co.isol.manage.dao.HealthInfoDao;
+import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.UserInfoInputForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
@@ -30,16 +30,16 @@ import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
- * 健康管理_入力画面コントローラ
+ * 健康管理_健康情報入力画面コントローラ
  *
  */
 @Controller
-public class InputController {
+public class HealthInfoInputController {
 
 	@Autowired
 	private InputService inputService;
 	@Autowired
-	private UserInfoDao userInfoDao;
+	private HealthInfoDao userInfoDao;
 	@Autowired
 	private UserInfoSearchService userInfoSearchService;
 	@Autowired
@@ -63,7 +63,7 @@ public class InputController {
 
 		model.addAttribute("page", PageView.INPUT.getValue());
 
-		return View.INPUT.getName();
+		return View.HEALTH_INFO_INPUT.getName();
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class InputController {
 
 		model.addAttribute("page", PageView.CONFIRM.getValue());
 
-		return View.INPUT.getName();
+		return View.HEALTH_INFO_INPUT.getName();
 	}
 
 	/**
@@ -112,16 +112,16 @@ public class InputController {
 		AppSessionManager manager = context.getBean(AppSessionManager.class);
 		String userId = manager.getAttribute(request.getSession(), AppSessionKey.USER_ID);
 
-		UserInfoDto dto = inputService.convertUserInfo(form, userId);
+		HealthInfoDto dto = inputService.convertUserInfo(form, userId);
 
 		// 入力画面から入力した情報を登録する
-		userInfoDao.registUserUnfo(dto);
+		userInfoDao.registHealthInfo(dto);
 
 		// Daoから前回の体重を取得
-		List<UserInfoDto> dtoList = userInfoSearchService.findUserInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = userInfoSearchService.findUserInfoByUserId(userId);
 
 		int lastIndex = dtoList.size() - 1;
-		UserInfoDto lastDto = dtoList.get(lastIndex);
+		HealthInfoDto lastDto = dtoList.get(lastIndex);
 		model.addAttribute("beforeWeight", lastDto.getWeight());
 
 		// Dtoを設定する
@@ -134,7 +134,7 @@ public class InputController {
 		model.addAttribute("resultMessage", inputService.getDiffMessage(form, lastDto).getName());
 
 		model.addAttribute("page", PageView.COMPLETE.getValue());
-		return View.INPUT.getName();
+		return View.HEALTH_INFO_INPUT.getName();
 	}
 
 

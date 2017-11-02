@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @kou1210hei<br>
+ * @author kou1210hei<br>
  * JSPで表示する文言を管理
  *
  */

@@ -40,7 +40,7 @@ public class LoginServiceImpl implements LoginService {
 
 	/**
 	 * セッションにユーザのIDを登録する
-	 * @param request
+	 * @param session
 	 * @param loginForm
 	 */
 	@Override

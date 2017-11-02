@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 
 /**
  * @author kou1210hei<br>
- * アカウント作成コントローラ<br>
+ * 健康管理_アカウント作成コントローラ<br>
  *
  */
 @Controller

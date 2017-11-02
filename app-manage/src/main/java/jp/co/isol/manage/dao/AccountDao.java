@@ -1,7 +1,7 @@
 package jp.co.isol.manage.dao;
 
 import jp.co.isol.manage.dto.AccountDto;
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.AccountSettingForm;
 
 /**
  * @author kou1210hei<br>
@@ -11,29 +11,29 @@ import jp.co.isol.manage.form.LoginUserForm;
 public interface AccountDao {
 
 	/**
-	 * 引数で指定されたIDのログインユーザ情報を取得する
-	 * @param id
+	 * 引数で指定されたIDのアカウント情報を取得する
+	 * @param userId
 	 * @return LoginUserEntity
 	 */
 	public AccountDto getLoginUserInfoByUserId(String userId);
 
 
 	/**
-	 * ログインユーザ情報を登録する
+	 * アカウント情報を登録する
 	 */
 	public void registLoginUserInfo();
 
 
 	/**
-	 * 引数で指定されたIDのログインユーザ情報を更新する
+	 * 引数で指定されたアカウント情報を更新する
 	 * @param form
 	 */
-	public void updateLoginUserInfo(LoginUserForm form);
+	public void updateAccountDto(AccountSettingForm form);
 
 	/**
-	 * 指定されたアカウントの削除を行う<br>
+	 * 指定されたアカウント情報の削除を行う<br>
 	 * @param userId
 	 */
-	public void deleteLoginUserInfo(String userId);
+	public void deleteAccountDto(String userId);
 
 }

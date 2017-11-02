@@ -1,7 +1,6 @@
 package jp.co.isol.manage.service;
 
 import jp.co.isol.manage.form.AccountSettingForm;
-import jp.co.isol.manage.form.LoginUserForm;
 
 public interface AccountSettingService {
 
@@ -9,7 +8,7 @@ public interface AccountSettingService {
 	 * IDで指定されたアカウントのパスワードを変更する<br>
 	 * @param form
 	 */
-	public void changePassword(LoginUserForm form);
+	public void changePassword(AccountSettingForm form);
 
 	/**
 	 * 指定されたアカウントの削除をする<br>

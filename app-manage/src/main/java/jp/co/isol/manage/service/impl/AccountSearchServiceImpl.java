@@ -7,6 +7,11 @@ import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.dto.AccountDto;
 import jp.co.isol.manage.service.AccountSearchService;
 
+/**
+ * @author kou1210hei<br>
+ * アカウント検索サービス実装クラス<br>
+ *
+ */
 @Service
 public class AccountSearchServiceImpl implements AccountSearchService {
 
@@ -14,9 +19,9 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	private AccountDao accountDao;
 
 	/**
-	 * IDからログイン情報を取得する
-	 * @param id
-	 * @return ログイン情報
+	 * ユーザIDからアカウント情報を取得する
+	 * @param userId
+	 * @return アカウント情報
 	 */
 	@Override
 	public AccountDto findAccountByUserId(String userId) {

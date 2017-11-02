@@ -20,7 +20,7 @@ import jp.co.isol.manage.web.config.AppConfig;
 
 
 /**
- * メール通知機能コントローラクラス<br>
+ * 健康管理_メール通知機能コントローラクラス<br>
  *
  */
 @Controller
@@ -42,7 +42,7 @@ public class NoticeMailController {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
-
+		logger.info(this.getClass(), "# mail execute start");
 
 		mailService.sendMail(form);
 
