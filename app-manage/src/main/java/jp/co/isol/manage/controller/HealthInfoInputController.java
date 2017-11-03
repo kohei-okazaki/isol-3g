@@ -17,12 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.manage.dao.HealthInfoDao;
 import jp.co.isol.manage.dto.HealthInfoDto;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.HealthInfoInputService;
 import jp.co.isol.manage.service.UserInfoSearchService;
-import jp.co.isol.manage.service.annotation.UserInfoInput;
+import jp.co.isol.manage.service.annotation.HealthInfoInput;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
@@ -43,8 +43,8 @@ public class HealthInfoInputController {
 	@Autowired
 	private UserInfoSearchService userInfoSearchService;
 	@Autowired
-	@UserInfoInput
-	private FileDownloadService<UserInfoInputForm> fileDownloadService;
+	@HealthInfoInput
+	private FileDownloadService<HealthInfoInputForm> fileDownloadService;
 
 	/**
 	 * 入力画面
@@ -70,7 +70,7 @@ public class HealthInfoInputController {
 	 * @return 確認画面
 	 */
 	@RequestMapping(value = "/input-confirm.html", method = RequestMethod.POST)
-	public String confirm(Model model, UserInfoInputForm form) {
+	public String confirm(Model model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
@@ -99,7 +99,7 @@ public class HealthInfoInputController {
 	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/input-complete.html", method = RequestMethod.POST)
-	public String complete(Model model, UserInfoInputForm form, HttpServletRequest request) throws ParseException {
+	public String complete(Model model, HealthInfoInputForm form, HttpServletRequest request) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);
@@ -141,7 +141,7 @@ public class HealthInfoInputController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/fileDownload.html", method = RequestMethod.GET)
-	public ModelAndView excelDownload(Map<String, Object> model, UserInfoInputForm form) {
+	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);

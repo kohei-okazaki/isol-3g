@@ -16,7 +16,7 @@ import jp.co.isol.common.excel.Excel;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 
 /**
  * @author kou1210hei<br>
@@ -27,13 +27,13 @@ import jp.co.isol.manage.form.UserInfoInputForm;
 public class UserInfoExcelBuilder extends BaseExcelBuilder {
 
 	/** 入力フォームクラス */
-	private UserInfoInputForm form;
+	private HealthInfoInputForm form;
 
 	/**
 	 * コンストラクタ<br>
 	 * @param form
 	 */
-	public UserInfoExcelBuilder(UserInfoInputForm form) {
+	public UserInfoExcelBuilder(HealthInfoInputForm form) {
 		this.form = form;
 	}
 

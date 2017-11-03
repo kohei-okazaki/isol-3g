@@ -11,7 +11,7 @@ import lombok.Setter;
  * 入力フォームクラス
  *
  */
-public class UserInfoInputForm implements Serializable {
+public class HealthInfoInputForm implements Serializable {
 
 	/** ユーザID */
 	@Setter

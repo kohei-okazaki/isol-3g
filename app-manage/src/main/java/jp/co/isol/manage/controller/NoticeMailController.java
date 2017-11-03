@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.MailService;
 import jp.co.isol.manage.view.PageView;
@@ -38,7 +38,7 @@ public class NoticeMailController {
 	 * @return View
 	 */
 	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
-	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, UserInfoInputForm form) {
+	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppLogger logger = context.getBean(AppLogger.class);

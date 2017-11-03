@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.HealthInfoDto;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoInputService;
 
@@ -30,7 +30,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 判定結果
 	 */
 	@Override
-	public boolean hasError(UserInfoInputForm form) {
+	public boolean hasError(HealthInfoInputForm form) {
 
 		if (hasNull(form.getWeight(), form.getHeight())) {
 			return true;
@@ -43,7 +43,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	}
 
 	@Override
-	public HealthInfoDto convertUserInfo(UserInfoInputForm form, String userId) {
+	public HealthInfoDto convertUserInfo(HealthInfoInputForm form, String userId) {
 
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setUserId(userId);
@@ -61,7 +61,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public Message getDiffMessage(UserInfoInputForm form, HealthInfoDto dto) {
+	public Message getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
 			return Message.EQUAL;
@@ -81,7 +81,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 体重差
 	 */
 	@Override
-	public BigDecimal getDiffWeight(UserInfoInputForm form, HealthInfoDto dto) {
+	public BigDecimal getDiffWeight(HealthInfoInputForm form, HealthInfoDto dto) {
 		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 	}
 }

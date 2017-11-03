@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import jp.co.isol.common.message.Message;
 import jp.co.isol.manage.dto.HealthInfoDto;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 
 
 /**
@@ -19,7 +19,7 @@ public interface HealthInfoInputService {
 	 * @param form
 	 * @return 判定結果
 	 */
-	public boolean hasError(UserInfoInputForm form);
+	public boolean hasError(HealthInfoInputForm form);
 
 	/**
 	 * マイナスが含まれていた場合true
@@ -47,7 +47,7 @@ public interface HealthInfoInputService {
 	 * 入力情報をDtoにつめる<br>
 	 * @return
 	 */
-	public HealthInfoDto convertUserInfo(UserInfoInputForm form, String userId);
+	public HealthInfoDto convertUserInfo(HealthInfoInputForm form, String userId);
 
 	/**
 	 * 入力した体重と最後に入力した体重との差を表示する<br>
@@ -55,7 +55,7 @@ public interface HealthInfoInputService {
 	 * @param dto
 	 * @return 体重差のメッセージ
 	 */
-	public Message getDiffMessage(UserInfoInputForm form, HealthInfoDto dto);
+	public Message getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto);
 
 	/**
 	 * 最後に入力した体重とフォームから体重差を返却
@@ -63,6 +63,6 @@ public interface HealthInfoInputService {
 	 * @param dto
 	 * @return 体重差
 	 */
-	public BigDecimal getDiffWeight(UserInfoInputForm form, HealthInfoDto dto);
+	public BigDecimal getDiffWeight(HealthInfoInputForm form, HealthInfoDto dto);
 
 }
