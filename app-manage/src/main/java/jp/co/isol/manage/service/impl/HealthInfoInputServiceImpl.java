@@ -21,6 +21,7 @@ import jp.co.isol.manage.service.HealthInfoInputService;
 @Service
 public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 
+	/** 計算サービス */
 	@Autowired
 	private CalcService calcService;
 
@@ -42,6 +43,10 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 		return false;
 	}
 
+	/**
+	 * 入力情報をDtoにつめる<br>
+	 * @return
+	 */
 	@Override
 	public HealthInfoDto convertUserInfo(HealthInfoInputForm form, String userId) {
 

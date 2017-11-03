@@ -54,29 +54,18 @@
 		<form action="/isol/account-setting-confirm.html" method="post">
 		<div align="center">
 			<table border="1">
+
 				<tr>
 					<th width="130px"><c:out value="削除" /></th>
 					<td width="250px">
 						<div class="radio">
-							<input type="radio" name="deleteFlag" id="true" value="1" checked="">
+							<input type="radio" name="deleteFlag" id="true" value="1" checked="checked">
 							<label for="true">する</label>
 							<input type="radio" name="deleteFlag" id="false" value="0">
 							<label for="false" class="switch-off">しない</label>
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<th width="130px"><c:out value="アカウント停止" /></th>
-					<td width="250px">
-						<div class="radio">
-							<input type="radio" name="inavalidFlag" id="true" value="1" checked="">
-							<label for="true">する</label>
-							<input type="radio" name="inavalidFlag" id="false" value="0">
-							<label for="false" class="switch-off">しない</label>
-						</div>
-					</td>
-				</tr>
-
 				<tr>
 					<th><c:out value="ユーザID" /></th>
 					<td><input type="text" name="userId" value="${dto.userId}" required="required" /></td>
@@ -95,7 +84,30 @@
 		</form>
 	</c:if>
 
-
+	<!-- 確認画面 -->
+	<c:if test="${page == 1}">
+		<form action="/isol/account-setting-complete" method="post">
+		<div align="center">
+			<table border="1">
+				<tr>
+					<th width="130px"><c:out value="削除" /></th>
+					<td width="250px">
+						<c:if test="${form.deleteFlag == true}">する</c:if>
+						<c:if test="${form.deleteFlag == false}">しない</c:if>
+					</td>
+				</tr>
+				<tr>
+					<th><c:out value="ユーザID" /></th>
+					<td><input type="text" name="userId" value="${dto.userId}" disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<th><c:out value="パスワード" /></th>
+					<td><input type="text" name="password" value="${dto.password}" disabled="disabled" /></td>
+				</tr>
+			</table>
+		</div>
+		</form>
+	</c:if>
 
 
 
