@@ -11,16 +11,15 @@ import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.UserInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
-import jp.co.isol.manage.service.InputService;
+import jp.co.isol.manage.service.HealthInfoInputService;
 
 /**
  * @author kou1210hei<br>
- * 入力画面サービス実装クラス
+ * 健康情報_入力画面サービス実装クラス
  *
  */
 @Service
-public class InputServiceImpl implements InputService {
-
+public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 
 	@Autowired
 	private CalcService calcService;

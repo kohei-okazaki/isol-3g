@@ -20,7 +20,7 @@ import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.UserInfoInputForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
-import jp.co.isol.manage.service.InputService;
+import jp.co.isol.manage.service.HealthInfoInputService;
 import jp.co.isol.manage.service.UserInfoSearchService;
 import jp.co.isol.manage.service.annotation.UserInfoInput;
 import jp.co.isol.manage.view.PageView;
@@ -37,7 +37,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 public class HealthInfoInputController {
 
 	@Autowired
-	private InputService inputService;
+	private HealthInfoInputService healthInfoInputService;
 	@Autowired
 	private HealthInfoDao userInfoDao;
 	@Autowired
@@ -76,7 +76,7 @@ public class HealthInfoInputController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "#confirm start");
 
-		if (inputService.hasError(form)) {
+		if (healthInfoInputService.hasError(form)) {
 			// 入力情報に誤りがある場合
 			logger.warn(this.getClass(), "入力情報に誤りがあります");
 			return View.ERROR.getName();
@@ -108,7 +108,7 @@ public class HealthInfoInputController {
 		AppSessionManager manager = context.getBean(AppSessionManager.class);
 		String userId = manager.getAttribute(request.getSession(), AppSessionKey.USER_ID);
 
-		HealthInfoDto dto = inputService.convertUserInfo(form, userId);
+		HealthInfoDto dto = healthInfoInputService.convertUserInfo(form, userId);
 
 		// 入力画面から入力した情報を登録する
 		userInfoDao.registHealthInfo(dto);
@@ -124,10 +124,10 @@ public class HealthInfoInputController {
 		model.addAttribute("dto", dto);
 
 		// 入力した今の体重と前回入力した体重の差を設定
-		model.addAttribute("diffWeight", inputService.getDiffWeight(form, lastDto));
+		model.addAttribute("diffWeight", healthInfoInputService.getDiffWeight(form, lastDto));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", inputService.getDiffMessage(form, lastDto).getName());
+		model.addAttribute("resultMessage", healthInfoInputService.getDiffMessage(form, lastDto).getName());
 
 		model.addAttribute("page", PageView.COMPLETE.getValue());
 		return View.HEALTH_INFO_INPUT.getName();

@@ -12,7 +12,7 @@ import jp.co.isol.manage.form.UserInfoInputForm;
  * 入力画面サービスIF
  *
  */
-public interface InputService {
+public interface HealthInfoInputService {
 
 	/**
 	 * 入力情報のチェック
