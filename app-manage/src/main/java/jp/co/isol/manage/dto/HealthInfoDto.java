@@ -66,9 +66,9 @@ public class HealthInfoDto implements Serializable {
 	private String userStatus;
 
 	/** 登録日時 */
-	@Column(name = "RECORD_DATE", nullable = false)
+	@Column(name = "REG_DATE", nullable = false)
 	@Setter
 	@Getter
-	private Date recordDate;
+	private Date regDate;
 
 }
