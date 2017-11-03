@@ -17,14 +17,14 @@ public interface HealthInfoDao {
 	 * @param userId
 	 * @return result
 	 */
-	public List<HealthInfoDto> getUserInfoByUserId(String userId) throws ParseException;
+	public List<HealthInfoDto> getHealthInfoByUserId(String userId) throws ParseException;
 
 	/**
 	 * 引数で指定されたIDのレコードを返す
 	 * @param dataId
 	 * @return レコード
 	 */
-	public HealthInfoDto getUserInfoByDataId(String dataId) throws ParseException;
+	public HealthInfoDto getHealthInfoByDataId(String dataId) throws ParseException;
 
 	/**
 	 * ユーザ情報を登録する

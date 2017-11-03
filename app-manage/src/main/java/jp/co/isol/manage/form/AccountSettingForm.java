@@ -21,6 +21,4 @@ public class AccountSettingForm implements Serializable {
 	/** 削除フラグ */
 	private boolean deleteFlag;
 
-	/** 利用停止フラグ */
-	private boolean inavalidFlag;
 }

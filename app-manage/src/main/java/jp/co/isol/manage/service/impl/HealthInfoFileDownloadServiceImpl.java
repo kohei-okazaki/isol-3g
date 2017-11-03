@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
-import jp.co.isol.manage.excel.UserInfoExcelBuilder;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.excel.HealthInfoExcelBuilder;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.FileDownloadService;
 
 /**
@@ -14,8 +14,8 @@ import jp.co.isol.manage.service.FileDownloadService;
  * メニュー画面ファイルダウンロードサービス実装クラス
  *
  */
-@Service(value = "UserInfoInput")
-public class UserInfoFileDownloadServiceImpl implements FileDownloadService<UserInfoInputForm> {
+@Service(value = "HealthInfoInput")
+public class HealthInfoFileDownloadServiceImpl implements FileDownloadService<HealthInfoInputForm> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -25,9 +25,9 @@ public class UserInfoFileDownloadServiceImpl implements FileDownloadService<User
 	 * @return View
 	 */
 	@Override
-	public View execute(UserInfoInputForm form) {
+	public View execute(HealthInfoInputForm form) {
 		init();
-		return new UserInfoExcelBuilder(form);
+		return new HealthInfoExcelBuilder(form);
 	}
 
 	private void init() {

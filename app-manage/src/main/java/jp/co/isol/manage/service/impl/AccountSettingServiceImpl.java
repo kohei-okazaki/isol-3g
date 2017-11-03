@@ -1,11 +1,23 @@
 package jp.co.isol.manage.service.impl;
 
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.form.AccountSettingForm;
+import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.AccountSettingService;
+import jp.co.isol.manage.web.config.AppConfig;
 
 @Service
 public class AccountSettingServiceImpl implements AccountSettingService {
@@ -19,7 +31,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void changePassword(AccountSettingForm form) {
-		accountDao.updateAccountDto(form);
+		accountDao.updateAccount(form);
 	}
 
 	/**
@@ -28,7 +40,42 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void deleteAccount(AccountSettingForm form) {
-		accountDao.deleteAccountDto(form.getUserId());
+		accountDao.deleteAccount(form.getUserId());
+	}
+
+	/**
+	 * 入力されたアカウント設定フォーム情報が不正かどうか判定する<br>
+	 * 不正の場合true, そうでない場合falseを返す<br>
+	 * @param form
+	 * @return 判定結果
+	 */
+	@Override
+	public boolean invalidForm(AccountSettingForm form) {
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppLogger logger = context.getBean(AppLogger.class);
+
+		Class<AccountSettingForm> clazz = AccountSettingForm.class;
+		List<Field> fieldList = Arrays.asList(clazz.getDeclaredFields());
+		Object value = null;
+		try {
+			for (Field field : fieldList) {
+				PropertyDescriptor prop = new PropertyDescriptor(field.getName(), clazz);
+				value = prop.getReadMethod().invoke(form, clazz);
+				if (Objects.isNull(value)) {
+					return true;
+				}
+			}
+		} catch (IntrospectionException e) {
+			logger.error(this.getClass(), "プロパティの読み込みに失敗しました");
+		} catch (IllegalAccessException e) {
+			logger.error(this.getClass(), "不正なアクセスが行われました");
+		} catch (IllegalArgumentException e) {
+			logger.error(this.getClass(), value + "引数が不正です");
+		} catch (InvocationTargetException e) {
+			logger.error(this.getClass(), "呼び出したメソッドがエラーを出力しました");
+		}
+		return false;
 	}
 
 }

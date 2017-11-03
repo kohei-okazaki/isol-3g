@@ -25,7 +25,7 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	 */
 	@Override
 	public AccountDto findAccountByUserId(String userId) {
-		return accountDao.getLoginUserInfoByUserId(userId);
+		return accountDao.getAccountByUserId(userId);
 	}
 
 }

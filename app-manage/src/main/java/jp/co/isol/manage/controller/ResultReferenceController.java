@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
-import jp.co.isol.manage.service.UserInfoSearchService;
+import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.annotation.Reference;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
@@ -31,7 +31,7 @@ public class ResultReferenceController {
 
 	/** ユーザ情報検索サービス */
 	@Autowired
-	private UserInfoSearchService userInfoSearchService;
+	private HealthInfoSearchService healthInfoSearchService;
 
 	/** ファイルダウンロードサービス */
 	@Autowired
@@ -41,8 +41,8 @@ public class ResultReferenceController {
 
 	/**
 	 * 結果照会画面
-	 * @param locale
 	 * @param model
+	 * @param userId
 	 * @return
 	 * @throws ParseException
 	 */
@@ -54,7 +54,7 @@ public class ResultReferenceController {
 		logger.info(this.getClass(), "# resultReference start");
 
 		// ログイン中のユーザの全レコードを検索する
-		model.addAttribute("allDataList", userInfoSearchService.findUserInfoByUserId(userId));
+		model.addAttribute("allDataList", healthInfoSearchService.findHealthInfoByUserId(userId));
 
 		return View.RESULT_REFFERNCE.getName();
 	}
@@ -72,7 +72,8 @@ public class ResultReferenceController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
 
-		return new ModelAndView(fileDownloadService.execute(userInfoSearchService.findUserInfoByUserId(userId)));
+		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
+		return new ModelAndView(fileDownloadService.execute(dtoList));
 	}
 
 }

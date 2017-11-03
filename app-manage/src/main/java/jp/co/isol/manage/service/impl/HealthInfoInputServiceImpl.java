@@ -9,19 +9,19 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.HealthInfoDto;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
-import jp.co.isol.manage.service.InputService;
+import jp.co.isol.manage.service.HealthInfoInputService;
 
 /**
  * @author kou1210hei<br>
- * 入力画面サービス実装クラス
+ * 健康情報_入力画面サービス実装クラス
  *
  */
 @Service
-public class InputServiceImpl implements InputService {
+public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 
-
+	/** 計算サービス */
 	@Autowired
 	private CalcService calcService;
 
@@ -31,7 +31,7 @@ public class InputServiceImpl implements InputService {
 	 * @return 判定結果
 	 */
 	@Override
-	public boolean hasError(UserInfoInputForm form) {
+	public boolean hasError(HealthInfoInputForm form) {
 
 		if (hasNull(form.getWeight(), form.getHeight())) {
 			return true;
@@ -43,14 +43,19 @@ public class InputServiceImpl implements InputService {
 		return false;
 	}
 
+	/**
+	 * 入力情報をDtoにつめる<br>
+	 * @return
+	 */
 	@Override
-	public HealthInfoDto convertUserInfo(UserInfoInputForm form, String userId) {
+	public HealthInfoDto convertUserInfo(HealthInfoInputForm form, String userId) {
 
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setUserId(userId);
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
 		dto.setBmi(calcService.calcBmi(CalcUtil.convertMeter(form.getHeight()), form.getWeight()));
+		dto.setUserStatus("1010");
 		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeter(form.getHeight())));
 		dto.setRecordDate(new Date());
 		return dto;
@@ -62,7 +67,7 @@ public class InputServiceImpl implements InputService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public Message getDiffMessage(UserInfoInputForm form, HealthInfoDto dto) {
+	public Message getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
 			return Message.EQUAL;
@@ -82,7 +87,7 @@ public class InputServiceImpl implements InputService {
 	 * @return 体重差
 	 */
 	@Override
-	public BigDecimal getDiffWeight(UserInfoInputForm form, HealthInfoDto dto) {
+	public BigDecimal getDiffWeight(HealthInfoInputForm form, HealthInfoDto dto) {
 		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 	}
 }

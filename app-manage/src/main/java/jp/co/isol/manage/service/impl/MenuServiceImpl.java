@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.dto.HealthInfoDto;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.MenuService;
 
@@ -30,7 +30,7 @@ public class MenuServiceImpl implements MenuService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public Message getDiffMessage(UserInfoInputForm form, HealthInfoDto dto) {
+	public Message getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
 			return Message.EQUAL;
@@ -50,7 +50,7 @@ public class MenuServiceImpl implements MenuService {
 	 * @return 体重差
 	 */
 	@Override
-	public BigDecimal getDiffWeight(UserInfoInputForm form, HealthInfoDto dto) {
+	public BigDecimal getDiffWeight(HealthInfoInputForm form, HealthInfoDto dto) {
 		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 	}
 
@@ -59,7 +59,7 @@ public class MenuServiceImpl implements MenuService {
 	 * @return
 	 */
 	@Override
-	public HealthInfoDto convertUserInfo(UserInfoInputForm form, String userId) {
+	public HealthInfoDto convertUserInfo(HealthInfoInputForm form, String userId) {
 
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setUserId(userId);

@@ -20,7 +20,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * @return LoginUserEntity
 	 */
 	@Override
-	public AccountDto getLoginUserInfoByUserId(String userId) {
+	public AccountDto getAccountByUserId(String userId) {
 		AccountDto dto = new AccountDto();
 		dto.setUserId(userId);
 		dto.setPassword("password");
@@ -31,7 +31,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * ログインユーザ情報を登録する
 	 */
 	@Override
-	public void registLoginUserInfo() {
+	public void registAccount() {
 		// TODO 登録処理を追加すること
 	}
 
@@ -40,7 +40,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * @param form
 	 */
 	@Override
-	public void updateAccountDto(AccountSettingForm form) {
+	public void updateAccount(AccountSettingForm form) {
 		// TODO 更新処理を追加すること
 	}
 
@@ -49,7 +49,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * @param userId
 	 */
 	@Override
-	public void deleteAccountDto(String userId) {
+	public void deleteAccount(String userId) {
 		// TODO 削除処理を追加すること
 	}
 

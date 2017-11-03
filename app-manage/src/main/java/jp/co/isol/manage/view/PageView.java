@@ -20,7 +20,7 @@ public enum PageView {
 	private String value;
 
 	private PageView(String value) {
-		this.value = value;
+		setValue(value);
 	}
 
 }

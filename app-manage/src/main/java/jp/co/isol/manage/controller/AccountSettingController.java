@@ -37,7 +37,6 @@ public class AccountSettingController {
 
 	/**
 	 * アカウント設定入力画面
-	 * @param locale
 	 * @param model
 	 * @param request
 	 * @return アカウント設定入力画面
@@ -70,6 +69,28 @@ public class AccountSettingController {
 	@RequestMapping(value = "/account-setting-confirm.html", method = RequestMethod.POST)
 	public String accountsettingConfirm(Model model, AccountSettingForm form) {
 
+
+		if (accountSettingService.invalidForm(form)) {
+			// 入力情報が不正の場合
+			model.addAttribute("page", PageView.INPUT.getValue());
+
+			return View.ACCOUNT_SETTING.getName();
+		}
+		model.addAttribute("form", form);
+		model.addAttribute("page", PageView.CONFIRM.getValue());
+
+		return View.ACCOUNT_SETTING.getName();
+	}
+
+	/**
+	 * アカウント設定完了画面
+	 * @param model
+	 * @param form
+	 * @return
+	 */
+	@RequestMapping(value = "/account-setting-complete.html", method = RequestMethod.POST)
+	public String accountSettingComplete(Model model, AccountSettingForm form) {
+
 		if (form.isDeleteFlag()) {
 			// アカウントを削除する場合
 			accountSettingService.deleteAccount(form);
@@ -79,8 +100,7 @@ public class AccountSettingController {
 		// アカウントを更新する
 		accountSettingService.changePassword(form);
 
-
-		model.addAttribute("page", PageView.CONFIRM.getValue());
+		model.addAttribute("page", PageView.COMPLETE.getValue());
 
 		return View.ACCOUNT_SETTING.getName();
 	}

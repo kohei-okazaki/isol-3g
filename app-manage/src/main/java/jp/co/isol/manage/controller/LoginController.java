@@ -26,7 +26,6 @@ public class LoginController {
 
 	/**
 	 * ログイン画面
-	 * @param locale
 	 * @param model
 	 * @param request
 	 * @return ログイン画面

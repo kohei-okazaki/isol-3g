@@ -16,5 +16,12 @@ public interface AccountSettingService {
 	 */
 	public void deleteAccount(AccountSettingForm form);
 
+	/**
+	 * 入力されたアカウント設定フォーム情報が不正かどうか判定する<br>
+	 * @param form
+	 * @return 判定結果
+	 */
+	public boolean invalidForm(AccountSettingForm form);
+
 
 }

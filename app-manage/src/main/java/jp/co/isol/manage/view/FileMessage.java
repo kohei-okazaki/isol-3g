@@ -18,7 +18,7 @@ public class FileMessage {
 	private List<String> messageList;
 
 	public FileMessage() {
-		messageList = new ArrayList<String>();
+		this.messageList = new ArrayList<String>();
 	}
 
 	public void setFileMessageList(HealthInfoDto dto) {

@@ -16,24 +16,24 @@ import jp.co.isol.common.excel.Excel;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
-import jp.co.isol.manage.form.UserInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoInputForm;
 
 /**
  * @author kou1210hei<br>
- * メニュー画面Excel生成クラス<br>
+ * 健康情報入力画面Excel生成クラス<br>
  *
  */
-@Excel(sheetName = "ユーザ情報", headerNames = {Message.HEIGHT, Message.WEIGHT, Message.BMI, Message.STANDARDWEIGHT})
-public class UserInfoExcelBuilder extends BaseExcelBuilder {
+@Excel(sheetName = "健康情報", headerNames = {Message.HEIGHT, Message.WEIGHT, Message.BMI, Message.STANDARDWEIGHT})
+public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
-	/** 入力フォームクラス */
-	private UserInfoInputForm form;
+	/** 健康情報入力フォームクラス */
+	private HealthInfoInputForm form;
 
 	/**
 	 * コンストラクタ<br>
 	 * @param form
 	 */
-	public UserInfoExcelBuilder(UserInfoInputForm form) {
+	public HealthInfoExcelBuilder(HealthInfoInputForm form) {
 		this.form = form;
 	}
 
