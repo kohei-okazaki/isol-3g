@@ -55,6 +55,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
 		dto.setBmi(calcService.calcBmi(CalcUtil.convertMeter(form.getHeight()), form.getWeight()));
+		dto.setUserStatus("1010");
 		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeter(form.getHeight())));
 		dto.setRecordDate(new Date());
 		return dto;
