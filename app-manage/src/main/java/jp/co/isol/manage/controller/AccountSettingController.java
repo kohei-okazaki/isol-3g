@@ -37,7 +37,6 @@ public class AccountSettingController {
 
 	/**
 	 * アカウント設定入力画面
-	 * @param locale
 	 * @param model
 	 * @param request
 	 * @return アカウント設定入力画面

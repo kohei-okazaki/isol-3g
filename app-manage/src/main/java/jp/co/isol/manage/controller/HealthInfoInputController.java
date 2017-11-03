@@ -48,10 +48,7 @@ public class HealthInfoInputController {
 
 	/**
 	 * 入力画面
-	 * @param locale
 	 * @param model
-	 * @param loginForm
-	 * @param request
 	 * @return 遷移先を返却
 	 */
 	@RequestMapping(value = "/input.html", method = RequestMethod.GET)
@@ -68,7 +65,6 @@ public class HealthInfoInputController {
 
 	/**
 	 * 確認画面
-	 * @param locale
 	 * @param model
 	 * @param form
 	 * @return 確認画面
@@ -99,7 +95,7 @@ public class HealthInfoInputController {
 	 * @param model
 	 * @param form
 	 * @param request
-	 * @return
+	 * @return 完了画面
 	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/input-complete.html", method = RequestMethod.POST)

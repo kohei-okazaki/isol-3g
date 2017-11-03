@@ -41,8 +41,8 @@ public class ResultReferenceController {
 
 	/**
 	 * 結果照会画面
-	 * @param locale
 	 * @param model
+	 * @param userId
 	 * @return
 	 * @throws ParseException
 	 */

@@ -28,12 +28,13 @@ public class MenuController {
 	@Autowired
 	private LoginService loginService;
 
+
 	/**
 	 * メニュー画面
-	 * @param locale
 	 * @param model
-	 * @param form
-	 * @return View
+	 * @param request
+	 * @param loginForm
+	 * @return
 	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/menu.html", method = RequestMethod.POST)
@@ -56,9 +57,6 @@ public class MenuController {
 
 	/**
 	 * getでメニュー画面に遷移する<br>
-	 * @param locale
-	 * @param model
-	 * @param userId
 	 * @return
 	 */
 	@RequestMapping(value = "/menu.html", method = RequestMethod.GET)
