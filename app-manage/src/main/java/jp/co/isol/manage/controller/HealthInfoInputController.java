@@ -22,8 +22,8 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.HealthInfoInputService;
-import jp.co.isol.manage.service.MailService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
+import jp.co.isol.manage.service.MailService;
 import jp.co.isol.manage.service.annotation.HealthInfoInput;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
@@ -43,7 +43,7 @@ public class HealthInfoInputController {
 	private HealthInfoInputService healthInfoInputService;
 	/** 健康情報Dao */
 	@Autowired
-	private HealthInfoDao HealthInfoDao;
+	private HealthInfoDao healthInfoDao;
 	/** 健康情報検索サービス */
 	@Autowired
 	private HealthInfoSearchService healthInfoSearchService;
@@ -120,7 +120,7 @@ public class HealthInfoInputController {
 		HealthInfoDto dto = healthInfoInputService.convertUserInfo(form, userId);
 
 		// 入力画面から入力した情報を登録する
-		HealthInfoDao.registHealthInfo(dto);
+		healthInfoDao.registHealthInfo(dto);
 
 		// ユーザIDから健康情報のリストを取得
 		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
