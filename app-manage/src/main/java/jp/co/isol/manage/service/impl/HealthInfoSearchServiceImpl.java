@@ -8,17 +8,17 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.dao.HealthInfoDao;
 import jp.co.isol.manage.dto.HealthInfoDto;
-import jp.co.isol.manage.service.UserInfoSearchService;
+import jp.co.isol.manage.service.HealthInfoSearchService;
 
 /**
  * @author kou1210hei<br>
  * Daoクラスを呼び出す実装クラス
  */
 @Service
-public class UserInfoSearchServiceImpl implements UserInfoSearchService {
+public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 
 	@Autowired
-	private HealthInfoDao userInfoDao;
+	private HealthInfoDao healthInfoDao;
 
 	/**
 	 * 全ユーザ情報を取得する
@@ -27,7 +27,7 @@ public class UserInfoSearchServiceImpl implements UserInfoSearchService {
 	 */
 	@Override
 	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException {
-		return userInfoDao.getHealthInfoByUserId(userId);
+		return healthInfoDao.getHealthInfoByUserId(userId);
 	}
 
 	/**
@@ -37,8 +37,8 @@ public class UserInfoSearchServiceImpl implements UserInfoSearchService {
 	 * @throws ParseException
 	 */
 	@Override
-	public HealthInfoDto findUserInfoByDataId(String dataId) throws ParseException {
-		return userInfoDao.getUserInfoByDataId(dataId);
+	public HealthInfoDto findHealthInfoByDataId(String dataId) throws ParseException {
+		return healthInfoDao.getHealthInfoByDataId(dataId);
 	}
 
 }

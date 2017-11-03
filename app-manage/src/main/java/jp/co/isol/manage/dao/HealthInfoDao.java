@@ -24,7 +24,7 @@ public interface HealthInfoDao {
 	 * @param dataId
 	 * @return レコード
 	 */
-	public HealthInfoDto getUserInfoByDataId(String dataId) throws ParseException;
+	public HealthInfoDto getHealthInfoByDataId(String dataId) throws ParseException;
 
 	/**
 	 * ユーザ情報を登録する

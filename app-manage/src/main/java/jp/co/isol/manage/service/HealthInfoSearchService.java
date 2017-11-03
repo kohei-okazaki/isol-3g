@@ -10,18 +10,19 @@ import jp.co.isol.manage.dto.HealthInfoDto;
  * ユーザ情報検索インターフェイス
  *
  */
-public interface UserInfoSearchService {
+public interface HealthInfoSearchService {
 
 	/**
 	 * 全ユーザ情報を取得する
-	 * @return 全ユーザ情報
+	 * @param userId
+	 * @return List<HealthInfoDto> 全ユーザ情報
 	 */
 	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException;
 
 	/**
 	 * 指定されたIDからユーザ情報を取得する
-	 * @param id
-	 * @return ログインユーザ情報
+	 * @param dataId
+	 * @return HealthInfoDto
 	 */
-	public HealthInfoDto findUserInfoByDataId(String dataId) throws ParseException;
+	public HealthInfoDto findHealthInfoByDataId(String dataId) throws ParseException;
 }

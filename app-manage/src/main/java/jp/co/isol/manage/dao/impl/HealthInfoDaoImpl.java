@@ -66,7 +66,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	 * @throws ParseException
 	 */
 	@Override
-	public HealthInfoDto getUserInfoByDataId(String dateId) throws ParseException {
+	public HealthInfoDto getHealthInfoByDataId(String dateId) throws ParseException {
 
 		// FIXME
 		HealthInfoDto dto = new HealthInfoDto();

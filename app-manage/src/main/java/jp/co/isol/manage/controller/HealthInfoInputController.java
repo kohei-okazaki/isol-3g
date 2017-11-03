@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +22,8 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.HealthInfoInputService;
-import jp.co.isol.manage.service.UserInfoSearchService;
+import jp.co.isol.manage.service.MailService;
+import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.annotation.HealthInfoInput;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
@@ -36,15 +38,22 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 @Controller
 public class HealthInfoInputController {
 
+	/** 健康情報入力サービス */
 	@Autowired
 	private HealthInfoInputService healthInfoInputService;
+	/** 健康情報Dao */
 	@Autowired
-	private HealthInfoDao userInfoDao;
+	private HealthInfoDao HealthInfoDao;
+	/** 健康情報検索サービス */
 	@Autowired
-	private UserInfoSearchService userInfoSearchService;
+	private HealthInfoSearchService healthInfoSearchService;
+	/** 健康情報ファイルダウンロードサービス */
 	@Autowired
 	@HealthInfoInput
 	private FileDownloadService<HealthInfoInputForm> fileDownloadService;
+	/** メールサービス */
+	@Autowired
+	private MailService mailService;
 
 	/**
 	 * 入力画面
@@ -111,10 +120,10 @@ public class HealthInfoInputController {
 		HealthInfoDto dto = healthInfoInputService.convertUserInfo(form, userId);
 
 		// 入力画面から入力した情報を登録する
-		userInfoDao.registHealthInfo(dto);
+		HealthInfoDao.registHealthInfo(dto);
 
 		// ユーザIDから健康情報のリストを取得
-		List<HealthInfoDto> dtoList = userInfoSearchService.findHealthInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
 
 		// 最後に入力した体重をセット
 		int lastIndex = dtoList.size() - 1;
@@ -150,6 +159,27 @@ public class HealthInfoInputController {
 
 		return new ModelAndView(fileDownloadService.execute(form));
 
+	}
+
+	/**
+	 * メール通知実行
+	 * @param req
+	 * @param resp
+	 * @param model
+	 * @param form
+	 * @return View
+	 */
+	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
+	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, HealthInfoInputForm form) {
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AppLogger logger = context.getBean(AppLogger.class);
+		logger.info(this.getClass(), "# mail execute start");
+
+		mailService.sendMail(form);
+
+		model.addAttribute("page", PageView.COMPLETE.getValue());
+		return View.MENU.getName();
 	}
 
 }
