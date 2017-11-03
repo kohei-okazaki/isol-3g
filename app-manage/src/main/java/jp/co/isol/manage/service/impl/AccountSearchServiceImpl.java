@@ -15,6 +15,7 @@ import jp.co.isol.manage.service.AccountSearchService;
 @Service
 public class AccountSearchServiceImpl implements AccountSearchService {
 
+	/** アカウントDao */
 	@Autowired
 	private AccountDao accountDao;
 
