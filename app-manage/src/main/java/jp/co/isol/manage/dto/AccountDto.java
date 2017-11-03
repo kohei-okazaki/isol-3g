@@ -14,11 +14,11 @@ import lombok.ToString;
 
 /**
  * @author kou1210hei<br>
- * ログインユーザのDto
+ * アカウントのDto
  *
  */
 @Entity
-@Table(name = "LOGIN_USER")
+@Table(name = "ACCOUNT")
 @ToString(exclude = "password")
 public class AccountDto implements Serializable {
 
@@ -34,6 +34,12 @@ public class AccountDto implements Serializable {
 	@Setter
 	@Getter
 	private String password;
+
+	/** 更新日時 */
+	@Column(name = "UPDATE_DATE", nullable = true)
+	@Setter
+	@Getter
+	private Date updateDate;
 
 	/** 登録日時 */
 	@Column(name = "RECORD_DATE", nullable = false)

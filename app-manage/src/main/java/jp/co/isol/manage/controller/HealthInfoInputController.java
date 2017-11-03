@@ -113,9 +113,10 @@ public class HealthInfoInputController {
 		// 入力画面から入力した情報を登録する
 		userInfoDao.registHealthInfo(dto);
 
-		// Daoから前回の体重を取得
+		// ユーザIDから健康情報のリストを取得
 		List<HealthInfoDto> dtoList = userInfoSearchService.findHealthInfoByUserId(userId);
 
+		// 最後に入力した体重をセット
 		int lastIndex = dtoList.size() - 1;
 		HealthInfoDto lastDto = dtoList.get(lastIndex);
 		model.addAttribute("beforeWeight", lastDto.getWeight());

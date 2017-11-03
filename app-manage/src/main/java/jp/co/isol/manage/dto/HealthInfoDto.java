@@ -18,7 +18,7 @@ import lombok.ToString;
  * ユーザ情報を保持するDto
  */
 @Entity
-@Table(name = "USER_INFO")
+@Table(name = "HEALTH_INFO")
 @ToString
 public class HealthInfoDto implements Serializable {
 
@@ -58,6 +58,12 @@ public class HealthInfoDto implements Serializable {
 	@Setter
 	@Getter
 	private BigDecimal standardWeight;
+
+	/** ユーザステータス */
+	@Column(name = "USER_STATUS", nullable = false)
+	@Setter
+	@Getter
+	private String userStatus;
 
 	/** 登録日時 */
 	@Column(name = "RECORD_DATE", nullable = false)
