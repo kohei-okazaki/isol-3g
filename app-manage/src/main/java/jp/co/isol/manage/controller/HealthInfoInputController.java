@@ -114,7 +114,7 @@ public class HealthInfoInputController {
 		userInfoDao.registHealthInfo(dto);
 
 		// Daoから前回の体重を取得
-		List<HealthInfoDto> dtoList = userInfoSearchService.findUserInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = userInfoSearchService.findHealthInfoByUserId(userId);
 
 		int lastIndex = dtoList.size() - 1;
 		HealthInfoDto lastDto = dtoList.get(lastIndex);

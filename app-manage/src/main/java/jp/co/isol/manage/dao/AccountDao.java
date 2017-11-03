@@ -13,27 +13,27 @@ public interface AccountDao {
 	/**
 	 * 引数で指定されたIDのアカウント情報を取得する
 	 * @param userId
-	 * @return LoginUserEntity
+	 * @return AccountDto
 	 */
-	public AccountDto getLoginUserInfoByUserId(String userId);
+	public AccountDto getAccountByUserId(String userId);
 
 
 	/**
 	 * アカウント情報を登録する
 	 */
-	public void registLoginUserInfo();
+	public void registAccount();
 
 
 	/**
 	 * 引数で指定されたアカウント情報を更新する
 	 * @param form
 	 */
-	public void updateAccountDto(AccountSettingForm form);
+	public void updateAccount(AccountSettingForm form);
 
 	/**
 	 * 指定されたアカウント情報の削除を行う<br>
 	 * @param userId
 	 */
-	public void deleteAccountDto(String userId);
+	public void deleteAccount(String userId);
 
 }

@@ -26,8 +26,8 @@ public class UserInfoSearchServiceImpl implements UserInfoSearchService {
 	 * @throws ParseException
 	 */
 	@Override
-	public List<HealthInfoDto> findUserInfoByUserId(String userId) throws ParseException {
-		return userInfoDao.getUserInfoByUserId(userId);
+	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException {
+		return userInfoDao.getHealthInfoByUserId(userId);
 	}
 
 	/**

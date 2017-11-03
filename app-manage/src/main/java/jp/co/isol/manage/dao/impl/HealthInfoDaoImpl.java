@@ -26,7 +26,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	 * @throws ParseException
 	 */
 	@Override
-	public List<HealthInfoDto> getUserInfoByUserId(String userId) throws ParseException {
+	public List<HealthInfoDto> getHealthInfoByUserId(String userId) throws ParseException {
 
 		// FIXME
 		List<HealthInfoDto> dtoList = new ArrayList<HealthInfoDto>();
