@@ -20,20 +20,20 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
 
 /**
  * @author kou1210hei<br>
- * メニュー画面Excel生成クラス<br>
+ * 健康情報入力画面Excel生成クラス<br>
  *
  */
-@Excel(sheetName = "ユーザ情報", headerNames = {Message.HEIGHT, Message.WEIGHT, Message.BMI, Message.STANDARDWEIGHT})
-public class UserInfoExcelBuilder extends BaseExcelBuilder {
+@Excel(sheetName = "健康情報", headerNames = {Message.HEIGHT, Message.WEIGHT, Message.BMI, Message.STANDARDWEIGHT})
+public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
-	/** 入力フォームクラス */
+	/** 健康情報入力フォームクラス */
 	private HealthInfoInputForm form;
 
 	/**
 	 * コンストラクタ<br>
 	 * @param form
 	 */
-	public UserInfoExcelBuilder(HealthInfoInputForm form) {
+	public HealthInfoExcelBuilder(HealthInfoInputForm form) {
 		this.form = form;
 	}
 

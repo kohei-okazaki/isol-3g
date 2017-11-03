@@ -48,8 +48,8 @@
 				<li><a href="#">出力設定</a></li>
 				<li><a href="#">アカウント</a>
 					<ul>
+						<li><a href="/isol/account-create-input.html">新規作成</a></li>
 						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
-						<li><a href="#">新規作成</a></li>
 					</ul>
 				</li>
 			</ul>

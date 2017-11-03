@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
-import jp.co.isol.manage.excel.UserInfoExcelBuilder;
+import jp.co.isol.manage.excel.HealthInfoExcelBuilder;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.FileDownloadService;
 
@@ -27,7 +27,7 @@ public class HealthInfoFileDownloadServiceImpl implements FileDownloadService<He
 	@Override
 	public View execute(HealthInfoInputForm form) {
 		init();
-		return new UserInfoExcelBuilder(form);
+		return new HealthInfoExcelBuilder(form);
 	}
 
 	private void init() {

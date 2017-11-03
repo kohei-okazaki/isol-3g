@@ -55,7 +55,7 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th><c:out value="削除" /></th>
+					<th width="130px"><c:out value="削除" /></th>
 					<td width="250px">
 						<div class="radio">
 							<input type="radio" name="deleteFlag" id="true" value="1" checked="">
@@ -66,7 +66,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="アカウント停止" /></th>
+					<th width="130px"><c:out value="アカウント停止" /></th>
 					<td width="250px">
 						<div class="radio">
 							<input type="radio" name="inavalidFlag" id="true" value="1" checked="">

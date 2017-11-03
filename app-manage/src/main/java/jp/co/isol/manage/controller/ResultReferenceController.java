@@ -72,7 +72,8 @@ public class ResultReferenceController {
 		AppLogger logger = context.getBean(AppLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
 
-		return new ModelAndView(fileDownloadService.execute(healthInfoSearchService.findHealthInfoByUserId(userId)));
+		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
+		return new ModelAndView(fileDownloadService.execute(dtoList));
 	}
 
 }
