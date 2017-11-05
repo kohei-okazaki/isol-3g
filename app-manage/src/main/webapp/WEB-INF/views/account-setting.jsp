@@ -88,6 +88,9 @@
 	<c:if test="${page == 1}">
 		<form action="/isol/account-setting-complete" method="post">
 		<div align="center">
+			<c:if test="${errorMessage != null}">
+				<c:out value="${errorMessage}" />
+			</c:if>
 			<table border="1">
 				<tr>
 					<th width="130px"><c:out value="削除" /></th>

@@ -73,6 +73,7 @@ public class AccountSettingController {
 		if (accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
 			model.addAttribute("page", PageView.INPUT.getValue());
+			model.addAttribute("errorMessage", "アカウント設定の変更情報が不正です");
 
 			return View.ACCOUNT_SETTING.getName();
 		}

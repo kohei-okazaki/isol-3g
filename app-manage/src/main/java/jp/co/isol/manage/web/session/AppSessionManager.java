@@ -33,7 +33,7 @@ public class AppSessionManager {
 	public String getAttribute(HttpSession session, AppSessionKey key) {
 
 		Object value = session.getAttribute(key.getName());
-		return Objects.isNull(value) ? StringUtil.TEMP : value.toString();
+		return Objects.isNull(value) ? StringUtil.EMPTY : value.toString();
 	}
 
 	/**
