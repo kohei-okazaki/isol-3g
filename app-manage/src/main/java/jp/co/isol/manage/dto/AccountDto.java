@@ -42,9 +42,9 @@ public class AccountDto implements Serializable {
 	private Date updateDate;
 
 	/** 登録日時 */
-	@Column(name = "RECORD_DATE", nullable = false)
+	@Column(name = "REG_DATE", nullable = false)
 	@Setter
 	@Getter
-	private Date recordDate;
+	private Date regDate;
 
 }

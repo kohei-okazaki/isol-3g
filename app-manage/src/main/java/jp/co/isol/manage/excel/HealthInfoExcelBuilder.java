@@ -84,13 +84,14 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	 */
 	@Override
 	protected void setData(Sheet sheet) {
-		Cell cell = ExcelUtil.getCell(sheet, 1, 0);
+		final int INDEX_POSITION = 1;
+		Cell cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 0);
 		ExcelUtil.setText(cell, form.getHeight().toString());
-		cell = ExcelUtil.getCell(sheet, 1, 1);
+		cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 1);
 		ExcelUtil.setText(cell, form.getWeight().toString());
-		cell = ExcelUtil.getCell(sheet, 1, 2);
+		cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 2);
 		ExcelUtil.setText(cell, form.getBmi().toString());
-		cell = ExcelUtil.getCell(sheet, 1, 3);
+		cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 3);
 		ExcelUtil.setText(cell, form.getStandardWeight().toString());
 	}
 

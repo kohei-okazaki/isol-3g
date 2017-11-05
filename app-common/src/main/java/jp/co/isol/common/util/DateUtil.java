@@ -29,7 +29,7 @@ public class DateUtil {
 	public static String getFormattedTime(Locale locale) {
 
 		DateFormat format = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		return format.format(new Date()).replaceAll(" JST", StringUtil.TEMP).trim();
+		return format.format(new Date()).replaceAll(" JST", StringUtil.EMPTY).trim();
 
 	}
 
