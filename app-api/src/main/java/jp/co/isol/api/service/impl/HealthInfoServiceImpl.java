@@ -5,9 +5,11 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.dto.HealthInfoDto;
+import jp.co.isol.api.log.ApiLogger;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.code.CodeManager;
 import jp.co.isol.common.code.MainKey;
@@ -21,6 +23,9 @@ import jp.co.isol.common.util.CalcUtil;
  */
 @Service
 public class HealthInfoServiceImpl implements HealthInfoService {
+
+	@Autowired
+	private ApiLogger logger;
 
 	/**
 	 * BMIを計算(小数第2位を四捨五入する)<br>
@@ -50,6 +55,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	@Override
 	public void execute(HealthInfoDto dto, HttpServletRequest request) {
+
+		this.logger.info(this.getClass(), "executeメソッドを実行");
 
 		String userId = request.getParameter("userId");
 		BigDecimal height =  new BigDecimal(request.getParameter("height"));
