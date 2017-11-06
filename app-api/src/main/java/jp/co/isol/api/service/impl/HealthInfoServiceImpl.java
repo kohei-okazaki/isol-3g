@@ -55,7 +55,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		ApiLogger.getInstance().info(this.getClass(), "executeメソッド実行");
 
 		String userId = request.getParameter("userId");
-		BigDecimal height =  new BigDecimal(request.getParameter("height"));
+		BigDecimal height = new BigDecimal(request.getParameter("height"));
 		BigDecimal weight = new BigDecimal(request.getParameter("weight"));
 		BigDecimal bmi = calcBmi(CalcUtil.convertMeter(height), weight);
 		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeter(height));
