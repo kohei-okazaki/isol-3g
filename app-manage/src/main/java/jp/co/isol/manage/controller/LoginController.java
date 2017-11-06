@@ -7,8 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.isol.manage.log.AppLogger;
 import jp.co.isol.manage.view.View;
@@ -22,6 +22,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
  *
  */
 @Controller
+@RequestMapping("/login.html")
 public class LoginController {
 
 	/**
@@ -30,7 +31,7 @@ public class LoginController {
 	 * @param request
 	 * @return ログイン画面
 	 */
-	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
+	@GetMapping
 	public String login(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
