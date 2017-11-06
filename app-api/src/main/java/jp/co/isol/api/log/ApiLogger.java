@@ -1,13 +1,19 @@
 package jp.co.isol.api.log;
 
-import org.springframework.stereotype.Component;
-
 import jp.co.isol.common.log.BaseLogger;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component
 public class ApiLogger extends BaseLogger {
+
+	private static ApiLogger instance = new ApiLogger();
+
+	private ApiLogger() {
+	}
+
+	public static ApiLogger getInstance() {
+		return instance;
+	}
 
 	/**
 	 * infologを出力
