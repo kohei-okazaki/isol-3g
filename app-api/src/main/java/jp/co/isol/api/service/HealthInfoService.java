@@ -2,6 +2,11 @@ package jp.co.isol.api.service;
 
 import java.math.BigDecimal;
 
+/**
+ * @author kou1210hei<br>
+ * 健康情報サービスIF<br>
+ *
+ */
 public interface HealthInfoService {
 
 	/**

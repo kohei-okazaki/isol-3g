@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.service.HealthInfoService;
 
+/**
+ * @author kou1210hei<br>
+ * 健康情報サービス実装クラス<br>
+ *
+ */
 @Service
 public class HealthInfoServiceImpl implements HealthInfoService {
 
