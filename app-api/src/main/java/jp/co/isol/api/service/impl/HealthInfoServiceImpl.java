@@ -1,19 +1,33 @@
 package jp.co.isol.api.service.impl;
 
-import org.springframework.stereotype.Service;
+import java.math.BigDecimal;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.service.HealthInfoService;
 
 @Service
 public class HealthInfoServiceImpl implements HealthInfoService {
 
+	/**
+	 * BMIを計算(小数第2位を四捨五入する)<br>
+	 * @param height
+	 * @param weight
+	 * @return BMIを計算(小数第2位を四捨五入する)
+	 */
 	@Override
-	public void execute() {
-		System.out.println("HealthInfoServiceImpl ---> execute()");
+	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
+		return weight.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
+	}
 
-		ObjectMapper mapper = new ObjectMapper();
+	/**
+	 * 標準体重を計算(小数第2位を四捨五入する)<br>
+	 * @param height
+	 * @return 標準体重を計算(小数第2位を四捨五入する)
+	 */
+	@Override
+	public BigDecimal calcStandardWeight(BigDecimal height) {
+		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
 	}
 
 }
