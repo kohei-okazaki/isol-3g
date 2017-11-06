@@ -18,7 +18,7 @@ public interface HealthInfoService {
 	 * @param dto
 	 * @param request
 	 */
-	public void execute(HealthInfoDto dto, HttpServletRequest request);
+	public HealthInfoDto execute(HealthInfoDto dto, HttpServletRequest request);
 
 	/**
 	 * BMIを計算(小数第2位を四捨五入する)

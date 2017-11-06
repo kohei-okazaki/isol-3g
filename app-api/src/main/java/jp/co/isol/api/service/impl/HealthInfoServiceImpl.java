@@ -50,7 +50,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @param request
 	 */
 	@Override
-	public void execute(HealthInfoDto dto, HttpServletRequest request) {
+	public HealthInfoDto execute(HealthInfoDto dto, HttpServletRequest request) {
 
 		ApiLogger.getInstance().info(this.getClass(), "executeメソッド実行");
 
@@ -70,6 +70,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dto.setStandardWeight(standardWeight);
 		dto.setUserStatus(userStatus);
 		dto.setRegDate(regDate);
+
+		return dto;
 	}
 
 }
