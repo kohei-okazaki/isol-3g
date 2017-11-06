@@ -26,11 +26,7 @@ public class HealthInfoController {
 
 	@GetMapping
 	public HealthInfoDto get(HttpServletRequest request) {
-
-		HealthInfoDto dto = new HealthInfoDto();
-		healthInfoService.execute(dto, request);
-
-		return dto;
+		return healthInfoService.execute(new HealthInfoDto(), request);
 	}
 
 	@PostMapping

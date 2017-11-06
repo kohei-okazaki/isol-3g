@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.dto.HealthInfoDto;
+import jp.co.isol.api.log.ApiLogger;
 import jp.co.isol.api.service.HealthInfoService;
+import jp.co.isol.common.code.CodeManager;
+import jp.co.isol.common.code.MainKey;
+import jp.co.isol.common.code.SubKey;
 import jp.co.isol.common.util.CalcUtil;
 
 /**
@@ -46,13 +50,16 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @param request
 	 */
 	@Override
-	public void execute(HealthInfoDto dto, HttpServletRequest request) {
+	public HealthInfoDto execute(HealthInfoDto dto, HttpServletRequest request) {
+
+		ApiLogger.getInstance().info(this.getClass(), "executeメソッド実行");
 
 		String userId = request.getParameter("userId");
-		BigDecimal height =  new BigDecimal(request.getParameter("height"));
+		BigDecimal height = new BigDecimal(request.getParameter("height"));
 		BigDecimal weight = new BigDecimal(request.getParameter("weight"));
 		BigDecimal bmi = calcBmi(CalcUtil.convertMeter(height), weight);
 		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeter(height));
+		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN);
 		Date regDate = new Date();
 
 		dto.setDataId("001");
@@ -61,8 +68,10 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dto.setWeight(weight);
 		dto.setBmi(bmi);
 		dto.setStandardWeight(standardWeight);
-		dto.setUserStatus("10");
+		dto.setUserStatus(userStatus);
 		dto.setRegDate(regDate);
+
+		return dto;
 	}
 
 }
