@@ -72,7 +72,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dto.setWeight(weight);
 		dto.setBmi(bmi);
 		dto.setStandardWeight(standardWeight);
-		dto.setUserStatus("10");
+		dto.setUserStatus(userStatus);
 		dto.setRegDate(regDate);
 	}
 
