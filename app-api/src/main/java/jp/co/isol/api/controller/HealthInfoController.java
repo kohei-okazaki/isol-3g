@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.isol.api.service.HealthInfoService;
@@ -16,13 +17,14 @@ import jp.co.isol.api.service.HealthInfoService;
  *
  */
 @RestController
-@RequestMapping("/healthInfo")
+@RequestMapping(value = "/healthInfo")
 public class HealthInfoController {
 
 	@Autowired
 	private HealthInfoService healthInfoService;
 
 	@GetMapping
+	@ResponseBody
 	public void get(HttpServletRequest request) {
 		String name = request.getParameter("name");
 		String message = "###get()";
