@@ -2,12 +2,23 @@ package jp.co.isol.api.service;
 
 import java.math.BigDecimal;
 
+import javax.servlet.http.HttpServletRequest;
+
+import jp.co.isol.api.dto.HealthInfoDto;
+
 /**
  * @author kou1210hei<br>
  * 健康情報サービスIF<br>
  *
  */
 public interface HealthInfoService {
+
+	/**
+	 * 健康情報DTOにrequestの内容をつめる<br>
+	 * @param dto
+	 * @param request
+	 */
+	public void execute(HealthInfoDto dto, HttpServletRequest request);
 
 	/**
 	 * BMIを計算(小数第2位を四捨五入する)
