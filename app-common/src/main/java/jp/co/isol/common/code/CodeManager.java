@@ -69,7 +69,7 @@ public class CodeManager {
 	}
 
 	public static final String getMocValue() {
-		return "### getValueMoc()";
+		return "10";
 	}
 
 	public static final List<String> getMocList() {

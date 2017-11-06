@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.dto.HealthInfoDto;
 import jp.co.isol.api.service.HealthInfoService;
+import jp.co.isol.common.code.CodeManager;
+import jp.co.isol.common.code.MainKey;
+import jp.co.isol.common.code.SubKey;
 import jp.co.isol.common.util.CalcUtil;
 
 /**
@@ -53,6 +56,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		BigDecimal weight = new BigDecimal(request.getParameter("weight"));
 		BigDecimal bmi = calcBmi(CalcUtil.convertMeter(height), weight);
 		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeter(height));
+		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN);
 		Date regDate = new Date();
 
 		dto.setDataId("001");
