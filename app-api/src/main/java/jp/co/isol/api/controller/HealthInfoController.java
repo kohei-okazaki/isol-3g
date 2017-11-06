@@ -17,7 +17,7 @@ import jp.co.isol.api.service.HealthInfoService;
  *
  */
 @RestController
-@RequestMapping(value = "/healthInfo", consumes = "application/json;charset=UTF-8")
+@RequestMapping(value = "/healthInfo")
 public class HealthInfoController {
 
 	@Autowired
