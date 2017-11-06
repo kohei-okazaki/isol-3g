@@ -12,6 +12,11 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * @author kou1210hei<br>
+ * 健康情報DTO
+ *
+ */
 @Entity
 @Table(name = "HEALTH_INFO")
 public class HealthInfoDto implements Serializable {
