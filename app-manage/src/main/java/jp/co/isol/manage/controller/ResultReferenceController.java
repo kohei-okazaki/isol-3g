@@ -19,7 +19,7 @@ import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.annotation.Reference;
 import jp.co.isol.manage.view.View;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 
 /**
  * 健康管理_結果照会画面コントローラクラス<br>
@@ -48,7 +48,7 @@ public class ResultReferenceController {
 	@RequestMapping(value = "/result-reference.html", method = RequestMethod.GET)
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# resultReference start");
 
@@ -67,7 +67,7 @@ public class ResultReferenceController {
 	@RequestMapping(value = "/result-reference-download.html", method = RequestMethod.GET)
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
 

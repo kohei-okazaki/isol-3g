@@ -18,7 +18,7 @@ import jp.co.isol.common.dto.AccountDto;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSettingService;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 
 /**
  * アカウント設定サービス実装クラス<br>
@@ -34,7 +34,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	@Override
 	public void changePassword(AccountSettingForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		AccountDao accountDao = context.getBean(AccountDao.class);
 
 		AccountDto accountDto = new AccountDto();
@@ -51,7 +51,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	@Override
 	public void deleteAccount(AccountSettingForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		AccountDao accountDao = context.getBean(AccountDao.class);
 
 		accountDao.deleteAccount(form.getUserId());
@@ -66,7 +66,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	@Override
 	public boolean invalidForm(AccountSettingForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 
 		Class<AccountSettingForm> clazz = AccountSettingForm.class;

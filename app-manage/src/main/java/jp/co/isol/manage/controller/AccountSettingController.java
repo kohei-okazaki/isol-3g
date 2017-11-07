@@ -17,7 +17,7 @@ import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
@@ -44,7 +44,7 @@ public class AccountSettingController {
 	@RequestMapping(value = "/account-setting-input.html", method = RequestMethod.GET)
 	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "#accountSetttingInput start");
 

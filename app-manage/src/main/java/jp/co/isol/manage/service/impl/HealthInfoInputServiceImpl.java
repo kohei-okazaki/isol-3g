@@ -47,7 +47,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 
 	/**
 	 * 入力情報をDtoにつめる<br>
-	 * @return
+	 * @return 健康情報Dto
 	 */
 	@Override
 	public HealthInfoDto convertUserInfo(HealthInfoInputForm form, String userId) {
@@ -60,6 +60,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 		dto.setUserStatus(CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN));
 		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeter(form.getHeight())));
 		dto.setRegDate(new Date());
+
 		return dto;
 	}
 
@@ -77,7 +78,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 			// 増加した場合
 			return Message.UP;
 		} else {
-			// 現象した場合
+			// 減少した場合
 			return Message.DOWN;
 		}
 	}

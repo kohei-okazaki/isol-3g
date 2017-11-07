@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.view.View;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
@@ -34,7 +34,7 @@ public class LoginController {
 	public String login(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
 		sessionManager.removeKey(session, AppSessionKey.USER_ID);
 
