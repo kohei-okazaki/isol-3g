@@ -5,8 +5,8 @@
 							http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>jp.co</groupId>
-	<artifactId>isol</artifactId>
+	<groupId>jp.co.isol</groupId>
+	<artifactId>isol-manage</artifactId>
 	<name>app-manage</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -20,6 +20,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- isol-common -->
+		<dependency>
+			<groupId>jp.co.isol</groupId>
+			<artifactId>isol-common</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

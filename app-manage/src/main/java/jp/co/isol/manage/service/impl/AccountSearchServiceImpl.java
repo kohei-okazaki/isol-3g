@@ -8,7 +8,6 @@ import jp.co.isol.manage.dto.AccountDto;
 import jp.co.isol.manage.service.AccountSearchService;
 
 /**
- * @author kou1210hei<br>
  * アカウント検索サービス実装クラス<br>
  *
  */

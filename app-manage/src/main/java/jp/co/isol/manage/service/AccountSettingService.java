@@ -2,6 +2,10 @@ package jp.co.isol.manage.service;
 
 import jp.co.isol.manage.form.AccountSettingForm;
 
+/**
+ * アカウント設定サービスIF
+ *
+ */
 public interface AccountSettingService {
 
 	/**

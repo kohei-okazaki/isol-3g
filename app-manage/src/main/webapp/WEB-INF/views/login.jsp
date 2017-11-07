@@ -20,7 +20,7 @@
 
 	<fieldset>
 		<h1>健康管理アプリ</h1>
-		<form action="/isol/menu.html" method="post">
+		<form action="/isol-manage/menu.html" method="post">
 			<div class="iconUser"></div>
 			<input type="text" name="userId" placeholder="ユーザID" required>
 			<br><br>

@@ -7,7 +7,6 @@ import java.util.List;
 import jp.co.isol.common.util.StringUtil;
 
 /**
- * @author kou1210hei<br>
  * 健康管理_コードマネージャクラス<br>
  *
  */

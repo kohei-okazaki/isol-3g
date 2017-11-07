@@ -26,13 +26,13 @@
 			<ul>
 				<li><a href="#">ユーザ情報</a>
 					<ul>
-						<li><a href="/isol/input.html">入力</a></li>
-						<li><a href="/isol/result-reference.html">照会</a></li>
+						<li><a href="/isol-manage/input.html">入力</a></li>
+						<li><a href="/isol-manage/result-reference.html">照会</a></li>
 					</ul>
 				</li>
 				<li><a href="#">通知</a>
 					<ul>
-						<li><a href="/isol/notice.html">メール</a></li>
+						<li><a href="/isol-manage/notice.html">メール</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -42,13 +42,13 @@
 				<li><a href="#">出力設定</a></li>
 				<li><a href="#">アカウント</a>
 					<ul>
-						<li><a href="/isol/account-create-input.html">新規作成</a></li>
-						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
+						<li><a href="/isol-manage/account-create-input.html">新規作成</a></li>
+						<li><a href="/isol-manage/account-setting-input.html">設定変更</a></li>
 					</ul>
 				</li>
 			</ul>
 		</li>
-		<li><a href="/isol/login.html">ログアウト</a></li>
+		<li><a href="/isol-manage/login.html">ログアウト</a></li>
 	</ul>
 
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">

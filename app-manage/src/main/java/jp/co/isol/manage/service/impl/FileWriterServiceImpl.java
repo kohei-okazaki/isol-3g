@@ -11,7 +11,6 @@ import jp.co.isol.manage.service.FileWriterService;
 import jp.co.isol.manage.view.FileMessage;
 
 /**
- * @author kou1210hei<br>
  * ファイル書き込みサービス実装クラス
  *
  */

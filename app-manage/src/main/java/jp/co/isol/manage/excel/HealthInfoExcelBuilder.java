@@ -19,7 +19,6 @@ import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 
 /**
- * @author kou1210hei<br>
  * 健康情報入力画面Excel生成クラス<br>
  *
  */

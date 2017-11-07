@@ -5,6 +5,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,11 +15,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.dao.AccountDao;
+import jp.co.isol.manage.dto.AccountDto;
 import jp.co.isol.manage.form.AccountSettingForm;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.web.config.AppConfig;
 
+/**
+ * アカウント設定サービス実装クラス<br>
+ *
+ */
 @Service
 public class AccountSettingServiceImpl implements AccountSettingService {
 
@@ -31,11 +37,15 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void changePassword(AccountSettingForm form) {
-		accountDao.updateAccount(form);
+		AccountDto accountDto = new AccountDto();
+		accountDto.setUserId(form.getUserId());
+		accountDto.setPassword(form.getPassword());
+		accountDto.setRegDate(new Date());
+		accountDao.updateAccount(accountDto);
 	}
 
 	/**
-	 * 指定されたアカウントの削除をする<br>
+	 * 指定されたユーザIDのアカウントの削除をする<br>
 	 * @param form
 	 */
 	@Override
@@ -53,7 +63,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	public boolean invalidForm(AccountSettingForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 
 		Class<AccountSettingForm> clazz = AccountSettingForm.class;
 		List<Field> fieldList = Arrays.asList(clazz.getDeclaredFields());

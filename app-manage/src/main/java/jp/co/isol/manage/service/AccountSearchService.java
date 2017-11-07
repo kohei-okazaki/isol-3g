@@ -3,7 +3,6 @@ package jp.co.isol.manage.service;
 import jp.co.isol.manage.dto.AccountDto;
 
 /**
- * @author kou1210hei<br>
  * アカウント検索サービスIF<br>
  *
  */

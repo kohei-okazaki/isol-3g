@@ -4,10 +4,8 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.dto.AccountDto;
-import jp.co.isol.manage.form.AccountSettingForm;
 
 /**
- * @author kou1210hei<br>
  * ログインユーザ情報のDaoクラス
  *
  */
@@ -40,7 +38,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * @param form
 	 */
 	@Override
-	public void updateAccount(AccountSettingForm form) {
+	public void updateAccount(AccountDto accountDto) {
 		// TODO 更新処理を追加すること
 	}
 

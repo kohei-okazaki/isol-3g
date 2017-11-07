@@ -7,12 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.manage.form.LoginUserForm;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
 
 /**
- * @author kou1210hei<br>
  * 健康管理_通知設定コントローラクラス<br>
  *
  */
@@ -29,7 +28,7 @@ public class NoticeSettingController {
 	public String noticeSetttingInput(Model model, LoginUserForm loginForm) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# noticeSetttingInput start");
 
 		return View.NOTICE_SETTING.getName();

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.manage.dto.HealthInfoDto;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.annotation.Reference;
@@ -22,7 +22,6 @@ import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
 
 /**
- * @author kou1210hei<br>
  * 健康管理_結果照会画面コントローラクラス<br>
  *
  */
@@ -50,7 +49,7 @@ public class ResultReferenceController {
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# resultReference start");
 
 		// ログイン中のユーザの全レコードを検索する
@@ -69,7 +68,7 @@ public class ResultReferenceController {
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
 
 		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);

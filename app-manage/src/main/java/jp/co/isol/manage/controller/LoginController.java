@@ -10,14 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
- * @author kou1210hei<br>
  * 健康管理_ログイン画面コントローラクラス
  *
  */
@@ -39,7 +38,7 @@ public class LoginController {
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
 		sessionManager.removeKey(session, AppSessionKey.USER_ID);
 
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# login start");
 
 		return View.LOGIN.getName();

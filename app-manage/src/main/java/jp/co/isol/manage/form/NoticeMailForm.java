@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @kou1210hei<br>
  * 送信するメールオブジェクトクラス
  *
  */

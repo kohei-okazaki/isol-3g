@@ -26,15 +26,15 @@
 			<ul>
 				<li><a href="#">ユーザ情報</a>
 					<ul>
-						<li><a href="/isol/input.html">入力</a></li>
+						<li><a href="/isol-manage/input.html">入力</a></li>
 					</ul>
 				</li>
 				<li><a href="#">通知</a>
 					<ul>
-						<li><a href="/isol/notice.html">メール</a></li>
+						<li><a href="/isol-manage/notice.html">メール</a></li>
 					</ul>
 				</li>
-				<li><a href="/isol/menu.html">メニュー戻る</a></li>
+				<li><a href="/isol-manage/menu.html">メニュー戻る</a></li>
 			</ul>
 		</li>
 		<li><a href="#">ダウンロード</a>
@@ -54,7 +54,7 @@
 				</li>
 			</ul>
 		</li>
-		<li><a href="/isol/login.html">ログアウト</a></li>
+		<li><a href="/isol-manage/login.html">ログアウト</a></li>
 	</ul>
 
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">

@@ -6,8 +6,7 @@ import java.util.List;
 import jp.co.isol.manage.dto.HealthInfoDto;
 
 /**
- * @author kou1210hei<br>
- * ユーザ情報検索インターフェイス
+ * ユーザ情報検索IF
  *
  */
 public interface HealthInfoSearchService {

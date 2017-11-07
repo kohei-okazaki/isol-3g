@@ -15,7 +15,6 @@ import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
- * @author kou1210hei<br>
  * ログインサービス実装クラス
  *
  */

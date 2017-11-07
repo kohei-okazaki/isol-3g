@@ -10,7 +10,6 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.FileDownloadService;
 
 /**
- * @author kou1210hei<br>
  * メニュー画面ファイルダウンロードサービス実装クラス
  *
  */

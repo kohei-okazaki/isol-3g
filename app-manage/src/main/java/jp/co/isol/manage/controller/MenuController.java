@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.isol.manage.form.LoginUserForm;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
@@ -48,7 +48,7 @@ public class MenuController {
 		loginService.registSession(request.getSession(), loginForm);
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# menu start");
 
 		return View.MENU.getName();

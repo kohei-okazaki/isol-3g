@@ -9,7 +9,7 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
 
 
 /**
- * 入力画面サービスIF
+ * 健康情報入力サービスIF
  *
  */
 public interface HealthInfoInputService {

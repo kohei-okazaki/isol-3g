@@ -1,10 +1,8 @@
 package jp.co.isol.manage.dao;
 
 import jp.co.isol.manage.dto.AccountDto;
-import jp.co.isol.manage.form.AccountSettingForm;
 
 /**
- * @author kou1210hei<br>
  * ログインユーザ情報のDaoインターフェイス
  *
  */
@@ -26,9 +24,9 @@ public interface AccountDao {
 
 	/**
 	 * 引数で指定されたアカウント情報を更新する
-	 * @param form
+	 * @param accountDto
 	 */
-	public void updateAccount(AccountSettingForm form);
+	public void updateAccount(AccountDto accountDto);
 
 	/**
 	 * 指定されたアカウント情報の削除を行う<br>

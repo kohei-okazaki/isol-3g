@@ -4,12 +4,11 @@ import jp.co.isol.common.log.BaseLogger;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author kou1210hei<br>
  * アプリ内で出力するログクラス<br>
  *
  */
 @Slf4j
-public class AppLogger extends BaseLogger {
+public class ManageLogger extends BaseLogger {
 
 	/**
 	 * infologを出力

@@ -40,7 +40,7 @@
 	<ul id="dropmenu">
 		<li><a href="#">MENU</a>
 			<ul>
-				<li><a href="/isol/menu.html">メニュー戻る</a></li>
+				<li><a href="/isol-manage/menu.html">メニュー戻る</a></li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>
@@ -48,13 +48,13 @@
 				<li><a href="#">出力設定</a></li>
 				<li><a href="#">アカウント</a>
 					<ul>
-						<li><a href="/isol/account-create-input.html">新規作成</a></li>
-						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
+						<li><a href="/isol-manage/account-create-input.html">新規作成</a></li>
+						<li><a href="/isol-manage/account-setting-input.html">設定変更</a></li>
 					</ul>
 				</li>
 			</ul>
 		</li>
-		<li><a href="/isol/login.html">ログアウト</a></li>
+		<li><a href="/isol-manage/login.html">ログアウト</a></li>
 	</ul>
 
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
@@ -65,7 +65,7 @@
 	</div>
 	<br>
 	<div align="center">
-		<form action="/isol/input-confirm.html" method="post">
+		<form action="/isol-manage/input-confirm.html" method="post">
 			<c:out value="身長：" />
 			<input type="text" name="height" size="6" required>
 			<c:out value="cm" />
@@ -92,7 +92,7 @@
 	<c:if test="${page == 1}">
 	<br>
 	<div align="center">
-		<form action="/isol/input-complete.html" method="post">
+		<form action="/isol-manage/input-complete.html" method="post">
 			<c:out value="身長：" />
 			<input type="text" name="height" value="${form.height}" size="6" disabled="disabled">
 			<input type="hidden" name="height" value="${form.height}" />
@@ -142,7 +142,7 @@
 			<tr>
 				<td align="center">
 				<!-- 通知  -->
-				<form action="/isol/notice.html" method="post">
+				<form action="/isol-manage/notice.html" method="post">
 					<input type="hidden" name="height" value="${dto.height}">
 					<input type="hidden" name="weight" value="${dto.weight}">
 					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
@@ -155,7 +155,7 @@
 				<td>　　</td>
 				<td align="center">
 				<!-- 出力 -->
-				<form action="/isol/fileDownload.html" method="get">
+				<form action="/isol-manage/fileDownload.html" method="get">
 					<input type="hidden" name="height" value="${dto.height}">
 					<input type="hidden" name="weight" value="${dto.weight}">
 					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
@@ -168,7 +168,7 @@
 				<td>　　</td>
 				<td align="center">
 				<!-- メニュー画面へ -->
-				<form action="/isol/menu.html" method="get">
+				<form action="/isol-manage/menu.html" method="get">
 					<div>
 						<input class="menuicon" type="image" src="resources/image/icon_menu.jpg">
 					</div>

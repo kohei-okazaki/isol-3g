@@ -14,7 +14,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author kou1210hei<br>
  * ユーザ情報を保持するDto
  */
 @Entity

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import jp.co.isol.common.util.StringUtil;
 
 /**
- * @author kohei.okazaki<br>
  * App内のsession管理クラス
  *
  */

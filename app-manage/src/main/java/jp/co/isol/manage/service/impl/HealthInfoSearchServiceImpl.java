@@ -11,7 +11,6 @@ import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 
 /**
- * @author kou1210hei<br>
  * Daoクラスを呼び出す実装クラス
  */
 @Service

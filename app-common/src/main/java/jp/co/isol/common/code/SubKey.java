@@ -1,7 +1,6 @@
 package jp.co.isol.common.code;
 
 /**
- * @author kou1210hei<br>
  * CodeManagerで使うサブキーenum<br>
  *
  */
