@@ -1,6 +1,6 @@
 package jp.co.isol.manage.service;
 
-import jp.co.isol.manage.dto.AccountDto;
+import jp.co.isol.common.dto.AccountDto;
 
 /**
  * アカウント検索サービスIF<br>

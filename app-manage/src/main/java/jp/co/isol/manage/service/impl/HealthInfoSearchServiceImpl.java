@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.manage.dao.HealthInfoDao;
-import jp.co.isol.manage.dto.HealthInfoDto;
+import jp.co.isol.common.dao.HealthInfoDao;
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 
 /**

@@ -6,9 +6,12 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.common.code.CodeManager;
+import jp.co.isol.common.code.MainKey;
+import jp.co.isol.common.code.SubKey;
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.util.CalcUtil;
-import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoInputService;
@@ -54,7 +57,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
 		dto.setBmi(calcService.calcBmi(CalcUtil.convertMeter(form.getHeight()), form.getWeight()));
-		dto.setUserStatus("1010");
+		dto.setUserStatus(CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN));
 		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeter(form.getHeight())));
 		dto.setRegDate(new Date());
 		return dto;

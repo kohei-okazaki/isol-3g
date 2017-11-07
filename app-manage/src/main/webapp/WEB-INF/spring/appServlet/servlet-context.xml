@@ -22,7 +22,7 @@
 	<context:component-scan base-package="jp.co.isol.manage.controller" />
 	<context:component-scan base-package="jp.co.isol.manage.service.impl" />
 	<context:component-scan base-package="jp.co.isol.manage.service.annotation" />
-	<context:component-scan base-package="jp.co.isol.manage.dao.impl" />
+	<context:component-scan base-package="jp.co.isol.manage.web.config" />
 
 
 

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.isol.manage.dao.HealthInfoDao;
-import jp.co.isol.manage.dto.HealthInfoDto;
+import jp.co.isol.common.dao.HealthInfoDao;
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.FileDownloadService;

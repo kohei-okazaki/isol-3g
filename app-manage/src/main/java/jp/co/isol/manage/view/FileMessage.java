@@ -3,8 +3,8 @@ package jp.co.isol.manage.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.message.Message;
-import jp.co.isol.manage.dto.HealthInfoDto;
 import lombok.Getter;
 
 /**

@@ -1,11 +1,13 @@
 package jp.co.isol.manage.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.manage.dao.AccountDao;
-import jp.co.isol.manage.dto.AccountDto;
+import jp.co.isol.common.dao.AccountDao;
+import jp.co.isol.common.dto.AccountDto;
 import jp.co.isol.manage.service.AccountSearchService;
+import jp.co.isol.manage.web.config.AppConfig;
 
 /**
  * アカウント検索サービス実装クラス<br>
@@ -14,10 +16,6 @@ import jp.co.isol.manage.service.AccountSearchService;
 @Service
 public class AccountSearchServiceImpl implements AccountSearchService {
 
-	/** アカウントDao */
-	@Autowired
-	private AccountDao accountDao;
-
 	/**
 	 * ユーザIDからアカウント情報を取得する
 	 * @param userId
@@ -25,6 +23,8 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	 */
 	@Override
 	public AccountDto findAccountByUserId(String userId) {
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AccountDao accountDao = context.getBean(AccountDao.class);
 		return accountDao.getAccountByUserId(userId);
 	}
 

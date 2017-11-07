@@ -5,7 +5,7 @@ function finish() {
 
 function referenceExcelDownload() {
 	var form = document.createElement('form');
-	form.action = '/isol/result-reference-download.html';
+	form.action = '/isol-manage/result-reference-download.html';
 	form.method = 'get';
 	document.body.appendChild(form);
 	form.submit();
