@@ -5,13 +5,17 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.api.config.ApiConfig;
 import jp.co.isol.api.log.ApiLogger;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.code.CodeManager;
 import jp.co.isol.common.code.MainKey;
 import jp.co.isol.common.code.SubKey;
+import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.util.CalcUtil;
 
@@ -47,6 +51,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * 健康情報DTOにrequestの内容をつめる<br>
 	 * @param dto
 	 * @param request
+	 * @return 健康情報Dto
 	 */
 	@Override
 	public HealthInfoDto execute(HealthInfoDto dto, HttpServletRequest request) {
@@ -69,6 +74,11 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dto.setStandardWeight(standardWeight);
 		dto.setUserStatus(userStatus);
 		dto.setRegDate(regDate);
+
+		// 登録処理を行う
+		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
+		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
+		dao.registHealthInfo(dto);
 
 		return dto;
 	}

@@ -27,7 +27,7 @@ import jp.co.isol.manage.service.MailService;
 import jp.co.isol.manage.service.annotation.HealthInfoInput;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
@@ -63,7 +63,7 @@ public class HealthInfoInputController {
 	@RequestMapping(value = "/input.html", method = RequestMethod.GET)
 	public String input(Model model) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "#input start");
 
@@ -81,7 +81,7 @@ public class HealthInfoInputController {
 	@RequestMapping(value = "/input-confirm.html", method = RequestMethod.POST)
 	public String confirm(Model model, HealthInfoInputForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "#confirm start");
 
@@ -110,7 +110,7 @@ public class HealthInfoInputController {
 	@RequestMapping(value = "/input-complete.html", method = RequestMethod.POST)
 	public String complete(Model model, HealthInfoInputForm form, HttpServletRequest request) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# menu complete");
 
@@ -153,7 +153,7 @@ public class HealthInfoInputController {
 	@RequestMapping(value = "/fileDownload.html", method = RequestMethod.GET)
 	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoInputForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
 
@@ -172,7 +172,7 @@ public class HealthInfoInputController {
 	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
 	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, HealthInfoInputForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# mail execute start");
 

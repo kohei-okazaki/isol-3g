@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.LoginService;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
@@ -44,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public void registSession(HttpSession session, LoginUserForm loginForm) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
 		sessionManager.setAttribute(session, AppSessionKey.USER_ID, loginForm.getUserId());
 	}

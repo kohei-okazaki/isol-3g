@@ -16,7 +16,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
  *
  */
 @Configuration
-public class AppConfig {
+public class ManageConfig {
 
 	@Bean(name = "appSessionManager")
 	public AppSessionManager getAppSessionManager() {

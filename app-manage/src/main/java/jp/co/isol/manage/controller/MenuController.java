@@ -16,7 +16,7 @@ import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.view.View;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 
 /**
  * 健康管理_メニュー画面コントローラ
@@ -47,7 +47,7 @@ public class MenuController {
 		// セッションにIDを登録する。
 		loginService.registSession(request.getSession(), loginForm);
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# menu start");
 

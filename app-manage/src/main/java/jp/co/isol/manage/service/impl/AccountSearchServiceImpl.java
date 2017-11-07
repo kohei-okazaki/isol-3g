@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dto.AccountDto;
 import jp.co.isol.manage.service.AccountSearchService;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 
 /**
  * アカウント検索サービス実装クラス<br>
@@ -23,7 +23,7 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	 */
 	@Override
 	public AccountDto findAccountByUserId(String userId) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		AccountDao accountDao = context.getBean(AccountDao.class);
 		return accountDao.getAccountByUserId(userId);
 	}

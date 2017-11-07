@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.view.View;
-import jp.co.isol.manage.web.config.AppConfig;
+import jp.co.isol.manage.web.config.ManageConfig;
 
 /**
  * 健康管理_通知設定コントローラクラス<br>
@@ -27,7 +27,7 @@ public class NoticeSettingController {
 	@RequestMapping(value = "/notice-setting.html")
 	public String noticeSetttingInput(Model model, LoginUserForm loginForm) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# noticeSetttingInput start");
 
