@@ -2,4 +2,5 @@
 #manage(管理画面)  
 #api(API)  
 #common(共通ロジック)  
-  を提供  
+ 
+ を提供  
