@@ -15,7 +15,7 @@
 		<org.springframework-version>5.0.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.11</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
-		<json-version>2.9.2</json-version>
+		<jackson-version>2.9.2</jackson-version>
 	</properties>
 
 	<dependencies>
@@ -50,17 +50,17 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${json-version}</version>
+			<version>${jackson-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>${json-version}</version>
+			<version>${jackson-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
-			<version>${json-version}</version>
+			<version>${jackson-version}</version>
 		</dependency>
 
 		<!-- DB -->
