@@ -26,8 +26,8 @@
 			<ul>
 				<li><a href="#">ユーザ情報</a>
 					<ul>
-						<li><a href="/isol/input.html">入力</a></li>
-						<li><a href="/isol/result-reference.html">照会</a></li>
+						<li><a href="/isol-manage/input.html">入力</a></li>
+						<li><a href="/isol-manage/result-reference.html">照会</a></li>
 					</ul>
 				</li>
 				<li><a href="/isol/menu.html">メニュー戻る</a></li>
@@ -38,20 +38,20 @@
 				<li><a href="#">出力設定</a></li>
 				<li><a href="#">アカウント</a>
 					<ul>
-						<li><a href="/isol/account-setting-input.html">設定変更</a></li>
-						<li><a href="/isol/account-create-input.html">新規作成</a></li>
+						<li><a href="/isol-manage/account-setting-input.html">設定変更</a></li>
+						<li><a href="/isol-manage/account-create-input.html">新規作成</a></li>
 					</ul>
 				</li>
 			</ul>
 		</li>
-		<li><a href="/isol/login.html"> ログアウト </a></li>
+		<li><a href="/isol-manage/login.html"> ログアウト </a></li>
 	</ul>
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 	<br><br>
 
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">
-		<form action="/isol/account-setting-confirm.html" method="post">
+		<form action="/isol-manage/account-setting-confirm.html" method="post">
 		<div align="center">
 			<table border="1">
 
@@ -86,7 +86,7 @@
 
 	<!-- 確認画面 -->
 	<c:if test="${page == 1}">
-		<form action="/isol/account-setting-complete" method="post">
+		<form action="/isol-manage/account-setting-complete" method="post">
 		<div align="center">
 			<c:if test="${errorMessage != null}">
 				<c:out value="${errorMessage}" />

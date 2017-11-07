@@ -62,16 +62,16 @@
 						<li><a href="#">孫メニュー4</a></li>
 					</ul>
 				</li>
-				<li><a href="/isol/menu.html">メニュー画面</a></li>
+				<li><a href="/isol-manage/menu.html">メニュー画面</a></li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>
 			<ul>
-				<li><a href="/isol/account-setting-input.html">アカウント設定</a></li>
+				<li><a href="/isol-manage/account-setting-input.html">アカウント設定</a></li>
 				<li><a href="#">出力設定</a></li>
 			</ul>
 		</li>
-		<li><a href="/isol/login.html"> ログアウト </a></li>
+		<li><a href="/isol-manage/login.html"> ログアウト </a></li>
 	</ul>
 	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 	<br><br>
