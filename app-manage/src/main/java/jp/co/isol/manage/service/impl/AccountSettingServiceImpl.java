@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.manage.dao.AccountDao;
 import jp.co.isol.manage.form.AccountSettingForm;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.web.config.AppConfig;
 
@@ -53,7 +53,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	public boolean invalidForm(AccountSettingForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 
 		Class<AccountSettingForm> clazz = AccountSettingForm.class;
 		List<Field> fieldList = Arrays.asList(clazz.getDeclaredFields());

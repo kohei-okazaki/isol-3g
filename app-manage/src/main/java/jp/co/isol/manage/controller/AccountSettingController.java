@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.isol.manage.form.AccountSettingForm;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.view.PageView;
@@ -45,7 +45,7 @@ public class AccountSettingController {
 	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "#accountSetttingInput start");
 
 		// セッションからユーザIDを取得

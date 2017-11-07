@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.co.isol.manage.dao.HealthInfoDao;
 import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoInputForm;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.HealthInfoInputService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
@@ -64,7 +64,7 @@ public class HealthInfoInputController {
 	public String input(Model model) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "#input start");
 
 		model.addAttribute("page", PageView.INPUT.getValue());
@@ -82,7 +82,7 @@ public class HealthInfoInputController {
 	public String confirm(Model model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "#confirm start");
 
 		if (healthInfoInputService.hasError(form)) {
@@ -111,7 +111,7 @@ public class HealthInfoInputController {
 	public String complete(Model model, HealthInfoInputForm form, HttpServletRequest request) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# menu complete");
 
 		AppSessionManager manager = context.getBean(AppSessionManager.class);
@@ -154,7 +154,7 @@ public class HealthInfoInputController {
 	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# excelDownload start");
 
 		return new ModelAndView(fileDownloadService.execute(form));
@@ -173,7 +173,7 @@ public class HealthInfoInputController {
 	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		AppLogger logger = context.getBean(AppLogger.class);
+		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# mail execute start");
 
 		mailService.sendMail(form);

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import jp.co.isol.common.other.DBConnecter;
 import jp.co.isol.manage.web.session.AppSessionManager;
-import jp.co.isol.manage.log.AppLogger;
+import jp.co.isol.manage.log.ManageLogger;
 
 /**
  * @author kou1210hei<br>
@@ -26,8 +26,8 @@ public class AppConfig {
 	}
 
 	@Bean(name = "appLogger")
-	public AppLogger getAppLogger() {
-		return new AppLogger();
+	public ManageLogger getAppLogger() {
+		return new ManageLogger();
 	}
 
 }
