@@ -1,4 +1,4 @@
-package jp.co.isol.api.dto;
+package jp.co.isol.common.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,14 +11,14 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
- * @author kou1210hei<br>
- * 健康情報DTO
- *
+ * ユーザ情報を保持するDto
  */
 @Entity
 @Table(name = "HEALTH_INFO")
+@ToString
 public class HealthInfoDto implements Serializable {
 
 	/** データID */
@@ -69,4 +69,5 @@ public class HealthInfoDto implements Serializable {
 	@Setter
 	@Getter
 	private Date regDate;
+
 }
