@@ -16,7 +16,6 @@ import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.util.CalcUtil;
 
 /**
- * @author kou1210hei<br>
  * 健康情報サービス実装クラス<br>
  *
  */

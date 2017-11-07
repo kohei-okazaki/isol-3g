@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
-import jp.co.isol.manage.dto.HealthInfoDto;
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.excel.ResultReferenceExcelBuiler;
 import jp.co.isol.manage.service.FileDownloadService;
 

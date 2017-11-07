@@ -11,12 +11,12 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.excel.BaseExcelBuilder;
 import jp.co.isol.common.excel.Excel;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
-import jp.co.isol.manage.dto.HealthInfoDto;
 
 /**
  * 結果照会画面Excel生成クラス<br>

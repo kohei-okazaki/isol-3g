@@ -9,13 +9,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.manage.dao.AccountDao;
-import jp.co.isol.manage.dto.AccountDto;
+import jp.co.isol.common.dao.AccountDao;
+import jp.co.isol.common.dto.AccountDto;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSettingService;
@@ -28,15 +27,16 @@ import jp.co.isol.manage.web.config.AppConfig;
 @Service
 public class AccountSettingServiceImpl implements AccountSettingService {
 
-	@Autowired
-	private AccountDao accountDao;
-
 	/**
 	 * IDで指定されたアカウントのパスワードを変更する<br>
 	 * @param form
 	 */
 	@Override
 	public void changePassword(AccountSettingForm form) {
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AccountDao accountDao = context.getBean(AccountDao.class);
+
 		AccountDto accountDto = new AccountDto();
 		accountDto.setUserId(form.getUserId());
 		accountDto.setPassword(form.getPassword());
@@ -50,6 +50,10 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void deleteAccount(AccountSettingForm form) {
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		AccountDao accountDao = context.getBean(AccountDao.class);
+
 		accountDao.deleteAccount(form.getUserId());
 	}
 

@@ -6,9 +6,9 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.message.Message;
 import jp.co.isol.common.util.CalcUtil;
-import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.MenuService;

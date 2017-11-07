@@ -3,10 +3,9 @@ package jp.co.isol.manage.service;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.message.Message;
-import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoInputForm;
-
 
 /**
  * 健康情報入力サービスIF

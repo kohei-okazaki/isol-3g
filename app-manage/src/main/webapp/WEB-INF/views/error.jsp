@@ -19,7 +19,7 @@
 		<img class="headericon" alt="入力" src="resources/image/icon_error.png">
 		<c:out value="エラー画面" />
 	</h1>
-	<c:out value="${serverTime}" />
+
 	<hr>
 	<c:if test="${message == null}">
 		<c:out value="入力情報に誤りがあります。もう一度入力してください" />

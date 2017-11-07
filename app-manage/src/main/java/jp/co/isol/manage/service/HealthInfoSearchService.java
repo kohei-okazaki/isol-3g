@@ -3,7 +3,7 @@ package jp.co.isol.manage.service;
 import java.text.ParseException;
 import java.util.List;
 
-import jp.co.isol.manage.dto.HealthInfoDto;
+import jp.co.isol.common.dto.HealthInfoDto;
 
 /**
  * ユーザ情報検索IF
