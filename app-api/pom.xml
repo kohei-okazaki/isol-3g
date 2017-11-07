@@ -21,11 +21,11 @@
 
 	<dependencies>
 		<!-- isol-common -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>jp.co.isol</groupId>
 			<artifactId>isol-common</artifactId>
 			<version>1.0</version>
-		</dependency>
+		</dependency> -->
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
