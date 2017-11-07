@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.isol.api.dto.HealthInfoDto;
 import jp.co.isol.api.service.HealthInfoService;
+import jp.co.isol.common.dto.HealthInfoDto;
 
 /**
  * @author kou1210hei<br>

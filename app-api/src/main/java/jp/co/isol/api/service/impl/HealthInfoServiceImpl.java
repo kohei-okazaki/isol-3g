@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.api.dto.HealthInfoDto;
 import jp.co.isol.api.log.ApiLogger;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.code.CodeManager;
 import jp.co.isol.common.code.MainKey;
 import jp.co.isol.common.code.SubKey;
+import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.util.CalcUtil;
 
 /**

@@ -70,9 +70,10 @@
 	<filter-mapping>
 		<filter-name>AppFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-		<!-- リクエストパスが指定したパターンに一致するリクエストに対してのみFilterが適用されます。 -->
-		<!-- <servlet-name>app</servlet-name> -->
-		<!-- 指定したサーブレットにマッピングされたリクエストに対してのみFilterが適用されます。 -->
+		<!--
+		リクエストパスが指定したパターンに一致するリクエストに対してのみFilterが適用されます。
+		指定したサーブレットにマッピングされたリクエストに対してのみFilterが適用されます。
+		-->
 	</filter-mapping>
 
 </web-app>

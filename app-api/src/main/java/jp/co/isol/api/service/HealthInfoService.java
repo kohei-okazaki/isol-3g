@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jp.co.isol.api.dto.HealthInfoDto;
+import jp.co.isol.common.dto.HealthInfoDto;
+
 
 /**
  * @author kou1210hei<br>
