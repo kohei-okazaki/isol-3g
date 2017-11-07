@@ -15,7 +15,6 @@ import jp.co.isol.manage.dao.HealthInfoDao;
 import jp.co.isol.manage.dto.HealthInfoDto;
 
 /**
- * @author kou1210hei<br>
  * ユーザ情報のDaoクラス
  *
  */

@@ -5,7 +5,6 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * @author kou1210hei<br>
  * アカウント設定画面フォームクラス<br>
  *
  */

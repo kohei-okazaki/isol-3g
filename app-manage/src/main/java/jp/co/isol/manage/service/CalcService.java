@@ -3,8 +3,7 @@ package jp.co.isol.manage.service;
 import java.math.BigDecimal;
 
 /**
- * @author kou1210hei<br>
- * 計算サービスインターフェイス
+ * 計算サービスIF
  *
  */
 public interface CalcService {

@@ -5,8 +5,7 @@ import java.io.File;
 import jp.co.isol.manage.view.FileMessage;
 
 /**
- * @author kou1210hei<br>
- * ファイル書き込みサービス
+ * ファイル書き込みサービスIF
  *
  */
 public interface FileWriterService {

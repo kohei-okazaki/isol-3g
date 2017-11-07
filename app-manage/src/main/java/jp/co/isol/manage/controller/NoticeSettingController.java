@@ -12,7 +12,6 @@ import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.AppConfig;
 
 /**
- * @author kou1210hei<br>
  * 健康管理_通知設定コントローラクラス<br>
  *
  */

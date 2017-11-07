@@ -5,8 +5,7 @@ import javax.servlet.http.HttpSession;
 import jp.co.isol.manage.form.LoginUserForm;
 
 /**
- * @author kou1210hei<br>
- * ログインサービスクラス
+ * ログインサービスIF
  */
 public interface LoginService {
 

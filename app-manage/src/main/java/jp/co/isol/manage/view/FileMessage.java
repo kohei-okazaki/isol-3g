@@ -8,7 +8,6 @@ import jp.co.isol.manage.dto.HealthInfoDto;
 import lombok.Getter;
 
 /**
- * @author kou1210hei<br>
  * ダウンロードするファイルの文言を設定するクラス
  *
  */

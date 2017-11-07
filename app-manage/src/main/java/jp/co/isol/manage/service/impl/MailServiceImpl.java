@@ -22,7 +22,6 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.MailService;
 
 /**
- * @author kou1210hei
  * メールサービス実装クラス
  */
 @Service

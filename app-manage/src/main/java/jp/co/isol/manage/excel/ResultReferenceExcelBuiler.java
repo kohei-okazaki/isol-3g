@@ -19,7 +19,6 @@ import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.dto.HealthInfoDto;
 
 /**
- * @author kou1210hei<br>
  * 結果照会画面Excel生成クラス<br>
  *
  */

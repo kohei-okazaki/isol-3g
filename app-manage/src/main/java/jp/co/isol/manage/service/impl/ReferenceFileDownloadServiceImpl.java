@@ -12,7 +12,6 @@ import jp.co.isol.manage.excel.ResultReferenceExcelBuiler;
 import jp.co.isol.manage.service.FileDownloadService;
 
 /**
- * @author kou1210hei<br>
  * 結果照会画面ファイルダウンロードサービス実装クラス
  *
  */

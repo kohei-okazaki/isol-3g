@@ -7,7 +7,6 @@ import jp.co.isol.manage.dto.AccountDto;
 import jp.co.isol.manage.form.AccountSettingForm;
 
 /**
- * @author kou1210hei<br>
  * ログインユーザ情報のDaoクラス
  *
  */

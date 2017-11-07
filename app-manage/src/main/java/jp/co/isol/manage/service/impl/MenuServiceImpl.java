@@ -14,7 +14,6 @@ import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.MenuService;
 
 /**
- * @author kou1210hei<br>
  * メニュー画面のサービス実装クラス
  *
  */

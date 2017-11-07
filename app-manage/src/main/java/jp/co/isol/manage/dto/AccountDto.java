@@ -13,7 +13,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author kou1210hei<br>
  * アカウントのDto
  *
  */

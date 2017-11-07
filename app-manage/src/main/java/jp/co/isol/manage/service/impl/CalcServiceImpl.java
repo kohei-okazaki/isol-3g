@@ -8,7 +8,6 @@ import jp.co.isol.manage.service.CalcService;
 
 
 /**
- * @author kou1210hei<br>
  * 体重計算サービス実装クラス
  *
  */

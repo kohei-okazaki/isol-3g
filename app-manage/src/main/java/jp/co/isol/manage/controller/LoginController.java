@@ -17,7 +17,6 @@ import jp.co.isol.manage.web.session.AppSessionKey;
 import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
- * @author kou1210hei<br>
  * 健康管理_ログイン画面コントローラクラス
  *
  */

@@ -7,8 +7,7 @@ import jp.co.isol.manage.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 
 /**
- * @author kou1210hei<br>
- * メニュー画面のサービスインターフェイス
+ * メニュー画面のサービスIF
  *
  */
 public interface MenuService {

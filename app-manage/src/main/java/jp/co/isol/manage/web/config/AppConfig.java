@@ -4,11 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import jp.co.isol.common.other.DBConnecter;
-import jp.co.isol.manage.web.session.AppSessionManager;
 import jp.co.isol.manage.log.ManageLogger;
+import jp.co.isol.manage.web.session.AppSessionManager;
 
 /**
- * @author kou1210hei<br>
  * アプリケーションコンフィグクラス<br>
  *
  */

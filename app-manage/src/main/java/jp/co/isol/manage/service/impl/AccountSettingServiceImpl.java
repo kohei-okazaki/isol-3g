@@ -19,6 +19,10 @@ import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.web.config.AppConfig;
 
+/**
+ * アカウント設定サービス実装クラス<br>
+ *
+ */
 @Service
 public class AccountSettingServiceImpl implements AccountSettingService {
 

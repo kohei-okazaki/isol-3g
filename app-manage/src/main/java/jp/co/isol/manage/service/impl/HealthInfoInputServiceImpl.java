@@ -14,7 +14,6 @@ import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoInputService;
 
 /**
- * @author kou1210hei<br>
  * 健康情報_入力画面サービス実装クラス
  *
  */
