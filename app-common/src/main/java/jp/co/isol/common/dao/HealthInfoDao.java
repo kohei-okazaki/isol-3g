@@ -6,7 +6,7 @@ import java.util.List;
 import jp.co.isol.common.dto.HealthInfoDto;
 
 /**
- * ユーザー情報のDBアクセスインターフェース
+ * 健康情報のDaoインターフェイス
  *
  */
 public interface HealthInfoDao {

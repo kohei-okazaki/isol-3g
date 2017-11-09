@@ -6,7 +6,7 @@ import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dto.AccountDto;
 
 /**
- * ログインユーザ情報のDaoクラス
+ * アカウント情報のDaoクラス
  *
  */
 @Repository
