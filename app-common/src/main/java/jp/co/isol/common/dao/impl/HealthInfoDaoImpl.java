@@ -15,7 +15,7 @@ import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.util.DateUtil;
 
 /**
- * ユーザ情報のDaoクラス
+ * 健康情報のDaoクラス
  *
  */
 @Repository

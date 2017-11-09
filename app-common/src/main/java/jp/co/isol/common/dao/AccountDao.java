@@ -3,7 +3,7 @@ package jp.co.isol.common.dao;
 import jp.co.isol.common.dto.AccountDto;
 
 /**
- * ログインユーザ情報のDaoインターフェイス
+ * アカウント情報のDaoインターフェイス
  *
  */
 public interface AccountDao {

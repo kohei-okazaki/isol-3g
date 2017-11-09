@@ -27,34 +27,13 @@ import jp.co.isol.common.util.CalcUtil;
 public class HealthInfoServiceImpl implements HealthInfoService {
 
 	/**
-	 * BMIを計算(小数第2位を四捨五入する)<br>
-	 * @param height
-	 * @param weight
-	 * @return BMIを計算(小数第2位を四捨五入する)
-	 */
-	@Override
-	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
-		return weight.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
-	}
-
-	/**
-	 * 標準体重を計算(小数第2位を四捨五入する)<br>
-	 * @param height
-	 * @return 標準体重を計算(小数第2位を四捨五入する)
-	 */
-	@Override
-	public BigDecimal calcStandardWeight(BigDecimal height) {
-		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
-	}
-
-	/**
 	 * 健康情報DTOにrequestの内容をつめる<br>
 	 * @param dto
 	 * @param request
 	 * @return 健康情報Dto
 	 */
 	@Override
-	public HealthInfoDto execute(HealthInfoDto dto, HttpServletRequest request) {
+	public HealthInfoDto execute(HttpServletRequest request) {
 
 		ApiLogger.getInstance().info(this.getClass(), "executeメソッド実行");
 
@@ -66,6 +45,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN);
 		Date regDate = new Date();
 
+		HealthInfoDto dto = new HealthInfoDto();
 		dto.setDataId("001");
 		dto.setUserId(userId);
 		dto.setHeight(height);
@@ -81,6 +61,25 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dao.registHealthInfo(dto);
 
 		return dto;
+	}
+
+	/**
+	 * BMIを計算(小数第2位を四捨五入する)<br>
+	 * @param height
+	 * @param weight
+	 * @return BMIを計算(小数第2位を四捨五入する)
+	 */
+	private BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
+		return weight.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
+	}
+
+	/**
+	 * 標準体重を計算(小数第2位を四捨五入する)<br>
+	 * @param height
+	 * @return 標準体重を計算(小数第2位を四捨五入する)
+	 */
+	private BigDecimal calcStandardWeight(BigDecimal height) {
+		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
 	}
 
 }
