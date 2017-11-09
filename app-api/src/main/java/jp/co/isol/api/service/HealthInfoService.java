@@ -13,9 +13,9 @@ import jp.co.isol.common.dto.HealthInfoDto;
 public interface HealthInfoService {
 
 	/**
-	 * 健康情報DTOにrequestの内容をつめる<br>
-	 * @param dto
+	 * メイン処理<br>
 	 * @param request
+	 * @return 健康情報Dto
 	 */
 	public HealthInfoDto execute(HttpServletRequest request);
 
