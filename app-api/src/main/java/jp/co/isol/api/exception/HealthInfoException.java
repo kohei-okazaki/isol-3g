@@ -7,6 +7,6 @@ package jp.co.isol.api.exception;
 public class HealthInfoException extends BaseApiException {
 
 	public HealthInfoException(String errorEmessage) {
-
+		this.errorMessage = errorEmessage;
 	}
 }
