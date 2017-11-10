@@ -1,14 +1,17 @@
 package jp.co.isol.common.code;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
+import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.common.util.StringUtil;
 
 /**
@@ -19,6 +22,8 @@ public class CodeManager {
 
 	/** singletonパターン */
 	private static CodeManager instance = new CodeManager();
+	/** コードプロパティ */
+	private static final String CODE_PROPERTIES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\code.properties";
 
 	/**
 	 * プライベートコンストラクタ<br>
@@ -36,30 +41,31 @@ public class CodeManager {
 	}
 
 	/**
-	 * サブキーとメインキーにヒモづくvalueを返す<br>
+	 * メインキーとサブキーにヒモづくvalueを返す<br>
 	 * @param mainKey メインキー
 	 * @param subKey サブキー
 	 * 	 * @return
 	 */
 	public String getValue(MainKey mainKey, SubKey subKey) {
 
-		if (subKey == null || mainKey == null) {
+		if (Objects.isNull(mainKey) || Objects.isNull(subKey)) {
 			return null;
 		}
 
-		Properties properties = new Properties();
-		String fileName = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\code.properties";
-		String strMainkey = mainKey.toString();
-		String strSubkey = subKey.toString();
+		String codePorpertyFile = FileUtil.getFilePathName(CODE_PROPERTIES);
 		String value = "";
-		try (InputStream inputStream = new FileInputStream(fileName)) {
+		try (InputStream inputStream = new FileInputStream(codePorpertyFile)) {
+			Properties properties = new Properties();
 			properties.load(inputStream);
 			value = properties.getProperty(mainKey.toString() + "_" + subKey.toString());
 		} catch (FileNotFoundException e) {
-			System.out.println("ファイルがみつからなかった、ファイル名=" + fileName);
+			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		if (StringUtil.isEmpty(value)) {
+			System.out.println("値を取得できませんでした");
 		}
 
 		return value;
@@ -72,28 +78,44 @@ public class CodeManager {
 	 */
 	public List<String> getList(SubKey subKey) {
 
-		if (subKey == null) {
+		if (Objects.isNull(subKey)) {
 			return null;
 		}
+
 		List<String> list = new ArrayList<String>();
-		return getMocList();
+		try (BufferedReader br = new BufferedReader(new FileReader(FileUtil.getFile(CODE_PROPERTIES)))) {
+			while (true) {
+				String value = br.readLine();
+				if (Objects.nonNull(value) && subKey.toString().contains(value)) {
+					list.add(value);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + CODE_PROPERTIES);
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
-	public final boolean isEquals(String target) {
+	/**
+	 * 指定された値がメインキー、サブキーから取得される値と一致するか判定する<br>
+	 * 一致した場合true, そうでなければfalseを返す<br>
+	 * @param mainKey
+	 * @param subKey
+	 * @param target
+	 * @return 判定結果
+	 */
+	public final boolean isEquals(MainKey mainKey, SubKey subKey, String target) {
 
 		if (StringUtil.isEmpty(target)) {
 			return false;
 		}
-		return true;
 
-	}
+		return target.equals(getValue(mainKey, subKey));
 
-	public static final String getMocValue() {
-		return "10";
-	}
-
-	public static final List<String> getMocList() {
-		return Arrays.asList("1", "2", "3");
 	}
 
 }
