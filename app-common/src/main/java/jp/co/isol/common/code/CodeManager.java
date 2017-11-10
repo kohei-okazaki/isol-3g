@@ -1,8 +1,13 @@
 package jp.co.isol.common.code;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
 import jp.co.isol.common.util.StringUtil;
 
@@ -41,7 +46,23 @@ public class CodeManager {
 		if (subKey == null || mainKey == null) {
 			return null;
 		}
-		return getMocValue();
+
+		Properties properties = new Properties();
+		String fileName = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\code.properties";
+		String strMainkey = mainKey.toString();
+		String strSubkey = subKey.toString();
+		String value = "";
+		try (InputStream inputStream = new FileInputStream(fileName)) {
+			properties.load(inputStream);
+			value = properties.getProperty(mainKey.toString() + "_" + subKey.toString());
+		} catch (FileNotFoundException e) {
+			System.out.println("ファイルがみつからなかった、ファイル名=" + fileName);
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return value;
 	}
 
 	/**

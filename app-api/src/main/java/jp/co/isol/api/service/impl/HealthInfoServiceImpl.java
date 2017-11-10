@@ -1,7 +1,9 @@
 package jp.co.isol.api.service.impl;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,18 +32,34 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * メイン処理<br>
 	 * @param request
 	 * @return 健康情報Dto
+	 * @throws ParseException
 	 */
 	@Override
-	public HealthInfoDto execute(HttpServletRequest request) {
+	public HealthInfoDto execute(HttpServletRequest request) throws ParseException {
 
 		ApiLogger.getInstance().info(this.getClass(), "executeメソッド実行");
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
+		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
 
 		String userId = request.getParameter("userId");
 		BigDecimal height = new BigDecimal(request.getParameter("height"));
 		BigDecimal weight = new BigDecimal(request.getParameter("weight"));
 		BigDecimal bmi = calcBmi(CalcUtil.convertMeter(height), weight);
 		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeter(height));
-		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN);
+
+		// 最後に登録した健康情報を取得する
+		List<HealthInfoDto> dtoList = dao.getHealthInfoByUserId(userId);
+		HealthInfoDto lastDto = dtoList.get(dtoList.size() - 1);
+		SubKey subkey = null;
+		if (lastDto.getWeight().compareTo(weight) == 0) {
+			subkey = SubKey.EVEN;
+		} else if (lastDto.getWeight().compareTo(weight) == -1) {
+			subkey = SubKey.INCREASE;
+		} else {
+			subkey = SubKey.DOWN;
+		}
+		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, subkey);
 		Date regDate = new Date();
 
 		HealthInfoDto dto = new HealthInfoDto();
@@ -55,8 +73,6 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dto.setRegDate(regDate);
 
 		// 登録処理を行う
-		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
-		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
 		dao.registHealthInfo(dto);
 
 		return dto;
