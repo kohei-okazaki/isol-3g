@@ -10,7 +10,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 /**
- * @author kou1210hei<br>
  * Excel出力の基底クラス<br>
  *
  */

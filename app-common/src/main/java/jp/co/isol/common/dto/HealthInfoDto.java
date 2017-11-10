@@ -14,7 +14,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * ユーザ情報を保持するDto
+ * 健康情報を保持するDto
  */
 @Entity
 @Table(name = "HEALTH_INFO")

@@ -7,7 +7,6 @@ import jp.co.isol.common.dto.HealthInfoDto;
 
 
 /**
- * @author kou1210hei<br>
  * 健康情報サービスIF<br>
  *
  */

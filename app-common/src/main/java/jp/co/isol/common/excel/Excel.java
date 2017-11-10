@@ -6,6 +6,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Excelアノテーション<br>
+ * <pre>
+ * sheetNameでシート名を設定
+ * headerNamesでヘッダー名を設定
+ * </pre>
+ */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.TYPE })

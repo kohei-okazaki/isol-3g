@@ -22,13 +22,13 @@ import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
 
 /**
- * 健康管理_結果照会画面コントローラクラス<br>
+ * 健康管理_健康情報結果照会画面コントローラクラス<br>
  *
  */
 @Controller
 public class ResultReferenceController {
 
-	/** ユーザ情報検索サービス */
+	/** 健康情報検索サービス */
 	@Autowired
 	private HealthInfoSearchService healthInfoSearchService;
 

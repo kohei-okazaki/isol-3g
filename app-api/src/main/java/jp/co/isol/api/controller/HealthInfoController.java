@@ -16,7 +16,6 @@ import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dto.HealthInfoDto;
 
 /**
- * @author kou1210hei<br>
  * 健康情報APIコントローラ<br>
  *
  */
