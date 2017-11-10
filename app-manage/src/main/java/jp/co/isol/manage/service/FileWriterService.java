@@ -2,8 +2,6 @@ package jp.co.isol.manage.service;
 
 import java.io.File;
 
-import jp.co.isol.manage.view.FileMessage;
-
 /**
  * ファイル書き込みサービスIF
  *
@@ -15,6 +13,6 @@ public interface FileWriterService {
 	 * @param file
 	 * @param fileMessage
 	 */
-	public void write(File file, FileMessage fileMessage);
+	public void write(File file);
 
 }

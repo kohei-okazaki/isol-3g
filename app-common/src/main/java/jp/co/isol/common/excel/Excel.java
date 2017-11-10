@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import jp.co.isol.common.message.Message;
-
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.TYPE })
@@ -23,5 +21,5 @@ public @interface Excel {
 	 * ヘッダ名
 	 * @return ヘッダ名
 	 */
-	Message[] headerNames();
+	String[] headerNames();
 }

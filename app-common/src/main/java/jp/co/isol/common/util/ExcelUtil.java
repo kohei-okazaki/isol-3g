@@ -9,7 +9,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import jp.co.isol.common.excel.Excel;
-import jp.co.isol.common.message.Message;
 
 /**
  * @author kou1210hei<br>
@@ -68,7 +67,7 @@ public class ExcelUtil {
 	 * @param clazz
 	 * @return headerNames
 	 */
-	public static List<Message> getHeaderList(Class<?> clazz) {
+	public static List<String> getHeaderList(Class<?> clazz) {
 		Excel excel = getExcelClass(clazz);
 		return Arrays.asList(excel.headerNames());
 	}

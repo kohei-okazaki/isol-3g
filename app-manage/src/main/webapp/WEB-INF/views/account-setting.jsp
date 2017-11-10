@@ -15,10 +15,25 @@
 </head>
 
 <body class="main">
-	<h1>
-		<img class="headericon" alt="アカウント設定" src="resources/image/icon_reference.png">
-		<c:out value="アカウント設定画面" />
-	</h1>
+
+	<c:if test="${page == 0}">
+		<h1>
+			<img class="headericon" alt="入力" src="resources/image/icon_input.jpg">
+			<c:out value="アカウント設定画面" />
+		</h1>
+	</c:if>
+	<c:if test="${page == 1}">
+		<h1 class="title">
+			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
+			<c:out value="アカウント設定確認画面" />
+		</h1>
+	</c:if>
+	<c:if test="${page == 2}">
+		<h1 class="title">
+			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
+			<c:out value="アカウント設定完了画面" />
+		</h1>
+	</c:if>
 
 	<hr>
 		<ul id="dropmenu">
@@ -46,7 +61,7 @@
 		</li>
 		<li><a href="/isol-manage/login.html"> ログアウト </a></li>
 	</ul>
-	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
+
 	<br><br>
 
 	<!-- 入力画面 -->
@@ -75,6 +90,7 @@
 					<td><input type="text" name="password" value="${dto.password}" required="required" /></td>
 				</tr>
 			</table>
+			<br><br>
 			<table>
 				<tr>
 					<td><input type="submit" value="確認" /></td>
@@ -86,7 +102,7 @@
 
 	<!-- 確認画面 -->
 	<c:if test="${page == 1}">
-		<form action="/isol-manage/account-setting-complete" method="post">
+		<form action="/isol-manage/account-setting-complete.html" method="post">
 		<div align="center">
 			<c:if test="${errorMessage != null}">
 				<c:out value="${errorMessage}" />
@@ -101,18 +117,44 @@
 				</tr>
 				<tr>
 					<th><c:out value="ユーザID" /></th>
-					<td><input type="text" name="userId" value="${dto.userId}" disabled="disabled" /></td>
+					<td><input type="text" name="userId" value="${form.userId}" disabled="disabled" /></td>
 				</tr>
 				<tr>
 					<th><c:out value="パスワード" /></th>
-					<td><input type="text" name="password" value="${dto.password}" disabled="disabled" /></td>
+					<td><input type="text" name="password" value="${form.password}" disabled="disabled" /></td>
+				</tr>
+			</table>
+			<br><br>
+			<table>
+				<tr>
+					<td><input type="submit" value="確認" /></td>
+					<td><c:out value="　　" /></td>
+					<td><input type="button" value="戻る" onclick="history.back()"></td>
 				</tr>
 			</table>
 		</div>
 		</form>
 	</c:if>
 
-
+	<!-- 完了画面 -->
+	<c:if test="${page == 2}">
+		<div align="center">
+			<c:out value="完了しました" />
+			<br><br>
+			<table>
+				<tr>
+					<td align="center">
+						<!-- メニュー画面へ -->
+						<form action="/isol-manage/menu.html" method="get">
+							<div>
+								<input class="menuicon" type="image" src="resources/image/icon_menu.jpg">
+							</div>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</c:if>
 
 
 

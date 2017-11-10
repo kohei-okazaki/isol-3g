@@ -137,7 +137,7 @@ public class HealthInfoInputController {
 		model.addAttribute("diffWeight", healthInfoInputService.getDiffWeight(form, lastDto));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", healthInfoInputService.getDiffMessage(form, lastDto).getName());
+		model.addAttribute("resultMessage", healthInfoInputService.getDiffMessage(form, lastDto));
 
 		model.addAttribute("page", PageView.COMPLETE.getValue());
 		return View.HEALTH_INFO_INPUT.getName();

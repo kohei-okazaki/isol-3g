@@ -13,7 +13,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 import jp.co.isol.common.excel.BaseExcelBuilder;
 import jp.co.isol.common.excel.Excel;
-import jp.co.isol.common.message.Message;
+import jp.co.isol.common.message.MessageManager;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.form.HealthInfoInputForm;
@@ -22,7 +22,7 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
  * 健康情報入力画面Excel生成クラス<br>
  *
  */
-@Excel(sheetName = "健康情報", headerNames = {Message.HEIGHT, Message.WEIGHT, Message.BMI, Message.STANDARDWEIGHT})
+@Excel(sheetName = "健康情報", headerNames = {"height", "weight", "bmi", "standardWeight"})
 public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
 	/** 健康情報入力フォームクラス */
@@ -69,9 +69,12 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	 */
 	@Override
 	protected void setHeader(Sheet sheet) {
-		List<Message> headerNameList = ExcelUtil.getHeaderList(this.getClass());
+
+		MessageManager manager = MessageManager.getInstance();
+		List<String> headerNameList = ExcelUtil.getHeaderList(this.getClass());
+
 		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
-			String headerName = headerNameList.get(i).getName();
+			String headerName = manager.getValue(headerNameList.get(i));
 			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
 		});
