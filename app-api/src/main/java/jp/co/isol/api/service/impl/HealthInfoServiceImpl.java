@@ -5,14 +5,13 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.config.ApiConfig;
 import jp.co.isol.api.log.ApiLogger;
+import jp.co.isol.api.request.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.code.CodeManager;
 import jp.co.isol.common.code.MainKey;
@@ -35,16 +34,16 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @throws ParseException
 	 */
 	@Override
-	public HealthInfoDto execute(HttpServletRequest request) throws ParseException {
+	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException {
 
 		ApiLogger.getInstance().info(this.getClass(), "executeメソッド実行");
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
 		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
 
-		String userId = request.getParameter("userId");
-		BigDecimal height = new BigDecimal(request.getParameter("height"));
-		BigDecimal weight = new BigDecimal(request.getParameter("weight"));
+		String userId = (String) request.get("userId");
+		BigDecimal height = new BigDecimal((String) request.get("height"));
+		BigDecimal weight = new BigDecimal((String) request.get("weight"));
 		BigDecimal bmi = calcBmi(CalcUtil.convertMeter(height), weight);
 		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeter(height));
 
@@ -63,7 +62,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		Date regDate = new Date();
 
 		HealthInfoDto dto = new HealthInfoDto();
-		dto.setDataId("001");
+		Integer nextId = new Integer(lastDto.getDataId()) + 1;
+		dto.setDataId(nextId.toString());
 		dto.setUserId(userId);
 		dto.setHeight(height);
 		dto.setWeight(weight);

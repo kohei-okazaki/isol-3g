@@ -2,8 +2,7 @@ package jp.co.isol.api.service;
 
 import java.text.ParseException;
 
-import javax.servlet.http.HttpServletRequest;
-
+import jp.co.isol.api.request.HealthInfoRequest;
 import jp.co.isol.common.dto.HealthInfoDto;
 
 
@@ -20,6 +19,6 @@ public interface HealthInfoService {
 	 * @return 健康情報Dto
 	 * @throws ParseException
 	 */
-	public HealthInfoDto execute(HttpServletRequest request) throws ParseException;
+	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException;
 
 }
