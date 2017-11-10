@@ -6,9 +6,9 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.common.message.MessageManager;
 import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.manage.service.FileWriterService;
-import jp.co.isol.manage.view.FileMessage;
 
 /**
  * ファイル書き込みサービス実装クラス
@@ -23,13 +23,18 @@ public class FileWriterServiceImpl implements FileWriterService {
 	 * @param fileMessage
 	 */
 	@Override
-	public void write(File file, FileMessage fileMessage) {
+	public void write(File file) {
 
+		MessageManager manager = MessageManager.getInstance();
 		try (FileWriter fileWriter = new FileWriter(file)) {
-			for (String message : fileMessage.getMessageList()) {
-				fileWriter.write(message + FileUtil.NEW_LINE);
-			}
+
+			fileWriter.write(manager.getValue("height") + FileUtil.NEW_LINE);
+			fileWriter.write(manager.getValue("weight") + FileUtil.NEW_LINE);
+			fileWriter.write(manager.getValue("bmi") + FileUtil.NEW_LINE);
+			fileWriter.write(manager.getValue("standardWeight") + FileUtil.NEW_LINE);
+
 			fileWriter.flush();
+
 		} catch (IOException e) {
 			System.out.println("---> 書き込み処理失敗");
 			e.printStackTrace();

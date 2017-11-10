@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.message.Message;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 
 /**
@@ -54,7 +53,7 @@ public interface HealthInfoInputService {
 	 * @param dto
 	 * @return 体重差のメッセージ
 	 */
-	public Message getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto);
+	public String getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto);
 
 	/**
 	 * 最後に入力した体重とフォームから体重差を返却

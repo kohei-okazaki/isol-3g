@@ -1,6 +1,7 @@
 package jp.co.isol.common.code;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -44,7 +45,7 @@ public class CodeManager {
 	 * メインキーとサブキーにヒモづくvalueを返す<br>
 	 * @param mainKey メインキー
 	 * @param subKey サブキー
-	 * 	 * @return
+	 * @return ひもづく値
 	 */
 	public String getValue(MainKey mainKey, SubKey subKey) {
 
@@ -54,18 +55,22 @@ public class CodeManager {
 
 		String codePorpertyFile = FileUtil.getFilePathName(CODE_PROPERTIES);
 		String value = "";
+
 		try (InputStream inputStream = new FileInputStream(codePorpertyFile)) {
+
 			Properties properties = new Properties();
 			properties.load(inputStream);
 			value = properties.getProperty(mainKey.toString() + "_" + subKey.toString());
+
 		} catch (FileNotFoundException e) {
 			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		if (StringUtil.isEmpty(value)) {
-			System.out.println("値を取得できませんでした");
+			System.out.println("値を取得できませんでした value=" + value);
 		}
 
 		return value;
@@ -83,12 +88,15 @@ public class CodeManager {
 		}
 
 		List<String> list = new ArrayList<String>();
-		try (BufferedReader br = new BufferedReader(new FileReader(FileUtil.getFile(CODE_PROPERTIES)))) {
+		File propFile = FileUtil.getFile(CODE_PROPERTIES);
+		try (BufferedReader br = new BufferedReader(new FileReader(propFile))) {
 			while (true) {
+
 				String value = br.readLine();
 				if (Objects.nonNull(value) && subKey.toString().contains(value)) {
 					list.add(value);
 				}
+
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + CODE_PROPERTIES);

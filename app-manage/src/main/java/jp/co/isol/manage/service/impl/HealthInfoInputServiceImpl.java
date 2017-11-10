@@ -10,7 +10,7 @@ import jp.co.isol.common.code.CodeManager;
 import jp.co.isol.common.code.MainKey;
 import jp.co.isol.common.code.SubKey;
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.message.Message;
+import jp.co.isol.common.message.MessageManager;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
@@ -70,16 +70,17 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public Message getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
+	public String getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
+		MessageManager manager = MessageManager.getInstance();
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
-			return Message.EQUAL;
+			return manager.getValue("even");
 		} else if (form.getWeight().compareTo(dto.getWeight()) == 1) {
 			// 増加した場合
-			return Message.UP;
+			return manager.getValue("increase");
 		} else {
 			// 減少した場合
-			return Message.DOWN;
+			return manager.getValue("down");
 		}
 	}
 

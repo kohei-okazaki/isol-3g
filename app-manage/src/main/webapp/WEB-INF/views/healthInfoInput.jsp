@@ -57,7 +57,6 @@
 		<li><a href="/isol-manage/login.html">ログアウト</a></li>
 	</ul>
 
-	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">
 	<div align="center">
@@ -120,7 +119,7 @@
 		<c:out value="今のあなたの身長(${dto.height}cm)の" />
 		<br>
 		<c:out value="標準体重は${dto.standardWeight}kgです。" />
-		<br>
+		<br><br>
 		<c:out value="前回より${diffWeight}kg ${resultMessage}" />
 		<br>
 		<c:out value="${beforeWeight}kg→${dto.weight}kg" />

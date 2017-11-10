@@ -51,7 +51,6 @@
 		<li><a href="/isol-manage/login.html">ログアウト</a></li>
 	</ul>
 
-	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
 
 
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
