@@ -1,5 +1,7 @@
 package jp.co.isol.api.controller;
 
+import java.text.ParseException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class HealthInfoController {
 	private HealthInfoService healthInfoService;
 
 	@GetMapping
-	public HealthInfoDto get(HttpServletRequest request) {
+	public HealthInfoDto get(HttpServletRequest request) throws ParseException {
 		return healthInfoService.execute(request);
 	}
 

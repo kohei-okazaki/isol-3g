@@ -1,5 +1,7 @@
 package jp.co.isol.api.service;
 
+import java.text.ParseException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import jp.co.isol.common.dto.HealthInfoDto;
@@ -13,10 +15,11 @@ import jp.co.isol.common.dto.HealthInfoDto;
 public interface HealthInfoService {
 
 	/**
-	 * 健康情報DTOにrequestの内容をつめる<br>
-	 * @param dto
+	 * メイン処理<br>
 	 * @param request
+	 * @return 健康情報Dto
+	 * @throws ParseException
 	 */
-	public HealthInfoDto execute(HttpServletRequest request);
+	public HealthInfoDto execute(HttpServletRequest request) throws ParseException;
 
 }
