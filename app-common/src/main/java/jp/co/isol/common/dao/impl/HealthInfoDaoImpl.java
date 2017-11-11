@@ -76,7 +76,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 		// FIXME
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setDataId(dateId);
-		dto.setHeight(new BigDecimal(170.2).setScale(1, BigDecimal.ROUND_HALF_UP));
+		dto.setHeight(new BigDecimal(171.2).setScale(1, BigDecimal.ROUND_HALF_UP));
 		dto.setWeight(new BigDecimal(61.3).setScale(1, BigDecimal.ROUND_HALF_UP));
 		dto.setBmi(new BigDecimal(16).setScale(1, BigDecimal.ROUND_HALF_UP));
 		dto.setStandardWeight(new BigDecimal(58.6).setScale(1, BigDecimal.ROUND_HALF_UP));
