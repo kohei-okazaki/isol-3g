@@ -6,7 +6,7 @@ import java.util.List;
 import jp.co.isol.common.dto.HealthInfoDto;
 
 /**
- * ユーザ情報検索IF
+ * 健康情報検索IF
  *
  */
 public interface HealthInfoSearchService {

@@ -1,7 +1,6 @@
 package jp.co.isol.common.log;
 
 /**
- * @author kou1210hei<br>
  * アプリ内の基底ログクラス<br>
  *
  */

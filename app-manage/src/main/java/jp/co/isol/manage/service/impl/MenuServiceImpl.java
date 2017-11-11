@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.message.Message;
+import jp.co.isol.common.manager.MessageManager;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;
@@ -20,6 +20,7 @@ import jp.co.isol.manage.service.MenuService;
 @Service
 public class MenuServiceImpl implements MenuService {
 
+	/** 計算サービス */
 	@Autowired
 	private CalcService calcService;
 
@@ -29,16 +30,18 @@ public class MenuServiceImpl implements MenuService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public Message getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
+	public String getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
+
+		MessageManager manager = MessageManager.getInstance();
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
-			return Message.EQUAL;
+			return manager.getValue("even");
 		} else if (form.getWeight().compareTo(dto.getWeight()) == 1) {
 			// 増加した場合
-			return Message.UP;
+			return manager.getValue("increase");
 		} else {
-			// 現象した場合
-			return Message.DOWN;
+			// 減少した場合
+			return manager.getValue("down");
 		}
 	}
 
@@ -64,8 +67,8 @@ public class MenuServiceImpl implements MenuService {
 		dto.setUserId(userId);
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
-		dto.setBmi(calcService.calcBmi(CalcUtil.convertMeter(form.getHeight()), form.getWeight()));
-		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeter(form.getHeight())));
+		dto.setBmi(calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight()));
+		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight())));
 		dto.setRegDate(new Date());
 		return dto;
 	}

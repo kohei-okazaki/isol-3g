@@ -1,9 +1,9 @@
-package jp.co.isol.common.message;
+package jp.co.isol.common.manager;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 import jp.co.isol.common.util.FileUtil;
@@ -49,10 +49,10 @@ public class MessageManager {
 		String messagePropertyFile = FileUtil.getFilePathName(MESSAGE_PROPERTIES);
 		String value = "";
 
-		try (InputStream inputStream = new FileInputStream(messagePropertyFile)) {
+		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(messagePropertyFile), "UTF-8")) {
 
 			Properties properties = new Properties();
-			properties.load(inputStream);
+			properties.load(reader);
 			value = properties.getProperty(target);
 
 		} catch (FileNotFoundException e) {

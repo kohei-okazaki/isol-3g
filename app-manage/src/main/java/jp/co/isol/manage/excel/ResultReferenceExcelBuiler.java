@@ -14,7 +14,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.excel.BaseExcelBuilder;
 import jp.co.isol.common.excel.Excel;
-import jp.co.isol.common.message.MessageManager;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 
@@ -22,7 +21,7 @@ import jp.co.isol.common.util.ExcelUtil;
  * 結果照会画面Excel生成クラス<br>
  *
  */
-@Excel(sheetName = "健康情報", headerNames = {"height", "weight", "bmi", "standardWeight"})
+@Excel(sheetName = "健康情報", headerNames = {"身長", "体重", "BMI", "標準体重"})
 public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 
 	/** 購入履歴情報リスト */
@@ -69,11 +68,10 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void setHeader(Sheet sheet) {
 
-		MessageManager manager = MessageManager.getInstance();
 		List<String> headerNameList = ExcelUtil.getHeaderList(this.getClass());
 
 		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
-			String headerName = manager.getValue(headerNameList.get(i));
+			String headerName = headerNameList.get(i);
 			Cell cell = ExcelUtil.getCell(sheet, 0, i);
 			ExcelUtil.setText(cell, headerName);
 		});

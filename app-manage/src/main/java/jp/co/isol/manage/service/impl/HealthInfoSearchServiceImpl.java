@@ -11,7 +11,7 @@ import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 
 /**
- * Daoクラスを呼び出す実装クラス
+ * 健康情報Daoクラスを呼び出す実装クラス
  */
 @Service
 public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {

@@ -3,6 +3,10 @@ package jp.co.isol.api.log;
 import jp.co.isol.common.log.BaseLogger;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * APIロガークラス<br>
+ *
+ */
 @Slf4j
 public class ApiLogger extends BaseLogger {
 

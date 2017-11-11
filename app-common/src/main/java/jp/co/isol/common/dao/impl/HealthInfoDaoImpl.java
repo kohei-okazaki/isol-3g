@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import jp.co.isol.common.code.CodeManager;
-import jp.co.isol.common.code.MainKey;
-import jp.co.isol.common.code.SubKey;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -76,7 +76,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 		// FIXME
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setDataId(dateId);
-		dto.setHeight(new BigDecimal(170.2).setScale(1, BigDecimal.ROUND_HALF_UP));
+		dto.setHeight(new BigDecimal(171.2).setScale(1, BigDecimal.ROUND_HALF_UP));
 		dto.setWeight(new BigDecimal(61.3).setScale(1, BigDecimal.ROUND_HALF_UP));
 		dto.setBmi(new BigDecimal(16).setScale(1, BigDecimal.ROUND_HALF_UP));
 		dto.setStandardWeight(new BigDecimal(58.6).setScale(1, BigDecimal.ROUND_HALF_UP));

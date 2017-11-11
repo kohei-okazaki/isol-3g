@@ -2,13 +2,11 @@ package jp.co.isol.api.service;
 
 import java.text.ParseException;
 
-import javax.servlet.http.HttpServletRequest;
-
+import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.common.dto.HealthInfoDto;
 
 
 /**
- * @author kou1210hei<br>
  * 健康情報サービスIF<br>
  *
  */
@@ -20,6 +18,6 @@ public interface HealthInfoService {
 	 * @return 健康情報Dto
 	 * @throws ParseException
 	 */
-	public HealthInfoDto execute(HttpServletRequest request) throws ParseException;
+	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException;
 
 }

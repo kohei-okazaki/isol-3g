@@ -1,4 +1,4 @@
-package jp.co.isol.common.code;
+package jp.co.isol.common.manager;
 
 /**
  * CodeManagerで使うサブキーenum<br>
