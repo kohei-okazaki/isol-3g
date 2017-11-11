@@ -22,7 +22,7 @@ public class CalcUtil {
 	 * @param target
 	 * @return メートル
 	 */
-	public static BigDecimal convertMeter(BigDecimal target) {
+	public static BigDecimal convertMeterFromCentiMeter(BigDecimal target) {
 		return target.divide(new BigDecimal("100"), 2, RoundingMode.HALF_UP);
 	}
 
@@ -32,7 +32,7 @@ public class CalcUtil {
 	 * @param target
 	 * @return センチメートル
 	 */
-	public static BigDecimal convertCentiMeter(BigDecimal target) {
+	public static BigDecimal convertCentiMeterFromMeter(BigDecimal target) {
 		return target.multiply(new BigDecimal("100"));
 	}
 
