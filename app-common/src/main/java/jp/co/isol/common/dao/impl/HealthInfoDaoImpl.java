@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import jp.co.isol.common.code.CodeManager;
-import jp.co.isol.common.code.MainKey;
-import jp.co.isol.common.code.SubKey;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.DateUtil;
 
 /**

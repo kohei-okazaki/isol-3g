@@ -13,11 +13,11 @@ import jp.co.isol.api.config.ApiConfig;
 import jp.co.isol.api.log.ApiLogger;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
-import jp.co.isol.common.code.CodeManager;
-import jp.co.isol.common.code.MainKey;
-import jp.co.isol.common.code.SubKey;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
 
 /**

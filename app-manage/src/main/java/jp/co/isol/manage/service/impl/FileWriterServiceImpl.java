@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.common.message.MessageManager;
+import jp.co.isol.common.manager.MessageManager;
 import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.manage.service.FileWriterService;
 

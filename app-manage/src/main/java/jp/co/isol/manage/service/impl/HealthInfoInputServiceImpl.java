@@ -6,11 +6,11 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.common.code.CodeManager;
-import jp.co.isol.common.code.MainKey;
-import jp.co.isol.common.code.SubKey;
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.message.MessageManager;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.MessageManager;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.form.HealthInfoInputForm;
 import jp.co.isol.manage.service.CalcService;

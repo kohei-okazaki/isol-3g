@@ -1,4 +1,4 @@
-package jp.co.isol.common.message;
+package jp.co.isol.common.manager;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
