@@ -3,6 +3,8 @@ package jp.co.isol.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import jp.co.isol.api.exception.BaseApiException;
 
 /**
@@ -20,6 +22,12 @@ public abstract class BaseRequest {
 	public BaseRequest() {
 		this.requestInfoMap = new HashMap<String, Object>();
 	}
+
+	/**
+	 * リクエスト情報をセットする<br>
+	 * @param request
+	 */
+	public abstract void setRequest(HttpServletRequest request);
 
 	/**
 	 * リクエストマップのキーに紐付くvalueを返す<br>

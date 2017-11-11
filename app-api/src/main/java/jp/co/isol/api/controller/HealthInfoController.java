@@ -26,6 +26,9 @@ public class HealthInfoController {
 	/** 健康情報サービスクラス */
 	@Autowired
 	private HealthInfoService healthInfoService;
+	/** 健康情報リクエスト */
+	@Autowired
+	private HealthInfoRequest healthInfoRequest;
 
 	/**
 	 * Getでリクエストを受け付ける
@@ -35,14 +38,15 @@ public class HealthInfoController {
 	 * @throws HealthInfoException
 	 */
 	@GetMapping
-	public HealthInfoDto get(HttpServletRequest req) throws ParseException, HealthInfoException {
+	public HealthInfoDto get(HttpServletRequest request) throws ParseException, HealthInfoException {
 
-		HealthInfoRequest request = new HealthInfoRequest(req);
+		// リクエスト情報をセットする
+		healthInfoRequest.setRequest(request);
 
 		// マッピングされたリクエスト情報のチェック実施
-		request.checkRequest();
+		healthInfoRequest.checkRequest();
 
-		return healthInfoService.execute(request);
+		return healthInfoService.execute(healthInfoRequest);
 	}
 
 }

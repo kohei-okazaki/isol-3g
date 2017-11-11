@@ -4,6 +4,8 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+
 import jp.co.isol.api.exception.impl.HealthInfoException;
 import jp.co.isol.api.request.BaseRequest;
 import jp.co.isol.common.util.StringUtil;
@@ -12,23 +14,28 @@ import jp.co.isol.common.util.StringUtil;
  * 健康情報リクエストマップクラス<br>
  *
  */
+@Component
 public class HealthInfoRequest extends BaseRequest {
 
 	/**
-	 * コンストラクタ<br>
-	 * 入力された値を詰める
-	 * @param request
+	 * {@inheritDoc}
 	 */
-	public HealthInfoRequest(HttpServletRequest request) {
+	public HealthInfoRequest() {
 		super();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setRequest(HttpServletRequest request) {
 		this.requestInfoMap.put("userId", request.getParameter("userId"));
 		this.requestInfoMap.put("height", request.getParameter("height"));
 		this.requestInfoMap.put("weight", request.getParameter("weight"));
 	}
 
 	/**
-	 * 不正なリクエスト情報の場合falseを返す<br>
-	 * @throws HealthInfoException
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void checkRequest() throws HealthInfoException {
@@ -39,7 +46,5 @@ public class HealthInfoRequest extends BaseRequest {
 				throw new HealthInfoException("request内のkey：" + entry.getKey() + "value:" + this.requestInfoMap.get(entry.getKey()));
 			}
 		}
-
-
 	}
 }
