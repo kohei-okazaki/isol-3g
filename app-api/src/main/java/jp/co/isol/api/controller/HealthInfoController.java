@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.isol.api.exception.HealthInfoException;
-import jp.co.isol.api.request.HealthInfoRequest;
+import jp.co.isol.api.exception.impl.HealthInfoException;
+import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dto.HealthInfoDto;
 
@@ -23,9 +23,17 @@ import jp.co.isol.common.dto.HealthInfoDto;
 @RequestMapping(value = "/healthInfo", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 public class HealthInfoController {
 
+	/** 健康情報サービスクラス */
 	@Autowired
 	private HealthInfoService healthInfoService;
 
+	/**
+	 * Getでリクエストを受け付ける
+	 * @param req
+	 * @return
+	 * @throws ParseException
+	 * @throws HealthInfoException
+	 */
 	@GetMapping
 	public HealthInfoDto get(HttpServletRequest req) throws ParseException, HealthInfoException {
 

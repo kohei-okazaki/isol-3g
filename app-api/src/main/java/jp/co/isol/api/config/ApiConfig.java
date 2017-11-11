@@ -13,6 +13,10 @@ import jp.co.isol.common.dao.impl.HealthInfoDaoImpl;
 @Configuration
 public class ApiConfig {
 
+	/**
+	 * 健康情報のDaoクラスを返す<br>
+	 * @return
+	 */
 	@Bean
 	public HealthInfoDao getHealthInfoDao() {
 		return new HealthInfoDaoImpl();

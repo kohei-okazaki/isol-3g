@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.config.ApiConfig;
 import jp.co.isol.api.log.ApiLogger;
-import jp.co.isol.api.request.HealthInfoRequest;
+import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.code.CodeManager;
 import jp.co.isol.common.code.MainKey;

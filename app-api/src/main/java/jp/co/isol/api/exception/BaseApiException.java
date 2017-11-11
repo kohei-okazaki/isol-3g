@@ -6,6 +6,7 @@ package jp.co.isol.api.exception;
  */
 public abstract class BaseApiException extends Exception {
 
+	/** エラーメッセージ */
 	protected String errorMessage;
 
 }

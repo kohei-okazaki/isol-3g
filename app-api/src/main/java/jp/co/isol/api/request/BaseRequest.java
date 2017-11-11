@@ -14,6 +14,9 @@ public abstract class BaseRequest {
 	/** リクエストマップ */
 	protected Map<String, Object> requestInfoMap;
 
+	/**
+	 * コンストラクタ<br>
+	 */
 	public BaseRequest() {
 		this.requestInfoMap = new HashMap<String, Object>();
 	}

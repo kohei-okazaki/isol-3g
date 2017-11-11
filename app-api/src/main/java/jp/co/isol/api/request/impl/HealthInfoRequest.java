@@ -1,10 +1,11 @@
-package jp.co.isol.api.request;
+package jp.co.isol.api.request.impl;
 
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jp.co.isol.api.exception.HealthInfoException;
+import jp.co.isol.api.exception.impl.HealthInfoException;
+import jp.co.isol.api.request.BaseRequest;
 import jp.co.isol.common.util.StringUtil;
 
 /**
