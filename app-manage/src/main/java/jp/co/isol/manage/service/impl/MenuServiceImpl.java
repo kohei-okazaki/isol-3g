@@ -20,6 +20,7 @@ import jp.co.isol.manage.service.MenuService;
 @Service
 public class MenuServiceImpl implements MenuService {
 
+	/** 計算サービス */
 	@Autowired
 	private CalcService calcService;
 
