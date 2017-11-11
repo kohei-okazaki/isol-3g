@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -56,10 +56,10 @@ public class CodeManager {
 		String codePorpertyFile = FileUtil.getFilePathName(CODE_PROPERTIES);
 		String value = "";
 
-		try (InputStream inputStream = new FileInputStream(codePorpertyFile)) {
+		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(codePorpertyFile), "UTF-8")) {
 
 			Properties properties = new Properties();
-			properties.load(inputStream);
+			properties.load(reader);
 			value = properties.getProperty(mainKey.toString() + "_" + subKey.toString());
 
 		} catch (FileNotFoundException e) {
