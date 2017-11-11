@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
+import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.common.util.StringUtil;
 
@@ -49,7 +50,7 @@ public class MessageManager {
 		String messagePropertyFile = FileUtil.getFilePathName(MESSAGE_PROPERTIES);
 		String value = "";
 
-		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(messagePropertyFile), "UTF-8")) {
+		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(messagePropertyFile), Charset.UTF_8.getName())) {
 
 			Properties properties = new Properties();
 			properties.load(reader);

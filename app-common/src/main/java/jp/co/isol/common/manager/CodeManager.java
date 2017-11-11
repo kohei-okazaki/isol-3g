@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
+import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.common.util.StringUtil;
 
@@ -56,7 +57,7 @@ public class CodeManager {
 		String codePorpertyFile = FileUtil.getFilePathName(CODE_PROPERTIES);
 		String value = "";
 
-		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(codePorpertyFile), "UTF-8")) {
+		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(codePorpertyFile), Charset.UTF_8.getName())) {
 
 			Properties properties = new Properties();
 			properties.load(reader);
@@ -81,9 +82,9 @@ public class CodeManager {
 	 * @param subKey サブキー
 	 * @return
 	 */
-	public List<String> getList(SubKey subKey) {
+	public List<String> getList(MainKey mainKey) {
 
-		if (Objects.isNull(subKey)) {
+		if (Objects.isNull(mainKey)) {
 			return null;
 		}
 
@@ -93,7 +94,7 @@ public class CodeManager {
 			while (true) {
 
 				String value = br.readLine();
-				if (Objects.nonNull(value) && subKey.toString().contains(value)) {
+				if (Objects.nonNull(value) && mainKey.toString().contains(value)) {
 					list.add(value);
 				}
 
