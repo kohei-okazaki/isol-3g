@@ -15,4 +15,10 @@ public interface MailInfoDao {
 	 */
 	public MailInfoDto getAccountByUserId(String userId);
 
+
+	/**
+	 * 引数で指定されたアカウント情報を更新する
+	 * @param mailInfoDto
+	 */
+	public void updateAccount(MailInfoDto mailInfoDto);
 }

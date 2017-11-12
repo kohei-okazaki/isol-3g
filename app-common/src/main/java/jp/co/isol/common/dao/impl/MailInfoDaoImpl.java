@@ -19,7 +19,16 @@ public class MailInfoDaoImpl implements MailInfoDao {
 		dto.setMailaddress("test-001@test.jp");
 		dto.setMailPassword("password");
 		dto.setRegDate(new Date());
-		return null;
+		return dto;
+	}
+
+	/**
+	 * 引数で指定されたアカウント情報を更新する
+	 * @param mailInfoDto
+	 */
+	@Override
+	public void updateAccount(MailInfoDto mailInfoDto) {
+		// TODO 更新処理を追加すること
 	}
 
 }
