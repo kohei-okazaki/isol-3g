@@ -26,7 +26,7 @@ public class HealthInfoController {
 	/** 健康情報サービスクラス */
 	@Autowired
 	private HealthInfoService healthInfoService;
-	/** 健康情報リクエスト */
+	/** 健康情報リクエストクラス */
 	@Autowired
 	private HealthInfoRequest healthInfoRequest;
 

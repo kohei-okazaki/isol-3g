@@ -2,6 +2,7 @@ package jp.co.isol.common.manager;
 
 /**
  * CodeManagerで使うサブキーenum<br>
+ * code.propertiesにMainKeyと定義
  *
  */
 public enum SubKey {

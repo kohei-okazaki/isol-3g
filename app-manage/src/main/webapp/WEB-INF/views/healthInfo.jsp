@@ -19,19 +19,19 @@
 	<c:if test="${page == 0}">
 		<h1>
 			<img class="headericon" alt="入力" src="resources/image/icon_input.jpg">
-			<c:out value="入力画面" />
+			<c:out value="健康情報入力画面" />
 		</h1>
 	</c:if>
 	<c:if test="${page == 1}">
 		<h1 class="title">
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
-			<c:out value="確認画面" />
+			<c:out value="健康情報入力確認画面" />
 		</h1>
 	</c:if>
 	<c:if test="${page == 2}">
 		<h1 class="title">
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
-			<c:out value="完了画面" />
+			<c:out value="健康情報入力完了画面" />
 		</h1>
 	</c:if>
 
@@ -64,7 +64,7 @@
 	</div>
 	<br>
 	<div align="center">
-		<form action="/isol-manage/input-confirm.html" method="post">
+		<form action="/isol-manage/healthInfo-confirm.html" method="post">
 			<c:out value="身長：" />
 			<input type="text" name="height" size="6" required>
 			<c:out value="cm" />
@@ -91,7 +91,7 @@
 	<c:if test="${page == 1}">
 	<br>
 	<div align="center">
-		<form action="/isol-manage/input-complete.html" method="post">
+		<form action="/isol-manage/healthInfo-complete.html" method="post">
 			<c:out value="身長：" />
 			<input type="text" name="height" value="${form.height}" size="6" disabled="disabled">
 			<input type="hidden" name="height" value="${form.height}" />
@@ -126,10 +126,14 @@
 		<br><br><br>
 		<table class="custom">
 			<tr class="headercolor">
+				<th align="center"><c:out value="身長" /></th>
+				<th align="center"><c:out value="体重" /></th>
 				<th align="center"><c:out value="標準体重" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
 			<tr class="datacolor">
+				<td align="center"><c:out value="${dto.height}" /></td>
+				<td align="center"><c:out value="${dto.weight}" /></td>
 				<td align="center"><c:out value="${dto.standardWeight}" /></td>
 				<td align="center"><c:out value="${dto.bmi}" /></td>
 			</tr>
@@ -154,7 +158,7 @@
 				<td>　　</td>
 				<td align="center">
 				<!-- 出力 -->
-				<form action="/isol-manage/fileDownload.html" method="get">
+				<form action="/isol-manage/healthInfo-fileDownload.html" method="get">
 					<input type="hidden" name="height" value="${dto.height}">
 					<input type="hidden" name="weight" value="${dto.weight}">
 					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">

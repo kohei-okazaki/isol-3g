@@ -26,7 +26,7 @@
 			<ul>
 				<li><a href="#">ユーザ情報</a>
 					<ul>
-						<li><a href="/isol-manage/input.html">入力</a></li>
+						<li><a href="/isol-manage/healthInfo-input.html">入力</a></li>
 						<li><a href="/isol-manage/result-reference.html">照会</a></li>
 					</ul>
 				</li>

@@ -8,7 +8,7 @@ import lombok.Setter;
  * ログイン後のアプリで保持するセッションキー
  *
  */
-public enum AppSessionKey {
+public enum ManageSessionKey {
 
 	/** ユーザID */
 	USER_ID("userId");
@@ -17,7 +17,7 @@ public enum AppSessionKey {
 	@Getter
 	private String name;
 
-	private AppSessionKey(String name) {
+	private ManageSessionKey(String name) {
 		setName(name);
 	}
 

@@ -18,8 +18,8 @@ import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
-import jp.co.isol.manage.web.session.AppSessionKey;
-import jp.co.isol.manage.web.session.AppSessionManager;
+import jp.co.isol.manage.web.session.ManageSessionKey;
+import jp.co.isol.manage.web.session.ManageSessionManager;
 
 /**
  * 健康管理_アカウント設定コントローラ<br>
@@ -50,8 +50,8 @@ public class AccountSettingController {
 
 		// セッションからユーザIDを取得
 		HttpSession session = request.getSession();
-		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		String userId = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
+		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
+		String userId = sessionManager.getAttribute(session, ManageSessionKey.USER_ID);
 
 		model.addAttribute("dto", accountSearchService.findAccountByUserId(userId));
 

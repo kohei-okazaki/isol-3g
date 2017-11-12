@@ -7,10 +7,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 入力フォームクラス
+ * 健康情報フォームクラス
  *
  */
-public class HealthInfoInputForm implements Serializable {
+public class HealthInfoForm implements Serializable {
 
 	/** ユーザID */
 	@Setter

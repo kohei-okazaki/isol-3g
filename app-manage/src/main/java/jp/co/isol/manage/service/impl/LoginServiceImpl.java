@@ -11,8 +11,8 @@ import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.web.config.ManageConfig;
-import jp.co.isol.manage.web.session.AppSessionKey;
-import jp.co.isol.manage.web.session.AppSessionManager;
+import jp.co.isol.manage.web.session.ManageSessionKey;
+import jp.co.isol.manage.web.session.ManageSessionManager;
 
 /**
  * ログインサービス実装クラス
@@ -45,8 +45,8 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public void registSession(HttpSession session, LoginUserForm loginForm) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		AppSessionManager sessionManager = context.getBean(AppSessionManager.class);
-		sessionManager.setAttribute(session, AppSessionKey.USER_ID, loginForm.getUserId());
+		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
+		sessionManager.setAttribute(session, ManageSessionKey.USER_ID, loginForm.getUserId());
 	}
 
 }

@@ -12,7 +12,7 @@ import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.MessageManager;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
-import jp.co.isol.manage.form.HealthInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoInputService;
 
@@ -33,7 +33,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 判定結果
 	 */
 	@Override
-	public boolean hasError(HealthInfoInputForm form) {
+	public boolean hasError(HealthInfoForm form) {
 
 		if (hasNull(form.getWeight(), form.getHeight())) {
 			return true;
@@ -50,7 +50,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 健康情報Dto
 	 */
 	@Override
-	public HealthInfoDto convertUserInfo(HealthInfoInputForm form, String userId) {
+	public HealthInfoDto convertUserInfo(HealthInfoForm form, String userId) {
 
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setUserId(userId);
@@ -70,7 +70,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 体重差のメッセージ
 	 */
 	@Override
-	public String getDiffMessage(HealthInfoInputForm form, HealthInfoDto dto) {
+	public String getDiffMessage(HealthInfoForm form, HealthInfoDto dto) {
 		MessageManager manager = MessageManager.getInstance();
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合
@@ -91,7 +91,7 @@ public class HealthInfoInputServiceImpl implements HealthInfoInputService {
 	 * @return 体重差
 	 */
 	@Override
-	public BigDecimal getDiffWeight(HealthInfoInputForm form, HealthInfoDto dto) {
+	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfoDto dto) {
 		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 	}
 }

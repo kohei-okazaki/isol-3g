@@ -13,9 +13,9 @@ import jp.co.isol.common.dto.AccountDto;
 public class AccountDaoImpl implements AccountDao {
 
 	/**
-	 * 引数で指定されたIDのログインユーザ情報を取得する
+	 * 引数で指定されたユーザIDのアカウント情報を取得する
 	 * @param userId
-	 * @return LoginUserEntity
+	 * @return AccountDto
 	 */
 	@Override
 	public AccountDto getAccountByUserId(String userId) {
@@ -26,7 +26,7 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	/**
-	 * ログインユーザ情報を登録する
+	 * アカウント情報を登録する
 	 */
 	@Override
 	public void registAccount() {
@@ -34,8 +34,8 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	/**
-	 * 引数で指定されたアカウントを更新する
-	 * @param form
+	 * 引数で指定されたアカウント情報を更新する
+	 * @param accountDto
 	 */
 	@Override
 	public void updateAccount(AccountDto accountDto) {
@@ -43,7 +43,7 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	/**
-	 * 指定されたアカウントの削除を行う<br>
+	 * 指定されたアカウント情報の削除を行う<br>
 	 * @param userId
 	 */
 	@Override

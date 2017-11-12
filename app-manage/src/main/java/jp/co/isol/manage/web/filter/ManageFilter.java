@@ -17,8 +17,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import jp.co.isol.common.web.filter.BaseFilter;
 import jp.co.isol.manage.web.config.ManageConfig;
-import jp.co.isol.manage.web.session.AppSessionKey;
-import jp.co.isol.manage.web.session.AppSessionManager;
+import jp.co.isol.manage.web.session.ManageSessionKey;
+import jp.co.isol.manage.web.session.ManageSessionManager;
 
 
 /**
@@ -26,7 +26,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
  *
  */
 @WebFilter
-public class AppFilter extends BaseFilter {
+public class ManageFilter extends BaseFilter {
 
 	/**
 	 * 初期化処理を行う。<br>
@@ -55,8 +55,8 @@ public class AppFilter extends BaseFilter {
 
 		HttpSession session = request.getSession();
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		AppSessionManager sessionManager = context.getBean("appSessionManager", AppSessionManager.class);
-		String session_id = sessionManager.getAttribute(session, AppSessionKey.USER_ID);
+		ManageSessionManager sessionManager = context.getBean("appSessionManager", ManageSessionManager.class);
+		String session_id = sessionManager.getAttribute(session, ManageSessionKey.USER_ID);
 
 		System.out.println("session_id = " + session_id);
 		chain.doFilter(req, resp);

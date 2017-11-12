@@ -9,8 +9,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.log.ManageLogger;
@@ -23,6 +24,7 @@ import jp.co.isol.manage.web.config.ManageConfig;
  *
  */
 @Controller
+@RequestMapping("/menu.html")
 public class MenuController {
 
 	@Autowired
@@ -37,7 +39,7 @@ public class MenuController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/menu.html", method = RequestMethod.POST)
+	@PostMapping
 	public String menu(Model model, HttpServletRequest request, LoginUserForm loginForm) throws ParseException {
 
 		if (loginService.invalidPassword(loginForm)) {
@@ -59,7 +61,7 @@ public class MenuController {
 	 * getでメニュー画面に遷移する<br>
 	 * @return
 	 */
-	@RequestMapping(value = "/menu.html", method = RequestMethod.GET)
+	@GetMapping
 	public String menu() {
 		return View.MENU.getName();
 	}

@@ -5,22 +5,24 @@ import org.springframework.context.annotation.Configuration;
 
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dao.HealthInfoDao;
+import jp.co.isol.common.dao.MailInfoDao;
 import jp.co.isol.common.dao.impl.AccountDaoImpl;
 import jp.co.isol.common.dao.impl.HealthInfoDaoImpl;
+import jp.co.isol.common.dao.impl.MailInfoDaoImpl;
 import jp.co.isol.common.other.DBConnecter;
 import jp.co.isol.manage.log.ManageLogger;
-import jp.co.isol.manage.web.session.AppSessionManager;
+import jp.co.isol.manage.web.session.ManageSessionManager;
 
 /**
- * アプリケーションコンフィグクラス<br>
+ * 管理画面コンフィグクラス<br>
  *
  */
 @Configuration
 public class ManageConfig {
 
 	@Bean(name = "appSessionManager")
-	public AppSessionManager getAppSessionManager() {
-		return new AppSessionManager();
+	public ManageSessionManager getAppSessionManager() {
+		return new ManageSessionManager();
 	}
 
 	@Bean(name = "dbConnecter")
@@ -41,6 +43,11 @@ public class ManageConfig {
 	@Bean(name = "healthInfoDao")
 	public HealthInfoDao getHealthInfoDao() {
 		return new HealthInfoDaoImpl();
+	}
+
+	@Bean(name = "mailInfoDao")
+	public MailInfoDao getMailInfoDao() {
+		return new MailInfoDaoImpl();
 	}
 
 }

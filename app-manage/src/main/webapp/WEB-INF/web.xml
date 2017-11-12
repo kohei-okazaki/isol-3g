@@ -46,12 +46,12 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/login.html</url-pattern>
-		<url-pattern>/input.html</url-pattern>
-		<url-pattern>/input-confirm.html</url-pattern>
-		<url-pattern>/input-complete.html</url-pattern>
+		<url-pattern>/healthInfo-input.html</url-pattern>
+		<url-pattern>/healthInfo-confirm.html</url-pattern>
+		<url-pattern>/healthInfo-complete.html</url-pattern>
 		<url-pattern>/menu.html</url-pattern>
 		<url-pattern>/notice.html</url-pattern>
-		<url-pattern>/fileDownload.html</url-pattern>
+		<url-pattern>/healthInfo-fileDownload.html</url-pattern>
 		<url-pattern>/result-reference.html</url-pattern>
 		<url-pattern>/result-reference-download.html</url-pattern>
 		<url-pattern>/account-setting-input.html</url-pattern>
@@ -64,11 +64,11 @@
 	</servlet-mapping>
 
 	<filter>
-		<filter-name>AppFilter</filter-name>
-		<filter-class>jp.co.isol.manage.web.filter.AppFilter</filter-class>
+		<filter-name>ManageFilter</filter-name>
+		<filter-class>jp.co.isol.manage.web.filter.ManageFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>AppFilter</filter-name>
+		<filter-name>ManageFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 		<!--
 		リクエストパスが指定したパターンに一致するリクエストに対してのみFilterが適用されます。

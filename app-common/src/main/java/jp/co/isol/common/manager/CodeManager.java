@@ -1,10 +1,7 @@
 package jp.co.isol.common.manager;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -12,6 +9,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.common.util.StringUtil;
 
@@ -25,6 +26,8 @@ public class CodeManager {
 	private static CodeManager instance = new CodeManager();
 	/** コードプロパティ */
 	private static final String CODE_PROPERTIES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\code.properties";
+
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * プライベートコンストラクタ<br>
@@ -56,17 +59,16 @@ public class CodeManager {
 		String codePorpertyFile = FileUtil.getFilePathName(CODE_PROPERTIES);
 		String value = "";
 
-		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(codePorpertyFile), "UTF-8")) {
+		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(codePorpertyFile), Charset.UTF_8.getName())) {
 
 			Properties properties = new Properties();
 			properties.load(reader);
 			value = properties.getProperty(mainKey.toString() + "_" + subKey.toString());
 
 		} catch (FileNotFoundException e) {
-			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
-			e.printStackTrace();
+			LOG.error("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("ファイルの読み込みに失敗 file=" + codePorpertyFile);
 		}
 
 		if (StringUtil.isEmpty(value)) {
@@ -81,31 +83,39 @@ public class CodeManager {
 	 * @param subKey サブキー
 	 * @return
 	 */
-	public List<String> getList(SubKey subKey) {
+	public List<String> getList(MainKey mainKey) {
 
-		if (Objects.isNull(subKey)) {
+		if (Objects.isNull(mainKey)) {
 			return null;
 		}
 
-		List<String> list = new ArrayList<String>();
-		File propFile = FileUtil.getFile(CODE_PROPERTIES);
-		try (BufferedReader br = new BufferedReader(new FileReader(propFile))) {
-			while (true) {
+		List<String> porpList = new ArrayList<String>();
+		String codePorpertyFile = FileUtil.getFilePathName(CODE_PROPERTIES);
 
-				String value = br.readLine();
-				if (Objects.nonNull(value) && subKey.toString().contains(value)) {
-					list.add(value);
+		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(codePorpertyFile), Charset.UTF_8.getName())) {
+
+			Properties properties = new Properties();
+			properties.load(reader);
+
+			for (Object key : properties.keySet()) {
+
+				if (Objects.isNull(key)) {
+					continue;
 				}
+				String strKey = (String) key;
 
+				if (strKey.startsWith(mainKey.toString())) {
+					porpList.add(properties.getProperty(strKey));
+				}
 			}
+
 		} catch (FileNotFoundException e) {
-			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + CODE_PROPERTIES);
-			e.printStackTrace();
+			LOG.error("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("ファイルの読み込みに失敗 file=" + codePorpertyFile);
 		}
 
-		return list;
+		return porpList;
 	}
 
 	/**

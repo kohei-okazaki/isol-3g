@@ -15,7 +15,7 @@ import jp.co.isol.common.excel.BaseExcelBuilder;
 import jp.co.isol.common.excel.Excel;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
-import jp.co.isol.manage.form.HealthInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoForm;
 
 /**
  * 健康情報入力画面Excel生成クラス<br>
@@ -25,13 +25,13 @@ import jp.co.isol.manage.form.HealthInfoInputForm;
 public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
 	/** 健康情報入力フォームクラス */
-	private HealthInfoInputForm form;
+	private HealthInfoForm form;
 
 	/**
 	 * コンストラクタ<br>
 	 * @param form
 	 */
-	public HealthInfoExcelBuilder(HealthInfoInputForm form) {
+	public HealthInfoExcelBuilder(HealthInfoForm form) {
 		this.form = form;
 	}
 
