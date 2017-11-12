@@ -78,7 +78,7 @@ public class ExcelUtil {
 	 * @return
 	 */
 	private static Excel getExcelClass(Class<?> clazz) {
-		return (Excel) clazz.getAnnotation(Excel.class);
+		return clazz.getAnnotation(Excel.class);
 	}
 
 
