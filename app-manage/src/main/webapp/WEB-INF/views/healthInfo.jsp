@@ -19,19 +19,19 @@
 	<c:if test="${page == 0}">
 		<h1>
 			<img class="headericon" alt="入力" src="resources/image/icon_input.jpg">
-			<c:out value="入力画面" />
+			<c:out value="健康情報入力画面" />
 		</h1>
 	</c:if>
 	<c:if test="${page == 1}">
 		<h1 class="title">
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
-			<c:out value="確認画面" />
+			<c:out value="健康情報入力確認画面" />
 		</h1>
 	</c:if>
 	<c:if test="${page == 2}">
 		<h1 class="title">
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
-			<c:out value="完了画面" />
+			<c:out value="健康情報入力完了画面" />
 		</h1>
 	</c:if>
 
