@@ -1,7 +1,5 @@
 package jp.co.isol.common.manager;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -91,24 +89,33 @@ public class CodeManager {
 			return null;
 		}
 
-		List<String> list = new ArrayList<String>();
-		File propFile = FileUtil.getFile(CODE_PROPERTIES);
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(propFile), Charset.UTF_8.getName()))) {
-			while (true) {
+		List<String> porpList = new ArrayList<String>();
+		String codePorpertyFile = FileUtil.getFilePathName(CODE_PROPERTIES);
 
-				String value = reader.readLine();
-				if (Objects.nonNull(value) && value.startsWith(mainKey.toString())) {
-					list.add(value);
+		try (InputStreamReader reader = new InputStreamReader(new FileInputStream(codePorpertyFile), Charset.UTF_8.getName())) {
+
+			Properties properties = new Properties();
+			properties.load(reader);
+
+			for (Object key : properties.keySet()) {
+
+				if (Objects.isNull(key)) {
+					continue;
 				}
+				String strKey = (String) key;
 
+				if (strKey.startsWith(mainKey.toString())) {
+					porpList.add(properties.getProperty(strKey));
+				}
 			}
+
 		} catch (FileNotFoundException e) {
-			LOG.error("ファイルがみつからなかった、ファイルパスと名前=" + propFile);
+			LOG.error("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
 		} catch (IOException e) {
-			LOG.error("ファイルの読み込みに失敗 file=" + propFile);
+			LOG.error("ファイルの読み込みに失敗 file=" + codePorpertyFile);
 		}
 
-		return list;
+		return porpList;
 	}
 
 	/**
