@@ -17,7 +17,7 @@ import lombok.ToString;
  *
  */
 @Entity
-@Table(name = "ACCOUNT")
+@Table(name = "MAIL_INFO")
 @ToString(exclude = "mailPassword")
 public class MailInfoDto {
 
