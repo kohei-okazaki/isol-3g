@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.form.HealthInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.FileDownloadService;
 import jp.co.isol.manage.service.HealthInfoInputService;
@@ -36,7 +36,7 @@ import jp.co.isol.manage.web.session.AppSessionManager;
  *
  */
 @Controller
-public class HealthInfoInputController {
+public class HealthInfoController {
 
 	/** 健康情報入力サービス */
 	@Autowired
@@ -50,7 +50,7 @@ public class HealthInfoInputController {
 	/** 健康情報ファイルダウンロードサービス */
 	@Autowired
 	@HealthInfoInput
-	private FileDownloadService<HealthInfoInputForm> fileDownloadService;
+	private FileDownloadService<HealthInfoForm> fileDownloadService;
 	/** メールサービス */
 	@Autowired
 	private MailService mailService;
@@ -79,7 +79,7 @@ public class HealthInfoInputController {
 	 * @return 確認画面
 	 */
 	@RequestMapping(value = "/healthInfo-confirm.html", method = RequestMethod.POST)
-	public String confirm(Model model, HealthInfoInputForm form) {
+	public String confirm(Model model, HealthInfoForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
@@ -108,7 +108,7 @@ public class HealthInfoInputController {
 	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/healthInfo-complete.html", method = RequestMethod.POST)
-	public String complete(Model model, HealthInfoInputForm form, HttpServletRequest request) throws ParseException {
+	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
@@ -151,7 +151,7 @@ public class HealthInfoInputController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/healthInfo-fileDownload.html", method = RequestMethod.GET)
-	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoInputForm form) {
+	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);
@@ -170,7 +170,7 @@ public class HealthInfoInputController {
 	 * @return View
 	 */
 	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
-	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, HealthInfoInputForm form) {
+	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, HealthInfoForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);

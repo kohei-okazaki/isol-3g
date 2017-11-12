@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
 import jp.co.isol.manage.excel.HealthInfoExcelBuilder;
-import jp.co.isol.manage.form.HealthInfoInputForm;
+import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.FileDownloadService;
 
 /**
@@ -14,7 +14,7 @@ import jp.co.isol.manage.service.FileDownloadService;
  *
  */
 @Service(value = "HealthInfoInput")
-public class HealthInfoFileDownloadServiceImpl implements FileDownloadService<HealthInfoInputForm> {
+public class HealthInfoFileDownloadServiceImpl implements FileDownloadService<HealthInfoForm> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -24,7 +24,7 @@ public class HealthInfoFileDownloadServiceImpl implements FileDownloadService<He
 	 * @return View
 	 */
 	@Override
-	public View execute(HealthInfoInputForm form) {
+	public View execute(HealthInfoForm form) {
 		init();
 		return new HealthInfoExcelBuilder(form);
 	}

@@ -126,10 +126,14 @@
 		<br><br><br>
 		<table class="custom">
 			<tr class="headercolor">
+				<th align="center"><c:out value="身長" /></th>
+				<th align="center"><c:out value="体重" /></th>
 				<th align="center"><c:out value="標準体重" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
 			<tr class="datacolor">
+				<td align="center"><c:out value="${dto.height}" /></td>
+				<td align="center"><c:out value="${dto.weight}" /></td>
 				<td align="center"><c:out value="${dto.standardWeight}" /></td>
 				<td align="center"><c:out value="${dto.bmi}" /></td>
 			</tr>
