@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.common.util.StringUtil;
@@ -20,6 +23,8 @@ public class MessageManager {
 	private static MessageManager instance = new MessageManager();
 	/** コードプロパティ */
 	private static final String MESSAGE_PROPERTIES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\message.properties";
+
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * プライベートコンストラクタ<br>
@@ -57,10 +62,9 @@ public class MessageManager {
 			value = properties.getProperty(target);
 
 		} catch (FileNotFoundException e) {
-			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + messagePropertyFile);
-			e.printStackTrace();
+			LOG.error("ファイルがみつからなかった、ファイルパスと名前=" + messagePropertyFile);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("ファイルの読み込みに失敗 file=" + messagePropertyFile);
 		}
 
 		if (StringUtil.isEmpty(value)) {

@@ -4,13 +4,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.FileUtil;
@@ -26,6 +28,8 @@ public class CodeManager {
 	private static CodeManager instance = new CodeManager();
 	/** コードプロパティ */
 	private static final String CODE_PROPERTIES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\code.properties";
+
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * プライベートコンストラクタ<br>
@@ -64,10 +68,9 @@ public class CodeManager {
 			value = properties.getProperty(mainKey.toString() + "_" + subKey.toString());
 
 		} catch (FileNotFoundException e) {
-			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
-			e.printStackTrace();
+			LOG.error("ファイルがみつからなかった、ファイルパスと名前=" + codePorpertyFile);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("ファイルの読み込みに失敗 file=" + codePorpertyFile);
 		}
 
 		if (StringUtil.isEmpty(value)) {
@@ -90,20 +93,19 @@ public class CodeManager {
 
 		List<String> list = new ArrayList<String>();
 		File propFile = FileUtil.getFile(CODE_PROPERTIES);
-		try (BufferedReader br = new BufferedReader(new FileReader(propFile))) {
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(propFile), Charset.UTF_8.getName()))) {
 			while (true) {
 
-				String value = br.readLine();
-				if (Objects.nonNull(value) && mainKey.toString().contains(value)) {
+				String value = reader.readLine();
+				if (Objects.nonNull(value) && value.startsWith(mainKey.toString())) {
 					list.add(value);
 				}
 
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("ファイルがみつからなかった、ファイルパスと名前=" + CODE_PROPERTIES);
-			e.printStackTrace();
+			LOG.error("ファイルがみつからなかった、ファイルパスと名前=" + propFile);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("ファイルの読み込みに失敗 file=" + propFile);
 		}
 
 		return list;
