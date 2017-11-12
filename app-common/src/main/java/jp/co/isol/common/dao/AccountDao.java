@@ -9,7 +9,7 @@ import jp.co.isol.common.dto.AccountDto;
 public interface AccountDao {
 
 	/**
-	 * 引数で指定されたIDのアカウント情報を取得する
+	 * 引数で指定されたユーザIDのアカウント情報を取得する
 	 * @param userId
 	 * @return AccountDto
 	 */
