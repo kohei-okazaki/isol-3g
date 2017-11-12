@@ -60,7 +60,7 @@ public class HealthInfoInputController {
 	 * @param model
 	 * @return 遷移先を返却
 	 */
-	@RequestMapping(value = "/input.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/healthInfo-input.html", method = RequestMethod.GET)
 	public String input(Model model) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -78,7 +78,7 @@ public class HealthInfoInputController {
 	 * @param form
 	 * @return 確認画面
 	 */
-	@RequestMapping(value = "/input-confirm.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/healthInfo-confirm.html", method = RequestMethod.POST)
 	public String confirm(Model model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -107,7 +107,7 @@ public class HealthInfoInputController {
 	 * @return 完了画面
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/input-complete.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/healthInfo-complete.html", method = RequestMethod.POST)
 	public String complete(Model model, HealthInfoInputForm form, HttpServletRequest request) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -150,7 +150,7 @@ public class HealthInfoInputController {
 	 * @param form
 	 * @return ModelAndView
 	 */
-	@RequestMapping(value = "/fileDownload.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/healthInfo-fileDownload.html", method = RequestMethod.GET)
 	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoInputForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);

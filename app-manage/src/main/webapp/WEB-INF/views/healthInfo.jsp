@@ -64,7 +64,7 @@
 	</div>
 	<br>
 	<div align="center">
-		<form action="/isol-manage/input-confirm.html" method="post">
+		<form action="/isol-manage/healthInfo-confirm.html" method="post">
 			<c:out value="身長：" />
 			<input type="text" name="height" size="6" required>
 			<c:out value="cm" />
@@ -91,7 +91,7 @@
 	<c:if test="${page == 1}">
 	<br>
 	<div align="center">
-		<form action="/isol-manage/input-complete.html" method="post">
+		<form action="/isol-manage/healthInfo-complete.html" method="post">
 			<c:out value="身長：" />
 			<input type="text" name="height" value="${form.height}" size="6" disabled="disabled">
 			<input type="hidden" name="height" value="${form.height}" />
@@ -154,7 +154,7 @@
 				<td>　　</td>
 				<td align="center">
 				<!-- 出力 -->
-				<form action="/isol-manage/fileDownload.html" method="get">
+				<form action="/isol-manage/healthInfo-fileDownload.html" method="get">
 					<input type="hidden" name="height" value="${dto.height}">
 					<input type="hidden" name="weight" value="${dto.weight}">
 					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
