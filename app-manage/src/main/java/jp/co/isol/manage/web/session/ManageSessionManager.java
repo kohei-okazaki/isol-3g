@@ -7,10 +7,10 @@ import javax.servlet.http.HttpSession;
 import jp.co.isol.common.util.StringUtil;
 
 /**
- * App内のsession管理クラス
+ * 管理画面内のsession管理クラス
  *
  */
-public class AppSessionManager {
+public class ManageSessionManager {
 
 	/**
 	 * sessionにセットする<br>
@@ -18,7 +18,7 @@ public class AppSessionManager {
 	 * @param key
 	 * @param value
 	 */
-	public void setAttribute(HttpSession session, AppSessionKey key, String value) {
+	public void setAttribute(HttpSession session, ManageSessionKey key, String value) {
 		session.setAttribute(key.getName(), value);
 	}
 
@@ -29,7 +29,7 @@ public class AppSessionManager {
 	 * @param key
 	 * @return value
 	 */
-	public String getAttribute(HttpSession session, AppSessionKey key) {
+	public String getAttribute(HttpSession session, ManageSessionKey key) {
 
 		Object value = session.getAttribute(key.getName());
 		return Objects.isNull(value) ? StringUtil.EMPTY : value.toString();
@@ -40,7 +40,7 @@ public class AppSessionManager {
 	 * @param session
 	 * @param key
 	 */
-	public void removeKey(HttpSession session, AppSessionKey key) {
+	public void removeKey(HttpSession session, ManageSessionKey key) {
 		session.removeAttribute(key.getName());
 	}
 

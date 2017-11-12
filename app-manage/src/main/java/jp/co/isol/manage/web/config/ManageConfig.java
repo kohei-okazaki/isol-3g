@@ -9,7 +9,7 @@ import jp.co.isol.common.dao.impl.AccountDaoImpl;
 import jp.co.isol.common.dao.impl.HealthInfoDaoImpl;
 import jp.co.isol.common.other.DBConnecter;
 import jp.co.isol.manage.log.ManageLogger;
-import jp.co.isol.manage.web.session.AppSessionManager;
+import jp.co.isol.manage.web.session.ManageSessionManager;
 
 /**
  * アプリケーションコンフィグクラス<br>
@@ -19,8 +19,8 @@ import jp.co.isol.manage.web.session.AppSessionManager;
 public class ManageConfig {
 
 	@Bean(name = "appSessionManager")
-	public AppSessionManager getAppSessionManager() {
-		return new AppSessionManager();
+	public ManageSessionManager getAppSessionManager() {
+		return new ManageSessionManager();
 	}
 
 	@Bean(name = "dbConnecter")

@@ -28,8 +28,8 @@ import jp.co.isol.manage.service.annotation.HealthInfoInput;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
-import jp.co.isol.manage.web.session.AppSessionKey;
-import jp.co.isol.manage.web.session.AppSessionManager;
+import jp.co.isol.manage.web.session.ManageSessionKey;
+import jp.co.isol.manage.web.session.ManageSessionManager;
 
 /**
  * 健康管理_健康情報入力画面コントローラ
@@ -114,8 +114,8 @@ public class HealthInfoController {
 		ManageLogger logger = context.getBean(ManageLogger.class);
 		logger.info(this.getClass(), "# menu complete");
 
-		AppSessionManager manager = context.getBean(AppSessionManager.class);
-		String userId = manager.getAttribute(request.getSession(), AppSessionKey.USER_ID);
+		ManageSessionManager manager = context.getBean(ManageSessionManager.class);
+		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		HealthInfoDto dto = healthInfoInputService.convertUserInfo(form, userId);
 

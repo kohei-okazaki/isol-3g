@@ -45,7 +45,7 @@
 						<li><a href="/isol-manage/result-reference.html">照会</a></li>
 					</ul>
 				</li>
-				<li><a href="/isol/menu.html">メニュー戻る</a></li>
+				<li><a href="/isol-manage/menu.html">メニュー戻る</a></li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>
