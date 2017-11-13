@@ -1,5 +1,5 @@
 function finish() {
-	var finishMessage = dosument.write("出力しました");
+	var finishMessage = document.write("出力しました");
 	alert(finishMessage);
 }
 
