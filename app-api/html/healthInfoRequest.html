@@ -4,9 +4,20 @@
 </head>
 <body>
 <form action="http://localhost:8080/isol-api/healthInfo">
-	<input type="text" name="userId" />
-	<input type="text" name="height" />
-	<input type="text" name="weight" />
+	<table>
+		<tr>
+			<th><p>ユーザID</p></th>
+			<th><input type="text" name="userId" /></th>
+		</tr>
+		<tr>
+			<th><p>身長</p></th>
+			<th><input type="text" name="height" /></th>
+		</tr>
+		<tr>
+			<th><p>体重</p></th>
+			<th><input type="text" name="weight" /></th>
+		</tr>
+	</table>
 	<input type="submit" value="送信" />
 </form>
 </body>
