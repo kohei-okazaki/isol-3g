@@ -57,9 +57,6 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	private HealthInfoDto toHealthInfoDto(HealthInfoRequest request) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
-		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
-
 		String userId = (String) request.get("userId");
 		BigDecimal height = new BigDecimal((String) request.get("height"));
 		BigDecimal weight = new BigDecimal((String) request.get("weight"));
@@ -93,6 +90,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @return
 	 */
 	private String getUserStatus(BigDecimal inputWeight, BigDecimal beforeWeight) {
+
 		SubKey subkey = null;
 		if (beforeWeight.compareTo(inputWeight) == 0) {
 			subkey = SubKey.EVEN;
@@ -101,6 +99,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		} else {
 			subkey = SubKey.DOWN;
 		}
+
 		return CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, subkey);
 	}
 
