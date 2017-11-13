@@ -13,6 +13,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Qualifier("HealthInfoInput")
-public @interface HealthInfoInput {
+@Qualifier("HealthInfo")
+public @interface HealthInfo {
 }

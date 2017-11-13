@@ -42,8 +42,10 @@ public class HealthInfoRequest extends BaseRequest {
 
 		// nullまたは空文字のチェックを行う
 		for (Entry<String, Object> entry : requestInfoMap.entrySet()) {
-			if (StringUtil.isEmpty((String) this.requestInfoMap.get(entry.getKey()))) {
-				throw new HealthInfoException("request内のkey：" + entry.getKey() + "value:" + this.requestInfoMap.get(entry.getKey()));
+			String key = entry.getKey();
+			String value = (String) entry.getValue();
+			if (StringUtil.isEmpty(value)) {
+				throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "がnullまたは空文字です");
 			}
 		}
 	}

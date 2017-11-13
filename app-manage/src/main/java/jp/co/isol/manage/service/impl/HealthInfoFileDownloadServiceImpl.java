@@ -10,10 +10,10 @@ import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.FileDownloadService;
 
 /**
- * メニュー画面ファイルダウンロードサービス実装クラス
+ * 健康情報ファイルダウンロードサービス実装クラス
  *
  */
-@Service(value = "HealthInfoInput")
+@Service(value = "HealthInfo")
 public class HealthInfoFileDownloadServiceImpl implements FileDownloadService<HealthInfoForm> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());

@@ -12,6 +12,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,10 +23,10 @@ import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.FileDownloadService;
-import jp.co.isol.manage.service.HealthInfoInputService;
+import jp.co.isol.manage.service.HealthInfoService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.MailService;
-import jp.co.isol.manage.service.annotation.HealthInfoInput;
+import jp.co.isol.manage.service.annotation.HealthInfo;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
@@ -40,7 +42,7 @@ public class HealthInfoController {
 
 	/** 健康情報入力サービス */
 	@Autowired
-	private HealthInfoInputService healthInfoInputService;
+	private HealthInfoService healthInfoInputService;
 	/** 健康情報Dao */
 	@Autowired
 	private HealthInfoDao healthInfoDao;
@@ -49,7 +51,7 @@ public class HealthInfoController {
 	private HealthInfoSearchService healthInfoSearchService;
 	/** 健康情報ファイルダウンロードサービス */
 	@Autowired
-	@HealthInfoInput
+	@HealthInfo
 	private FileDownloadService<HealthInfoForm> fileDownloadService;
 	/** メールサービス */
 	@Autowired
@@ -60,7 +62,8 @@ public class HealthInfoController {
 	 * @param model
 	 * @return 遷移先を返却
 	 */
-	@RequestMapping(value = "/healthInfo-input.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/healthInfo-input.html")
+	@GetMapping
 	public String input(Model model) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -78,7 +81,8 @@ public class HealthInfoController {
 	 * @param form
 	 * @return 確認画面
 	 */
-	@RequestMapping(value = "/healthInfo-confirm.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/healthInfo-confirm.html")
+	@PostMapping
 	public String confirm(Model model, HealthInfoForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -107,7 +111,8 @@ public class HealthInfoController {
 	 * @return 完了画面
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/healthInfo-complete.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/healthInfo-complete.html")
+	@PostMapping
 	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);

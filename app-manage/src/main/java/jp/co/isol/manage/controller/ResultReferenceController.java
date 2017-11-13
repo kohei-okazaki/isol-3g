@@ -8,8 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,7 +45,8 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/result-reference.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/result-reference.html")
+	@GetMapping
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -64,7 +65,8 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/result-reference-download.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/result-reference-download.html")
+	@GetMapping
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);

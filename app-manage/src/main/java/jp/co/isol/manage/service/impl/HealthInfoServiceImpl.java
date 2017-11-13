@@ -14,14 +14,14 @@ import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.CalcService;
-import jp.co.isol.manage.service.HealthInfoInputService;
+import jp.co.isol.manage.service.HealthInfoService;
 
 /**
  * 健康情報_入力画面サービス実装クラス
  *
  */
 @Service
-public class HealthInfoInputServiceImpl implements HealthInfoInputService {
+public class HealthInfoServiceImpl implements HealthInfoService {
 
 	/** 計算サービス */
 	@Autowired

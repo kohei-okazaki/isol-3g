@@ -32,7 +32,7 @@ public class MailInfoDto {
 	@Column(name = "MAIL_ADDRESS", nullable = false)
 	@Setter
 	@Getter
-	private String mailaddress;
+	private String mailAddress;
 
 	/** メールパスワード */
 	@Column(name = "MAIL_PASSWORD", nullable = false)

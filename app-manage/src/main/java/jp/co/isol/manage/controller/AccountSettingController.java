@@ -8,8 +8,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
@@ -41,7 +42,8 @@ public class AccountSettingController {
 	 * @param request
 	 * @return アカウント設定入力画面
 	 */
-	@RequestMapping(value = "/account-setting-input.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/account-setting-input.html")
+	@GetMapping
 	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -66,7 +68,8 @@ public class AccountSettingController {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "/account-setting-confirm.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/account-setting-confirm.html")
+	@PostMapping
 	public String accountsettingConfirm(Model model, AccountSettingForm form) {
 
 
@@ -89,7 +92,8 @@ public class AccountSettingController {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "/account-setting-complete.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/account-setting-complete.html")
+	@PostMapping
 	public String accountSettingComplete(Model model, AccountSettingForm form) {
 
 		if (form.isDeleteFlag()) {

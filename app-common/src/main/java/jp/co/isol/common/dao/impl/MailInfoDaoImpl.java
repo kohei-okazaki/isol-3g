@@ -19,7 +19,7 @@ public class MailInfoDaoImpl implements MailInfoDao {
 	public MailInfoDto getAccountByUserId(String userId) {
 		MailInfoDto dto = new MailInfoDto();
 		dto.setUserId(userId);
-		dto.setMailaddress("test-001@test.jp");
+		dto.setMailAddress("test-001@test.jp");
 		dto.setMailPassword("password");
 		dto.setRegDate(new Date());
 		return dto;
