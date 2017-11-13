@@ -116,6 +116,7 @@
 	<!-- 完了画面 -->
 	<c:if test="${page == 2}">
 	<div align="center">
+		<br>
 		<c:out value="今のあなたの身長(${dto.height}cm)の" />
 		<br>
 		<c:out value="標準体重は${dto.standardWeight}kgです。" />

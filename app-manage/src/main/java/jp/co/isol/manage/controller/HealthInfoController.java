@@ -23,10 +23,10 @@ import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.FileDownloadService;
-import jp.co.isol.manage.service.HealthInfoInputService;
+import jp.co.isol.manage.service.HealthInfoService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.MailService;
-import jp.co.isol.manage.service.annotation.HealthInfoInput;
+import jp.co.isol.manage.service.annotation.HealthInfo;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
@@ -42,7 +42,7 @@ public class HealthInfoController {
 
 	/** 健康情報入力サービス */
 	@Autowired
-	private HealthInfoInputService healthInfoInputService;
+	private HealthInfoService healthInfoInputService;
 	/** 健康情報Dao */
 	@Autowired
 	private HealthInfoDao healthInfoDao;
@@ -51,7 +51,7 @@ public class HealthInfoController {
 	private HealthInfoSearchService healthInfoSearchService;
 	/** 健康情報ファイルダウンロードサービス */
 	@Autowired
-	@HealthInfoInput
+	@HealthInfo
 	private FileDownloadService<HealthInfoForm> fileDownloadService;
 	/** メールサービス */
 	@Autowired
