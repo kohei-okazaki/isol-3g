@@ -1,5 +1,6 @@
 package jp.co.isol.api.request.impl;
 
+import java.math.BigDecimal;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import jp.co.isol.api.exception.impl.HealthInfoException;
 import jp.co.isol.api.request.BaseRequest;
+import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.common.util.StringUtil;
 
 /**
@@ -40,12 +42,23 @@ public class HealthInfoRequest extends BaseRequest {
 	@Override
 	public void checkRequest() throws HealthInfoException {
 
-		// nullまたは空文字のチェックを行う
 		for (Entry<String, Object> entry : requestInfoMap.entrySet()) {
 			String key = entry.getKey();
 			String value = (String) entry.getValue();
 			if (StringUtil.isEmpty(value)) {
 				throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "がnullまたは空文字です");
+			}
+
+			if ("height".equals(key) || "weight".equals(key)) {
+				if (BigDecimal.ZERO.equals(new BigDecimal(value))) {
+					// 身長と体重が"0"のとき
+					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と不正です");
+				}
+
+				if (CalcUtil.MINUS.startsWith(value)) {
+					// 身長と体重が"マイナスの値"のとき
+					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "とマイナスなので不正です");
+				}
 			}
 		}
 	}

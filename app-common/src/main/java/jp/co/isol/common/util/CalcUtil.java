@@ -10,6 +10,8 @@ import java.math.RoundingMode;
  */
 public class CalcUtil {
 
+	public static final String MINUS = "-";
+
 	/**
 	 * インスタンス生成を制限
 	 */

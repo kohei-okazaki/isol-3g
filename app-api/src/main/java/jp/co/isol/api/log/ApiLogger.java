@@ -10,11 +10,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ApiLogger extends BaseLogger {
 
+	/** singleton */
 	private static ApiLogger instance = new ApiLogger();
 
+	/**
+	 * プライベートコンストラクタ<br>
+	 * インスタンス生成を制限する<br>
+	 */
 	private ApiLogger() {
 	}
 
+	/**
+	 * インスタンスを返す<br>
+	 * @return ApiLogger
+	 */
 	public static ApiLogger getInstance() {
 		return instance;
 	}

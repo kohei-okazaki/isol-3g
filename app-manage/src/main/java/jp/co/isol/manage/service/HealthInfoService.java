@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
 
 /**
@@ -27,7 +28,7 @@ public interface HealthInfoService {
 	 * @return 判定結果
 	 */
 	public default boolean hasContainMinus(BigDecimal target1, BigDecimal target2) {
-		return target1.toString().contains("-") || target2.toString().contains("-");
+		return CalcUtil.MINUS.contains(target1.toString()) || CalcUtil.MINUS.contains(target2.toString());
 
 	}
 
