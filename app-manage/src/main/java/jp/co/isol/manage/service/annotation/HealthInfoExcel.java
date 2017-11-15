@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
-
 /**
  * 健康情報Excelダウンロードサービス実装クラスのマーカーアノテーション
  *
@@ -18,6 +17,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Qualifier("HealthInfo")
+@Qualifier("healthInfoExcel")
 public @interface HealthInfoExcel {
 }

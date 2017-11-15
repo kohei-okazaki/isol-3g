@@ -1,12 +1,10 @@
 package jp.co.isol.manage.controller;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -178,26 +176,31 @@ public class HealthInfoController {
 
 	@RequestMapping(value = "/healthInfo-csvDownload.html")
 	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=Shift_JIS; Content-Disposition: attachment")
-	public Object getCsv(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException {
+	public Object getCsv(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException, ParseException {
 
+		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
+		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
 
+		ManageSessionManager manager = context.getBean(ManageSessionManager.class);
+		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		List<HealthInfoDto> dtoList = dao.getHealthInfoByUserId(userId);
+		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
+		HealthInfoCsvModel model = csvDownloadService.toModel(dto);
 
-		List<HealthInfoCsvModel> modelList = new ArrayList<HealthInfoCsvModel>();
 		CsvMapper mapper = new CsvMapper();
 		CsvSchema schema = mapper.schemaFor(HealthInfoCsvModel.class).withHeader();
-		return mapper.writer(schema).writeValueAsString(modelList);
+		return mapper.writer(schema).writeValueAsString(model);
 	}
 
 	/**
 	 * メール通知実行
 	 * @param req
-	 * @param resp
 	 * @param model
 	 * @param form
 	 * @return View
 	 */
 	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
-	public String execute(HttpServletRequest req, HttpServletResponse resp, Model model, HealthInfoForm form) {
+	public String execute(HttpServletRequest req, Model model, HealthInfoForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);

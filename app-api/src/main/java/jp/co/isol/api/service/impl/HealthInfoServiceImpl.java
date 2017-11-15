@@ -43,8 +43,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 		// 登録処理を行う
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
-		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
-		dao.registHealthInfo(dto);
+		HealthInfoDao healthInfoDao = context.getBean(HealthInfoDao.class);
+		healthInfoDao.registHealthInfo(dto);
 
 		return dto;
 	}

@@ -13,7 +13,7 @@ import jp.co.isol.manage.service.ExcelDownloadService;
  * 健康情報エクエルダウンロードサービス実装クラス
  *
  */
-@Service(value = "HealthInfoExcel")
+@Service(value = "healthInfoExcel")
 public class HealthInfoExcelDownloadServiceImpl implements ExcelDownloadService<HealthInfoForm> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
