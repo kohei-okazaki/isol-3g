@@ -30,7 +30,6 @@ public class MenuController {
 	@Autowired
 	private LoginService loginService;
 
-
 	/**
 	 * メニュー画面
 	 * @param model
@@ -46,8 +45,8 @@ public class MenuController {
 			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");
 			return View.LOGIN.getName();
 		}
-		// セッションにIDを登録する。
-		loginService.registSession(request.getSession(), loginForm);
+		// セッションにユーザIDを登録する。
+		loginService.registSession(request.getSession(), loginForm.getUserId());
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageLogger logger = context.getBean(ManageLogger.class);

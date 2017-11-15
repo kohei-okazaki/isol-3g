@@ -38,15 +38,15 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	/**
-	 * セッションにユーザのIDを登録する
+	 * セッションにユーザIDを登録する
 	 * @param session
-	 * @param loginForm
+	 * @param userId
 	 */
 	@Override
-	public void registSession(HttpSession session, LoginUserForm loginForm) {
+	public void registSession(HttpSession session, String userId) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
 		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
-		sessionManager.setAttribute(session, ManageSessionKey.USER_ID, loginForm.getUserId());
+		sessionManager.setAttribute(session, ManageSessionKey.USER_ID, userId);
 	}
 
 }
