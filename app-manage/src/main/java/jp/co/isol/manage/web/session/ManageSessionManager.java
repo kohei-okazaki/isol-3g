@@ -24,7 +24,7 @@ public class ManageSessionManager {
 
 	/**
 	 * sessionから指定されたキーに対応するvalueを返す<br>
-	 * valueがnullの場合、"null"を返す
+	 * valueがnullの場合、"空文字"を返す
 	 * @param session
 	 * @param key
 	 * @return value

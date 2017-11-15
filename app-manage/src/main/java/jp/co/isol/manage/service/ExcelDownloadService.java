@@ -6,6 +6,6 @@ import org.springframework.web.servlet.View;
  * ファイルダウンロードサービスIF
  *
  */
-public interface FileDownloadService<T> {
+public interface ExcelDownloadService<T> {
 	public View execute(T t);
 }

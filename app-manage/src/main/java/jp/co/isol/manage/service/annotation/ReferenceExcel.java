@@ -9,11 +9,14 @@ import java.lang.annotation.Target;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
+/**
+ * 結果照会Excelダウンロードサービス実装クラスのマーカーアノテーション
+ *
+ */
 @Target({ ElementType.FIELD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Qualifier("reference")
-public @interface Reference {
-
+@Qualifier("referenceExcel")
+public @interface ReferenceExcel {
 }

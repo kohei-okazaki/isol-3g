@@ -14,9 +14,11 @@
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.0.1.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.8.11</org.aspectj-version>
+		<org.aspectj-version>1.8.12</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
-		<org.apache.poi-version>3.17</org.apache.poi-version>
+		<poi-version>3.17</poi-version>
+		<jackson-version>2.9.2</jackson-version>
+		<lombok-version>1.16.18</lombok-version>
 	</properties>
 
 	<dependencies>
@@ -69,11 +71,33 @@
 			<version>5.0.0.BUILD-SNAPSHOT</version>
 		</dependency>
 
+		<!-- json lib -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-csv</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.18</version>
+			<version>${lombok-version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -81,12 +105,12 @@
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>${org.apache.poi-version}</version>
+			<version>${poi-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
-			<version>${org.apache.poi-version}</version>
+			<version>${poi-version}</version>
 		</dependency>
 
 		<!-- DB -->
@@ -218,7 +242,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
+				<version>3.3.9</version>
 				<configuration>
 					<additionalProjectnatures>
 						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
@@ -233,7 +257,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>3.7.0</version>
 				<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
@@ -245,7 +269,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
+				<version>1.6.0</version>
 				<configuration>
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>

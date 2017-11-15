@@ -3,6 +3,7 @@ package jp.co.isol.common.util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -42,5 +43,31 @@ public class DateUtil {
 	public static Date formatDate(String target) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat(YYYY_MM_DD_HH_MI_SS);
 		return sdf.parse(target);
+	}
+
+	/**
+	 * 指定した日付の加算を行う<br>
+	 * @param targetDate 元の日付
+	 * @param add 加算する日数
+	 * @return
+	 */
+	public static Date addDate(Date targetDate, int addDay) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(targetDate);
+		calendar.add(Calendar.DATE, addDay);
+		return calendar.getTime();
+	}
+
+	/**
+	 * 指定した月の加算を行う<br>
+	 * @param targetDate 元の日付
+	 * @param addMonth 加算する月数
+	 * @return
+	 */
+	public static Date addMonth(Date targetDate, int addMonth) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(targetDate);
+		calendar.add(Calendar.MONTH, addMonth);
+		return calendar.getTime();
 	}
 }

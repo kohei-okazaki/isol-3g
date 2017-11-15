@@ -9,14 +9,14 @@ import org.springframework.web.servlet.View;
 
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.excel.ResultReferenceExcelBuiler;
-import jp.co.isol.manage.service.FileDownloadService;
+import jp.co.isol.manage.service.ExcelDownloadService;
 
 /**
- * 結果照会画面ファイルダウンロードサービス実装クラス
+ * 結果照会画面エクエルダウンロードサービス実装クラス
  *
  */
-@Service(value = "reference")
-public class ReferenceFileDownloadServiceImpl implements FileDownloadService<List<HealthInfoDto>> {
+@Service(value = "referenceExcel")
+public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<List<HealthInfoDto>> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
