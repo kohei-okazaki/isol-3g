@@ -15,9 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.log.ManageLogger;
-import jp.co.isol.manage.service.FileDownloadService;
+import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
-import jp.co.isol.manage.service.annotation.Reference;
+import jp.co.isol.manage.service.annotation.ReferenceExcel;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
 
@@ -34,8 +34,8 @@ public class ResultReferenceController {
 
 	/** ファイルダウンロードサービス */
 	@Autowired
-	@Reference
-	private FileDownloadService<List<HealthInfoDto>> fileDownloadService;
+	@ReferenceExcel
+	private ExcelDownloadService<List<HealthInfoDto>> fileDownloadService;
 
 
 	/**

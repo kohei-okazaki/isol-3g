@@ -1,6 +1,7 @@
 package jp.co.isol.manage.controller;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,15 +20,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.manage.csv.HealthInfoCsvModel;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
-import jp.co.isol.manage.service.FileDownloadService;
-import jp.co.isol.manage.service.HealthInfoService;
+import jp.co.isol.manage.service.CsvDownloadService;
+import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
+import jp.co.isol.manage.service.HealthInfoService;
 import jp.co.isol.manage.service.MailService;
-import jp.co.isol.manage.service.annotation.HealthInfo;
+import jp.co.isol.manage.service.annotation.HealthInfoExcel;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
@@ -49,10 +57,12 @@ public class HealthInfoController {
 	/** 健康情報検索サービス */
 	@Autowired
 	private HealthInfoSearchService healthInfoSearchService;
-	/** 健康情報ファイルダウンロードサービス */
+	/** 健康情報Excelダウンロードサービス */
 	@Autowired
-	@HealthInfo
-	private FileDownloadService<HealthInfoForm> fileDownloadService;
+	@HealthInfoExcel
+	private ExcelDownloadService<HealthInfoForm> fileDownloadService;
+	/** 健康情報CSVダウンロードサービス */
+	private CsvDownloadService csvDownloadService;
 	/** メールサービス */
 	@Autowired
 	private MailService mailService;
@@ -164,6 +174,18 @@ public class HealthInfoController {
 
 		return new ModelAndView(fileDownloadService.execute(form));
 
+	}
+
+	@RequestMapping(value = "/healthInfo-csvDownload.html")
+	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=Shift_JIS; Content-Disposition: attachment")
+	public Object getCsv(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException {
+
+
+
+		List<HealthInfoCsvModel> modelList = new ArrayList<HealthInfoCsvModel>();
+		CsvMapper mapper = new CsvMapper();
+		CsvSchema schema = mapper.schemaFor(HealthInfoCsvModel.class).withHeader();
+		return mapper.writer(schema).writeValueAsString(modelList);
 	}
 
 	/**

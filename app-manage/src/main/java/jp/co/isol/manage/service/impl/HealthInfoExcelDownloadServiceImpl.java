@@ -7,14 +7,14 @@ import org.springframework.web.servlet.View;
 
 import jp.co.isol.manage.excel.HealthInfoExcelBuilder;
 import jp.co.isol.manage.form.HealthInfoForm;
-import jp.co.isol.manage.service.FileDownloadService;
+import jp.co.isol.manage.service.ExcelDownloadService;
 
 /**
- * 健康情報ファイルダウンロードサービス実装クラス
+ * 健康情報エクエルダウンロードサービス実装クラス
  *
  */
-@Service(value = "HealthInfo")
-public class HealthInfoFileDownloadServiceImpl implements FileDownloadService<HealthInfoForm> {
+@Service(value = "HealthInfoExcel")
+public class HealthInfoExcelDownloadServiceImpl implements ExcelDownloadService<HealthInfoForm> {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
