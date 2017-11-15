@@ -65,7 +65,7 @@ public class ExcelUtil {
 	/**
 	 * ヘッダ名を取得する
 	 * @param clazz
-	 * @return headerNames
+	 * @return ヘッダー名
 	 */
 	public static List<String> getHeaderList(Class<?> clazz) {
 		Excel excel = getExcelClass(clazz);
