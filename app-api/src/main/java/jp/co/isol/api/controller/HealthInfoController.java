@@ -50,6 +50,13 @@ public class HealthInfoController {
 		return healthInfoService.execute(healthInfoRequest);
 	}
 
+	/**
+	 * Postでリクエストを受け付ける
+	 * @param request
+	 * @return
+	 * @throws HealthInfoException
+	 * @throws ParseException
+	 */
 	@PostMapping
 	public HealthInfoDto post(HttpServletRequest request) throws HealthInfoException, ParseException {
 		return get(request);
