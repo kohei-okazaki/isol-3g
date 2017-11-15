@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author kou1210hei<br>
@@ -20,10 +22,25 @@ public class StringUtil {
 	public static final String EQUAL = "=";
 	public static final String NEW_LINE = "\r\n";
 
+	public static final String HALF_NUMBER = "^[0-9]*$";
+
 	/**
 	 * インスタンス生成を制限
 	 */
 	private StringUtil() {
+	}
+
+	/**
+	 * 指定された文字列が半角数字かどうか判定する<br>
+	 * 半角数字の場合true, それ以外の場合falseを返す
+	 * @param target
+	 * @return
+	 */
+	public static boolean isHalfNumber(String target) {
+		Pattern pattern = Pattern.compile(HALF_NUMBER);
+		Matcher matcher = pattern.matcher(target);
+
+		return matcher.find();
 	}
 
 	/**

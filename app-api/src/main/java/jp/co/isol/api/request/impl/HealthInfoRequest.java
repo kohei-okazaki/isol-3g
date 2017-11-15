@@ -50,13 +50,19 @@ public class HealthInfoRequest extends BaseRequest {
 			}
 
 			if ("height".equals(key) || "weight".equals(key)) {
+
+				if (StringUtil.isHalfNumber(value)) {
+					// "半角数字"でないのとき
+					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と半角数字ではないため不正です");
+				}
+
 				if (BigDecimal.ZERO.equals(new BigDecimal(value))) {
-					// 身長と体重が"0"のとき
+					// "0"のとき
 					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と不正です");
 				}
 
 				if (CalcUtil.MINUS.startsWith(value)) {
-					// 身長と体重が"マイナスの値"のとき
+					// "マイナスの値"のとき
 					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "とマイナスなので不正です");
 				}
 			}
