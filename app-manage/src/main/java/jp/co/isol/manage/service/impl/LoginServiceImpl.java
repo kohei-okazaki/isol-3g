@@ -3,7 +3,7 @@ package jp.co.isol.manage.service.impl;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -44,8 +44,13 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public void registSession(HttpSession session, String userId) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
+
+		ManageSessionManager sessionManager;
+
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			sessionManager = context.getBean(ManageSessionManager.class);
+		}
+
 		sessionManager.setAttribute(session, ManageSessionKey.USER_ID, userId);
 	}
 
