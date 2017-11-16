@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -163,7 +164,8 @@ public class HealthInfoController {
 	 * @param form
 	 * @return ModelAndView
 	 */
-	@RequestMapping(value = "/healthInfo-excelDownload.html", method = RequestMethod.GET)
+	@GetMapping
+	@RequestMapping(value = "/healthInfo-excelDownload.html")
 	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -182,6 +184,7 @@ public class HealthInfoController {
 	 * @throws JsonProcessingException
 	 * @throws ParseException
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/healthInfo-csvDownload.html")
 	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=Shift_JIS; Content-Disposition: attachment")
 	public Object csvDownload(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException, ParseException {
