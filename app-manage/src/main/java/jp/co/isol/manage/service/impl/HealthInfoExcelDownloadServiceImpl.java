@@ -19,7 +19,7 @@ public class HealthInfoExcelDownloadServiceImpl implements ExcelDownloadService<
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * メニュー画面のファイルダウンロード実行する
+	 * 健康情報入力画面で入力した情報のExcelファイルをダウンロードする<br>
 	 * @param form
 	 * @return View
 	 */

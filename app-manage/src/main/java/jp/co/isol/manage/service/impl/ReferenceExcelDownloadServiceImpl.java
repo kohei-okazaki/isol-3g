@@ -22,8 +22,8 @@ public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<L
 
 	/**
 	 * 結果照会画面のファイルダウンロードを実行する
-	 * @param historyList
-	 * @return
+	 * @param List<HealthInfoDto>
+	 * @return View
 	 */
 	@Override
 	public View execute(List<HealthInfoDto> historyList) {
