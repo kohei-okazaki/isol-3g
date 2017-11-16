@@ -19,7 +19,6 @@ import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 
-
 /**
  * 健康情報管理画面フィルタークラス<br>
  *
