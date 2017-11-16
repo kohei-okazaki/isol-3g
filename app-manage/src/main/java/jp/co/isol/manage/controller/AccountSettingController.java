@@ -1,10 +1,9 @@
 package jp.co.isol.manage.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,14 +45,17 @@ public class AccountSettingController {
 	@GetMapping
 	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		ManageSessionManager sessionManager;
+
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+			sessionManager = context.getBean(ManageSessionManager.class);
+		}
 		logger.info(this.getClass(), "#accountSetttingInput start");
 
 		// セッションからユーザIDを取得
-		HttpSession session = request.getSession();
-		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
-		String userId = sessionManager.getAttribute(session, ManageSessionKey.USER_ID);
+		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		model.addAttribute("dto", accountSearchService.findAccountByUserId(userId));
 

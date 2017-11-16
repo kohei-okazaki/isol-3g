@@ -1,9 +1,8 @@
 package jp.co.isol.manage.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,12 +32,14 @@ public class LoginController {
 	@GetMapping
 	public String login(Model model, HttpServletRequest request) {
 
-		HttpSession session = request.getSession();
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
-		sessionManager.removeKey(session, ManageSessionKey.USER_ID);
+		ManageLogger logger;
+		ManageSessionManager sessionManager;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+			sessionManager = context.getBean(ManageSessionManager.class);
+		}
 
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		sessionManager.removeKey(request.getSession(), ManageSessionKey.USER_ID);
 		logger.info(this.getClass(), "# login start");
 
 		return View.LOGIN.getName();

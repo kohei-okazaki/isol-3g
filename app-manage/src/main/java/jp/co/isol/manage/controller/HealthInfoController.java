@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -75,8 +75,10 @@ public class HealthInfoController {
 	@GetMapping
 	public String input(Model model) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "#input start");
 
 		model.addAttribute("page", PageView.INPUT.getValue());
@@ -94,8 +96,10 @@ public class HealthInfoController {
 	@PostMapping
 	public String confirm(Model model, HealthInfoForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "#confirm start");
 
 		if (healthInfoInputService.hasError(form)) {
@@ -124,11 +128,14 @@ public class HealthInfoController {
 	@PostMapping
 	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		ManageSessionManager manager;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+			manager = context.getBean(ManageSessionManager.class);
+		}
 		logger.info(this.getClass(), "# menu complete");
 
-		ManageSessionManager manager = context.getBean(ManageSessionManager.class);
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		HealthInfoDto dto = healthInfoInputService.convertUserInfo(form, userId);
@@ -168,8 +175,10 @@ public class HealthInfoController {
 	@RequestMapping(value = "/healthInfo-excelDownload.html")
 	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "# excelDownload start");
 
 		return new ModelAndView(fileDownloadService.execute(form));
@@ -189,10 +198,11 @@ public class HealthInfoController {
 	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=Shift_JIS; Content-Disposition: attachment")
 	public Object csvDownload(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException, ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-
+		ManageSessionManager manager;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			manager = context.getBean(ManageSessionManager.class);
+		}
 		// 最後に登録した健康情報を検索
-		ManageSessionManager manager = context.getBean(ManageSessionManager.class);
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
 		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
@@ -210,8 +220,10 @@ public class HealthInfoController {
 	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
 	public String execute(HttpServletRequest req, Model model, HealthInfoForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "# mail execute start");
 
 		mailService.sendMail(form);

@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,8 +49,10 @@ public class ResultReferenceController {
 	@GetMapping
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "# resultReference start");
 
 		// ログイン中のユーザの全レコードを検索する
@@ -69,8 +71,10 @@ public class ResultReferenceController {
 	@GetMapping
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "# excelDownload start");
 
 		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
