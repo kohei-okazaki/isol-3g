@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +42,10 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		HealthInfoDto dto = toHealthInfoDto(request);
 
 		// 登録処理を行う
-		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
-		HealthInfoDao healthInfoDao = context.getBean(HealthInfoDao.class);
+		HealthInfoDao healthInfoDao;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class)) {
+			healthInfoDao = context.getBean(HealthInfoDao.class);
+		}
 		healthInfoDao.registHealthInfo(dto);
 
 		return dto;
@@ -111,8 +113,10 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	private HealthInfoDto getLastHealthInfoDto(String userId) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class);
-		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
+		HealthInfoDao dao;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class)) {
+			dao = context.getBean(HealthInfoDao.class);
+		}
 
 		List<HealthInfoDto> dtoList = dao.getHealthInfoByUserId(userId);
 		return dtoList.get(dtoList.size() - 1);
