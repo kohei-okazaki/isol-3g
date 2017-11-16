@@ -54,7 +54,7 @@ public class ResultReferenceController {
 		logger.info(this.getClass(), "# resultReference start");
 
 		// ログイン中のユーザの全レコードを検索する
-		model.addAttribute("allDataList", healthInfoSearchService.findHealthInfoByUserId(userId));
+		model.addAttribute("resultList", healthInfoSearchService.findHealthInfoByUserId(userId));
 
 		return View.RESULT_REFFERNCE.getName();
 	}
