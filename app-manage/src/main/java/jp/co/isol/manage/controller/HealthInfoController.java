@@ -19,12 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.csv.HealthInfoCsvModel;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.CsvDownloadService;
@@ -32,6 +29,7 @@ import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.HealthInfoService;
 import jp.co.isol.manage.service.MailService;
+import jp.co.isol.manage.service.annotation.HealthInfoCsv;
 import jp.co.isol.manage.service.annotation.HealthInfoExcel;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
@@ -60,7 +58,9 @@ public class HealthInfoController {
 	@HealthInfoExcel
 	private ExcelDownloadService<HealthInfoForm> fileDownloadService;
 	/** 健康情報CSVダウンロードサービス */
-	private CsvDownloadService csvDownloadService;
+	@Autowired
+	@HealthInfoCsv
+	private CsvDownloadService<HealthInfoDto> csvDownloadService;
 	/** メールサービス */
 	@Autowired
 	private MailService mailService;
@@ -163,7 +163,7 @@ public class HealthInfoController {
 	 * @param form
 	 * @return ModelAndView
 	 */
-	@RequestMapping(value = "/healthInfo-fileDownload.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/healthInfo-excelDownload.html", method = RequestMethod.GET)
 	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoForm form) {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
@@ -174,22 +174,27 @@ public class HealthInfoController {
 
 	}
 
+	/**
+	 * CSVをダウンロードする<br>
+	 * @param request
+	 * @param form
+	 * @return
+	 * @throws JsonProcessingException
+	 * @throws ParseException
+	 */
 	@RequestMapping(value = "/healthInfo-csvDownload.html")
 	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=Shift_JIS; Content-Disposition: attachment")
-	public Object getCsv(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException, ParseException {
+	public Object csvDownload(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException, ParseException {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
 
+		// 最後に登録した健康情報を検索
 		ManageSessionManager manager = context.getBean(ManageSessionManager.class);
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
-		List<HealthInfoDto> dtoList = dao.getHealthInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
 		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
-		HealthInfoCsvModel model = csvDownloadService.toModel(dto);
 
-		CsvMapper mapper = new CsvMapper();
-		CsvSchema schema = mapper.schemaFor(HealthInfoCsvModel.class).withHeader();
-		return mapper.writer(schema).writeValueAsString(model);
+		return csvDownloadService.execute(dto);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package jp.co.isol.manage.csv;
+package jp.co.isol.manage.file.csv;
 
 import java.math.BigDecimal;
 import java.util.Date;

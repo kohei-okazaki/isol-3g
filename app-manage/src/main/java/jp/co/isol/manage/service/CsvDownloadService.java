@@ -1,20 +1,21 @@
 package jp.co.isol.manage.service;
 
-import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.csv.HealthInfoCsvModel;
+import java.text.ParseException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * CSVダウンロードサービスインターフェイス<br>
  *
  */
-public interface CsvDownloadService {
+public interface CsvDownloadService<T> {
 
 	/**
-	 * CSVモデルにDtoをつめる
-	 * @param userId
-	 * @param form
-	 * @return
+	 * メイン処理
+	 * @param request
+	 * @throws JsonProcessingException
+	 * @throws ParseException
 	 */
-	public HealthInfoCsvModel toModel(HealthInfoDto dto);
+	public String execute(T t) throws JsonProcessingException, ParseException;
 
 }

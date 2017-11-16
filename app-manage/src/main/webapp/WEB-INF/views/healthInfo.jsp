@@ -158,12 +158,20 @@
 				</td>
 				<td>　　</td>
 				<td align="center">
-				<!-- 出力 -->
-				<form action="/isol-manage/healthInfo-fileDownload.html" method="get">
+				<!-- Excel出力 -->
+				<form action="/isol-manage/healthInfo-excelDownload.html" method="get">
 					<input type="hidden" name="height" value="${dto.height}">
 					<input type="hidden" name="weight" value="${dto.weight}">
 					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
 					<input type="hidden" name="bmi" value="${dto.bmi}">
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
+					</div>
+				</form>
+				</td>
+				<td align="center">
+				<!-- CSV出力 -->
+				<form action="/isol-manage/healthInfo-csvDownload.html" method="get">
 					<div>
 						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
 					</div>

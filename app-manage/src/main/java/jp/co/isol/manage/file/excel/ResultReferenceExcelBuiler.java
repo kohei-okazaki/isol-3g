@@ -1,4 +1,4 @@
-package jp.co.isol.manage.excel;
+package jp.co.isol.manage.file.excel;
 
 import java.util.List;
 import java.util.Map;

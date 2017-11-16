@@ -51,7 +51,8 @@
 		<url-pattern>/healthInfo-complete.html</url-pattern>
 		<url-pattern>/menu.html</url-pattern>
 		<url-pattern>/notice.html</url-pattern>
-		<url-pattern>/healthInfo-fileDownload.html</url-pattern>
+		<url-pattern>/healthInfo-excelDownload.html</url-pattern>
+		<url-pattern>/healthInfo-csvDownload.html</url-pattern>
 		<url-pattern>/result-reference.html</url-pattern>
 		<url-pattern>/result-reference-download.html</url-pattern>
 		<url-pattern>/account-setting-input.html</url-pattern>
