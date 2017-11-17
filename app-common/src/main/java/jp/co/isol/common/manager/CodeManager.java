@@ -26,6 +26,8 @@ public class CodeManager {
 	private static CodeManager instance = new CodeManager();
 	/** コードプロパティファイル */
 	private static final String CODE_PROPERTIES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\code.properties";
+	/** コードエクセルファイル */
+	private static final String CODE_EXCEL = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\data.xlsx";
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
