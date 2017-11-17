@@ -16,6 +16,8 @@ import jp.co.isol.common.file.excel.Excel;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 健康情報入力画面Excel生成クラス<br>
@@ -25,6 +27,8 @@ import jp.co.isol.manage.form.HealthInfoForm;
 public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
 	/** 健康情報入力フォームクラス */
+	@Setter
+	@Getter
 	private HealthInfoForm form;
 
 	/**
