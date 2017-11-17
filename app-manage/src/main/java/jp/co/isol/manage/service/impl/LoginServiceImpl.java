@@ -3,7 +3,7 @@ package jp.co.isol.manage.service.impl;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -38,15 +38,20 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	/**
-	 * セッションにユーザのIDを登録する
+	 * セッションにユーザIDを登録する
 	 * @param session
-	 * @param loginForm
+	 * @param userId
 	 */
 	@Override
-	public void registSession(HttpSession session, LoginUserForm loginForm) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
-		sessionManager.setAttribute(session, ManageSessionKey.USER_ID, loginForm.getUserId());
+	public void registSession(HttpSession session, String userId) {
+
+		ManageSessionManager sessionManager;
+
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			sessionManager = context.getBean(ManageSessionManager.class);
+		}
+
+		sessionManager.setAttribute(session, ManageSessionKey.USER_ID, userId);
 	}
 
 }

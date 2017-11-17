@@ -1,6 +1,6 @@
 package jp.co.isol.manage.service.impl;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,8 @@ import jp.co.isol.manage.web.config.ManageConfig;
 @Service
 public class AccountSearchServiceImpl implements AccountSearchService {
 
+	private AccountDao accountDao;
+
 	/**
 	 * ユーザIDからアカウント情報を取得する
 	 * @param userId
@@ -23,8 +25,10 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	 */
 	@Override
 	public AccountDto findAccountByUserId(String userId) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		AccountDao accountDao = context.getBean(AccountDao.class);
+
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			this.accountDao = context.getBean(AccountDao.class);
+		}
 		return accountDao.getAccountByUserId(userId);
 	}
 

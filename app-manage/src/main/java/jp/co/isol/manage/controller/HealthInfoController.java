@@ -1,15 +1,16 @@
 package jp.co.isol.manage.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.csv.HealthInfoCsvModel;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.CsvDownloadService;
@@ -32,6 +28,7 @@ import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.HealthInfoService;
 import jp.co.isol.manage.service.MailService;
+import jp.co.isol.manage.service.annotation.HealthInfoCsv;
 import jp.co.isol.manage.service.annotation.HealthInfoExcel;
 import jp.co.isol.manage.view.PageView;
 import jp.co.isol.manage.view.View;
@@ -60,6 +57,8 @@ public class HealthInfoController {
 	@HealthInfoExcel
 	private ExcelDownloadService<HealthInfoForm> fileDownloadService;
 	/** 健康情報CSVダウンロードサービス */
+	@Autowired
+	@HealthInfoCsv
 	private CsvDownloadService csvDownloadService;
 	/** メールサービス */
 	@Autowired
@@ -74,8 +73,10 @@ public class HealthInfoController {
 	@GetMapping
 	public String input(Model model) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "#input start");
 
 		model.addAttribute("page", PageView.INPUT.getValue());
@@ -93,8 +94,10 @@ public class HealthInfoController {
 	@PostMapping
 	public String confirm(Model model, HealthInfoForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "#confirm start");
 
 		if (healthInfoInputService.hasError(form)) {
@@ -123,11 +126,14 @@ public class HealthInfoController {
 	@PostMapping
 	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws ParseException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		ManageSessionManager manager;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+			manager = context.getBean(ManageSessionManager.class);
+		}
 		logger.info(this.getClass(), "# menu complete");
 
-		ManageSessionManager manager = context.getBean(ManageSessionManager.class);
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		HealthInfoDto dto = healthInfoInputService.convertUserInfo(form, userId);
@@ -163,33 +169,34 @@ public class HealthInfoController {
 	 * @param form
 	 * @return ModelAndView
 	 */
-	@RequestMapping(value = "/healthInfo-fileDownload.html", method = RequestMethod.GET)
+	@GetMapping
+	@RequestMapping(value = "/healthInfo-excelDownload.html")
 	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "# excelDownload start");
 
 		return new ModelAndView(fileDownloadService.execute(form));
 
 	}
 
-	@RequestMapping(value = "/healthInfo-csvDownload.html")
-	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=Shift_JIS; Content-Disposition: attachment")
-	public Object getCsv(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException, ParseException {
+	/**
+	 * CSVをダウンロードする<br>
+	 * @param request
+	 * @param form
+	 * @return
+	 * @throws ParseException
+	 * @throws IOException
+	 */
+	@GetMapping
+	@RequestMapping(value = "/healthInfo-csvDownload")
+	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		HealthInfoDao dao = context.getBean(HealthInfoDao.class);
+        csvDownloadService.execute(request, response);
 
-		ManageSessionManager manager = context.getBean(ManageSessionManager.class);
-		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
-		List<HealthInfoDto> dtoList = dao.getHealthInfoByUserId(userId);
-		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
-		HealthInfoCsvModel model = csvDownloadService.toModel(dto);
-
-		CsvMapper mapper = new CsvMapper();
-		CsvSchema schema = mapper.schemaFor(HealthInfoCsvModel.class).withHeader();
-		return mapper.writer(schema).writeValueAsString(model);
 	}
 
 	/**
@@ -202,8 +209,10 @@ public class HealthInfoController {
 	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
 	public String execute(HttpServletRequest req, Model model, HealthInfoForm form) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "# mail execute start");
 
 		mailService.sendMail(form);

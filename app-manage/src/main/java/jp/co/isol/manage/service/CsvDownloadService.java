@@ -1,7 +1,10 @@
 package jp.co.isol.manage.service;
 
-import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.csv.HealthInfoCsvModel;
+import java.io.IOException;
+import java.text.ParseException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * CSVダウンロードサービスインターフェイス<br>
@@ -10,11 +13,11 @@ import jp.co.isol.manage.csv.HealthInfoCsvModel;
 public interface CsvDownloadService {
 
 	/**
-	 * CSVモデルにDtoをつめる
-	 * @param userId
-	 * @param form
-	 * @return
+	 * メイン処理
+	 * @param request
+	 * @throws ParseException
+	 * @throws IOException
 	 */
-	public HealthInfoCsvModel toModel(HealthInfoDto dto);
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException;
 
 }

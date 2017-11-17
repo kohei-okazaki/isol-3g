@@ -10,9 +10,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import jp.co.isol.common.web.filter.BaseFilter;
@@ -20,9 +19,8 @@ import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 
-
 /**
- * フィルタークラス<br>
+ * 健康情報管理画面フィルタークラス<br>
  *
  */
 @WebFilter
@@ -53,10 +51,13 @@ public class ManageFilter extends BaseFilter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		System.out.println(request.getRequestURI() + " : " + new Date());
 
-		HttpSession session = request.getSession();
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageSessionManager sessionManager = context.getBean("appSessionManager", ManageSessionManager.class);
-		String session_id = sessionManager.getAttribute(session, ManageSessionKey.USER_ID);
+		ManageSessionManager sessionManager;
+
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			sessionManager = context.getBean("appSessionManager", ManageSessionManager.class);
+		}
+
+		String session_id = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		System.out.println("session_id = " + session_id);
 		chain.doFilter(req, resp);

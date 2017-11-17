@@ -7,5 +7,12 @@ import org.springframework.web.servlet.View;
  *
  */
 public interface ExcelDownloadService<T> {
+
+	/**
+	 * メイン処理
+	 * @param t
+	 * @return
+	 */
 	public View execute(T t);
+
 }

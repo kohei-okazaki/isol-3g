@@ -1,6 +1,6 @@
 package jp.co.isol.manage.controller;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +27,10 @@ public class NoticeSettingController {
 	@RequestMapping(value = "/notice-setting.html")
 	public String noticeSetttingInput(Model model, LoginUserForm loginForm) {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
 		logger.info(this.getClass(), "# noticeSetttingInput start");
 
 		return View.NOTICE_SETTING.getName();

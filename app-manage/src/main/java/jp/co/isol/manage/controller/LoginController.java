@@ -1,9 +1,20 @@
 package jp.co.isol.manage.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Iterator;
 
-import org.springframework.context.ApplicationContext;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,15 +43,51 @@ public class LoginController {
 	 */
 	@GetMapping
 	public String login(Model model, HttpServletRequest request) {
+		try {
+			test();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (EncryptedDocumentException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		}
+		ManageLogger logger;
+		ManageSessionManager sessionManager;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+			sessionManager = context.getBean(ManageSessionManager.class);
+		}
 
-		HttpSession session = request.getSession();
-		ApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class);
-		ManageSessionManager sessionManager = context.getBean(ManageSessionManager.class);
-		sessionManager.removeKey(session, ManageSessionKey.USER_ID);
-
-		ManageLogger logger = context.getBean(ManageLogger.class);
+		sessionManager.removeKey(request.getSession(), ManageSessionKey.USER_ID);
 		logger.info(this.getClass(), "# login start");
 
 		return View.LOGIN.getName();
+	}
+
+	private void test() throws FileNotFoundException, IOException, EncryptedDocumentException, InvalidFormatException {
+		String targetPath = "C:\\work\\pleiades\\workspace\\isol-3g\\app-manage\\src\\main\\resources\\META-INF\\data.xlsx";
+
+		Workbook workbook = WorkbookFactory.create(new File(targetPath));
+
+		Sheet sheet = workbook.getSheet("code");
+
+		Iterator<Row> iteRow = sheet.rowIterator();
+
+		while (iteRow.hasNext()) {
+			Row row = iteRow.next();
+
+			Iterator<Cell> iteCell = row.cellIterator();
+
+			while (iteCell.hasNext()) {
+				Cell cell = iteCell.next();
+
+				System.out.println(cell.getStringCellValue());
+			}
+		}
+
+
 	}
 }

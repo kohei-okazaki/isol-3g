@@ -67,7 +67,7 @@
 				<th align="center"><c:out value="BMI" /></th>
 				<th align="center"><c:out value="登録日時" /></th>
 			</tr>
-			<c:forEach var="result" items="${allDataList}">
+			<c:forEach var="result" items="${resultList}">
 				<tr class="datacolor">
 					<td align="center"><c:out value="${result.height}" /></td>
 					<td align="center"><c:out value="${result.weight}" /></td>

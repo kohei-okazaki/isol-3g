@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.excel.ResultReferenceExcelBuiler;
+import jp.co.isol.manage.file.excel.ResultReferenceExcelBuiler;
 import jp.co.isol.manage.service.ExcelDownloadService;
 
 /**
@@ -22,8 +22,8 @@ public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<L
 
 	/**
 	 * 結果照会画面のファイルダウンロードを実行する
-	 * @param historyList
-	 * @return
+	 * @param List<HealthInfoDto>
+	 * @return View
 	 */
 	@Override
 	public View execute(List<HealthInfoDto> historyList) {

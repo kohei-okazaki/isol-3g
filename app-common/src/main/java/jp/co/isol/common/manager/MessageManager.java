@@ -21,7 +21,7 @@ public class MessageManager {
 
 	/** singletonパターン */
 	private static MessageManager instance = new MessageManager();
-	/** コードプロパティ */
+	/** メッセージプロパティファイル */
 	private static final String MESSAGE_PROPERTIES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\message.properties";
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());

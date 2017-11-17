@@ -1,4 +1,4 @@
-package jp.co.isol.common.excel;
+package jp.co.isol.common.file.excel;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -22,11 +22,11 @@ public @interface Excel {
 	 * シート名
 	 * @return シート名
 	 */
-	String sheetName();
+	String sheetName() default "";
 
 	/**
 	 * ヘッダ名
 	 * @return ヘッダ名
 	 */
-	String[] headerNames();
+	String[] headerNames() default "";
 }
