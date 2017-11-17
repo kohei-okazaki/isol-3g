@@ -22,11 +22,11 @@ public @interface Excel {
 	 * シート名
 	 * @return シート名
 	 */
-	String sheetName();
+	String sheetName() default "";
 
 	/**
 	 * ヘッダ名
 	 * @return ヘッダ名
 	 */
-	String[] headerNames();
+	String[] headerNames() default "";
 }

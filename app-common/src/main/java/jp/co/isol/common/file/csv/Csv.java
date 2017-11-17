@@ -14,5 +14,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.TYPE })
 public @interface Csv {
-	String[] headerNames();
+
+	/**
+	 * ヘッダ名
+	 * @return ヘッダ名
+	 */
+	String[] headerNames() default "";
 }
