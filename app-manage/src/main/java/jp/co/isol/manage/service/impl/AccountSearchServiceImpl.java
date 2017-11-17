@@ -17,6 +17,7 @@ import jp.co.isol.manage.web.config.ManageConfig;
 public class AccountSearchServiceImpl implements AccountSearchService {
 
 	private AccountDao accountDao;
+
 	/**
 	 * ユーザIDからアカウント情報を取得する
 	 * @param userId
