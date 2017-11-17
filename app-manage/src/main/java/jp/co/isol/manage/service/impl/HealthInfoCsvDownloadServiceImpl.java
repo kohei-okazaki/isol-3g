@@ -61,7 +61,7 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 		response.setHeader("Content-Disposition", "attachment; filename=\"HealthInfo.csv\"");
 
 		try (PrintWriter writer = response.getWriter()) {
-			StringJoiner recordJoiner = new StringJoiner("\r\n");
+			StringJoiner recordJoiner = new StringJoiner(StringUtil.NEW_LINE);
 			writeHeader(recordJoiner, model);
 			writeData(recordJoiner, model);
 			writer.print(recordJoiner.toString());
