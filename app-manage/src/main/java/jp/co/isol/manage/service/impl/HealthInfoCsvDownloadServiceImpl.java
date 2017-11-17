@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
 
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.common.util.StringUtil;
@@ -56,7 +57,7 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 		HealthInfoCsvModel model = toModel(dto);
 
 		// 文字コードと出力するCSVファイル名を設定
-		response.setContentType(MimeTypeUtils.APPLICATION_OCTET_STREAM_VALUE + ";charset=utf-8");
+		response.setContentType(MimeTypeUtils.APPLICATION_OCTET_STREAM_VALUE + ";charset=" + Charset.UTF_8.toString().toLowerCase());
 		response.setHeader("Content-Disposition", "attachment; filename=\"HealthInfo.csv\"");
 
 		try (PrintWriter writer = response.getWriter()) {
