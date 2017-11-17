@@ -1,4 +1,4 @@
-package jp.co.isol.common.excel;
+package jp.co.isol.common.file.excel;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

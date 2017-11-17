@@ -1,25 +1,23 @@
 package jp.co.isol.manage.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
@@ -61,7 +59,7 @@ public class HealthInfoController {
 	/** 健康情報CSVダウンロードサービス */
 	@Autowired
 	@HealthInfoCsv
-	private CsvDownloadService<HealthInfoDto> csvDownloadService;
+	private CsvDownloadService csvDownloadService;
 	/** メールサービス */
 	@Autowired
 	private MailService mailService;
@@ -190,24 +188,15 @@ public class HealthInfoController {
 	 * @param request
 	 * @param form
 	 * @return
-	 * @throws JsonProcessingException
 	 * @throws ParseException
+	 * @throws IOException
 	 */
-	@ResponseBody
-	@RequestMapping(value = "/healthInfo-csvDownload.html")
-	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=Shift_JIS; Content-Disposition: attachment")
-	public Object csvDownload(HttpServletRequest request, HealthInfoForm form) throws JsonProcessingException, ParseException {
+	@GetMapping
+	@RequestMapping(value = "/healthInfo-csvDownload")
+	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
-		ManageSessionManager manager;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			manager = context.getBean(ManageSessionManager.class);
-		}
-		// 最後に登録した健康情報を検索
-		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
-		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
-		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
+        csvDownloadService.execute(request, response);
 
-		return csvDownloadService.execute(dto);
 	}
 
 	/**

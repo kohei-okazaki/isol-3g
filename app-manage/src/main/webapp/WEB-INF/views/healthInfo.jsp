@@ -171,7 +171,7 @@
 				</td>
 				<td align="center">
 				<!-- CSV出力 -->
-				<form action="/isol-manage/healthInfo-csvDownload.html" method="get">
+				<form action="/isol-manage/healthInfo-csvDownload" method="get">
 					<div>
 						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
 					</div>

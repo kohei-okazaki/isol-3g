@@ -15,6 +15,7 @@ import java.util.Locale;
 public class DateUtil {
 
 	public static final String YYYY_MM_DD_HH_MI_SS = "yyyy/MM/dd hh:mm:ss";
+	public static final String YYYYMMDD_HHMMSS = "yyyy/MM/dd HH:mm:ss";
 
 	/**
 	 * インスタンス生成を制限
@@ -69,5 +70,17 @@ public class DateUtil {
 		calendar.setTime(targetDate);
 		calendar.add(Calendar.MONTH, addMonth);
 		return calendar.getTime();
+	}
+
+	/**
+	 * Date型を指定されたフォーマットに変える<br>
+	 * @return
+	 */
+	public static String toString(Date targetDate, String format) {
+		if (StringUtil.isEmpty(format)) {
+			return StringUtil.EMPTY;
+		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+		return dateFormat.format(targetDate);
 	}
 }

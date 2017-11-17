@@ -1,21 +1,23 @@
 package jp.co.isol.manage.service;
 
+import java.io.IOException;
 import java.text.ParseException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * CSVダウンロードサービスインターフェイス<br>
  *
  */
-public interface CsvDownloadService<T> {
+public interface CsvDownloadService {
 
 	/**
 	 * メイン処理
 	 * @param request
-	 * @throws JsonProcessingException
 	 * @throws ParseException
+	 * @throws IOException
 	 */
-	public String execute(T t) throws JsonProcessingException, ParseException;
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException;
 
 }

@@ -8,7 +8,7 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import jp.co.isol.common.excel.Excel;
+import jp.co.isol.common.file.excel.Excel;
 
 /**
  * @author kou1210hei<br>
@@ -18,6 +18,7 @@ import jp.co.isol.common.excel.Excel;
 public class ExcelUtil {
 
 	/**
+	 * プライベートコンストラクタ<br>
 	 * インスタンス生成を制限
 	 */
 	private ExcelUtil() {
