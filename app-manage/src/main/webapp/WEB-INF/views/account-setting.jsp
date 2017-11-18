@@ -93,7 +93,7 @@
 			<br><br>
 			<table>
 				<tr>
-					<td><input type="submit" value="確認" /></td>
+					<td><input type="submit" value="確 認" /></td>
 				</tr>
 			</table>
 		</div>
@@ -127,9 +127,9 @@
 			<br><br>
 			<table>
 				<tr>
-					<td><input type="submit" value="確認" /></td>
+					<td><input type="submit" value="確 定" /></td>
 					<td><c:out value="　　" /></td>
-					<td><input type="button" value="戻る" onclick="history.back()"></td>
+					<td><input type="button" value="戻 る" onclick="history.back()"></td>
 				</tr>
 			</table>
 		</div>
