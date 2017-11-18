@@ -2,23 +2,19 @@ package jp.co.isol.manage.form;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * ログインフォームクラス
  *
  */
+@Data
 public class LoginUserForm implements Serializable {
 
-	/** ID */
-	@Setter
-	@Getter
+	/** ユーザID */
 	private String userId;
 
 	/** パスワード */
-	@Setter
-	@Getter
 	private String password;
 
 }
