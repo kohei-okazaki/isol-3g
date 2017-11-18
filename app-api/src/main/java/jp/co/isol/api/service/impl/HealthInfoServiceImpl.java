@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ import jp.co.isol.common.util.CalcUtil;
 @Service
 public class HealthInfoServiceImpl implements HealthInfoService {
 
+	@Autowired
+	private HealthInfoDao healthInfoDao;
+
 	/**
 	 * メイン処理<br>
 	 * @param request
@@ -42,10 +46,6 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		HealthInfoDto dto = toHealthInfoDto(request);
 
 		// 登録処理を行う
-		HealthInfoDao healthInfoDao;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class)) {
-			healthInfoDao = context.getBean(HealthInfoDao.class);
-		}
 		healthInfoDao.registHealthInfo(dto);
 
 		return dto;
