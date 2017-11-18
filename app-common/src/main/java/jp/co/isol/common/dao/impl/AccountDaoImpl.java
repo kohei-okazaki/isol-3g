@@ -1,7 +1,5 @@
 package jp.co.isol.common.dao.impl;
 
-import org.springframework.stereotype.Repository;
-
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dto.AccountDto;
 
@@ -9,7 +7,6 @@ import jp.co.isol.common.dto.AccountDto;
  * アカウント情報のDaoクラス
  *
  */
-@Repository
 public class AccountDaoImpl implements AccountDao {
 
 	/**

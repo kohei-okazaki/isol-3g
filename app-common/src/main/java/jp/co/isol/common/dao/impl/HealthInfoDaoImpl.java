@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.manager.CodeManager;
@@ -18,7 +16,6 @@ import jp.co.isol.common.util.DateUtil;
  * 健康情報のDaoクラス
  *
  */
-@Repository
 public class HealthInfoDaoImpl implements HealthInfoDao {
 
 	private static final String RESOURCES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\data.xlsx";

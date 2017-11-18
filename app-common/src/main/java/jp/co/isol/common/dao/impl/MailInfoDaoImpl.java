@@ -2,8 +2,6 @@ package jp.co.isol.common.dao.impl;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Repository;
-
 import jp.co.isol.common.dao.MailInfoDao;
 import jp.co.isol.common.dto.MailInfoDto;
 
@@ -11,7 +9,6 @@ import jp.co.isol.common.dto.MailInfoDto;
  * メール情報のDaoクラス
  *
  */
-@Repository
 public class MailInfoDaoImpl implements MailInfoDao {
 
 	/**
