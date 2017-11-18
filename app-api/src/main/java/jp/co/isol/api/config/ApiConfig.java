@@ -8,7 +8,7 @@ import jp.co.isol.common.dao.impl.HealthInfoDaoImpl;
 
 /**
  * APIコンフィグクラス<br>
- *
+ * app-commonで使いたいBeanはここに登録する<br>
  */
 @Configuration
 public class ApiConfig {
