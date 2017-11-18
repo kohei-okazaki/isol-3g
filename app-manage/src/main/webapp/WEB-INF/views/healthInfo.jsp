@@ -169,11 +169,12 @@
 					</div>
 				</form>
 				</td>
+				<td>　　</td>
 				<td align="center">
 				<!-- CSV出力 -->
 				<form action="/isol-manage/healthInfo-csvDownload" method="get">
 					<div>
-						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
+						<input class="menuicon" type="image" src="resources/image/icon_csv.png">
 					</div>
 				</form>
 				</td>
