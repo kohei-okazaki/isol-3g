@@ -161,7 +161,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 			if ("height".equals(key) || "weight".equals(key)) {
 
 				if (StringUtil.isHalfNumber(value)) {
-					// "半角数字"でないのとき
+					// "半角数字"でないとき
 					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と半角数字ではないため不正です");
 				}
 
