@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -11,7 +12,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.config.ApiConfig;
+import jp.co.isol.api.exception.impl.HealthInfoException;
 import jp.co.isol.api.log.ApiLogger;
+import jp.co.isol.api.request.BaseRequest;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dao.HealthInfoDao;
@@ -20,6 +23,7 @@ import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
+import jp.co.isol.common.util.StringUtil;
 
 /**
  * 健康情報サービス実装クラス<br>
@@ -139,6 +143,39 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	private BigDecimal calcStandardWeight(BigDecimal height) {
 		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void checkRequest(BaseRequest request) throws HealthInfoException {
+
+		for (Entry<String, Object> entry : request.getKeyValue()) {
+			String key = entry.getKey();
+			String value = (String) entry.getValue();
+			if (StringUtil.isEmpty(value)) {
+				throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "がnullまたは空文字です");
+			}
+
+			if ("height".equals(key) || "weight".equals(key)) {
+
+				if (StringUtil.isHalfNumber(value)) {
+					// "半角数字"でないのとき
+					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と半角数字ではないため不正です");
+				}
+
+				if (BigDecimal.ZERO.equals(new BigDecimal(value))) {
+					// "0"のとき
+					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と不正です");
+				}
+
+				if (CalcUtil.MINUS.startsWith(value)) {
+					// "マイナスの値"のとき
+					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "とマイナスなので不正です");
+				}
+			}
+		}
 	}
 
 }

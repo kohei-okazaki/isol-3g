@@ -10,7 +10,7 @@ import jp.co.isol.common.dto.HealthInfoDto;
  * 健康情報サービスIF<br>
  *
  */
-public interface HealthInfoService {
+public interface HealthInfoService extends BaseApiService {
 
 	/**
 	 * メイン処理<br>

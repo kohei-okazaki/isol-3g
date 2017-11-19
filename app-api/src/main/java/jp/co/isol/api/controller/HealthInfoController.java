@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.isol.api.exception.impl.HealthInfoException;
+import jp.co.isol.api.exception.BaseApiException;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dto.HealthInfoDto;
@@ -33,19 +33,19 @@ public class HealthInfoController {
 
 	/**
 	 * Getでリクエストを受け付ける
-	 * @param req
+	 * @param request
 	 * @return
 	 * @throws ParseException
-	 * @throws HealthInfoException
+	 * @throws BaseApiException
 	 */
 	@GetMapping
-	public HealthInfoDto get(HttpServletRequest request) throws ParseException, HealthInfoException {
+	public HealthInfoDto get(HttpServletRequest request) throws ParseException, BaseApiException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
 
 		// マッピングされたリクエスト情報のチェック実施
-		healthInfoRequest.checkRequest();
+		healthInfoService.checkRequest(healthInfoRequest);
 
 		return healthInfoService.execute(healthInfoRequest);
 	}
@@ -54,11 +54,11 @@ public class HealthInfoController {
 	 * Postでリクエストを受け付ける
 	 * @param request
 	 * @return
-	 * @throws HealthInfoException
 	 * @throws ParseException
+	 * @throws BaseApiException
 	 */
 	@PostMapping
-	public HealthInfoDto post(HttpServletRequest request) throws HealthInfoException, ParseException {
+	public HealthInfoDto post(HttpServletRequest request) throws ParseException, BaseApiException {
 		return get(request);
 	}
 
