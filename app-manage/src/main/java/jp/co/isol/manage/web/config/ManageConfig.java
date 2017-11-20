@@ -15,7 +15,8 @@ import jp.co.isol.manage.web.session.ManageSessionManager;
 
 /**
  * 管理画面コンフィグクラス<br>
- * app-commonで使いたいBeanはここに登録する<br>
+ * app-commonのクラスで使いたいBeanはここに登録する<br>
+ * app-commonのクラスはservlet-context.xmlに定義できないため
  */
 @Configuration
 public class ManageConfig {

@@ -1,14 +1,17 @@
 package jp.co.isol.manage.log;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import jp.co.isol.common.log.BaseLogger;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * アプリ内で出力するログクラス<br>
  *
  */
-@Slf4j
 public class ManageLogger extends BaseLogger {
+
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * infologを出力
@@ -53,7 +56,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void info(Class<?> clazz, String message) {
-		log.info("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.info("実行 -----> " + clazz.getSimpleName(), message);
 	}
 
 	/**
@@ -63,7 +66,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void debug(Class<?> clazz, String message) {
-		log.debug("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.debug("実行 -----> " + clazz.getSimpleName(), message);
 	}
 
 	/**
@@ -73,7 +76,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void error(Class<?> clazz, String message) {
-		log.error("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.error("実行 -----> " + clazz.getSimpleName(), message);
 	}
 
 	/**
@@ -83,7 +86,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void warn(Class<?> clazz, String message) {
-		log.warn("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.warn("実行 -----> " + clazz.getSimpleName(), message);
 	}
 
 }
