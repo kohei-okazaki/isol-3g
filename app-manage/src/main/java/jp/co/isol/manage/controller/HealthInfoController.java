@@ -195,6 +195,12 @@ public class HealthInfoController {
 	@RequestMapping(value = "/healthInfo-csvDownload")
 	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
+		logger.info(this.getClass(), "# csvDownload start");
+
         csvDownloadService.execute(request, response);
 
 	}
