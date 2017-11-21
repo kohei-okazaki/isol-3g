@@ -3,6 +3,10 @@ package jp.co.isol.api.service;
 import jp.co.isol.api.exception.BaseApiException;
 import jp.co.isol.api.request.BaseRequest;
 
+/**
+ * 基底APIサービス<br>
+ *
+ */
 public interface BaseApiService {
 
 	/**
