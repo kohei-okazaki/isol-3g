@@ -24,8 +24,8 @@ public class CsvUtil {
 	 * @return ヘッダー名
 	 */
 	public static List<String> getHeaderList(Class<?> clazz) {
-		Csv excel = getCsvClass(clazz);
-		return Arrays.asList(excel.headerNames());
+		Csv csv = getCsvClass(clazz);
+		return Arrays.asList(csv.headerNames());
 	}
 
 	/**

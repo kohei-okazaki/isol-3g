@@ -59,8 +59,7 @@ public class ExcelUtil {
 	 * @return シート名
 	 */
 	public static String getSheetName(Class<?> clazz) {
-		Excel excel = getExcelClass(clazz);
-		return excel.sheetName();
+		return getExcelClass(clazz).sheetName();
 	}
 
 	/**
@@ -69,8 +68,7 @@ public class ExcelUtil {
 	 * @return ヘッダー名
 	 */
 	public static List<String> getHeaderList(Class<?> clazz) {
-		Excel excel = getExcelClass(clazz);
-		return Arrays.asList(excel.headerNames());
+		return Arrays.asList(getExcelClass(clazz).headerNames());
 	}
 
 	/**

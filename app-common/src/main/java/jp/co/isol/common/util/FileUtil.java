@@ -11,6 +11,7 @@ public class FileUtil {
 	public static final String NEW_LINE = "\r\n";
 	public static final String SEPARATOR = "\\";
 	public static final String SUFFIX_XLS = ".xls";
+	public static final String SUFFIX_XLSX = ".xlsx";
 
 	/**
 	 * インスタンス生成を制限
