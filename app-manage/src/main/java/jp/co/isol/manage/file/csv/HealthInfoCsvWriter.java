@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.util.MimeTypeUtils;
 
-import jp.co.isol.common.file.csv.BaseCsvWriter;
+import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.DateUtil;

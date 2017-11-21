@@ -1,4 +1,4 @@
-package jp.co.isol.common.file.csv;
+package jp.co.isol.common.file.csv.writer;
 
 import java.io.IOException;
 

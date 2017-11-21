@@ -3,7 +3,7 @@ package jp.co.isol.common.util;
 import java.util.Arrays;
 import java.util.List;
 
-import jp.co.isol.common.file.csv.Csv;
+import jp.co.isol.common.file.csv.annotation.Csv;
 
 /**
  * CsvのUtilクラス<br>

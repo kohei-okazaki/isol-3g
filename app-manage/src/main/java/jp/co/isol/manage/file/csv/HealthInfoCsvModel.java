@@ -3,7 +3,7 @@ package jp.co.isol.manage.file.csv;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import jp.co.isol.common.file.csv.Csv;
+import jp.co.isol.common.file.csv.annotation.Csv;
 import lombok.Getter;
 import lombok.Setter;
 
