@@ -13,12 +13,12 @@ public interface MailInfoDao {
 	 * @param userId
 	 * @return AccountDto
 	 */
-	public MailInfoDto getAccountByUserId(String userId);
+	public MailInfoDto getMailInfoByUserId(String userId);
 
 
 	/**
 	 * 引数で指定されたアカウント情報を更新する
 	 * @param mailInfoDto
 	 */
-	public void updateAccount(MailInfoDto mailInfoDto);
+	public void updateMailInfo(MailInfoDto mailInfoDto);
 }
