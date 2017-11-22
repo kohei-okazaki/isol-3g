@@ -186,7 +186,7 @@ public class HealthInfoController {
 	/**
 	 * CSVをダウンロードする<br>
 	 * @param request
-	 * @param form
+	 * @param response
 	 * @return
 	 * @throws ParseException
 	 * @throws IOException
@@ -207,13 +207,13 @@ public class HealthInfoController {
 
 	/**
 	 * メール通知実行
-	 * @param req
+	 * @param request
 	 * @param model
 	 * @param form
 	 * @return View
 	 */
 	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
-	public String execute(HttpServletRequest req, Model model, HealthInfoForm form) {
+	public String execute(HttpServletRequest request, Model model, HealthInfoForm form) {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
