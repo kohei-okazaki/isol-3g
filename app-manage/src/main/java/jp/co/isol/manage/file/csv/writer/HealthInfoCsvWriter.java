@@ -23,7 +23,6 @@ import lombok.Setter;
  */
 public class HealthInfoCsvWriter extends BaseCsvWriter {
 
-	/** 健康情報CSVモデルクラス */
 	@Setter
 	@Getter
 	private HealthInfoCsvModel model;
