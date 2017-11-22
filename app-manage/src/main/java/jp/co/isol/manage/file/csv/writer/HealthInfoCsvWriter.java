@@ -1,4 +1,4 @@
-package jp.co.isol.manage.file.csv;
+package jp.co.isol.manage.file.csv.writer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +13,7 @@ import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.common.util.StringUtil;
+import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -13,8 +13,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.file.csv.HealthInfoCsvModel;
-import jp.co.isol.manage.file.csv.HealthInfoCsvWriter;
+import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
+import jp.co.isol.manage.file.csv.writer.HealthInfoCsvWriter;
 import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.web.config.ManageConfig;
