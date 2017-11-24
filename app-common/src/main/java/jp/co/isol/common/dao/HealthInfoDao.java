@@ -12,21 +12,23 @@ import jp.co.isol.common.dto.HealthInfoDto;
 public interface HealthInfoDao {
 
 	/**
-	 * 全ユーザ情報を検索
+	 * 指定したユーザIDの健康情報を返す
 	 * @param userId
 	 * @return result
+	 * @throws ParseException
 	 */
 	public List<HealthInfoDto> getHealthInfoByUserId(String userId) throws ParseException;
 
 	/**
-	 * 引数で指定されたIDのレコードを返す
-	 * @param dataId
+	 * 指定されたデータIDに対応する健康情報を返す
+	 * @param dateId
 	 * @return レコード
+	 * @throws ParseException
 	 */
 	public HealthInfoDto getHealthInfoByDataId(String dataId) throws ParseException;
 
 	/**
-	 * ユーザ情報を登録する
+	 * 健康情報を登録する<br>
 	 * @param dto
 	 */
 	public void registHealthInfo(HealthInfoDto dto);

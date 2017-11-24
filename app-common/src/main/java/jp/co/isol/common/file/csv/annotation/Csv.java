@@ -1,4 +1,4 @@
-package jp.co.isol.common.file.excel;
+package jp.co.isol.common.file.csv.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -7,22 +7,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Excelアノテーション<br>
- * <pre>
- * sheetNameでシート名を設定
- * headerNamesでヘッダー名を設定
- * </pre>
+ * Csvアノテーション<br>
+ * headerNamesでヘッダー名を設定<br>
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.TYPE })
-public @interface Excel {
-
-	/**
-	 * シート名
-	 * @return シート名
-	 */
-	String sheetName() default "";
+public @interface Csv {
 
 	/**
 	 * ヘッダ名

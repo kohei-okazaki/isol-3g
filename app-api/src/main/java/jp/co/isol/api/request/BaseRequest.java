@@ -86,7 +86,7 @@ public abstract class BaseRequest {
 	 * リクエストマップ内が空でない場合true, 空の場合falseを返す<br>
 	 * @return
 	 */
-	protected boolean isNotEmpty() {
+	public boolean isNotEmpty() {
 		return !isEmpty();
 	}
 

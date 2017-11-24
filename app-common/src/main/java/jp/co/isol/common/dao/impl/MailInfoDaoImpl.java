@@ -17,7 +17,7 @@ public class MailInfoDaoImpl implements MailInfoDao {
 	 * @return AccountDto
 	 */
 	@Override
-	public MailInfoDto getAccountByUserId(String userId) {
+	public MailInfoDto getMailInfoByUserId(String userId) {
 		MailInfoDto dto = new MailInfoDto();
 		dto.setUserId(userId);
 		dto.setMailAddress("test-001@test.jp");
@@ -31,7 +31,7 @@ public class MailInfoDaoImpl implements MailInfoDao {
 	 * @param mailInfoDto
 	 */
 	@Override
-	public void updateAccount(MailInfoDto mailInfoDto) {
+	public void updateMailInfo(MailInfoDto mailInfoDto) {
 		// TODO 更新処理を追加すること
 	}
 

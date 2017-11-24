@@ -22,7 +22,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	private static final String SHEET = "HEALTH_INFO";
 
 	/**
-	 * 指定したユーザIDのユーザ情報を全検索
+	 * 指定したユーザIDの健康情報を返す
 	 * @param userId
 	 * @return result
 	 * @throws ParseException
@@ -94,7 +94,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	}
 
 	/**
-	 * 指定されたデータIDに対応するレコードを返す
+	 * 指定されたデータIDに対応する健康情報を返す
 	 * @param dateId
 	 * @return レコード
 	 * @throws ParseException
@@ -148,7 +148,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	}
 
 	/**
-	 * ユーザ情報を登録する<br>
+	 * 健康情報を登録する<br>
 	 * @param dto
 	 */
 	@Override
