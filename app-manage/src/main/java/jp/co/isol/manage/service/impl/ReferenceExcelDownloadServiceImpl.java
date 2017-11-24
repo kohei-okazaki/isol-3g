@@ -21,17 +21,12 @@ public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<L
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * 結果照会画面のファイルダウンロードを実行する
-	 * @param List<HealthInfoDto>
-	 * @return View
+	 * {@inheritDoc}
 	 */
 	@Override
 	public View execute(List<HealthInfoDto> historyList) {
-		init();
+		LOG.info(this.getClass() + " start");
 		return new ResultReferenceExcelBuiler(historyList);
 	}
 
-	private void init() {
-		LOG.info(this.getClass() + " start");
-	}
 }

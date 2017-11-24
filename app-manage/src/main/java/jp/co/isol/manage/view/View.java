@@ -23,7 +23,7 @@ public enum View {
 	private String name;
 
 	private View(String name) {
-		this.name = name;
+		setName(name);
 	}
 
 }

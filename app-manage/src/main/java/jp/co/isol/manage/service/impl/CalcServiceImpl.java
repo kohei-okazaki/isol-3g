@@ -15,10 +15,7 @@ import jp.co.isol.manage.service.CalcService;
 public class CalcServiceImpl implements CalcService {
 
 	/**
-	 * BMIを計算(小数第2位を四捨五入する)
-	 * @param height
-	 * @param weight
-	 * @return BMIを計算(小数第2位を四捨五入する)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
@@ -26,9 +23,7 @@ public class CalcServiceImpl implements CalcService {
 	}
 
 	/**
-	 * 標準体重を計算(小数第2位を四捨五入する)
-	 * @param height
-	 * @return 標準体重を計算(小数第2位を四捨五入する)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public BigDecimal calcStandardWeight(BigDecimal height) {
@@ -36,10 +31,7 @@ public class CalcServiceImpl implements CalcService {
 	}
 
 	/**
-	 * 最後に入力した体重と今の体重の差を計算
-	 * @param before 前の体重
-	 * @param now 今の体重
-	 * @return 体重の差(小数第2位を四捨五入する)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public BigDecimal calcDiffWeight(BigDecimal before, BigDecimal now) {

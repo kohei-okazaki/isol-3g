@@ -136,7 +136,7 @@ public class HealthInfoController {
 
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		HealthInfoDto dto = healthInfoInputService.convertUserInfo(form, userId);
+		HealthInfoDto dto = healthInfoInputService.convertHealthInfoDto(form, userId);
 
 		// 入力画面から入力した情報を登録する
 		healthInfoDao.registHealthInfo(dto);

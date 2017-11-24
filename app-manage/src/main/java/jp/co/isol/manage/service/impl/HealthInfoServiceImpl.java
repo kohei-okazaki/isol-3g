@@ -28,9 +28,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	private CalcService calcService;
 
 	/**
-	 * 入力情報のチェック
-	 * @param form
-	 * @return 判定結果
+	 * {@inheritDoc}
 	 */
 	@Override
 	public boolean hasError(HealthInfoForm form) {
@@ -46,11 +44,10 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	}
 
 	/**
-	 * 入力情報をDtoにつめる<br>
-	 * @return 健康情報Dto
+	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto convertUserInfo(HealthInfoForm form, String userId) {
+	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId) {
 
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setUserId(userId);
@@ -65,9 +62,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	}
 
 	/**
-	 * 入力した体重と最後に入力した体重との差を表示する<br>
-	 * @param form
-	 * @return 体重差のメッセージ
+	 * {@inheritDoc}
 	 */
 	@Override
 	public String getDiffMessage(HealthInfoForm form, HealthInfoDto dto) {
@@ -85,10 +80,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	}
 
 	/**
-	 * 最後に入力した体重とフォームから体重差を返却
-	 * @param form
-	 * @param dto
-	 * @return 体重差
+	 * {@inheritDoc}
 	 */
 	@Override
 	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfoDto dto) {

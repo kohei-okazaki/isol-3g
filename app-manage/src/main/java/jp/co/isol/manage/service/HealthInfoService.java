@@ -46,7 +46,7 @@ public interface HealthInfoService {
 	 * 入力情報をDtoにつめる<br>
 	 * @return
 	 */
-	public HealthInfoDto convertUserInfo(HealthInfoForm form, String userId);
+	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId);
 
 	/**
 	 * 入力した体重と最後に入力した体重との差を表示する<br>
