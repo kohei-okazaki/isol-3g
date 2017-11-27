@@ -17,6 +17,7 @@ public @interface Csv {
 
 	/**
 	 * ヘッダ名
+	 * セットした順にファイルにつめられる<br>
 	 * @return ヘッダ名
 	 */
 	String[] headerNames() default "";

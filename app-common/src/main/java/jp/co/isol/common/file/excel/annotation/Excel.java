@@ -20,12 +20,14 @@ public @interface Excel {
 
 	/**
 	 * シート名
+	 * セットした順にファイルにつめられる<br>
 	 * @return シート名
 	 */
 	String sheetName() default "";
 
 	/**
 	 * ヘッダ名
+	 * セットした順にファイルにつめられる<br>
 	 * @return ヘッダ名
 	 */
 	String[] headerNames() default "";
