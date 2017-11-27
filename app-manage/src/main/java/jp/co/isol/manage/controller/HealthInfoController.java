@@ -3,7 +3,6 @@ package jp.co.isol.manage.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,7 +53,7 @@ public class HealthInfoController {
 	/** 健康情報Excelダウンロードサービス */
 	@Autowired
 	@HealthInfoExcel
-	private ExcelDownloadService<HealthInfoForm> fileDownloadService;
+	private ExcelDownloadService<HealthInfoForm> excelDownloadService;
 	/** 健康情報CSVダウンロードサービス */
 	@Autowired
 	@HealthInfoCsv
@@ -164,13 +163,12 @@ public class HealthInfoController {
 
 	/**
 	 * エクセルをダウンロードする<br>
-	 * @param model
 	 * @param form
 	 * @return ModelAndView
 	 */
 	@GetMapping
 	@RequestMapping(value = "/healthInfo-excelDownload.html")
-	public ModelAndView excelDownload(Map<String, Object> model, HealthInfoForm form) {
+	public ModelAndView excelDownload(HealthInfoForm form) {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
@@ -178,7 +176,7 @@ public class HealthInfoController {
 		}
 		logger.info(this.getClass(), "# excelDownload start");
 
-		return new ModelAndView(fileDownloadService.execute(form));
+		return new ModelAndView(excelDownloadService.execute(form));
 
 	}
 
