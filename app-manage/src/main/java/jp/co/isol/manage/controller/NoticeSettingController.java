@@ -4,6 +4,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.manage.form.LoginUserForm;
@@ -24,6 +25,7 @@ public class NoticeSettingController {
 	 * @param loginForm
 	 * @return
 	 */
+	@GetMapping
 	@RequestMapping(value = "/notice-setting.html")
 	public String noticeSetttingInput(Model model, LoginUserForm loginForm) {
 

@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
@@ -69,8 +68,8 @@ public class HealthInfoController {
 	 * @param model
 	 * @return 遷移先を返却
 	 */
-	@RequestMapping(value = "/healthInfo-input.html")
 	@GetMapping
+	@RequestMapping(value = "/healthInfo-input.html")
 	public String input(Model model) {
 
 		ManageLogger logger;
@@ -90,8 +89,8 @@ public class HealthInfoController {
 	 * @param form
 	 * @return 確認画面
 	 */
-	@RequestMapping(value = "/healthInfo-confirm.html")
 	@PostMapping
+	@RequestMapping(value = "/healthInfo-confirm.html")
 	public String confirm(Model model, HealthInfoForm form) {
 
 		ManageLogger logger;
@@ -122,8 +121,8 @@ public class HealthInfoController {
 	 * @return 完了画面
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/healthInfo-complete.html")
 	@PostMapping
+	@RequestMapping(value = "/healthInfo-complete.html")
 	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws ParseException {
 
 		ManageLogger logger;
@@ -212,7 +211,8 @@ public class HealthInfoController {
 	 * @param form
 	 * @return View
 	 */
-	@RequestMapping(value = "/notice.html", method = RequestMethod.GET)
+	@GetMapping
+	@RequestMapping(value = "/notice.html")
 	public String execute(HttpServletRequest request, Model model, HealthInfoForm form) {
 
 		ManageLogger logger;

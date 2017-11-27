@@ -41,8 +41,8 @@ public class AccountSettingController {
 	 * @param request
 	 * @return アカウント設定入力画面
 	 */
-	@RequestMapping(value = "/account-setting-input.html")
 	@GetMapping
+	@RequestMapping(value = "/account-setting-input.html")
 	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
 		ManageLogger logger;
@@ -70,8 +70,8 @@ public class AccountSettingController {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "/account-setting-confirm.html")
 	@PostMapping
+	@RequestMapping(value = "/account-setting-confirm.html")
 	public String accountsettingConfirm(Model model, AccountSettingForm form) {
 
 
@@ -94,8 +94,8 @@ public class AccountSettingController {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "/account-setting-complete.html")
 	@PostMapping
+	@RequestMapping(value = "/account-setting-complete.html")
 	public String accountSettingComplete(Model model, AccountSettingForm form) {
 
 		if (form.isDeleteFlag()) {
