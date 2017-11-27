@@ -74,7 +74,6 @@ public class AccountSettingController {
 	@RequestMapping(value = "/account-setting-confirm.html")
 	public String accountsettingConfirm(Model model, AccountSettingForm form) {
 
-
 		if (accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
 			model.addAttribute("page", PageView.INPUT.getValue());
