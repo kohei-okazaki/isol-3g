@@ -12,16 +12,18 @@ import jp.co.isol.common.dto.HealthInfoDto;
 public interface HealthInfoSearchService {
 
 	/**
-	 * 全ユーザ情報を取得する
+	 * 指定されたユーザIDと一致する健康情報のリストを返却する<br>
 	 * @param userId
-	 * @return List<HealthInfoDto> 全ユーザ情報
+	 * @return List<HealthInfoDto>
+	 * @throws ParseException
 	 */
 	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException;
 
 	/**
-	 * 指定されたIDからユーザ情報を取得する
+	 * 指定されたデータIDからと一致する健康情報を返却する<br>
 	 * @param dataId
 	 * @return HealthInfoDto
+	 * @throws ParseException
 	 */
 	public HealthInfoDto findHealthInfoByDataId(String dataId) throws ParseException;
 }

@@ -25,12 +25,8 @@ public class HealthInfoExcelDownloadServiceImpl implements ExcelDownloadService<
 	 */
 	@Override
 	public View execute(HealthInfoForm form) {
-		init();
-		return new HealthInfoExcelBuilder(form);
-	}
-
-	private void init() {
 		LOG.info(this.getClass() + " start");
+		return new HealthInfoExcelBuilder(form);
 	}
 
 }

@@ -28,8 +28,7 @@ import jp.co.isol.manage.service.MailService;
 public class MailServiceImpl implements MailService {
 
 	/**
-	 * メールを送信する
-	 *
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void sendMail(HealthInfoForm form) {

@@ -26,9 +26,7 @@ public class LoginServiceImpl implements LoginService {
 	private AccountSearchService accountSearchService;
 
 	/**
-	 * ログイン情報と入力情報を照合する
-	 * @param LoginUserForm
-	 * @return 判定結果
+	 * {@inheritDoc}
 	 */
 	@Override
 	public boolean invalidPassword(LoginUserForm LoginUserForm) {
@@ -38,9 +36,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	/**
-	 * セッションにユーザIDを登録する
-	 * @param session
-	 * @param userId
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void registSession(HttpSession session, String userId) {

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
@@ -27,47 +28,33 @@ import jp.co.isol.manage.web.config.ManageConfig;
 @Service
 public class AccountSettingServiceImpl implements AccountSettingService {
 
+	/** アカウント情報Dao */
+	@Autowired
+	private AccountDao accountDao;
+
 	/**
-	 * IDで指定されたアカウントのパスワードを変更する<br>
-	 * @param form
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void changePassword(AccountSettingForm form) {
 
-		AccountDao accountDao;
-
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			accountDao = context.getBean(AccountDao.class);
-		}
-
 		AccountDto accountDto = new AccountDto();
 		accountDto.setUserId(form.getUserId());
 		accountDto.setPassword(form.getPassword());
-		accountDto.setRegDate(new Date());
+		accountDto.setUpdateDate(new Date());
 		accountDao.updateAccount(accountDto);
 	}
 
 	/**
-	 * 指定されたユーザIDのアカウントの削除をする<br>
-	 * @param form
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void deleteAccount(AccountSettingForm form) {
-
-		AccountDao accountDao;
-
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			accountDao = context.getBean(AccountDao.class);
-		}
-
 		accountDao.deleteAccount(form.getUserId());
 	}
 
 	/**
-	 * 入力されたアカウント設定フォーム情報が不正かどうか判定する<br>
-	 * 不正の場合true, そうでない場合falseを返す<br>
-	 * @param form
-	 * @return 判定結果
+	 * {@inheritDoc}
 	 */
 	@Override
 	public boolean invalidForm(AccountSettingForm form) {

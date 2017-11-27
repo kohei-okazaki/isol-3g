@@ -16,13 +16,12 @@ import jp.co.isol.manage.service.HealthInfoSearchService;
 @Service
 public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 
+	/** 健康情報Dao */
 	@Autowired
 	private HealthInfoDao healthInfoDao;
 
 	/**
-	 * 全ユーザ情報を取得する
-	 * @return 全ユーザ情報
-	 * @throws ParseException
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException {
@@ -30,10 +29,7 @@ public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 	}
 
 	/**
-	 * 指定されたデータIDからユーザ情報を取得する
-	 * @param id
-	 * @return ログインユーザ情報
-	 * @throws ParseException
+	 * {@inheritDoc}
 	 */
 	@Override
 	public HealthInfoDto findHealthInfoByDataId(String dataId) throws ParseException {
