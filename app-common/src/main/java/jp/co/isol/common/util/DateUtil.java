@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * @author kou1210hei<br>
  * 時間関係のutilクラス<br>
  *
  */

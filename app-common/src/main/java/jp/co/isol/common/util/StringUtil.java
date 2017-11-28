@@ -8,7 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author kou1210hei<br>
  * 文字列のUtilクラス<br>
  *
  */

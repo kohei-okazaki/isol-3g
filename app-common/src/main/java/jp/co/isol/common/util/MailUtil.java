@@ -1,7 +1,6 @@
 package jp.co.isol.common.util;
 
 /**
- * @author kou1210hei<br>
  * メールのUtilクラス
  *
  */
