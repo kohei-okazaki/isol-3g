@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @author kou1210hei<br>
  * DB接続クラス
  *
  */
