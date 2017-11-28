@@ -40,7 +40,7 @@
 		<li><a href="#">ダウンロード</a>
 			<ul>
 				<li><a onclick="referenceExcelDownload();">エクセル</a></li>
-				<li><a href="#">テキストファイル</a></li>
+				<li><a href="/isol-manage/result-reference-csvDownload">テキストファイル</a></li>
 			</ul>
 		</li>
 		<li><a href="#">設定</a>

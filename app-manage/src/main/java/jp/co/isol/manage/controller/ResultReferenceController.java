@@ -45,8 +45,8 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/result-reference.html")
 	@GetMapping
+	@RequestMapping(value = "/result-reference.html")
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
 		ManageLogger logger;
@@ -67,8 +67,8 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping(value = "/result-reference-download.html")
 	@GetMapping
+	@RequestMapping(value = "/result-reference-excelDownload.html")
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
 		ManageLogger logger;
