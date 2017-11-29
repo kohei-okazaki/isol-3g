@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Csvアノテーション<br>
+ * CSVアノテーション<br>
  * headerNamesでヘッダー名を設定<br>
  */
 @Documented
