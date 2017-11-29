@@ -23,27 +23,27 @@ public class AccountDto implements Serializable {
 
 	/** ユーザID */
 	@Id
-	@Column(name = "USER_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
+	@Column(name = "USER_ID", nullable = false, length = 3)
 	private String userId;
 
 	/** パスワード */
-	@Column(name = "PASSWORD", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
 	/** 更新日時 */
-	@Column(name = "UPDATE_DATE", nullable = true)
 	@Setter
 	@Getter
+	@Column(name = "UPDATE_DATE", nullable = true)
 	private Date updateDate;
 
 	/** 登録日時 */
-	@Column(name = "REG_DATE", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
 
 }
