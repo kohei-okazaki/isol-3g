@@ -23,33 +23,33 @@ public class MailInfoDto {
 
 	/** ユーザID */
 	@Id
-	@Column(name = "USER_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
+	@Column(name = "USER_ID", nullable = false, length = 3)
 	private String userId;
 
 	/** メールアドレス */
-	@Column(name = "MAIL_ADDRESS", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "MAIL_ADDRESS", nullable = false)
 	private String mailAddress;
 
 	/** メールパスワード */
-	@Column(name = "MAIL_PASSWORD", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "MAIL_PASSWORD", nullable = false)
 	private String mailPassword;
 
 	/** 更新日時 */
-	@Column(name = "UPDATE_DATE", nullable = true)
 	@Setter
 	@Getter
+	@Column(name = "UPDATE_DATE", nullable = true)
 	private Date updateDate;
 
 	/** 登録日時 */
-	@Column(name = "REG_DATE", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
 
 }

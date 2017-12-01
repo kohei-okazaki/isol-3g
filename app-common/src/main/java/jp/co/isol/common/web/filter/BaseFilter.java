@@ -13,7 +13,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author kou1210hei<br>
  * フィルター基底クラス
  *
  */

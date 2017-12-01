@@ -12,7 +12,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import jp.co.isol.common.file.excel.annotation.Excel;
 
 /**
- * @author kou1210hei<br>
  * Excel操作のUtilクラス<br>
  *
  */

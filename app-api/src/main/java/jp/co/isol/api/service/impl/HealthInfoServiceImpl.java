@@ -7,11 +7,8 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.api.config.ApiConfig;
 import jp.co.isol.api.exception.impl.HealthInfoException;
 import jp.co.isol.api.log.ApiLogger;
 import jp.co.isol.api.request.BaseRequest;
@@ -117,12 +114,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	private HealthInfoDto getLastHealthInfoDto(String userId) throws ParseException {
 
-		HealthInfoDao dao;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ApiConfig.class)) {
-			dao = context.getBean(HealthInfoDao.class);
-		}
-
-		List<HealthInfoDto> dtoList = dao.getHealthInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = healthInfoDao.getHealthInfoByUserId(userId);
 		return dtoList.get(dtoList.size() - 1);
 	}
 
@@ -177,5 +169,4 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 			}
 		}
 	}
-
 }

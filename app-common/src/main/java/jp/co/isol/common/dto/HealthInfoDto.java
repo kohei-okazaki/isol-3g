@@ -17,57 +17,57 @@ import lombok.ToString;
  * 健康情報を保持するDto
  */
 @Entity
-@Table(name = "HEALTH_INFO")
 @ToString
+@Table(name = "HEALTH_INFO")
 public class HealthInfoDto implements Serializable {
 
 	/** データID */
 	@Id
-	@Column(name = "DATA_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
+	@Column(name = "DATA_ID", nullable = false, length = 3)
 	private String dataId;
 
 	/** ユーザID */
-	@Column(name = "USER_ID", nullable = false, length = 3)
 	@Setter
 	@Getter
+	@Column(name = "USER_ID", nullable = false, length = 3)
 	private String userId;
 
 	/** 身長 */
-	@Column(name = "HEIGHT", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "HEIGHT", nullable = false)
 	private BigDecimal height;
 
 	/** 体重 */
-	@Column(name = "WEIGHT", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "WEIGHT", nullable = false)
 	private BigDecimal weight;
 
 	/** BMI */
-	@Column(name = "BMI", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "BMI", nullable = false)
 	private BigDecimal bmi;
 
 	/** 標準体重 */
-	@Column(name = "STANDARD_WEIGHT", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "STANDARD_WEIGHT", nullable = false)
 	private BigDecimal standardWeight;
 
 	/** ユーザステータス */
-	@Column(name = "USER_STATUS", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "USER_STATUS", nullable = false)
 	private String userStatus;
 
 	/** 登録日時 */
-	@Column(name = "REG_DATE", nullable = false)
 	@Setter
 	@Getter
+	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
 
 }

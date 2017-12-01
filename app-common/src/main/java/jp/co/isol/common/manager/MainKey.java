@@ -6,6 +6,7 @@ package jp.co.isol.common.manager;
  */
 public enum MainKey {
 
-	HEALTH_INFO_USER_STATUS;
+	HEALTH_INFO_USER_STATUS,
+	PAGE_VIEW;
 
 }

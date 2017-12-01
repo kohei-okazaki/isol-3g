@@ -6,10 +6,7 @@ import java.util.StringJoiner;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.util.MimeTypeUtils;
-
 import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
-import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.common.util.StringUtil;
@@ -32,8 +29,7 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	 */
 	public void execute(HttpServletResponse response) throws IOException {
 
-		response.setContentType(MimeTypeUtils.APPLICATION_OCTET_STREAM_VALUE + ";charset=" + Charset.UTF_8.toString().toLowerCase());
-		response.setHeader("Content-Disposition", "attachment; filename=\"HealthInfo.csv\"");
+		init(response);
 
 		try (PrintWriter writer = response.getWriter()) {
 			StringJoiner recordJoiner = new StringJoiner(StringUtil.NEW_LINE);

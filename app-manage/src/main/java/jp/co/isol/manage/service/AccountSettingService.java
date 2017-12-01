@@ -12,7 +12,7 @@ public interface AccountSettingService {
 	 * アカウント設定formで指定されたアカウント情報に更新する<br>
 	 * @param form
 	 */
-	public void changePassword(AccountSettingForm form);
+	public void updateAccount(AccountSettingForm form);
 
 	/**
 	 * 指定されたアカウント情報の削除をする<br>

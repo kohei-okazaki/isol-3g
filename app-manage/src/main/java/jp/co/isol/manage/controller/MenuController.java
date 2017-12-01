@@ -27,6 +27,7 @@ import jp.co.isol.manage.web.config.ManageConfig;
 @RequestMapping("/menu.html")
 public class MenuController {
 
+	/** ログインサービス */
 	@Autowired
 	private LoginService loginService;
 

@@ -36,7 +36,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void changePassword(AccountSettingForm form) {
+	public void updateAccount(AccountSettingForm form) {
 
 		AccountDto accountDto = new AccountDto();
 		accountDto.setUserId(form.getUserId());

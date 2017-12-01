@@ -41,8 +41,8 @@ public class AccountSettingController {
 	 * @param request
 	 * @return アカウント設定入力画面
 	 */
-	@RequestMapping(value = "/account-setting-input.html")
 	@GetMapping
+	@RequestMapping(value = "/account-setting-input.html")
 	public String accountSetttingInput(Model model, HttpServletRequest request) {
 
 		ManageLogger logger;
@@ -70,10 +70,9 @@ public class AccountSettingController {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "/account-setting-confirm.html")
 	@PostMapping
+	@RequestMapping(value = "/account-setting-confirm.html")
 	public String accountsettingConfirm(Model model, AccountSettingForm form) {
-
 
 		if (accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
@@ -94,18 +93,20 @@ public class AccountSettingController {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "/account-setting-complete.html")
 	@PostMapping
+	@RequestMapping(value = "/account-setting-complete.html")
 	public String accountSettingComplete(Model model, AccountSettingForm form) {
 
 		if (form.isDeleteFlag()) {
 			// アカウントを削除する場合
 			accountSettingService.deleteAccount(form);
+			model.addAttribute("page", PageView.COMPLETE.getValue());
+
 			return View.ACCOUNT_SETTING.getName();
 		}
 
 		// アカウントを更新する
-		accountSettingService.changePassword(form);
+		accountSettingService.updateAccount(form);
 
 		model.addAttribute("page", PageView.COMPLETE.getValue());
 

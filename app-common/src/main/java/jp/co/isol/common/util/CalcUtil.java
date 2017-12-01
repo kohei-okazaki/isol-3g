@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * @author kou1210hei<br>
  * 計算処理のUtilクラス
  *
  */

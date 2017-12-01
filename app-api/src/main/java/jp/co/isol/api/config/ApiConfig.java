@@ -18,7 +18,7 @@ public class ApiConfig {
 	 * 健康情報のDaoクラスを返す<br>
 	 * @return
 	 */
-	@Bean
+	@Bean("healthInfoDao")
 	public HealthInfoDao getHealthInfoDao() {
 		return new HealthInfoDaoImpl();
 	}

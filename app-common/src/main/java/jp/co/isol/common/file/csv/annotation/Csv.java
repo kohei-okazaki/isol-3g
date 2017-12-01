@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Csvアノテーション<br>
+ * CSVアノテーション<br>
  * headerNamesでヘッダー名を設定<br>
  */
 @Documented
@@ -17,6 +17,7 @@ public @interface Csv {
 
 	/**
 	 * ヘッダ名
+	 * セットした順にファイルにつめられる<br>
 	 * @return ヘッダ名
 	 */
 	String[] headerNames() default "";
