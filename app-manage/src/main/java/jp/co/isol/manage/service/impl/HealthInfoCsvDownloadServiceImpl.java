@@ -13,6 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
 import jp.co.isol.manage.file.csv.writer.HealthInfoCsvWriter;
 import jp.co.isol.manage.service.CsvDownloadService;
@@ -51,7 +52,7 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 		HealthInfoCsvModel model = toModel(dto);
 
 		// CSVに書き込む
-		HealthInfoCsvWriter writer = new HealthInfoCsvWriter();
+		HealthInfoCsvWriter writer = new HealthInfoCsvWriter(CsvUtil.DOBBLE_QUOTE);
 		writer.setModel(model);
 		writer.execute(response);
 

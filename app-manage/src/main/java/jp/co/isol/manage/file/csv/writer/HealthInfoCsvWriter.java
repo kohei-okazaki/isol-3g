@@ -27,6 +27,19 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	/**
 	 * {@inheritDoc}
 	 */
+	public HealthInfoCsvWriter() {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public HealthInfoCsvWriter(String enclosureChar) {
+		super(enclosureChar);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public void execute(HttpServletResponse response) throws IOException {
 
 		init(response);
@@ -47,7 +60,7 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	private void writeHeader(StringJoiner recordJoiner) {
 
 		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);
-		CsvUtil.getHeaderList(model.getClass()).stream().forEach(headerName -> joiner.add(headerName));
+		CsvUtil.getHeaderList(model.getClass()).stream().forEach(headerName -> write(joiner, headerName));
 		recordJoiner.add(joiner.toString());
 	}
 
@@ -59,12 +72,12 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	private void writeData(StringJoiner recordJoiner) {
 
 		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);
-		joiner.add(model.getUserId());
-		joiner.add(model.getHeight().toString());
-		joiner.add(model.getWeight().toString());
-		joiner.add(model.getBmi().toString());
-		joiner.add(model.getStandardWeight().toString());
-		joiner.add(DateUtil.toString(model.getRegDate(), DateUtil.YYYYMMDD_HHMMSS));
+		write(joiner, model.getUserId());
+		write(joiner, model.getHeight().toString());
+		write(joiner, model.getWeight().toString());
+		write(joiner, model.getBmi().toString());
+		write(joiner, model.getStandardWeight().toString());
+		write(joiner, DateUtil.toString(model.getRegDate(), DateUtil.YYYYMMDD_HHMMSS));
 
 		recordJoiner.add(joiner.toString());
 	}
