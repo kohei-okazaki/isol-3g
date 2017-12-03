@@ -1,7 +1,11 @@
 package jp.co.isol.manage.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.manage.log.ManageLogger;
+import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
+import jp.co.isol.manage.service.annotation.ReferenceCsv;
 import jp.co.isol.manage.service.annotation.ReferenceExcel;
 import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
@@ -32,11 +38,15 @@ public class ResultReferenceController {
 	@Autowired
 	private HealthInfoSearchService healthInfoSearchService;
 
-	/** ファイルダウンロードサービス */
+	/** 結果照会Excelダウンロードサービス */
 	@Autowired
 	@ReferenceExcel
 	private ExcelDownloadService<List<HealthInfoDto>> fileDownloadService;
 
+	/** 結果照会CSVダウンロードサービス */
+	@Autowired
+	@ReferenceCsv
+	private CsvDownloadService csvDownloadService;
 
 	/**
 	 * 結果照会画面
@@ -79,6 +89,25 @@ public class ResultReferenceController {
 
 		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
 		return new ModelAndView(fileDownloadService.execute(dtoList));
+	}
+
+	/**
+	 * CSVダウンロードを実行<br>
+	 * @param request
+	 * @param response
+	 * @throws ParseException
+	 * @throws IOException
+	 */
+	@GetMapping
+	@RequestMapping(value = "reference-csvDoowload")
+	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
+
+		ManageLogger logger;
+		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
+			logger = context.getBean(ManageLogger.class);
+		}
+		logger.info(this.getClass(), "# csvDownload start");
+		this.csvDownloadService.execute(request, response);
 	}
 
 }
