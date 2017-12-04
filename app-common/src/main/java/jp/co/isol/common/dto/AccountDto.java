@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * アカウントのDto
@@ -16,6 +18,8 @@ import lombok.Data;
  */
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "ACCOUNT")
 public class AccountDto implements Serializable {
 

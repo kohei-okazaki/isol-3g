@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * メール情報Dto<br>
@@ -16,6 +18,8 @@ import lombok.Data;
  */
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "MAIL_INFO")
 public class MailInfoDto {
 

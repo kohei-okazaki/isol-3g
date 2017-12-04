@@ -9,13 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 健康情報を保持するDto
  */
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "HEALTH_INFO")
 public class HealthInfoDto implements Serializable {
 
