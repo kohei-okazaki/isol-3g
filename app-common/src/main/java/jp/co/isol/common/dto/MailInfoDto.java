@@ -1,5 +1,6 @@
 package jp.co.isol.common.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,7 +22,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "MAIL_INFO")
-public class MailInfoDto {
+public class MailInfoDto implements Serializable {
+
+	/** シリアルバージョンUID */
+	private static final Long serialVersionUID = 1L;
 
 	/** ユーザID */
 	@Id

@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "ACCOUNT")
 public class AccountDto implements Serializable {
 
+	/** シリアルバージョンUID */
 	private static final Long serialVersionUID = 1L;
 
 	/** ユーザID */

@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "HEALTH_INFO")
 public class HealthInfoDto implements Serializable {
 
+	/** シリアルバージョンUID */
 	private static final Long serialVersionUID = 1L;
 
 	/** データID */
