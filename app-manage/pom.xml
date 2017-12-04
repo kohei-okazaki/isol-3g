@@ -14,11 +14,13 @@
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.0.2.RELEASE</org.springframework-version>
+		<org.springsecurity-version>5.0.0.RELEASE</org.springsecurity-version>
 		<org.aspectj-version>1.8.13</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 		<poi-version>3.17</poi-version>
 		<jackson-version>2.9.2</jackson-version>
 		<lombok-version>1.16.18</lombok-version>
+		<org.thymeleaf-version>3.0.2.RELEASE</org.thymeleaf-version>
 	</properties>
 
 	<dependencies>
@@ -58,18 +60,24 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>5.0.0.RELEASE</version>
+			<version>${org.springsecurity-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>5.0.0.RELEASE</version>
+			<version>${org.springsecurity-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-			<version>5.0.0.RELEASE</version>
+			<version>${org.springsecurity-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+			<version>${org.thymeleaf-version}</version>
+		</dependency>
+
 
 		<!-- json lib -->
 		<dependency>
@@ -226,17 +234,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 	<build>
 		<plugins>
