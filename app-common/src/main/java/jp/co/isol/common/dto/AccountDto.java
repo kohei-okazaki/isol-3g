@@ -8,41 +8,33 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  * アカウントのDto
  *
  */
+@Data
 @Entity
 @Table(name = "ACCOUNT")
-@ToString(exclude = "password")
 public class AccountDto implements Serializable {
+
+	private static final Long serialVersionUID = 1L;
 
 	/** ユーザID */
 	@Id
-	@Setter
-	@Getter
 	@Column(name = "USER_ID", nullable = false, length = 3)
 	private String userId;
 
 	/** パスワード */
-	@Setter
-	@Getter
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
 	/** 更新日時 */
-	@Setter
-	@Getter
 	@Column(name = "UPDATE_DATE", nullable = true)
 	private Date updateDate;
 
 	/** 登録日時 */
-	@Setter
-	@Getter
 	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
 
