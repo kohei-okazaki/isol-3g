@@ -50,19 +50,19 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	@Override
 	public void buildExcelDocument(Map<String, Object> model
 								, Workbook workbook
-								, HttpServletRequest req
-								, HttpServletResponse resp) throws Exception {
+								, HttpServletRequest request
+								, HttpServletResponse response) throws Exception {
 
 		String fileName = new String("sample.xlsx".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
-		resp.setHeader("Content-Desposition", "attachment; filename=" + fileName);
+		response.setHeader("Content-Desposition", "attachment; filename=" + fileName);
 
 		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
 
-		// ヘッダーを設定
-		setHeader(sheet);
+		// ヘッダーを書き込む
+		writeHeader(sheet);
 
-		// データを設定
-		setData(sheet);
+		// データを書き込む
+		writeData(sheet);
 
 	}
 
@@ -71,13 +71,13 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	 * @param sheet
 	 */
 	@Override
-	protected void setHeader(Sheet sheet) {
+	protected void writeHeader(Sheet sheet) {
 
 		List<String> headerNameList = ExcelUtil.getHeaderList(this.getClass());
 
 		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i);
-			Cell cell = ExcelUtil.getCell(sheet, 0, i);
+			Cell cell = ExcelUtil.getCell(sheet, HEADER_POSITION, i);
 			ExcelUtil.setText(cell, headerName);
 		});
 	}
@@ -87,15 +87,15 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	 * @param sheet
 	 */
 	@Override
-	protected void setData(Sheet sheet) {
-		final int INDEX_POSITION = 1;
-		Cell cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 0);
+	protected void writeData(Sheet sheet) {
+		final int ROW_POSITION = 1;
+		Cell cell = ExcelUtil.getCell(sheet, ROW_POSITION, 0);
 		ExcelUtil.setText(cell, form.getHeight().toString());
-		cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 1);
+		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 1);
 		ExcelUtil.setText(cell, form.getWeight().toString());
-		cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 2);
+		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 2);
 		ExcelUtil.setText(cell, form.getBmi().toString());
-		cell = ExcelUtil.getCell(sheet, INDEX_POSITION, 3);
+		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 3);
 		ExcelUtil.setText(cell, form.getStandardWeight().toString());
 	}
 

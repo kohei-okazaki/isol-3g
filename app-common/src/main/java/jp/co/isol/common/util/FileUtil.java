@@ -10,17 +10,17 @@ public class FileUtil {
 
 	public static final String NEW_LINE = "\r\n";
 	public static final String SEPARATOR = "\\";
-	public static final String SUFFIX_XLS = ".xls";
-	public static final String SUFFIX_XLSX = ".xlsx";
 
 	/**
-	 * インスタンス生成を制限
+	 * プライベートコンストラクタ<br>
+	 * インスタンス生成を制限<br>
 	 */
 	private FileUtil() {
 	}
 
 	/**
 	 * 指定されたパスからファイルを返す<br>
+	 * 例)def.txt
 	 * @param file
 	 * @return
 	 */
@@ -30,6 +30,7 @@ public class FileUtil {
 
 	/**
 	 * 指定されたパスからファイルのパスの文字列を返す<br>
+	 * 例) C:\\abc\\def.txt
 	 * @param file
 	 * @return
 	 */

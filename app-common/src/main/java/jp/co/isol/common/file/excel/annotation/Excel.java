@@ -9,8 +9,9 @@ import java.lang.annotation.Target;
 /**
  * Excelアノテーション<br>
  * <pre>
- * sheetNameでシート名を設定
- * headerNamesでヘッダー名を設定
+ * sheetNameでシート名を
+ * headerNamesでヘッダー名を
+ * 返却
  * </pre>
  */
 @Documented
