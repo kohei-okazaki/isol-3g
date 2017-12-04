@@ -11,6 +11,11 @@ import jp.co.isol.common.file.csv.annotation.Csv;
  */
 public class CsvUtil {
 
+	/** シングルクォート */
+	public static final String SINGLE_QUOTE = "\'";
+	/** ダブルクォート */
+	public static final String DOBBLE_QUOTE = "\"";
+
 	/**
 	 * プライベートコンストラクタ<br>
 	 * インスタンスの生成を制限<br>

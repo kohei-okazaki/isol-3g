@@ -2,6 +2,7 @@ package jp.co.isol.manage.service.impl;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +14,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.util.CsvUtil;
-import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
-import jp.co.isol.manage.file.csv.writer.HealthInfoCsvWriter;
+import jp.co.isol.manage.file.csv.model.ReferenceCsvModel;
+import jp.co.isol.manage.file.csv.writer.ReferenceCsvWriter;
 import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.web.config.ManageConfig;
@@ -23,11 +23,11 @@ import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 
 /**
- * 健康情報CSVダウンロードサービス実装クラス<br>
+ * 結果照会画面CSVダウンロードサービスクラス実装クラス<br>
  *
  */
-@Service("healthInfoCsv")
-public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
+@Service(value = "referenceCsv")
+public class ReferenceCsvDownloadServiceImpl implements CsvDownloadService {
 
 	/** 健康情報検索サービス */
 	@Autowired
@@ -35,7 +35,6 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 
 	/**
 	 * {@inheritDoc}
-	 *
 	 */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
@@ -45,35 +44,36 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 			sessionManager = context.getBean(ManageSessionManager.class);
 		}
 
-		// 最後に登録した健康情報を検索
+		// セッションからユーザIDを取得
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
-		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
-		HealthInfoCsvModel model = toModel(dto);
+		List<ReferenceCsvModel> modelList = toModelList(dtoList);
 
 		// CSVに書き込む
-		HealthInfoCsvWriter writer = new HealthInfoCsvWriter(CsvUtil.DOBBLE_QUOTE);
-		writer.setModel(model);
+		ReferenceCsvWriter writer = new ReferenceCsvWriter();
+		writer.setModelList(modelList);
 		writer.execute(response);
-
 	}
 
 	/**
-	 * CSVモデルにDtoに変換する<br>
-	 * @param dto
-	 * @return model
+	 * 結果照会CSVモデルリストに変換する
+	 * @param dtoList
+	 * @return modelList
 	 */
-	private HealthInfoCsvModel toModel(HealthInfoDto dto) {
+	private List<ReferenceCsvModel> toModelList(List<HealthInfoDto> dtoList) {
 
-		HealthInfoCsvModel model = new HealthInfoCsvModel();
-		model.setUserId(dto.getUserId());
-		model.setHeight(dto.getHeight());
-		model.setWeight(dto.getWeight());
-		model.setBmi(dto.getBmi());
-		model.setStandardWeight(dto.getStandardWeight());
-		model.setRegDate(dto.getRegDate());
-
-		return model;
+		List<ReferenceCsvModel> modelList = new ArrayList<ReferenceCsvModel>();
+		for (HealthInfoDto dto : dtoList) {
+			ReferenceCsvModel model = new ReferenceCsvModel();
+			model.setUserId(dto.getUserId());
+			model.setHeight(dto.getHeight());
+			model.setWeight(dto.getWeight());
+			model.setBmi(dto.getBmi());
+			model.setStandardWeight(dto.getStandardWeight());
+			model.setRegDate(dto.getRegDate());
+			modelList.add(model);
+		}
+		return modelList;
 	}
 
 }
