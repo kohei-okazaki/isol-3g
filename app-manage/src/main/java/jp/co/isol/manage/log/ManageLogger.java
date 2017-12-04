@@ -56,7 +56,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void info(Class<?> clazz, String message) {
-		LOG.info("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.info("実行 -----> " + clazz.getSimpleName() + " " +  message);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void debug(Class<?> clazz, String message) {
-		LOG.debug("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.debug("実行 -----> " + clazz.getSimpleName() + " " + message);
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void error(Class<?> clazz, String message) {
-		LOG.error("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.error("実行 -----> " + clazz.getSimpleName() + " " + message);
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class ManageLogger extends BaseLogger {
 	 */
 	@Override
 	public void warn(Class<?> clazz, String message) {
-		LOG.warn("実行 -----> " + clazz.getSimpleName(), message);
+		LOG.warn("実行 -----> " + clazz.getSimpleName() + " " + message);
 	}
 
 }

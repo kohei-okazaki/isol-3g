@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * 健康情報CSVダウンロードサービス実装クラスのマーカーアノテーション
  *
  */
-@Target({ ElementType.FIELD, ElementType.TYPE })
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
 @Inherited
+@Documented
 @Qualifier("healthInfoCsv")
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.FIELD, ElementType.TYPE })
 public @interface HealthInfoCsv {
 
 }

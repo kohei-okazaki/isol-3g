@@ -21,7 +21,7 @@ import jp.co.isol.manage.web.session.ManageSessionManager;
 @Configuration
 public class ManageConfig {
 
-	@Bean(name = "appSessionManager")
+	@Bean(name = "manageSessionManager")
 	public ManageSessionManager getAppSessionManager() {
 		return new ManageSessionManager();
 	}
@@ -31,8 +31,8 @@ public class ManageConfig {
 		return new DBConnecter();
 	}
 
-	@Bean(name = "appLogger")
-	public ManageLogger getAppLogger() {
+	@Bean(name = "manageLogger")
+	public ManageLogger getManageLogger() {
 		return new ManageLogger();
 	}
 

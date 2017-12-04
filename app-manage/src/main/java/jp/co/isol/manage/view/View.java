@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * ビューEnum
+ * ビューEnum<br>
+ * 画面遷移先定義<br>
  *
  */
 public enum View {

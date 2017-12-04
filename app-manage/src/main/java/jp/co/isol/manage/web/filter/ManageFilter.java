@@ -1,7 +1,6 @@
 package jp.co.isol.manage.web.filter;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -49,17 +48,16 @@ public class ManageFilter extends BaseFilter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 
 		HttpServletRequest request = (HttpServletRequest) req;
-		System.out.println(request.getRequestURI() + " : " + new Date());
 
 		ManageSessionManager sessionManager;
 
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			sessionManager = context.getBean("appSessionManager", ManageSessionManager.class);
+			sessionManager = context.getBean(ManageSessionManager.class);
 		}
 
-		String session_id = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		System.out.println("session_id = " + session_id);
+		System.out.println("セッション内のuserId = " + userId);
 		chain.doFilter(req, resp);
 
 	}
