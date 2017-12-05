@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.file.excel.ResultReferenceExcelBuiler;
+import jp.co.isol.manage.file.excel.builder.ResultReferenceExcelBuiler;
 import jp.co.isol.manage.file.excel.model.ReferenceExcelModel;
 import jp.co.isol.manage.service.ExcelDownloadService;
 
