@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
 import jp.co.isol.manage.file.excel.HealthInfoExcelBuilder;
+import jp.co.isol.manage.file.excel.model.HealthInfoExcelModel;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.ExcelDownloadService;
 
@@ -25,8 +26,26 @@ public class HealthInfoExcelDownloadServiceImpl implements ExcelDownloadService<
 	 */
 	@Override
 	public View execute(HealthInfoForm form) {
+
 		LOG.info(this.getClass() + " start");
-		return new HealthInfoExcelBuilder(form);
+
+		HealthInfoExcelModel model = toModel(form);
+
+		return new HealthInfoExcelBuilder(model);
+	}
+
+	/**
+	 * 健康情報フォームをモデルに変換する<br>
+	 * @param form
+	 * @return model
+	 */
+	private HealthInfoExcelModel toModel(HealthInfoForm form) {
+		HealthInfoExcelModel model = new HealthInfoExcelModel();
+		model.setHeight(form.getHeight());
+		model.setWeight(form.getWeight());
+		model.setBmi(form.getBmi());
+		model.setStandardWeight(form.getStandardWeight());
+		return model;
 	}
 
 }

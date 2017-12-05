@@ -4,6 +4,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * キャラセットEnum<br>
+ *
+ */
 public enum Charset {
 
 	MS_932("MS932"),

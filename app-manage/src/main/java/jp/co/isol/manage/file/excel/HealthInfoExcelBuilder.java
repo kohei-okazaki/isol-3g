@@ -15,37 +15,22 @@ import jp.co.isol.common.file.excel.annotation.Excel;
 import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
-import jp.co.isol.manage.form.HealthInfoForm;
-import lombok.Getter;
-import lombok.Setter;
+import jp.co.isol.manage.file.excel.model.HealthInfoExcelModel;
+import lombok.AllArgsConstructor;
 
 /**
  * 健康情報入力画面Excel生成クラス<br>
  *
  */
+@AllArgsConstructor
 @Excel(sheetName = "健康情報", headerNames = {"身長", "体重", "BMI", "標準体重"})
 public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
-	/** 健康情報入力フォームクラス */
-	@Setter
-	@Getter
-	private HealthInfoForm form;
+	/** 健康情報クラス */
+	private HealthInfoExcelModel model;
 
 	/**
-	 * コンストラクタ<br>
-	 * @param form
-	 */
-	public HealthInfoExcelBuilder(HealthInfoForm form) {
-		this.form = form;
-	}
-
-	/**
-	 * エクセルファイルを生成する<br>
-	 *
-	 * @param model
-	 * @param workbook
-	 * @param req
-	 * @param resp
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void buildExcelDocument(Map<String, Object> model
@@ -67,8 +52,7 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	}
 
 	/**
-	 * ヘッダーを設定する<br>
-	 * @param sheet
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected void writeHeader(Sheet sheet) {
@@ -83,20 +67,19 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	}
 
 	/**
-	 * データを設定する<br>
-	 * @param sheet
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected void writeData(Sheet sheet) {
 		final int ROW_POSITION = 1;
 		Cell cell = ExcelUtil.getCell(sheet, ROW_POSITION, 0);
-		ExcelUtil.setText(cell, form.getHeight().toString());
+		ExcelUtil.setText(cell, model.getHeight().toString());
 		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 1);
-		ExcelUtil.setText(cell, form.getWeight().toString());
+		ExcelUtil.setText(cell, model.getWeight().toString());
 		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 2);
-		ExcelUtil.setText(cell, form.getBmi().toString());
+		ExcelUtil.setText(cell, model.getBmi().toString());
 		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 3);
-		ExcelUtil.setText(cell, form.getStandardWeight().toString());
+		ExcelUtil.setText(cell, model.getStandardWeight().toString());
 	}
 
 }

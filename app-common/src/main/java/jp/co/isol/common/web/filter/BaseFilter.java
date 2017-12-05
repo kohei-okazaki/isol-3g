@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * フィルター基底クラス
+ * フィルター基底クラス<br>
  *
  */
 public abstract class BaseFilter implements Filter {

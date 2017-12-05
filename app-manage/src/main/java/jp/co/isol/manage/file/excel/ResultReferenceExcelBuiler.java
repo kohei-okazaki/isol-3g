@@ -11,37 +11,26 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.file.excel.annotation.Excel;
 import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
+import jp.co.isol.manage.file.excel.model.ReferenceExcelModel;
+import lombok.AllArgsConstructor;
 
 /**
  * 結果照会画面Excel生成クラス<br>
  *
  */
+@AllArgsConstructor
 @Excel(sheetName = "健康情報", headerNames = {"身長", "体重", "BMI", "標準体重"})
 public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 
-	/** 購入履歴情報リスト */
-	private List<HealthInfoDto> historyList;
+	/** 結果照会Excelモデルクラスリスト */
+	private List<ReferenceExcelModel> modelList;
 
 	/**
-	 * コンストラクタ<br>
-	 * @param historyList
-	 */
-	public ResultReferenceExcelBuiler(List<HealthInfoDto> historyList) {
-		this.historyList = historyList;
-	}
-
-	/**
-	 * エクセルファイルを生成する<br>
-	 *
-	 * @param model
-	 * @param workbook
-	 * @param req
-	 * @param resp
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model
@@ -62,8 +51,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	}
 
 	/**
-	 * ヘッダーを設定する<br>
-	 * @param sheet
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected void writeHeader(Sheet sheet) {
@@ -78,25 +66,22 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	}
 
 	/**
-	 * データを設定する<br>
-	 * @param sheet
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected void writeData(Sheet sheet) {
 
-		Stream.iterate(0, i -> ++i).limit(this.historyList.size()).forEach(i -> {
-			HealthInfoDto dto = historyList.get(i);
+		Stream.iterate(0, i -> ++i).limit(this.modelList.size()).forEach(i -> {
+			ReferenceExcelModel model = modelList.get(i);
 			final int ROW_POSITION = i + 1;
 			Cell cell = ExcelUtil.getCell(sheet, ROW_POSITION, 0);
-			ExcelUtil.setText(cell, dto.getHeight().toString());
+			ExcelUtil.setText(cell, model.getHeight().toString());
 			cell = ExcelUtil.getCell(sheet, ROW_POSITION, 1);
-			ExcelUtil.setText(cell, dto.getWeight().toString());
+			ExcelUtil.setText(cell, model.getWeight().toString());
 			cell = ExcelUtil.getCell(sheet, ROW_POSITION, 2);
-			ExcelUtil.setText(cell, dto.getBmi().toString());
+			ExcelUtil.setText(cell, model.getBmi().toString());
 			cell = ExcelUtil.getCell(sheet, ROW_POSITION, 3);
-			ExcelUtil.setText(cell, dto.getStandardWeight().toString());
+			ExcelUtil.setText(cell, model.getStandardWeight().toString());
 		});
-
 	}
-
 }
