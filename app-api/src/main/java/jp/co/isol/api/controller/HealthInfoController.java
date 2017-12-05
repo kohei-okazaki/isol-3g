@@ -21,7 +21,7 @@ import jp.co.isol.common.dto.HealthInfoDto;
  *
  */
 @RestController
-@RequestMapping(value = "/healthInfo", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+@RequestMapping(value = "/healthInfo", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
 public class HealthInfoController {
 
 	/** 健康情報サービスクラス */

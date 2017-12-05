@@ -32,10 +32,14 @@ public class ExcelUtil {
 	 * @return cell
 	 */
 	public static Cell getCell(Sheet sheet, int row, int col) {
+
+		// row取得
 		Row sheetRow = sheet.getRow(row);
 		if (Objects.isNull(sheetRow)) {
 			sheetRow = sheet.createRow(row);
 		}
+
+		// cell取得
 		Cell cell = sheetRow.getCell(col);
 		if (Objects.isNull(cell)) {
 			cell = sheetRow.createCell(col);

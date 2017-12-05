@@ -15,6 +15,9 @@ import org.springframework.web.servlet.view.document.AbstractXlsxView;
  */
 public abstract class BaseExcelBuilder extends AbstractXlsxView {
 
+	/** ヘッダー位置 */
+	protected final int HEADER_POSITION = 0;
+
 	/**
 	 * エクセルに情報を書き込む<br>
 	 * @param model
@@ -34,11 +37,11 @@ public abstract class BaseExcelBuilder extends AbstractXlsxView {
 	 * ヘッダーを設定する<br>
 	 * @param sheet
 	 */
-	protected abstract void setHeader(Sheet sheet);
+	protected abstract void writeHeader(Sheet sheet);
 
 	/**
 	 * データを設定する<br>
 	 * @param sheet
 	 */
-	protected abstract void setData(Sheet sheet);
+	protected abstract void writeData(Sheet sheet);
 }

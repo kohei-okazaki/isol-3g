@@ -10,20 +10,19 @@ import jp.co.isol.common.dto.AccountDto;
 public class AccountDaoImpl implements AccountDao {
 
 	/**
-	 * 引数で指定されたユーザIDのアカウント情報を取得する
-	 * @param userId
-	 * @return AccountDto
+	 * {@inheritDoc}
 	 */
 	@Override
 	public AccountDto getAccountByUserId(String userId) {
 		AccountDto dto = new AccountDto();
 		dto.setUserId(userId);
 		dto.setPassword("password");
+		dto.setInvalidFlag("0");
 		return dto;
 	}
 
 	/**
-	 * アカウント情報を登録する
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void registAccount() {
@@ -31,8 +30,7 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	/**
-	 * 引数で指定されたアカウント情報を更新する
-	 * @param accountDto
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void updateAccount(AccountDto accountDto) {
@@ -40,8 +38,7 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	/**
-	 * 指定されたアカウント情報の削除を行う<br>
-	 * @param userId
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void deleteAccount(String userId) {

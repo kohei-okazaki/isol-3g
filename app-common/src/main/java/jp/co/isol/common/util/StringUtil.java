@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringTokenizer;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -37,10 +36,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static boolean isHalfNumber(String target) {
-		Pattern pattern = Pattern.compile(HALF_NUMBER);
-		Matcher matcher = pattern.matcher(target);
-
-		return matcher.find();
+		return Pattern.compile(HALF_NUMBER).matcher(target).find();
 	}
 
 	/**

@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * 健康情報Excelダウンロードサービス実装クラスのマーカーアノテーション
  *
  */
-@Target({ ElementType.FIELD, ElementType.TYPE })
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
 @Inherited
+@Documented
 @Qualifier("healthInfoExcel")
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.FIELD, ElementType.TYPE })
 public @interface HealthInfoExcel {
 }

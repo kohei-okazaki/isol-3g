@@ -3,6 +3,7 @@
 	<name>app-manage</name>
 	<comment></comment>
 	<projects>
+		<project>app-api</project>
 		<project>app-common</project>
 	</projects>
 	<buildSpec>

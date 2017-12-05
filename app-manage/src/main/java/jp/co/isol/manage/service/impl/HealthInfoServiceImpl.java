@@ -12,6 +12,7 @@ import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.MessageManager;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
+import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoService;
@@ -35,7 +36,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 		if (hasNull(form.getWeight(), form.getHeight())) {
 			return true;
-		} else if (form.getWeight().doubleValue() == 0 || form.getHeight().doubleValue() == 0) {
+		} else if (!StringUtil.isHalfNumber(form.getHeight().toString()) || !StringUtil.isHalfNumber(form.getWeight().toString())) {
+			return true;
+		} else if (BigDecimal.ZERO.equals(form.getHeight()) || BigDecimal.ZERO.equals(form.getWeight())) {
 			return true;
 		} else if (hasContainMinus(form.getWeight(), form.getHeight())) {
 			return true;

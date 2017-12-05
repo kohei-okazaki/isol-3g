@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * 結果照会Excelダウンロードサービス実装クラスのマーカーアノテーション
  *
  */
-@Target({ ElementType.FIELD, ElementType.TYPE })
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
 @Inherited
+@Documented
 @Qualifier("referenceExcel")
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.FIELD, ElementType.TYPE })
 public @interface ReferenceExcel {
 }

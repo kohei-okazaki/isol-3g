@@ -1,0 +1,85 @@
+package jp.co.isol.manage.file.excel.builder;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+import jp.co.isol.common.file.excel.annotation.Excel;
+import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
+import jp.co.isol.common.other.Charset;
+import jp.co.isol.common.util.ExcelUtil;
+import jp.co.isol.manage.file.excel.model.HealthInfoExcelModel;
+import lombok.AllArgsConstructor;
+
+/**
+ * 健康情報入力画面Excel生成クラス<br>
+ *
+ */
+@AllArgsConstructor
+@Excel(sheetName = "健康情報", headerNames = {"身長", "体重", "BMI", "標準体重"})
+public class HealthInfoExcelBuilder extends BaseExcelBuilder {
+
+	/** 健康情報クラス */
+	private HealthInfoExcelModel model;
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void buildExcelDocument(Map<String, Object> model
+								, Workbook workbook
+								, HttpServletRequest request
+								, HttpServletResponse response) throws Exception {
+
+		String fileName = new String("sample.xlsx".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
+		response.setHeader("Content-Desposition", "attachment; filename=" + fileName);
+
+		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
+
+		// ヘッダーを書き込む
+		writeHeader(sheet);
+
+		// データを書き込む
+		writeData(sheet);
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void writeHeader(Sheet sheet) {
+
+		List<String> headerNameList = ExcelUtil.getHeaderList(this.getClass());
+
+		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
+			String headerName = headerNameList.get(i);
+			Cell cell = ExcelUtil.getCell(sheet, HEADER_POSITION, i);
+			ExcelUtil.setText(cell, headerName);
+		});
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void writeData(Sheet sheet) {
+		final int ROW_POSITION = 1;
+		Cell cell = ExcelUtil.getCell(sheet, ROW_POSITION, 0);
+		ExcelUtil.setText(cell, model.getHeight().toString());
+		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 1);
+		ExcelUtil.setText(cell, model.getWeight().toString());
+		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 2);
+		ExcelUtil.setText(cell, model.getBmi().toString());
+		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 3);
+		ExcelUtil.setText(cell, model.getStandardWeight().toString());
+	}
+
+}
