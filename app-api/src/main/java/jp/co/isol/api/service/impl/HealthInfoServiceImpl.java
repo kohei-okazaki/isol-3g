@@ -29,6 +29,7 @@ import jp.co.isol.common.util.StringUtil;
 @Service
 public class HealthInfoServiceImpl implements HealthInfoService {
 
+	/** 健康情報Dao */
 	@Autowired
 	private HealthInfoDao healthInfoDao;
 

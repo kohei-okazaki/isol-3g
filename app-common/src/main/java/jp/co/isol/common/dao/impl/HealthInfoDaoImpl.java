@@ -22,10 +22,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	private static final String SHEET = "HEALTH_INFO";
 
 	/**
-	 * 指定したユーザIDの健康情報を返す
-	 * @param userId
-	 * @return result
-	 * @throws ParseException
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<HealthInfoDto> getHealthInfoByUserId(String userId) throws ParseException {
@@ -94,10 +91,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	}
 
 	/**
-	 * 指定されたデータIDに対応する健康情報を返す
-	 * @param dateId
-	 * @return レコード
-	 * @throws ParseException
+	 * {@inheritDoc}
 	 */
 	@Override
 	public HealthInfoDto getHealthInfoByDataId(String dateId) throws ParseException {
@@ -148,8 +142,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	}
 
 	/**
-	 * 健康情報を登録する<br>
-	 * @param dto
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void registHealthInfo(HealthInfoDto dto) {

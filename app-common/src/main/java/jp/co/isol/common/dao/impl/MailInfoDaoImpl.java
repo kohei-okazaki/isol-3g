@@ -12,9 +12,7 @@ import jp.co.isol.common.dto.MailInfoDto;
 public class MailInfoDaoImpl implements MailInfoDao {
 
 	/**
-	 * 引数で指定されたユーザIDのメール情報を取得する
-	 * @param userId
-	 * @return AccountDto
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MailInfoDto getMailInfoByUserId(String userId) {
@@ -27,8 +25,7 @@ public class MailInfoDaoImpl implements MailInfoDao {
 	}
 
 	/**
-	 * 引数で指定されたメール情報を更新する
-	 * @param mailInfoDto
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void updateMailInfo(MailInfoDto mailInfoDto) {
