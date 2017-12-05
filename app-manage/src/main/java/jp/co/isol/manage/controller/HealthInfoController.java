@@ -43,7 +43,7 @@ public class HealthInfoController {
 
 	/** 健康情報入力サービス */
 	@Autowired
-	private HealthInfoService healthInfoInputService;
+	private HealthInfoService healthInfoService;
 	/** 健康情報Dao */
 	@Autowired
 	private HealthInfoDao healthInfoDao;
@@ -98,7 +98,7 @@ public class HealthInfoController {
 		}
 		logger.info(this.getClass(), "#confirm start");
 
-		if (healthInfoInputService.hasError(form)) {
+		if (healthInfoService.hasError(form)) {
 			// 入力情報に誤りがある場合
 			logger.warn(this.getClass(), "入力情報に誤りがあります");
 			return View.ERROR.getName();
@@ -134,7 +134,7 @@ public class HealthInfoController {
 
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		HealthInfoDto dto = healthInfoInputService.convertHealthInfoDto(form, userId);
+		HealthInfoDto dto = healthInfoService.convertHealthInfoDto(form, userId);
 
 		// 入力画面から入力した情報を登録する
 		healthInfoDao.registHealthInfo(dto);
@@ -151,10 +151,10 @@ public class HealthInfoController {
 		model.addAttribute("dto", dto);
 
 		// 入力した今の体重と前回入力した体重の差を設定
-		model.addAttribute("diffWeight", healthInfoInputService.getDiffWeight(form, lastDto));
+		model.addAttribute("diffWeight", healthInfoService.getDiffWeight(form, lastDto));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", healthInfoInputService.getDiffMessage(form, lastDto));
+		model.addAttribute("resultMessage", healthInfoService.getDiffMessage(form, lastDto));
 
 		model.addAttribute("page", PageView.COMPLETE.getValue());
 		return View.HEALTH_INFO_INPUT.getName();
