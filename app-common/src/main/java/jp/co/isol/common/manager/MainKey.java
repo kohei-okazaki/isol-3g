@@ -7,6 +7,7 @@ package jp.co.isol.common.manager;
 public enum MainKey {
 
 	HEALTH_INFO_USER_STATUS,
-	PAGE_VIEW;
+	PAGE_VIEW,
+	CSV_FILE_NAME;
 
 }

@@ -17,6 +17,9 @@ public enum SubKey {
 
 	INPUT,
 	CONFIRM,
-	COMPLETE;
+	COMPLETE,
+
+	HEALTH_INFO,
+	REFERNCE_RESULT;
 
 }

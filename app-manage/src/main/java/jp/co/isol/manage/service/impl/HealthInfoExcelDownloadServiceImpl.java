@@ -20,9 +20,7 @@ public class HealthInfoExcelDownloadServiceImpl implements ExcelDownloadService<
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * 健康情報入力画面で入力した情報のExcelファイルをダウンロードする<br>
-	 * @param form
-	 * @return View
+	 * {@inheritDoc}
 	 */
 	@Override
 	public View execute(HealthInfoForm form) {

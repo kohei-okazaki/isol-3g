@@ -3,19 +3,17 @@ package jp.co.isol.common.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 計算処理のUtilクラス
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CalcUtil {
 
 	public static final String MINUS = "-";
-
-	/**
-	 * インスタンス生成を制限
-	 */
-	private CalcUtil() {
-	}
 
 	/**
 	 * 単位を以下に変換する</br>

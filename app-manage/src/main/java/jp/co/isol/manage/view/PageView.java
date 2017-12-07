@@ -16,8 +16,11 @@ import lombok.Setter;
  */
 public enum PageView {
 
+	/** 入力 */
 	INPUT(CodeManager.getInstance().getValue(MainKey.PAGE_VIEW, SubKey.INPUT)),
+	/** 確認 */
 	CONFIRM(CodeManager.getInstance().getValue(MainKey.PAGE_VIEW, SubKey.CONFIRM)),
+	/** 完了 */
 	COMPLETE(CodeManager.getInstance().getValue(MainKey.PAGE_VIEW, SubKey.COMPLETE));
 
 	@Getter

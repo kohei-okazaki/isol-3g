@@ -2,21 +2,18 @@ package jp.co.isol.common.util;
 
 import java.io.File;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * ファイルのUtilクラス<br>
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FileUtil {
 
 	public static final String NEW_LINE = "\r\n";
 	public static final String SEPARATOR = "\\";
-
-	/**
-	 * プライベートコンストラクタ<br>
-	 * インスタンス生成を制限<br>
-	 */
-	private FileUtil() {
-	}
 
 	/**
 	 * 指定されたパスからファイルを返す<br>
