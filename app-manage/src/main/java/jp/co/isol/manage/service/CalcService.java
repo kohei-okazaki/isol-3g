@@ -32,4 +32,3 @@ public interface CalcService {
 	public BigDecimal calcDiffWeight(BigDecimal before, BigDecimal now);
 
 }
-
