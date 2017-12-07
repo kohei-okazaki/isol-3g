@@ -15,7 +15,6 @@ import lombok.Setter;
 @Csv(headerNames = { "ユーザID", "身長", "体重", "BMI", "標準体重", "登録日時" })
 public class HealthInfoCsvModel {
 
-
 	/** ユーザID */
 	@Setter
 	@Getter
