@@ -44,6 +44,8 @@ public interface HealthInfoService {
 
 	/**
 	 * 入力情報をDtoにつめる<br>
+	 * @param form
+	 * @param userId
 	 * @return
 	 */
 	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId);
