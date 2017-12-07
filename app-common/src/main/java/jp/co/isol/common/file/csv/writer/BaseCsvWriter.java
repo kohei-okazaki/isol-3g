@@ -34,11 +34,12 @@ public abstract class BaseCsvWriter {
 	/**
 	 * 初期処理<br>
 	 * @param response
+	 * @param fileName
 	 */
-	protected void init(HttpServletResponse response) {
+	protected void init(HttpServletResponse response, String fileName) {
 
 		response.setContentType(MimeTypeUtils.APPLICATION_OCTET_STREAM_VALUE + ";charset=" + Charset.UTF_8.toString().toLowerCase());
-		response.setHeader("Content-Disposition", "attachment; filename=\"HealthInfo.csv\"");
+		response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
 
 	}
 

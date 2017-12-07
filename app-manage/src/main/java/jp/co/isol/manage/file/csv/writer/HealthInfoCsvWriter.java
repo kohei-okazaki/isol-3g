@@ -43,7 +43,8 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	 */
 	public void execute(HttpServletResponse response) throws IOException {
 
-		init(response);
+		String fileName = "\"HealthInfo.csv\"";
+		init(response, fileName);
 
 		try (PrintWriter writer = response.getWriter()) {
 			StringJoiner recordJoiner = new StringJoiner(StringUtil.NEW_LINE);
