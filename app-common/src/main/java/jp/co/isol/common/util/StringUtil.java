@@ -6,10 +6,14 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 文字列のUtilクラス<br>
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StringUtil {
 
 	public static final String COMMA = ",";
@@ -22,12 +26,6 @@ public class StringUtil {
 
 	/** 半角数字 */
 	public static final String HALF_NUMBER = "^[0-9]*$";
-
-	/**
-	 * インスタンス生成を制限
-	 */
-	private StringUtil() {
-	}
 
 	/**
 	 * 指定された文字列が半角数字かどうか判定する<br>

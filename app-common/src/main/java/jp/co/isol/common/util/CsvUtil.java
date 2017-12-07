@@ -4,24 +4,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import jp.co.isol.common.file.csv.annotation.Csv;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * CsvのUtilクラス<br>
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CsvUtil {
 
 	/** シングルクォート */
 	public static final String SINGLE_QUOTE = "\'";
 	/** ダブルクォート */
 	public static final String DOBBLE_QUOTE = "\"";
-
-	/**
-	 * プライベートコンストラクタ<br>
-	 * インスタンスの生成を制限<br>
-	 */
-	private CsvUtil() {
-	}
 
 	/**
 	 * ヘッダ名を取得する

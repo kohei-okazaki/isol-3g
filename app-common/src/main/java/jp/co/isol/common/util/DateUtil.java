@@ -7,20 +7,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 時間関係のutilクラス<br>
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DateUtil {
 
 	public static final String YYYY_MM_DD_HH_MI_SS = "yyyy/MM/dd hh:mm:ss";
 	public static final String YYYYMMDD_HHMMSS = "yyyy/MM/dd HH:mm:ss";
-
-	/**
-	 * インスタンス生成を制限
-	 */
-	private DateUtil() {
-	}
 
 	/**
 	 * 取得したlocaleの時間から書式を整えた時間を返却
