@@ -66,7 +66,7 @@ public class ResultReferenceController {
 		logger.info(this.getClass(), "# resultReference start");
 
 		// ログイン中のユーザの全レコードを検索する
-		model.addAttribute("resultList", healthInfoSearchService.findHealthInfoByUserId(userId));
+		model.addAttribute("resultList", this.healthInfoSearchService.findHealthInfoByUserId(userId));
 
 		return View.RESULT_REFFERNCE.getName();
 	}
@@ -88,7 +88,7 @@ public class ResultReferenceController {
 		logger.info(this.getClass(), "# excelDownload start");
 
 		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
-		return new ModelAndView(fileDownloadService.execute(dtoList));
+		return new ModelAndView(this.fileDownloadService.execute(dtoList));
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ResultReferenceController {
 	 * @throws IOException
 	 */
 	@GetMapping
-	@RequestMapping(value = "reference-csvDoowload")
+	@RequestMapping(value = "/reference-csvDoowload")
 	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
 		ManageLogger logger;
