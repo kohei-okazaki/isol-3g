@@ -24,8 +24,8 @@ import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.annotation.ReferenceCsv;
 import jp.co.isol.manage.service.annotation.ReferenceExcel;
-import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
+import jp.co.isol.manage.web.view.ManageView;
 
 /**
  * 健康管理_健康情報結果照会画面コントローラクラス<br>
@@ -68,7 +68,7 @@ public class ResultReferenceController {
 		// ログイン中のユーザの全レコードを検索する
 		model.addAttribute("resultList", this.healthInfoSearchService.findHealthInfoByUserId(userId));
 
-		return View.RESULT_REFFERNCE.getName();
+		return ManageView.RESULT_REFFERNCE.getName();
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class ResultReferenceController {
 		}
 		logger.info(this.getClass(), "# excelDownload start");
 
-		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 		return new ModelAndView(this.fileDownloadService.execute(dtoList));
 	}
 

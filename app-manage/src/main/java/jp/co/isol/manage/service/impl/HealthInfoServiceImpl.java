@@ -56,9 +56,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dto.setUserId(userId);
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
-		dto.setBmi(calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight()));
+		dto.setBmi(this.calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight()));
 		dto.setUserStatus(CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN));
-		dto.setStandardWeight(calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight())));
+		dto.setStandardWeight(this.calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight())));
 		dto.setRegDate(new Date());
 
 		return dto;
@@ -87,6 +87,6 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	@Override
 	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfoDto dto) {
-		return calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
+		return this.calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
 	}
 }

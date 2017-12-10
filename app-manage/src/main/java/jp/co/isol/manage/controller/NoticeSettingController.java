@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.log.ManageLogger;
-import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
+import jp.co.isol.manage.web.view.ManageView;
 
 /**
  * 健康管理_通知設定コントローラクラス<br>
@@ -35,7 +35,7 @@ public class NoticeSettingController {
 		}
 		logger.info(this.getClass(), "# noticeSetttingInput start");
 
-		return View.NOTICE_SETTING.getName();
+		return ManageView.NOTICE_SETTING.getName();
 	}
 
 }
