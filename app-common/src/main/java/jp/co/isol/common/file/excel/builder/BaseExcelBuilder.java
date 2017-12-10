@@ -32,7 +32,6 @@ public abstract class BaseExcelBuilder extends AbstractXlsxView {
 											, HttpServletRequest request
 											, HttpServletResponse response) throws Exception;
 
-
 	/**
 	 * ヘッダーを設定する<br>
 	 * @param sheet

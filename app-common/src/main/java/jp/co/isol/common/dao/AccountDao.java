@@ -15,12 +15,10 @@ public interface AccountDao {
 	 */
 	public AccountDto getAccountByUserId(String userId);
 
-
 	/**
 	 * アカウント情報を登録する
 	 */
 	public void registAccount();
-
 
 	/**
 	 * 引数で指定されたアカウント情報を更新する
