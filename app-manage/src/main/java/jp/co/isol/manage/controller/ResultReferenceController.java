@@ -24,8 +24,8 @@ import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.annotation.ReferenceCsv;
 import jp.co.isol.manage.service.annotation.ReferenceExcel;
-import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
+import jp.co.isol.manage.web.view.ManageView;
 
 /**
  * 健康管理_健康情報結果照会画面コントローラクラス<br>
@@ -66,9 +66,9 @@ public class ResultReferenceController {
 		logger.info(this.getClass(), "# resultReference start");
 
 		// ログイン中のユーザの全レコードを検索する
-		model.addAttribute("resultList", healthInfoSearchService.findHealthInfoByUserId(userId));
+		model.addAttribute("resultList", this.healthInfoSearchService.findHealthInfoByUserId(userId));
 
-		return View.RESULT_REFFERNCE.getName();
+		return ManageView.RESULT_REFFERNCE.getName();
 	}
 
 	/**
@@ -87,8 +87,8 @@ public class ResultReferenceController {
 		}
 		logger.info(this.getClass(), "# excelDownload start");
 
-		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
-		return new ModelAndView(fileDownloadService.execute(dtoList));
+		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
+		return new ModelAndView(this.fileDownloadService.execute(dtoList));
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ResultReferenceController {
 	 * @throws IOException
 	 */
 	@GetMapping
-	@RequestMapping(value = "reference-csvDoowload")
+	@RequestMapping(value = "/reference-csvDoowload")
 	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
 		ManageLogger logger;

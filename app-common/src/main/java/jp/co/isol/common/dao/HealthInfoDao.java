@@ -22,7 +22,7 @@ public interface HealthInfoDao {
 	/**
 	 * 指定されたデータIDに対応する健康情報を返す
 	 * @param dateId
-	 * @return レコード
+	 * @return HealthInfoDto
 	 * @throws ParseException
 	 */
 	public HealthInfoDto getHealthInfoByDataId(String dataId) throws ParseException;

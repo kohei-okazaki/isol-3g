@@ -1,4 +1,4 @@
-package jp.co.isol.manage.view;
+package jp.co.isol.manage.web.view;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
  * 画面遷移先定義<br>
  *
  */
-public enum View {
+public enum ManageView {
 
 	LOGIN("login"),
 	HEALTH_INFO_INPUT("healthInfo"),
@@ -23,7 +23,7 @@ public enum View {
 	@Setter(value = AccessLevel.PRIVATE)
 	private String name;
 
-	private View(String name) {
+	private ManageView(String name) {
 		setName(name);
 	}
 

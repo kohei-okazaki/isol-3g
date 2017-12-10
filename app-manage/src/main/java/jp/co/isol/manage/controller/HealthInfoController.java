@@ -28,11 +28,11 @@ import jp.co.isol.manage.service.HealthInfoService;
 import jp.co.isol.manage.service.MailService;
 import jp.co.isol.manage.service.annotation.HealthInfoCsv;
 import jp.co.isol.manage.service.annotation.HealthInfoExcel;
-import jp.co.isol.manage.view.PageView;
-import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
+import jp.co.isol.manage.web.view.PageType;
+import jp.co.isol.manage.web.view.ManageView;
 
 /**
  * 健康管理_健康情報入力画面コントローラ
@@ -77,9 +77,9 @@ public class HealthInfoController {
 		}
 		logger.info(this.getClass(), "#input start");
 
-		model.addAttribute("page", PageView.INPUT.getValue());
+		model.addAttribute("page", PageType.INPUT.getValue());
 
-		return View.HEALTH_INFO_INPUT.getName();
+		return ManageView.HEALTH_INFO_INPUT.getName();
 	}
 
 	/**
@@ -98,18 +98,18 @@ public class HealthInfoController {
 		}
 		logger.info(this.getClass(), "#confirm start");
 
-		if (healthInfoService.hasError(form)) {
+		if (this.healthInfoService.hasError(form)) {
 			// 入力情報に誤りがある場合
 			logger.warn(this.getClass(), "入力情報に誤りがあります");
-			return View.ERROR.getName();
+			return ManageView.ERROR.getName();
 		}
 
 		// 入力情報を設定
 		model.addAttribute("form", form);
 
-		model.addAttribute("page", PageView.CONFIRM.getValue());
+		model.addAttribute("page", PageType.CONFIRM.getValue());
 
-		return View.HEALTH_INFO_INPUT.getName();
+		return ManageView.HEALTH_INFO_INPUT.getName();
 	}
 
 	/**
@@ -134,13 +134,13 @@ public class HealthInfoController {
 
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		HealthInfoDto dto = healthInfoService.convertHealthInfoDto(form, userId);
+		HealthInfoDto dto = this.healthInfoService.convertHealthInfoDto(form, userId);
 
 		// 入力画面から入力した情報を登録する
-		healthInfoDao.registHealthInfo(dto);
+		this.healthInfoDao.registHealthInfo(dto);
 
 		// ユーザIDから健康情報のリストを取得
-		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 
 		// 最後に入力した体重をセット
 		int lastIndex = dtoList.size() - 1;
@@ -151,13 +151,13 @@ public class HealthInfoController {
 		model.addAttribute("dto", dto);
 
 		// 入力した今の体重と前回入力した体重の差を設定
-		model.addAttribute("diffWeight", healthInfoService.getDiffWeight(form, lastDto));
+		model.addAttribute("diffWeight", this.healthInfoService.getDiffWeight(form, lastDto));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", healthInfoService.getDiffMessage(form, lastDto));
+		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastDto));
 
-		model.addAttribute("page", PageView.COMPLETE.getValue());
-		return View.HEALTH_INFO_INPUT.getName();
+		model.addAttribute("page", PageType.COMPLETE.getValue());
+		return ManageView.HEALTH_INFO_INPUT.getName();
 	}
 
 
@@ -176,7 +176,7 @@ public class HealthInfoController {
 		}
 		logger.info(this.getClass(), "# excelDownload start");
 
-		return new ModelAndView(excelDownloadService.execute(form));
+		return new ModelAndView(this.excelDownloadService.execute(form));
 
 	}
 
@@ -198,7 +198,7 @@ public class HealthInfoController {
 		}
 		logger.info(this.getClass(), "# csvDownload start");
 
-        csvDownloadService.execute(request, response);
+		this.csvDownloadService.execute(request, response);
 
 	}
 
@@ -219,10 +219,10 @@ public class HealthInfoController {
 		}
 		logger.info(this.getClass(), "# mail execute start");
 
-		mailService.sendMail(form);
+		this.mailService.sendMail(form);
 
-		model.addAttribute("page", PageView.COMPLETE.getValue());
-		return View.MENU.getName();
+		model.addAttribute("page", PageType.COMPLETE.getValue());
+		return ManageView.MENU.getName();
 	}
 
 }

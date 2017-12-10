@@ -31,7 +31,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean invalidPassword(LoginUserForm LoginUserForm) {
 		String inputPassword = LoginUserForm.getPassword();
-		String userPassword = accountSearchService.findAccountByUserId(LoginUserForm.getUserId()).getPassword();
+		String userPassword = this.accountSearchService.findAccountByUserId(LoginUserForm.getUserId()).getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 

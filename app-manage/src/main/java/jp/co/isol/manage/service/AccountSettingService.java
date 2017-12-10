@@ -22,6 +22,7 @@ public interface AccountSettingService {
 
 	/**
 	 * 入力されたアカウント設定フォーム情報が不正かどうか判定する<br>
+	 * 不正な値の場合true, そうでない場合falseを返す<br>
 	 * @param form
 	 * @return 判定結果
 	 */

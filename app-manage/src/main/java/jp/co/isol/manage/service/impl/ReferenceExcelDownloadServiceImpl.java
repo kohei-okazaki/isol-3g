@@ -37,8 +37,8 @@ public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<L
 	}
 
 	/**
-	 * 購入履歴リストをモデルリストに変換する<br>
-	 * @param historyList 購入履歴リスト
+	 * 健康情報履歴リストをモデルリストに変換する<br>
+	 * @param historyList 健康情報リスト履歴リスト
 	 * @return modelList
 	 */
 	private List<ReferenceExcelModel> toModel(List<HealthInfoDto> historyList) {

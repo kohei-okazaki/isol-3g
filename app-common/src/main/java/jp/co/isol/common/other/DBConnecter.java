@@ -33,15 +33,16 @@ public class DBConnecter {
 //			System.out.println(result != 0 ? result + "件のデータを削除しました" : "該当するデータはいませんでした");
 //			ps.close();
 
-			String sql = "SELECT * FROM USER_INFO WHERE ID = ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "1");
-			ResultSet resultSet = ps.executeQuery();
-			while (resultSet.next()) {
-				System.out.println(resultSet.getString("ID"));
+			String sql = "SELECT * FROM HEALTH_INFO WHERE DATA_ID = ?";
+			try (PreparedStatement ps = con.prepareStatement(sql)) {
+				ps.setString(1, "1");
+
+				try (ResultSet resultSet = ps.executeQuery()) {
+					while (resultSet.next()) {
+						System.out.println(resultSet.getString("ID"));
+					}
+				}
 			}
-			resultSet.close();
-			ps.close();
 
 			con.commit();
 		} catch (SQLException e) {
