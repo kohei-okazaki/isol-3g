@@ -34,10 +34,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	private HealthInfoDao healthInfoDao;
 
 	/**
-	 * メイン処理<br>
-	 * @param request
-	 * @return 健康情報Dto
-	 * @throws ParseException
+	 * {@inheritDoc}
 	 */
 	@Override
 	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException {

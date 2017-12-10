@@ -18,11 +18,14 @@ import org.slf4j.LoggerFactory;
 
 import jp.co.isol.common.dto.CodeDto;
 import jp.co.isol.common.util.StringUtil;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * 健康管理_コードマネージャクラス<br>
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CodeManager {
 
 	/** singletonパターン */
@@ -35,13 +38,6 @@ public class CodeManager {
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * プライベートコンストラクタ<br>
-	 * インスタンスの生成を制限する<br>
-	 */
-	private CodeManager() {
-	}
-
-	/**
 	 * CodeManagerインスタンスを取得する<br>
 	 * @return
 	 */
@@ -51,21 +47,22 @@ public class CodeManager {
 
 	/**
 	 * メインキーとサブキーにヒモづくvalueを返す<br>
+	 * 指定されたキーがnullの場合、空文字を返す<br>
 	 * @param mainKey メインキー
 	 * @param subKey サブキー
-	 * @return ひもづく値
+	 * @return value
 	 */
 	public String getValue(MainKey mainKey, SubKey subKey) {
 
 		if (Objects.isNull(mainKey) || Objects.isNull(subKey)) {
-			return "";
+			return StringUtil.EMPTY;
 		}
-		String value = "";
+		String value = StringUtil.EMPTY;
 		try {
 			Iterator<Row> rowIterator  = getRowIterator();
 			while (rowIterator.hasNext()) {
 				Row row = rowIterator.next();
-				if (row == null || row.getCell(0) == null) {
+				if (Objects.isNull(row) || Objects.isNull(row.getCell(0))) {
 					break;
 				}
 				String cellMainKey = row.getCell(0).getStringCellValue();
@@ -86,16 +83,16 @@ public class CodeManager {
 	}
 
 	/**
-	 * 指定したメインキーに該当するvalueをリストを返す<br>
+	 * 指定したメインキーに該当するvalueのリストを返す<br>
 	 * @param mainKey
-	 * @return
+	 * @return valueList
 	 */
 	public List<String> getValues(MainKey mainKey) {
 
 		if (Objects.isNull(mainKey)) {
 			return null;
 		}
-		List<String> list = new ArrayList<String>();
+		List<String> valueList = new ArrayList<String>();
 		try {
 			Iterator<Row> rowIterator  = getRowIterator();
 			while (rowIterator.hasNext()) {
@@ -103,7 +100,7 @@ public class CodeManager {
 				String cellMainKey = row.getCell(0).getStringCellValue();
 
 				if (cellMainKey.equals(mainKey.name())) {
-					list.add(row.getCell(2).getStringCellValue());
+					valueList.add(row.getCell(2).getStringCellValue());
 				}
 			}
 		} catch (EncryptedDocumentException e) {
@@ -113,11 +110,11 @@ public class CodeManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return list;
+		return valueList;
 	}
 
 	/**
-	 * メインキーに該当する値のリストを返す<br>
+	 * メインキーに該当する定数クラスのリストを返す<br>
 	 * @param mainKey メインキー
 	 * @return
 	 */
@@ -127,7 +124,7 @@ public class CodeManager {
 			return null;
 		}
 
-		List<CodeDto> list = new ArrayList<CodeDto>();
+		List<CodeDto> codeDtoList = new ArrayList<CodeDto>();
 		try {
 			Iterator<Row> rowIterator  = getRowIterator();
 			while (rowIterator.hasNext()) {
@@ -140,7 +137,7 @@ public class CodeManager {
 					codeDto.setMainKey(cellMainKey);
 					codeDto.setSubKey(cellSubKey);
 					codeDto.setValue(row.getCell(2).getStringCellValue());
-					list.add(codeDto);
+					codeDtoList.add(codeDto);
 				}
 			}
 		} catch (EncryptedDocumentException e) {
@@ -150,7 +147,7 @@ public class CodeManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return list;
+		return codeDtoList;
 	}
 
 	/**

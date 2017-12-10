@@ -5,7 +5,6 @@ import java.text.ParseException;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.common.dto.HealthInfoDto;
 
-
 /**
  * 健康情報サービスIF<br>
  *

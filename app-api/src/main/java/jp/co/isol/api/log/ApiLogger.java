@@ -4,24 +4,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jp.co.isol.common.log.BaseLogger;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * APIロガークラス<br>
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiLogger extends BaseLogger {
 
 	/** singleton */
 	private static ApiLogger instance = new ApiLogger();
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
-
-	/**
-	 * プライベートコンストラクタ<br>
-	 * インスタンス生成を制限する<br>
-	 */
-	private ApiLogger() {
-	}
 
 	/**
 	 * インスタンスを返す<br>
