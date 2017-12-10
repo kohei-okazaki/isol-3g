@@ -43,7 +43,7 @@ public class AccountSettingController {
 	 */
 	@GetMapping
 	@RequestMapping(value = "/account-setting-input.html")
-	public String accountSetttingInput(Model model, HttpServletRequest request) {
+	public String input(Model model, HttpServletRequest request) {
 
 		ManageLogger logger;
 		ManageSessionManager sessionManager;
@@ -72,7 +72,7 @@ public class AccountSettingController {
 	 */
 	@PostMapping
 	@RequestMapping(value = "/account-setting-confirm.html")
-	public String accountsettingConfirm(Model model, AccountSettingForm form) {
+	public String confirm(Model model, AccountSettingForm form) {
 
 		if (accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
@@ -95,7 +95,7 @@ public class AccountSettingController {
 	 */
 	@PostMapping
 	@RequestMapping(value = "/account-setting-complete.html")
-	public String accountSettingComplete(Model model, AccountSettingForm form) {
+	public String complete(Model model, AccountSettingForm form) {
 
 		if (form.isDeleteFlag()) {
 			// アカウントを削除する場合

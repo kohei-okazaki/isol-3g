@@ -27,7 +27,7 @@ public class NoticeSettingController {
 	 */
 	@GetMapping
 	@RequestMapping(value = "/notice-setting.html")
-	public String noticeSetttingInput(Model model, LoginUserForm loginForm) {
+	public String input(Model model, LoginUserForm loginForm) {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {

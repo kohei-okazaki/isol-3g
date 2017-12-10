@@ -30,7 +30,7 @@ public class LoginController {
 	 * @return ログイン画面
 	 */
 	@GetMapping
-	public String login(Model model, HttpServletRequest request) {
+	public String input(Model model, HttpServletRequest request) {
 
 		ManageLogger logger;
 		ManageSessionManager sessionManager;
