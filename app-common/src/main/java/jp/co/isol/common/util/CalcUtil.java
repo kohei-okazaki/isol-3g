@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CalcUtil {
 
+	/** マイナス */
 	public static final String MINUS = "-";
 
 	/**
