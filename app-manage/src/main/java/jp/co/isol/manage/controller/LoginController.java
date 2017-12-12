@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.manage.log.ManageLogger;
-import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
+import jp.co.isol.manage.web.view.ManageView;
 
 /**
  * 健康管理_ログイン画面コントローラクラス
@@ -30,7 +30,7 @@ public class LoginController {
 	 * @return ログイン画面
 	 */
 	@GetMapping
-	public String login(Model model, HttpServletRequest request) {
+	public String input(Model model, HttpServletRequest request) {
 
 		ManageLogger logger;
 		ManageSessionManager sessionManager;
@@ -42,7 +42,7 @@ public class LoginController {
 		sessionManager.removeKey(request.getSession(), ManageSessionKey.USER_ID);
 		logger.info(this.getClass(), "# login start");
 
-		return View.LOGIN.getName();
+		return ManageView.LOGIN.getName();
 	}
 
 }

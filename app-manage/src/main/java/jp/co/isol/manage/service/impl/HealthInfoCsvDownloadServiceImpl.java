@@ -47,7 +47,7 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 
 		// 最後に登録した健康情報を検索
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
-		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
 		HealthInfoCsvModel model = toModel(dto);
 

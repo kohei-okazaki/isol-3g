@@ -42,7 +42,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 		accountDto.setUserId(form.getUserId());
 		accountDto.setPassword(form.getPassword());
 		accountDto.setUpdateDate(new Date());
-		accountDao.updateAccount(accountDto);
+		this.accountDao.updateAccount(accountDto);
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void deleteAccount(AccountSettingForm form) {
-		accountDao.deleteAccount(form.getUserId());
+		this.accountDao.deleteAccount(form.getUserId());
 	}
 
 	/**

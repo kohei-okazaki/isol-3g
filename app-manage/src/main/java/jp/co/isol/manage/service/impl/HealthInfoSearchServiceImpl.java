@@ -25,7 +25,7 @@ public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 	 */
 	@Override
 	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException {
-		return healthInfoDao.getHealthInfoByUserId(userId);
+		return this.healthInfoDao.getHealthInfoByUserId(userId);
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 	 */
 	@Override
 	public HealthInfoDto findHealthInfoByDataId(String dataId) throws ParseException {
-		return healthInfoDao.getHealthInfoByDataId(dataId);
+		return this.healthInfoDao.getHealthInfoByDataId(dataId);
 	}
 
 }

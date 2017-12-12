@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.isol.manage.form.LoginUserForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.LoginService;
-import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
+import jp.co.isol.manage.web.view.ManageView;
 
 /**
  * 健康管理_メニュー画面コントローラ
@@ -42,12 +42,12 @@ public class MenuController {
 	@PostMapping
 	public String menu(Model model, HttpServletRequest request, LoginUserForm loginForm) throws ParseException {
 
-		if (loginService.invalidPassword(loginForm)) {
+		if (this.loginService.invalidPassword(loginForm)) {
 			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");
-			return View.LOGIN.getName();
+			return ManageView.LOGIN.getName();
 		}
 		// セッションにユーザIDを登録する。
-		loginService.registSession(request.getSession(), loginForm.getUserId());
+		this.loginService.registSession(request.getSession(), loginForm.getUserId());
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
@@ -55,7 +55,7 @@ public class MenuController {
 		}
 		logger.info(this.getClass(), "# menu start");
 
-		return View.MENU.getName();
+		return ManageView.MENU.getName();
 
 	}
 
@@ -65,7 +65,7 @@ public class MenuController {
 	 */
 	@GetMapping
 	public String menu() {
-		return View.MENU.getName();
+		return ManageView.MENU.getName();
 	}
 
 }

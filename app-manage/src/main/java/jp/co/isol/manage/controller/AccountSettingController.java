@@ -15,11 +15,11 @@ import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.AccountSettingService;
-import jp.co.isol.manage.view.PageView;
-import jp.co.isol.manage.view.View;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
+import jp.co.isol.manage.web.view.PageType;
+import jp.co.isol.manage.web.view.ManageView;
 
 /**
  * 健康管理_アカウント設定コントローラ<br>
@@ -43,7 +43,7 @@ public class AccountSettingController {
 	 */
 	@GetMapping
 	@RequestMapping(value = "/account-setting-input.html")
-	public String accountSetttingInput(Model model, HttpServletRequest request) {
+	public String input(Model model, HttpServletRequest request) {
 
 		ManageLogger logger;
 		ManageSessionManager sessionManager;
@@ -57,11 +57,11 @@ public class AccountSettingController {
 		// セッションからユーザIDを取得
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		model.addAttribute("dto", accountSearchService.findAccountByUserId(userId));
+		model.addAttribute("dto", this.accountSearchService.findAccountByUserId(userId));
 
-		model.addAttribute("page", PageView.INPUT.getValue());
+		model.addAttribute("page", PageType.INPUT.getValue());
 
-		return View.ACCOUNT_SETTING.getName();
+		return ManageView.ACCOUNT_SETTING.getName();
 	}
 
 	/**
@@ -72,19 +72,19 @@ public class AccountSettingController {
 	 */
 	@PostMapping
 	@RequestMapping(value = "/account-setting-confirm.html")
-	public String accountsettingConfirm(Model model, AccountSettingForm form) {
+	public String confirm(Model model, AccountSettingForm form) {
 
-		if (accountSettingService.invalidForm(form)) {
+		if (this.accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
-			model.addAttribute("page", PageView.INPUT.getValue());
+			model.addAttribute("page", PageType.INPUT.getValue());
 			model.addAttribute("errorMessage", "アカウント設定の変更情報が不正です");
 
-			return View.ACCOUNT_SETTING.getName();
+			return ManageView.ACCOUNT_SETTING.getName();
 		}
 		model.addAttribute("form", form);
-		model.addAttribute("page", PageView.CONFIRM.getValue());
+		model.addAttribute("page", PageType.CONFIRM.getValue());
 
-		return View.ACCOUNT_SETTING.getName();
+		return ManageView.ACCOUNT_SETTING.getName();
 	}
 
 	/**
@@ -95,22 +95,19 @@ public class AccountSettingController {
 	 */
 	@PostMapping
 	@RequestMapping(value = "/account-setting-complete.html")
-	public String accountSettingComplete(Model model, AccountSettingForm form) {
+	public String complete(Model model, AccountSettingForm form) {
 
 		if (form.isDeleteFlag()) {
 			// アカウントを削除する場合
-			accountSettingService.deleteAccount(form);
-			model.addAttribute("page", PageView.COMPLETE.getValue());
-
-			return View.ACCOUNT_SETTING.getName();
+			this.accountSettingService.deleteAccount(form);
 		}
 
 		// アカウントを更新する
-		accountSettingService.updateAccount(form);
+		this.accountSettingService.updateAccount(form);
 
-		model.addAttribute("page", PageView.COMPLETE.getValue());
+		model.addAttribute("page", PageType.COMPLETE.getValue());
 
-		return View.ACCOUNT_SETTING.getName();
+		return ManageView.ACCOUNT_SETTING.getName();
 	}
 
 

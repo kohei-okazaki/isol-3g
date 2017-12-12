@@ -46,7 +46,7 @@ public class ReferenceCsvDownloadServiceImpl implements CsvDownloadService {
 
 		// セッションからユーザIDを取得
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
-		List<HealthInfoDto> dtoList = healthInfoSearchService.findHealthInfoByUserId(userId);
+		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 		List<ReferenceCsvModel> modelList = toModelList(dtoList);
 
 		// CSVに書き込む
