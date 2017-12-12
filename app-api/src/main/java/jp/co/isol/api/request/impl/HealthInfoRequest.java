@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import jp.co.isol.api.request.BaseRequest;
 
 /**
- * 健康情報リクエストマップクラス<br>
+ * 健康情報リクエスト情報保持クラス<br>
  *
  */
 @Component

@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 健康管理APIのbaseリクエストマップ<br>
+ * 健康管理APIのBaseリクエストクラス<br>
  *
  */
 public abstract class BaseRequest {
