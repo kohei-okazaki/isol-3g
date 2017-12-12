@@ -39,7 +39,7 @@ public class HealthInfoController {
 	 * @throws BaseApiException
 	 */
 	@GetMapping
-	public HealthInfoDto get(HttpServletRequest request) throws ParseException, BaseApiException {
+	public HealthInfoDto doGet(HttpServletRequest request) throws ParseException, BaseApiException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
@@ -58,8 +58,8 @@ public class HealthInfoController {
 	 * @throws BaseApiException
 	 */
 	@PostMapping
-	public HealthInfoDto post(HttpServletRequest request) throws ParseException, BaseApiException {
-		return get(request);
+	public HealthInfoDto doPost(HttpServletRequest request) throws ParseException, BaseApiException {
+		return doGet(request);
 	}
 
 }
