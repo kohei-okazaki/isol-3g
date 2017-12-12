@@ -7,31 +7,22 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+
 /**
- * Excelアノテーション<br>
- * <pre>
- * sheetNameでシート名を
- * headerNamesでヘッダー名を
- * 返却
- * </pre>
+ * Excelシートのアノテーション<br>
+ *
  */
 @Inherited
 @Documented
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.FIELD, ElementType.TYPE })
-public @interface Excel {
+public @interface ExcelSheet {
 
 	/**
-	 * シート名
+	 * シート名<br>
 	 * セットした順にファイルにつめられる<br>
 	 * @return シート名
 	 */
-	String sheetName() default "";
+	String value() default "";
 
-	/**
-	 * ヘッダ名
-	 * セットした順にファイルにつめられる<br>
-	 * @return ヘッダ名
-	 */
-	String[] headerNames() default "";
 }

@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * ページEnum<br>
+ * ページ種別定義<br>
  * 入力("0")<br>
  * 確認("1")<br>
  * 完了("2")<br>

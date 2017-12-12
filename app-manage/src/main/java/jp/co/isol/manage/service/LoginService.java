@@ -19,7 +19,7 @@ public interface LoginService {
 
 	/**
 	 * セッションにユーザIDを登録する
-	 * @param request
+	 * @param session
 	 * @param loginForm
 	 */
 	public void registSession(HttpSession session, String userId);

@@ -3,7 +3,7 @@ package jp.co.isol.common.util;
 import java.util.Arrays;
 import java.util.List;
 
-import jp.co.isol.common.file.csv.annotation.Csv;
+import jp.co.isol.common.file.csv.annotation.CsvHeader;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -25,16 +25,16 @@ public class CsvUtil {
 	 * @return ヘッダー名
 	 */
 	public static List<String> getHeaderList(Class<?> clazz) {
-		return Arrays.asList(getCsvClass(clazz).headerNames());
+		return Arrays.asList(getCsvHeaderClass(clazz).names());
 	}
 
 	/**
-	 * 指定されたクラス型付けてるCsvアノテーションを返す<br>
+	 * 指定されたクラス型付けてるCsvHeaderアノテーションを返す<br>
 	 * @param clazz
 	 * @return
 	 */
-	public static Csv getCsvClass(Class<?> clazz) {
-		return clazz.getAnnotation(Csv.class);
+	public static CsvHeader getCsvHeaderClass(Class<?> clazz) {
+		return clazz.getAnnotation(CsvHeader.class);
 	}
 
 }

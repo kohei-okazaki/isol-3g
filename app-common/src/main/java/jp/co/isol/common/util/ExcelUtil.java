@@ -9,7 +9,8 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import jp.co.isol.common.file.excel.annotation.Excel;
+import jp.co.isol.common.file.excel.annotation.ExcelHeader;
+import jp.co.isol.common.file.excel.annotation.ExcelSheet;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -54,30 +55,39 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * Excelアノテーションに設定されたシート名を返す。<br>
+	 * シート名を返す。<br>
 	 * @param clazz
 	 * @return シート名
 	 */
 	public static String getSheetName(Class<?> clazz) {
-		return getExcelClass(clazz).sheetName();
+		return getExcelSheetClass(clazz).value();
 	}
 
 	/**
-	 * ヘッダ名を取得する
+	 * ヘッダ名のリストを返す<br>
 	 * @param clazz
 	 * @return ヘッダー名
 	 */
 	public static List<String> getHeaderList(Class<?> clazz) {
-		return Arrays.asList(getExcelClass(clazz).headerNames());
+		return Arrays.asList(getExcelHeaderClass(clazz).names());
 	}
 
 	/**
-	 * 指定されたクラス型のExcelアノテーションを返す<br>
+	 * 指定されたクラス型についてるExcelSheetアノテーションを返す<br>
+	 * @param clazz
+	 * @return Excelheader
+	 */
+	public static ExcelSheet getExcelSheetClass(Class<?> clazz) {
+		return clazz.getAnnotation(ExcelSheet.class);
+	}
+
+	/**
+	 * 指定されたクラス型についてるExcelHeaderアノテーションを返す<br>
 	 * @param clazz
 	 * @return
 	 */
-	public static Excel getExcelClass(Class<?> clazz) {
-		return clazz.getAnnotation(Excel.class);
+	public static ExcelHeader getExcelHeaderClass(Class<?> clazz) {
+		return clazz.getAnnotation(ExcelHeader.class);
 	}
 
 

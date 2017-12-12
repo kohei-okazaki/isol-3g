@@ -31,8 +31,8 @@ import jp.co.isol.manage.service.annotation.HealthInfoExcel;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
-import jp.co.isol.manage.web.view.PageType;
 import jp.co.isol.manage.web.view.ManageView;
+import jp.co.isol.manage.web.view.PageType;
 
 /**
  * 健康管理_健康情報入力画面コントローラ
@@ -162,7 +162,7 @@ public class HealthInfoController {
 
 
 	/**
-	 * エクセルをダウンロードする<br>
+	 * 健康情報Excelをダウンロードする<br>
 	 * @param form
 	 * @return ModelAndView
 	 */
@@ -181,7 +181,7 @@ public class HealthInfoController {
 	}
 
 	/**
-	 * CSVをダウンロードする<br>
+	 * 健康情報CSVをダウンロードする<br>
 	 * @param request
 	 * @param response
 	 * @return

@@ -8,19 +8,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * CSVアノテーション<br>
- * headerNamesでヘッダー名を設定<br>
+ * CSVモデルのマーカーアノテーション<br>
+ *
  */
 @Inherited
 @Documented
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.FIELD, ElementType.TYPE })
-public @interface Csv {
+public @interface CsvModel {
 
-	/**
-	 * ヘッダ名
-	 * セットした順にファイルにつめられる<br>
-	 * @return ヘッダ名
-	 */
-	String[] headerNames() default "";
 }
