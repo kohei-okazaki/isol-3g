@@ -22,14 +22,14 @@ import java.lang.annotation.Target;
 public @interface Excel {
 
 	/**
-	 * シート名
+	 * シート名<br>
 	 * セットした順にファイルにつめられる<br>
 	 * @return シート名
 	 */
 	String sheetName() default "";
 
 	/**
-	 * ヘッダ名
+	 * ヘッダ名<br>
 	 * セットした順にファイルにつめられる<br>
 	 * @return ヘッダ名
 	 */

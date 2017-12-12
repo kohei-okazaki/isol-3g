@@ -3,7 +3,8 @@ package jp.co.isol.manage.file.csv.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import jp.co.isol.common.file.csv.annotation.Csv;
+import jp.co.isol.common.file.csv.annotation.CsvHeader;
+import jp.co.isol.common.file.csv.annotation.CsvModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,8 @@ import lombok.Setter;
  * CSV出力したい項目のみを持つ
  *
  */
-@Csv(headerNames = { "ユーザID", "身長", "体重", "BMI", "標準体重", "登録日時" })
+@CsvModel
+@CsvHeader(names = { "ユーザID", "身長", "体重", "BMI", "標準体重", "登録日時" })
 public class ReferenceCsvModel {
 
 	/** ユーザID */

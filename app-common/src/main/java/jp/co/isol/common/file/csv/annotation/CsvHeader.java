@@ -15,12 +15,12 @@ import java.lang.annotation.Target;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.TYPE })
-public @interface Csv {
+public @interface CsvHeader {
 
 	/**
 	 * ヘッダ名
 	 * セットした順にファイルにつめられる<br>
 	 * @return ヘッダ名
 	 */
-	String[] headerNames() default "";
+	String[] names() default "";
 }

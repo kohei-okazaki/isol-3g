@@ -11,19 +11,21 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import jp.co.isol.common.file.excel.annotation.Excel;
+import jp.co.isol.common.file.excel.annotation.ExcelSheet;
 import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.file.excel.model.ReferenceExcelModel;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * 結果照会画面Excel生成クラス<br>
  *
  */
+@NoArgsConstructor
 @AllArgsConstructor
-@Excel(sheetName = "健康情報", headerNames = {"身長", "体重", "BMI", "標準体重"})
+@ExcelSheet("健康情報")
 public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 
 	/** 結果照会Excelモデルクラスリスト */
@@ -56,7 +58,7 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	@Override
 	protected void writeHeader(Sheet sheet) {
 
-		List<String> headerNameList = ExcelUtil.getHeaderList(this.getClass());
+		List<String> headerNameList = ExcelUtil.getHeaderList(ReferenceExcelModel.class);
 
 		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i);

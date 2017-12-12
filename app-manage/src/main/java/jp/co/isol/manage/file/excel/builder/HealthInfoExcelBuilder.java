@@ -11,19 +11,21 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import jp.co.isol.common.file.excel.annotation.Excel;
+import jp.co.isol.common.file.excel.annotation.ExcelSheet;
 import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.file.excel.model.HealthInfoExcelModel;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * 健康情報入力画面Excel生成クラス<br>
  *
  */
+@NoArgsConstructor
 @AllArgsConstructor
-@Excel(sheetName = "健康情報", headerNames = {"身長", "体重", "BMI", "標準体重"})
+@ExcelSheet("健康情報")
 public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
 	/** 健康情報クラス */
@@ -57,13 +59,14 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	@Override
 	protected void writeHeader(Sheet sheet) {
 
-		List<String> headerNameList = ExcelUtil.getHeaderList(this.getClass());
+		List<String> headerNameList = ExcelUtil.getHeaderList(HealthInfoExcelModel.class);
 
 		Stream.iterate(0, i -> ++i).limit(headerNameList.size()).forEach(i -> {
 			String headerName = headerNameList.get(i);
 			Cell cell = ExcelUtil.getCell(sheet, HEADER_POSITION, i);
 			ExcelUtil.setText(cell, headerName);
 		});
+
 	}
 
 	/**
@@ -71,6 +74,7 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	 */
 	@Override
 	protected void writeData(Sheet sheet) {
+
 		final int ROW_POSITION = 1;
 		Cell cell = ExcelUtil.getCell(sheet, ROW_POSITION, 0);
 		ExcelUtil.setText(cell, model.getHeight().toString());
@@ -80,6 +84,7 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 		ExcelUtil.setText(cell, model.getBmi().toString());
 		cell = ExcelUtil.getCell(sheet, ROW_POSITION, 3);
 		ExcelUtil.setText(cell, model.getStandardWeight().toString());
+
 	}
 
 }
