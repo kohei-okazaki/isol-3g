@@ -3,17 +3,19 @@ package jp.co.isol.manage.controller;
 import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.web.config.ManageConfig;
@@ -40,7 +42,7 @@ public class MenuController {
 	 * @throws ParseException
 	 */
 	@PostMapping
-	public String menu(Model model, HttpServletRequest request, LoginUserForm loginForm) throws ParseException {
+	public String menu(Model model, HttpServletRequest request, @Valid LoginForm loginForm, BindingResult result) throws ParseException {
 
 		if (this.loginService.invalidPassword(loginForm)) {
 			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");

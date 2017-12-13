@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.view.ManageView;
@@ -27,7 +27,7 @@ public class NoticeSettingController {
 	 */
 	@GetMapping
 	@RequestMapping(value = "/notice-setting.html")
-	public String input(Model model, LoginUserForm loginForm) {
+	public String input(Model model, LoginForm loginForm) {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {

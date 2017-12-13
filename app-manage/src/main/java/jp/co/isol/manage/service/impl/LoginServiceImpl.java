@@ -7,7 +7,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.web.config.ManageConfig;
@@ -29,9 +29,9 @@ public class LoginServiceImpl implements LoginService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean invalidPassword(LoginUserForm LoginUserForm) {
-		String inputPassword = LoginUserForm.getPassword();
-		String userPassword = this.accountSearchService.findAccountByUserId(LoginUserForm.getUserId()).getPassword();
+	public boolean invalidPassword(LoginForm loginForm) {
+		String inputPassword = loginForm.getPassword();
+		String userPassword = this.accountSearchService.findAccountByUserId(loginForm.getUserId()).getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 

@@ -2,6 +2,8 @@ package jp.co.isol.manage.form;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Max;
+
 import lombok.Data;
 
 /**
@@ -9,12 +11,14 @@ import lombok.Data;
  *
  */
 @Data
-public class LoginUserForm implements Serializable {
+public class LoginForm implements Serializable {
 
 	/** ユーザID */
+	@Max(10)
 	private String userId;
 
 	/** パスワード */
+	@Max(10)
 	private String password;
 
 }
