@@ -2,7 +2,7 @@ package jp.co.isol.manage.service;
 
 import javax.servlet.http.HttpSession;
 
-import jp.co.isol.manage.form.LoginUserForm;
+import jp.co.isol.manage.form.LoginForm;
 
 /**
  * ログインサービスIF
@@ -14,7 +14,7 @@ public interface LoginService {
 	 * @param loginForm
 	 * @return 判定結果
 	 */
-	public boolean invalidPassword(LoginUserForm loginForm);
+	public boolean invalidPassword(LoginForm loginForm);
 
 
 	/**
