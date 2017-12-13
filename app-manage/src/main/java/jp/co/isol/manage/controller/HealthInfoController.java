@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -90,7 +91,7 @@ public class HealthInfoController {
 	 */
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-confirm.html")
-	public String confirm(Model model, HealthInfoForm form) {
+	public String confirm(Model model, @Valid HealthInfoForm form) {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {

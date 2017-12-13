@@ -1,6 +1,7 @@
 package jp.co.isol.manage.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,8 +19,8 @@ import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
-import jp.co.isol.manage.web.view.PageType;
 import jp.co.isol.manage.web.view.ManageView;
+import jp.co.isol.manage.web.view.PageType;
 
 /**
  * 健康管理_アカウント設定コントローラ<br>
@@ -72,7 +73,7 @@ public class AccountSettingController {
 	 */
 	@PostMapping
 	@RequestMapping(value = "/account-setting-confirm.html")
-	public String confirm(Model model, AccountSettingForm form) {
+	public String confirm(Model model, @Valid AccountSettingForm form) {
 
 		if (this.accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
