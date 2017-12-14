@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -79,7 +80,7 @@ public class HealthInfoController {
 
 		model.addAttribute("page", PageType.INPUT.getValue());
 
-		return ManageView.HEALTH_INFO_INPUT.getName();
+		return ManageView.HEALTH_INFO.getName();
 	}
 
 	/**
@@ -90,7 +91,7 @@ public class HealthInfoController {
 	 */
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-confirm.html")
-	public String confirm(Model model, HealthInfoForm form) {
+	public String confirm(Model model, @Valid HealthInfoForm form) {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
@@ -109,7 +110,7 @@ public class HealthInfoController {
 
 		model.addAttribute("page", PageType.CONFIRM.getValue());
 
-		return ManageView.HEALTH_INFO_INPUT.getName();
+		return ManageView.HEALTH_INFO.getName();
 	}
 
 	/**
@@ -157,7 +158,8 @@ public class HealthInfoController {
 		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastDto));
 
 		model.addAttribute("page", PageType.COMPLETE.getValue());
-		return ManageView.HEALTH_INFO_INPUT.getName();
+
+		return ManageView.HEALTH_INFO.getName();
 	}
 
 
@@ -222,6 +224,7 @@ public class HealthInfoController {
 		this.mailService.sendMail(form);
 
 		model.addAttribute("page", PageType.COMPLETE.getValue());
+
 		return ManageView.MENU.getName();
 	}
 
