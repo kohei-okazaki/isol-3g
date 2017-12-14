@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import jp.co.isol.api.exception.impl.HealthInfoException;
 import jp.co.isol.api.log.ApiLogger;
 import jp.co.isol.api.request.BaseRequest;
+import jp.co.isol.api.request.BaseRequestKey;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
+import jp.co.isol.api.request.impl.HealthInfoRequestKey;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
@@ -58,9 +60,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	private HealthInfoDto toHealthInfoDto(HealthInfoRequest request) throws ParseException {
 
-		String userId = (String) request.get("userId");
-		BigDecimal height = new BigDecimal((String) request.get("height"));
-		BigDecimal weight = new BigDecimal((String) request.get("weight"));
+		String userId = (String) request.get(HealthInfoRequestKey.USER_ID);
+		BigDecimal height = new BigDecimal((String) request.get(HealthInfoRequestKey.HEIGHT));
+		BigDecimal weight = new BigDecimal((String) request.get(HealthInfoRequestKey.WEIGHT));
 		BigDecimal bmi = calcBmi(CalcUtil.convertMeterFromCentiMeter(height), weight);
 		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(height));
 
@@ -141,8 +143,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	@Override
 	public void checkRequest(BaseRequest request) throws HealthInfoException {
 
-		for (Entry<String, Object> entry : request.getKeyValue()) {
-			String key = entry.getKey();
+		for (Entry<BaseRequestKey, Object> entry : request.getKeyValue()) {
+			String key = entry.getKey().getValue();
 			String value = (String) entry.getValue();
 			if (StringUtil.isEmpty(value)) {
 				throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "がnullまたは空文字です");
@@ -150,7 +152,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 			if ("height".equals(key) || "weight".equals(key)) {
 
-				if (StringUtil.isHalfNumber(value)) {
+				if (!StringUtil.isHalfNumber(value)) {
 					// "半角数字"でないとき
 					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と半角数字ではないため不正です");
 				}
