@@ -25,9 +25,9 @@ public class HealthInfoRequest extends BaseRequest {
 	 */
 	@Override
 	public void setRequest(HttpServletRequest request) {
-		this.requestInfoMap.put("userId", request.getParameter("userId"));
-		this.requestInfoMap.put("height", request.getParameter("height"));
-		this.requestInfoMap.put("weight", request.getParameter("weight"));
+		this.requestInfoMap.put(HealthInfoRequestKey.USER_ID, request.getParameter("userId"));
+		this.requestInfoMap.put(HealthInfoRequestKey.HEIGHT, request.getParameter("height"));
+		this.requestInfoMap.put(HealthInfoRequestKey.WEIGHT, request.getParameter("weight"));
 	}
 
 }

@@ -22,13 +22,13 @@ public abstract class BaseRequest {
 	/** リクエストマップ */
 	@Getter
 	@Setter
-	protected Map<String, Object> requestInfoMap;
+	protected Map<BaseRequestKey, Object> requestInfoMap;
 
 	/**
 	 * コンストラクタ<br>
 	 */
 	public BaseRequest() {
-		this.requestInfoMap = new HashMap<String, Object>();
+		this.requestInfoMap = new HashMap<BaseRequestKey, Object>();
 	}
 
 	/**
@@ -43,7 +43,7 @@ public abstract class BaseRequest {
 	 * @param key
 	 * @return
 	 */
-	public Object get(String key) {
+	public Object get(BaseRequestKey key) {
 		return this.requestInfoMap.get(key);
 	}
 
@@ -51,15 +51,15 @@ public abstract class BaseRequest {
 	 * リクエストマップ内のキーをすべて返す<br>
 	 * @return
 	 */
-	public List<String> getKeys() {
- 		return new ArrayList<String>(this.requestInfoMap.keySet());
+	public List<BaseRequestKey> getKeys() {
+ 		return new ArrayList<BaseRequestKey>(this.requestInfoMap.keySet());
 	}
 
 	/**
 	 * リクエストマップ内のkey, valueをentrySetで返す<br>
 	 * @return
 	 */
-	public Set<Entry<String, Object>> getKeyValue() {
+	public Set<Entry<BaseRequestKey, Object>> getKeyValue() {
 		return this.requestInfoMap.entrySet();
 	}
 
@@ -69,7 +69,7 @@ public abstract class BaseRequest {
 	 * @param key
 	 * @return
 	 */
-	public boolean contains(String key) {
+	public boolean contains(BaseRequestKey key) {
 		return Objects.isNull(key) ? false : this.requestInfoMap.containsKey(key);
 	}
 
