@@ -80,7 +80,7 @@ public class HealthInfoController {
 
 		model.addAttribute("page", PageType.INPUT.getValue());
 
-		return ManageView.HEALTH_INFO_INPUT.getName();
+		return ManageView.HEALTH_INFO.getName();
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class HealthInfoController {
 
 		model.addAttribute("page", PageType.CONFIRM.getValue());
 
-		return ManageView.HEALTH_INFO_INPUT.getName();
+		return ManageView.HEALTH_INFO.getName();
 	}
 
 	/**
@@ -158,7 +158,8 @@ public class HealthInfoController {
 		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastDto));
 
 		model.addAttribute("page", PageType.COMPLETE.getValue());
-		return ManageView.HEALTH_INFO_INPUT.getName();
+
+		return ManageView.HEALTH_INFO.getName();
 	}
 
 
@@ -223,6 +224,7 @@ public class HealthInfoController {
 		this.mailService.sendMail(form);
 
 		model.addAttribute("page", PageType.COMPLETE.getValue());
+
 		return ManageView.MENU.getName();
 	}
 
