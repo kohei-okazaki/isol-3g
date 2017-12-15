@@ -1,7 +1,6 @@
 package jp.co.isol.api.log;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import jp.co.isol.common.log.BaseLogger;
 import lombok.AccessLevel;
@@ -17,7 +16,11 @@ public class ApiLogger extends BaseLogger {
 	/** singleton */
 	private static ApiLogger instance = new ApiLogger();
 
-	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	private Logger logger;
+
+	public ApiLogger(Logger logger) {
+		this.logger = logger;
+	}
 
 	/**
 	 * インスタンスを返す<br>
@@ -70,7 +73,7 @@ public class ApiLogger extends BaseLogger {
 	 */
 	@Override
 	public void info(Class<?> clazz, String message) {
-		LOG.info("実行 -----> " + clazz.getSimpleName() + "#" + message);
+		logger.info("実行 -----> " + clazz.getSimpleName() + "#" + message);
 	}
 
 	/**
@@ -80,7 +83,7 @@ public class ApiLogger extends BaseLogger {
 	 */
 	@Override
 	public void debug(Class<?> clazz, String message) {
-		LOG.debug("実行 -----> " + clazz.getSimpleName() + "#" + message);
+		logger.debug("実行 -----> " + clazz.getSimpleName() + "#" + message);
 	}
 
 	/**
@@ -90,7 +93,7 @@ public class ApiLogger extends BaseLogger {
 	 */
 	@Override
 	public void error(Class<?> clazz, String message) {
-		LOG.error("実行 -----> " + clazz.getSimpleName() + "#" + message);
+		logger.error("実行 -----> " + clazz.getSimpleName() + "#" + message);
 	}
 
 	/**
@@ -100,7 +103,7 @@ public class ApiLogger extends BaseLogger {
 	 */
 	@Override
 	public void warn(Class<?> clazz, String message) {
-		LOG.warn("実行 -----> " + clazz.getSimpleName() + "#" + message);
+		logger.warn("実行 -----> " + clazz.getSimpleName() + "#" + message);
 	}
 
 }
