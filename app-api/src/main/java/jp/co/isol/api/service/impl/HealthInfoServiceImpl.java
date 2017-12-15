@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.exception.impl.HealthInfoException;
 import jp.co.isol.api.log.ApiLogger;
-import jp.co.isol.api.request.BaseRequest;
 import jp.co.isol.api.request.BaseRequestKey;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.request.impl.HealthInfoRequestKey;
@@ -29,7 +28,7 @@ import jp.co.isol.common.util.StringUtil;
  *
  */
 @Service
-public class HealthInfoServiceImpl implements HealthInfoService {
+public class HealthInfoServiceImpl extends HealthInfoService {
 
 	/** 健康情報Dao */
 	@Autowired
@@ -141,7 +140,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void checkRequest(BaseRequest request) throws HealthInfoException {
+	public void checkRequest(HealthInfoRequest request) throws HealthInfoException {
 
 		for (Entry<BaseRequestKey, Object> entry : request.getKeyValue()) {
 			String key = entry.getKey().getValue();
