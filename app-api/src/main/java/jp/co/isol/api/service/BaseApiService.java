@@ -9,13 +9,13 @@ import jp.co.isol.api.request.BaseRequest;
  * @param T リクエスト種別
  * @param E 例外種別
  */
-public interface BaseApiService<T extends BaseRequest, E extends BaseApiException> {
+public interface BaseApiService<R extends BaseRequest, E extends BaseApiException> {
 
 	/**
 	 * 継承先でそれぞれチェックを実装<br>
 	 * @param T Request実装クラス
 	 * @throws E 例外実装クラス
 	 */
-	void checkRequest(T request) throws E;
+	public void checkRequest(R request) throws E;
 
 }
