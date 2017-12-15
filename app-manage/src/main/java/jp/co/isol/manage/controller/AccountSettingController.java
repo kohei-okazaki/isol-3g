@@ -27,7 +27,7 @@ import jp.co.isol.manage.web.view.PageType;
  *
  */
 @Controller
-public class AccountSettingController {
+public class AccountSettingController extends BaseWizardController<AccountSettingForm> {
 
 	/** アカウント検索サービス */
 	@Autowired
@@ -37,11 +37,9 @@ public class AccountSettingController {
 	private AccountSettingService accountSettingService;
 
 	/**
-	 * アカウント設定入力画面
-	 * @param model
-	 * @param request
-	 * @return アカウント設定入力画面
+	 * {@inheritDoc}
 	 */
+	@Override
 	@GetMapping
 	@RequestMapping(value = "/account-setting-input.html")
 	public String input(Model model, HttpServletRequest request) {
@@ -65,12 +63,11 @@ public class AccountSettingController {
 		return ManageView.ACCOUNT_SETTING.getName();
 	}
 
+
 	/**
-	 * アカウント設定確認画面
-	 * @param model
-	 * @param form
-	 * @return
+	 * {@inheritDoc}
 	 */
+	@Override
 	@PostMapping
 	@RequestMapping(value = "/account-setting-confirm.html")
 	public String confirm(Model model, @Valid AccountSettingForm form) {
@@ -89,14 +86,12 @@ public class AccountSettingController {
 	}
 
 	/**
-	 * アカウント設定完了画面
-	 * @param model
-	 * @param form
-	 * @return
+	 * {@inheritDoc}
 	 */
+	@Override
 	@PostMapping
 	@RequestMapping(value = "/account-setting-complete.html")
-	public String complete(Model model, AccountSettingForm form) {
+	public String complete(Model model, AccountSettingForm form, HttpServletRequest request) {
 
 		if (form.isDeleteFlag()) {
 			// アカウントを削除する場合

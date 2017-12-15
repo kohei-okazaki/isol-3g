@@ -12,7 +12,7 @@ import lombok.Data;
  *
  */
 @Data
-public class AccountSettingForm implements Serializable {
+public class AccountSettingForm extends BaseForm implements Serializable {
 
 	/** ユーザID */
 	@Max(10)

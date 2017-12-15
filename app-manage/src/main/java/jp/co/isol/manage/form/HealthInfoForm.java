@@ -14,7 +14,7 @@ import lombok.Data;
  *
  */
 @Data
-public class HealthInfoForm implements Serializable {
+public class HealthInfoForm extends BaseForm implements Serializable {
 
 	/** ユーザID */
 	@Max(10)

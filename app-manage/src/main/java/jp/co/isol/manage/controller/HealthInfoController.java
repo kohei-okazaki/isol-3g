@@ -40,7 +40,7 @@ import jp.co.isol.manage.web.view.PageType;
  *
  */
 @Controller
-public class HealthInfoController {
+public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
 
 	/** 健康情報入力サービス */
 	@Autowired
@@ -64,13 +64,12 @@ public class HealthInfoController {
 	private MailService mailService;
 
 	/**
-	 * 入力画面
-	 * @param model
-	 * @return 遷移先を返却
+	 * {@inheritDoc}
 	 */
+	@Override
 	@GetMapping
 	@RequestMapping(value = "/healthInfo-input.html")
-	public String input(Model model) {
+	public String input(Model model, HttpServletRequest request) {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
@@ -84,11 +83,9 @@ public class HealthInfoController {
 	}
 
 	/**
-	 * 確認画面
-	 * @param model
-	 * @param form
-	 * @return 確認画面
+	 * {@inheritDoc}
 	 */
+	@Override
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-confirm.html")
 	public String confirm(Model model, @Valid HealthInfoForm form) {
@@ -114,13 +111,9 @@ public class HealthInfoController {
 	}
 
 	/**
-	 * 完了画面
-	 * @param model
-	 * @param form
-	 * @param request
-	 * @return 完了画面
-	 * @throws ParseException
+	 * {@inheritDoc}
 	 */
+	@Override
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-complete.html")
 	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws ParseException {

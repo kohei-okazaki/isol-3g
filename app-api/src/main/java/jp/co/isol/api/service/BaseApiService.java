@@ -5,14 +5,17 @@ import jp.co.isol.api.request.BaseRequest;
 
 /**
  * 基底APIサービス<br>
- * 各サービスの親クラスとする<br>
+ * 各機能のサービスの親クラスとする<br>
+ * @param T リクエスト種別
+ * @param E 例外種別
  */
-public interface BaseApiService {
+public interface BaseApiService<T extends BaseRequest, E extends BaseApiException> {
 
 	/**
-	 * 継承先でそれぞれチェックを実装
-	 * @throws BaseApiException
+	 * 継承先でそれぞれチェックを実装<br>
+	 * @param T Request実装クラス
+	 * @throws E 例外実装クラス
 	 */
-	public void checkRequest(BaseRequest request) throws BaseApiException;
+	void checkRequest(T request) throws E;
 
 }
