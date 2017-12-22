@@ -86,6 +86,11 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@RequestMapping(value = "/account-setting-confirm.html")
 	public String confirm(Model model, @Valid AccountSettingForm form, BindingResult result) {
 
+		if (result.hasErrors()) {
+			model.addAttribute("page", PageType.INPUT.getValue());
+			return ManageView.ACCOUNT_SETTING.getName();
+		}
+
 		if (this.accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
 			model.addAttribute("page", PageType.INPUT.getValue());

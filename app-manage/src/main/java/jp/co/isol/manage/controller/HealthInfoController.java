@@ -104,6 +104,11 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
 	@RequestMapping(value = "/healthInfo-confirm.html")
 	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) {
 
+		if (result.hasErrors()) {
+			model.addAttribute("page", PageType.INPUT.getValue());
+			return ManageView.HEALTH_INFO.getName();
+		}
+
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
 			logger = context.getBean(ManageLogger.class);
