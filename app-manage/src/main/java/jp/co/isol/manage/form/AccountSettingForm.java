@@ -2,29 +2,29 @@ package jp.co.isol.manage.form;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-
-import lombok.Data;
+import jp.co.isol.common.mvc.BaseForm;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * アカウント設定画面フォームクラス<br>
  *
  */
-@Data
 public class AccountSettingForm extends BaseForm implements Serializable {
 
 	/** ユーザID */
-	@Max(10)
-	@NotBlank
+	@Setter
+	@Getter
 	private String userId;
 
 	/** パスワード */
-	@Max(10)
+	@Setter
+	@Getter
 	private String password;
 
 	/** 削除フラグ */
-	@Max(1)
+	@Setter
+	@Getter
 	private boolean deleteFlag;
 
 }

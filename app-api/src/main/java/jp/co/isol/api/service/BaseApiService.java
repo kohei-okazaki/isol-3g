@@ -6,7 +6,7 @@ import jp.co.isol.api.request.BaseRequest;
 /**
  * 基底APIサービス<br>
  * 各機能のサービスの親クラスとする<br>
- * @param T リクエスト種別
+ * @param R リクエスト種別
  * @param E 例外種別
  */
 public interface BaseApiService<R extends BaseRequest, E extends BaseApiException> {
