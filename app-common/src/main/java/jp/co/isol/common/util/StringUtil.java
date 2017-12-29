@@ -26,6 +26,17 @@ public class StringUtil {
 
 	/** 半角数字 */
 	public static final String HALF_NUMBER = "^[0-9]*$";
+	/** 半角数字とピリオド */
+	public static final String HALF_NUMBER_PERIOD = "^[0-9.]*$";
+
+	/**
+	 * 半角数字かピリオドかどうか判定する<br>
+	 * @param target
+	 * @return
+	 */
+	public static boolean isHalfNumberPeriod(String target) {
+		return Pattern.compile(HALF_NUMBER_PERIOD).matcher(target).find();
+	}
 
 	/**
 	 * 指定された文字列が半角数字かどうか判定する<br>

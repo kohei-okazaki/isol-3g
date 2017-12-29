@@ -73,7 +73,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
 	 * @param binder
 	 */
 	@InitBinder
-	public void InitBinder(WebDataBinder binder) {
+	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new HealthInfoValidator());
 	}
 
@@ -113,13 +113,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
 			logger = context.getBean(ManageLogger.class);
 		}
-		logger.info(this.getClass(), "#confirm start");
-
-		if (this.healthInfoService.hasError(form)) {
-			// 入力情報に誤りがある場合
-			logger.warn(this.getClass(), "入力情報に誤りがあります");
-			return ManageView.ERROR.getName();
-		}
+		logger.info(this.getClass(), "# confirm start");
 
 		// 入力情報を設定
 		model.addAttribute("form", form);

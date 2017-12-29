@@ -27,7 +27,9 @@ public class LoginFormValidator extends BaseValidator<LoginForm> {
 	public void validate(Object object, Errors errors) {
 
 		LoginForm form = (LoginForm) object;
-		checkRequire(form, errors);
+		// 必須チェック
+		checkRequire(errors);
+		// 桁数チェック
 		checkLength(form, errors);
 
 	}
@@ -50,7 +52,7 @@ public class LoginFormValidator extends BaseValidator<LoginForm> {
 	 * @param form
 	 * @param errors
 	 */
-	private void checkRequire(LoginForm form, Errors errors) {
+	private void checkRequire(Errors errors) {
 
 		ValidationUtils.rejectIfEmpty(errors, "userId", "REQUIRED");
 		ValidationUtils.rejectIfEmpty(errors, "password", "REQUIRED");

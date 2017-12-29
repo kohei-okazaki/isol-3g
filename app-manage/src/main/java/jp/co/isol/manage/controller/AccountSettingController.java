@@ -46,7 +46,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	 * @param binder
 	 */
 	@InitBinder
-	public void InitBinder(WebDataBinder binder) {
+	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new AccountSettingValidator());
 	}
 
