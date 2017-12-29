@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 
 import jp.co.isol.api.request.BaseRequest;
+import jp.co.isol.api.request.key.impl.HealthInfoRequestKey;
 
 /**
  * 健康情報リクエスト情報保持クラス<br>
@@ -25,9 +26,9 @@ public class HealthInfoRequest extends BaseRequest {
 	 */
 	@Override
 	public void setRequest(HttpServletRequest request) {
-		this.requestInfoMap.put(HealthInfoRequestKey.USER_ID, request.getParameter("userId"));
-		this.requestInfoMap.put(HealthInfoRequestKey.HEIGHT, request.getParameter("height"));
-		this.requestInfoMap.put(HealthInfoRequestKey.WEIGHT, request.getParameter("weight"));
+		super.requestInfoMap.put(HealthInfoRequestKey.USER_ID, request.getParameter("userId"));
+		super.requestInfoMap.put(HealthInfoRequestKey.HEIGHT, request.getParameter("height"));
+		super.requestInfoMap.put(HealthInfoRequestKey.WEIGHT, request.getParameter("weight"));
 	}
 
 }

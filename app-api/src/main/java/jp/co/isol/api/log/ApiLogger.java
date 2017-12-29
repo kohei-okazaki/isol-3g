@@ -13,21 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiLogger extends BaseLogger {
 
-	/** singleton */
-	private static ApiLogger instance = new ApiLogger();
-
 	private Logger logger;
 
 	public ApiLogger(Logger logger) {
 		this.logger = logger;
-	}
-
-	/**
-	 * インスタンスを返す<br>
-	 * @return ApiLogger
-	 */
-	public static ApiLogger getInstance() {
-		return instance;
 	}
 
 	/**

@@ -1,5 +1,7 @@
 package jp.co.isol.api.log;
 
+import org.slf4j.LoggerFactory;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +18,7 @@ public class ApiLoggerFactory {
 	 * @return ApiLogger
 	 */
 	public static ApiLogger getLogger(Class<?> clazz) {
-		return new ApiLogger(org.slf4j.LoggerFactory.getLogger(clazz));
+		return new ApiLogger(LoggerFactory.getLogger(clazz));
 	}
 
 }
