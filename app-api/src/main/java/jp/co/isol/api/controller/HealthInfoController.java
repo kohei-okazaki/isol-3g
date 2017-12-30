@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jp.co.isol.api.exception.HealthInfoException;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.exception.BaseApiException;
 
 /**
  * 健康情報APIコントローラ<br>
@@ -36,10 +36,10 @@ public class HealthInfoController {
 	 * @param request
 	 * @return
 	 * @throws ParseException
-	 * @throws BaseApiException
+	 * @throws HealthInfoException
 	 */
 	@GetMapping
-	public HealthInfoDto doGet(HttpServletRequest request) throws ParseException, BaseApiException {
+	public HealthInfoDto doGet(HttpServletRequest request) throws ParseException, HealthInfoException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
@@ -55,10 +55,10 @@ public class HealthInfoController {
 	 * @param request
 	 * @return
 	 * @throws ParseException
-	 * @throws BaseApiException
+	 * @throws HealthInfoException
 	 */
 	@PostMapping
-	public HealthInfoDto doPost(HttpServletRequest request) throws ParseException, BaseApiException {
+	public HealthInfoDto doPost(HttpServletRequest request) throws ParseException, HealthInfoException {
 		return doGet(request);
 	}
 

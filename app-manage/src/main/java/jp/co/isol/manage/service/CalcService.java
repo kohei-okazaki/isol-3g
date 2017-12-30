@@ -9,19 +9,21 @@ import java.math.BigDecimal;
 public interface CalcService {
 
 	/**
-	 * BMIを計算(小数第2位を四捨五入する)
-	 * @param height
-	 * @param weight
-	 * @return BMIを計算(小数第2位を四捨五入する)
+	 * BMIを計算</br>
+	 * @param height 身長
+	 * @param weight 体重
+	 * @param digit 四捨五入桁数
+	 * @return BMIを計算
 	 */
-	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight);
+	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight, int digit);
 
 	/**
-	 * 標準体重を計算(小数第2位を四捨五入する)
-	 * @param height
-	 * @return 標準体重を計算(小数第2位を四捨五入する)
+	 * 標準体重を計算</br>
+	 * @param height 身長
+	 * @param digit 四捨五入桁数
+	 * @return 標準体重を計算
 	 */
-	public BigDecimal calcStandardWeight(BigDecimal height);
+	public BigDecimal calcStandardWeight(BigDecimal height, int digit);
 
 	/**
 	 * 最後に入力した体重と今の体重の差を計算

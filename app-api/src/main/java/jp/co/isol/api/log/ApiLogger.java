@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiLogger extends BaseLogger {
 
+	/** ロガー */
 	private Logger logger;
 
 	public ApiLogger(Logger logger) {
