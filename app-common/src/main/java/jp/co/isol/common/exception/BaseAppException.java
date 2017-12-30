@@ -6,7 +6,19 @@ package jp.co.isol.common.exception;
  */
 public abstract class BaseAppException extends Exception {
 
+	/** エラーコード */
+	protected ErrorCodeDefine errorCode;
 	/** エラーメッセージ */
 	protected String errorMessage;
+
+	/**
+	 * 例外コンストラクタ<br>
+	 * @param errorCode
+	 * @param errorMessage
+	 */
+	public BaseAppException(ErrorCodeDefine errorCode, String errorMessage) {
+		this.errorCode = errorCode;
+		this.errorMessage = errorMessage;
+	}
 
 }

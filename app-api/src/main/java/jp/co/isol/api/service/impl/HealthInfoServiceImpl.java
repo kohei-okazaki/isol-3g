@@ -9,26 +9,26 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.api.exception.impl.HealthInfoException;
-import jp.co.isol.api.log.ApiLogger;
-import jp.co.isol.api.request.BaseRequestKey;
+import jp.co.isol.api.exception.HealthInfoException;
+import jp.co.isol.api.log.ApiLoggerFactory;
+import jp.co.isol.api.request.check.HealthInfoCheck;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
-import jp.co.isol.api.request.impl.HealthInfoRequestKey;
+import jp.co.isol.api.request.key.HealthInfoRequestKey;
 import jp.co.isol.api.service.HealthInfoService;
+import jp.co.isol.common.api.BaseRequestKey;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
-import jp.co.isol.common.util.StringUtil;
 
 /**
  * 健康情報サービス実装クラス<br>
  *
  */
 @Service
-public class HealthInfoServiceImpl extends HealthInfoService {
+public class HealthInfoServiceImpl implements HealthInfoService {
 
 	/** 健康情報Dao */
 	@Autowired
@@ -40,7 +40,7 @@ public class HealthInfoServiceImpl extends HealthInfoService {
 	@Override
 	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException {
 
-		ApiLogger.getInstance().info(this.getClass(), "executeメソッド実行");
+		ApiLoggerFactory.getLogger(HealthInfoServiceImpl.class).info(this.getClass(), "executeメソッド実行");
 
 		// リクエスト情報をDtoにつめる
 		HealthInfoDto dto = toHealthInfoDto(request);
@@ -62,8 +62,9 @@ public class HealthInfoServiceImpl extends HealthInfoService {
 		String userId = (String) request.get(HealthInfoRequestKey.USER_ID);
 		BigDecimal height = new BigDecimal((String) request.get(HealthInfoRequestKey.HEIGHT));
 		BigDecimal weight = new BigDecimal((String) request.get(HealthInfoRequestKey.WEIGHT));
-		BigDecimal bmi = calcBmi(CalcUtil.convertMeterFromCentiMeter(height), weight);
-		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(height));
+		BigDecimal centiMeterHeight = CalcUtil.convertMeterFromCentiMeter(height, 2);
+		BigDecimal bmi = CalcUtil.calcBmi(centiMeterHeight, weight, 2);
+		BigDecimal standardWeight = CalcUtil.calcStandardWeight(centiMeterHeight, 2);
 
 		// 最後に登録した健康情報を取得する
 		HealthInfoDto lastDto = getLastHealthInfoDto(userId);
@@ -118,54 +119,22 @@ public class HealthInfoServiceImpl extends HealthInfoService {
 	}
 
 	/**
-	 * BMIを計算(小数第2位を四捨五入する)<br>
-	 * @param height
-	 * @param weight
-	 * @return BMIを計算(小数第2位を四捨五入する)
-	 */
-	private BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
-		return weight.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
-	}
-
-	/**
-	 * 標準体重を計算(小数第2位を四捨五入する)<br>
-	 * @param height
-	 * @return 標準体重を計算(小数第2位を四捨五入する)
-	 */
-	private BigDecimal calcStandardWeight(BigDecimal height) {
-		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void checkRequest(HealthInfoRequest request) throws HealthInfoException {
 
+		HealthInfoCheck healthInfoCheck = new HealthInfoCheck();
+
 		for (Entry<BaseRequestKey, Object> entry : request.getKeyValue()) {
 			String key = entry.getKey().getValue();
 			String value = (String) entry.getValue();
-			if (StringUtil.isEmpty(value)) {
-				throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "がnullまたは空文字です");
-			}
-
-			if ("height".equals(key) || "weight".equals(key)) {
-
-				if (!StringUtil.isHalfNumber(value)) {
-					// "半角数字"でないとき
-					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と半角数字ではないため不正です");
-				}
-
-				if (BigDecimal.ZERO.equals(new BigDecimal(value))) {
-					// "0"のとき
-					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "と不正です");
-				}
-
-				if (CalcUtil.MINUS.startsWith(value)) {
-					// "マイナスの値"のとき
-					throw new HealthInfoException("request内のkey：" + key + "に対するvalue:" + value + "とマイナスなので不正です");
-				}
-			}
+			// 必須チェックを行う
+			healthInfoCheck.checkRequired(key, value);
+			// 属性チェックを行う
+			healthInfoCheck.checkType(key, value);
+			// 0チェックを行う
+			healthInfoCheck.checkZero(key, value);
 		}
 	}
 }

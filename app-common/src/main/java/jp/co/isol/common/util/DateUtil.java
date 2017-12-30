@@ -33,7 +33,7 @@ public class DateUtil {
 	}
 
 	/**
-	 * 文字列型の日付を
+	 * 文字列型の日付をDate型の日付に変換する<br>
 	 * @param target
 	 * @return
 	 * @throws ParseException

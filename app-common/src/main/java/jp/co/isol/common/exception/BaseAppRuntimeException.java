@@ -4,7 +4,7 @@ package jp.co.isol.common.exception;
  * 実行環境での基底例外クラス<br>
  *
  */
-public class BaseAppRuntimeException extends RuntimeException {
+public abstract class BaseAppRuntimeException extends RuntimeException {
 
 	/** エラーメッセージ */
 	protected String errorMessage;

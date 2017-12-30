@@ -1,17 +1,16 @@
-package jp.co.isol.manage.controller;
+package jp.co.isol.common.mvc;
 
 import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
-
-import jp.co.isol.manage.form.BaseForm;
+import org.springframework.validation.BindingResult;
 
 /**
  * ウィザード型式の基底コントローラ<br>
- * @param F form
  *
+ * @param <F> 対象formクラス
  */
 public abstract class BaseWizardController<F extends BaseForm> {
 
@@ -27,9 +26,10 @@ public abstract class BaseWizardController<F extends BaseForm> {
 	 * 確認画面
 	 * @param model
 	 * @param form
+	 * @param result
 	 * @return
 	 */
-	public abstract String confirm(Model model, F form);
+	public abstract String confirm(Model model, F form, BindingResult result);
 
 	/**
 	 * 完了画面

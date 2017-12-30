@@ -1,4 +1,4 @@
-package jp.co.isol.api.request;
+package jp.co.isol.common.api;
 
 /**
  * リクエストキーのマーカーインターフェース<br>

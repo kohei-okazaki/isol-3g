@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.service.CalcService;
 
 
@@ -18,16 +19,16 @@ public class CalcServiceImpl implements CalcService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
-		return weight.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
+	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight, int digit) {
+		return CalcUtil.calcBmi(height, weight, digit);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public BigDecimal calcStandardWeight(BigDecimal height) {
-		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
+	public BigDecimal calcStandardWeight(BigDecimal height, int digit) {
+		return CalcUtil.calcStandardWeight(height, digit);
 	}
 
 	/**

@@ -13,13 +13,17 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.mvc.BaseWizardController;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.CsvDownloadService;
@@ -29,6 +33,7 @@ import jp.co.isol.manage.service.HealthInfoService;
 import jp.co.isol.manage.service.MailService;
 import jp.co.isol.manage.service.annotation.HealthInfoCsv;
 import jp.co.isol.manage.service.annotation.HealthInfoExcel;
+import jp.co.isol.manage.validator.HealthInfoValidator;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
@@ -64,6 +69,15 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
 	private MailService mailService;
 
 	/**
+	 * Validateを設定<br>
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new HealthInfoValidator());
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -88,19 +102,18 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
 	@Override
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-confirm.html")
-	public String confirm(Model model, @Valid HealthInfoForm form) {
+	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) {
+
+		if (result.hasErrors()) {
+			model.addAttribute("page", PageType.INPUT.getValue());
+			return ManageView.HEALTH_INFO.getName();
+		}
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
 			logger = context.getBean(ManageLogger.class);
 		}
-		logger.info(this.getClass(), "#confirm start");
-
-		if (this.healthInfoService.hasError(form)) {
-			// 入力情報に誤りがある場合
-			logger.warn(this.getClass(), "入力情報に誤りがあります");
-			return ManageView.ERROR.getName();
-		}
+		logger.info(this.getClass(), "# confirm start");
 
 		// 入力情報を設定
 		model.addAttribute("form", form);

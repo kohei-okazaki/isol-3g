@@ -49,7 +49,7 @@ public class MailServiceImpl implements MailService {
 		prop.setProperty(MailUtil.SMTP_SOCKET_FALLBACK, "false");
 		prop.setProperty(MailUtil.SMTP_SOCKET_PORT, "465");
 
-		Authenticator auth = new MailAuthenticator("kou1210hei@gmail.com", "oka1210hei");
+		Authenticator auth = new MailAuthenticator("test", "test");
 
 		MimeMessage mime = new MimeMessage(Session.getInstance(prop, auth));
 
@@ -98,11 +98,11 @@ public class MailServiceImpl implements MailService {
 	}
 
 	private Address createFrom() throws UnsupportedEncodingException {
-		return new InternetAddress("kou1210hei@gmail.com", "送信者", MailUtil.ENCODE);
+		return new InternetAddress("test", "送信者", MailUtil.ENCODE);
 	}
 
 	private Address createTo() throws UnsupportedEncodingException {
-		return new InternetAddress("k-okazaki@i-sol.co.jp", "送信者", MailUtil.ENCODE);
+		return new InternetAddress("test", "送信者", MailUtil.ENCODE);
 	}
 
 

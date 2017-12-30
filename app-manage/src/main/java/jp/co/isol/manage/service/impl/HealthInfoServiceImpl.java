@@ -12,7 +12,6 @@ import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.MessageManager;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
-import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoService;
@@ -32,33 +31,15 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean hasError(HealthInfoForm form) {
-
-		if (hasNull(form.getWeight(), form.getHeight())) {
-			return true;
-		} else if (!StringUtil.isHalfNumber(form.getHeight().toString()) || !StringUtil.isHalfNumber(form.getWeight().toString())) {
-			return true;
-		} else if (BigDecimal.ZERO.equals(form.getHeight()) || BigDecimal.ZERO.equals(form.getWeight())) {
-			return true;
-		} else if (hasContainMinus(form.getWeight(), form.getHeight())) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId) {
 
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setUserId(userId);
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
-		dto.setBmi(this.calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight()));
+		dto.setBmi(this.calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight(), 2), form.getWeight(), 2));
 		dto.setUserStatus(CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN));
-		dto.setStandardWeight(this.calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight())));
+		dto.setStandardWeight(this.calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight(), 2), 2));
 		dto.setRegDate(new Date());
 
 		return dto;

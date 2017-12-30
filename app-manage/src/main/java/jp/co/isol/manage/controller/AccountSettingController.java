@@ -8,14 +8,19 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.isol.common.mvc.BaseWizardController;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.AccountSettingService;
+import jp.co.isol.manage.validator.AccountSettingValidator;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
@@ -35,6 +40,15 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	/** アカウント設定サービス */
 	@Autowired
 	private AccountSettingService accountSettingService;
+
+	/**
+	 * Validateを設定<br>
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new AccountSettingValidator());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -70,7 +84,12 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@Override
 	@PostMapping
 	@RequestMapping(value = "/account-setting-confirm.html")
-	public String confirm(Model model, @Valid AccountSettingForm form) {
+	public String confirm(Model model, @Valid AccountSettingForm form, BindingResult result) {
+
+		if (result.hasErrors()) {
+			model.addAttribute("page", PageType.INPUT.getValue());
+			return ManageView.ACCOUNT_SETTING.getName();
+		}
 
 		if (this.accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合

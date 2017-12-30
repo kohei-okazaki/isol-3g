@@ -1,4 +1,4 @@
-package jp.co.isol.manage.form;
+package jp.co.isol.common.mvc;
 
 /**
  * 基底Formクラス<br>
