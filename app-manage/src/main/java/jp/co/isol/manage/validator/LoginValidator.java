@@ -60,7 +60,7 @@ public class LoginValidator extends BaseValidator<LoginForm> {
 	private void checkLength(LoginForm form, Errors errors) {
 
 		if (!(2 < form.getUserId().length() && form.getUserId().length() <= 10)) {
-			ValidationUtils.rejectIfEmpty(errors, "userId", "UUU");
+			ValidationUtils.rejectIfEmpty(errors, "userId", ErrorCodeDefine.LENGTH.toString());
 		}
 
 	}

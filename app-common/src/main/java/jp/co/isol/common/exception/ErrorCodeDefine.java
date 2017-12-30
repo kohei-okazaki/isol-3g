@@ -9,6 +9,8 @@ public enum ErrorCodeDefine {
 	/** 必須エラー */
 	REQUIRE,
 	/** 属性エラー*/
-	TYPE;
+	TYPE,
+	/** 桁数エラー */
+	LENGTH;
 
 }
