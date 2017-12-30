@@ -42,7 +42,7 @@ public class LoginController {
 	 * Validateを設定<br>
 	 * @param binder
 	 */
-	@InitBinder
+	@InitBinder(value = "LoginForm")
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new LoginValidator());
 	}

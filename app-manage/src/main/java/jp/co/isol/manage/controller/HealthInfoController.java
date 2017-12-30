@@ -71,9 +71,10 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 	/**
 	 * Validateを設定<br>
+	 * formを指定しないとなぜかDtoがvalidate対象になってしまうのでvalueにformクラスに指定する<br>
 	 * @param binder
 	 */
-	@InitBinder
+	@InitBinder(value = "HealthInfoForm")
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new HealthInfoValidator());
 	}
