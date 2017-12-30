@@ -38,7 +38,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException {
+	public HealthInfoDto execute(HealthInfoRequest request) {
 
 		ApiLoggerFactory.getLogger(HealthInfoServiceImpl.class).info(this.getClass(), "executeメソッド実行");
 
@@ -57,7 +57,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @return
 	 * @throws ParseException
 	 */
-	private HealthInfoDto toHealthInfoDto(HealthInfoRequest request) throws ParseException {
+	private HealthInfoDto toHealthInfoDto(HealthInfoRequest request) {
 
 		String userId = (String) request.get(HealthInfoRequestKey.USER_ID);
 		BigDecimal height = new BigDecimal((String) request.get(HealthInfoRequestKey.HEIGHT));
@@ -112,7 +112,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @return
 	 * @throws ParseException
 	 */
-	private HealthInfoDto getLastHealthInfoDto(String userId) throws ParseException {
+	private HealthInfoDto getLastHealthInfoDto(String userId) {
 
 		List<HealthInfoDto> dtoList = healthInfoDao.getHealthInfoByUserId(userId);
 		return dtoList.get(dtoList.size() - 1);

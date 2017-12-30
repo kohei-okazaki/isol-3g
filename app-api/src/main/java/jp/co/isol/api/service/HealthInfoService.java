@@ -18,6 +18,6 @@ public interface HealthInfoService extends BaseApiService<HealthInfoRequest, Hea
 	 * @return 健康情報Dto
 	 * @throws ParseException
 	 */
-	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException;
+	public HealthInfoDto execute(HealthInfoRequest request);
 
 }

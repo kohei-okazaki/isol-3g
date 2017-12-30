@@ -29,6 +29,9 @@ public class StringUtil {
 	/** 半角数字とピリオド */
 	public static final String HALF_NUMBER_PERIOD = "^[0-9.]*$";
 
+	/** 半角英数字 */
+	public static final String HALF_CHAR = "^[0-9a-zA-Z]*$";
+
 	/**
 	 * 半角数字かピリオドかどうか判定する<br>
 	 * @param target
@@ -46,6 +49,16 @@ public class StringUtil {
 	 */
 	public static boolean isHalfNumber(String target) {
 		return Pattern.compile(HALF_NUMBER).matcher(target).find();
+	}
+
+	/**
+	 * 指定された文字列が半角英数字かどうか判定する<br>
+	 * 半角英数時の場合true, そうでない場合falseを返す<br>
+	 * @param target
+	 * @return
+	 */
+	public static boolean isHalfChar(String target) {
+		return Pattern.compile(HALF_CHAR).matcher(target).find();
 	}
 
 	/**

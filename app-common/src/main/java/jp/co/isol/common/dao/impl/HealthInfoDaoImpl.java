@@ -1,7 +1,6 @@
 package jp.co.isol.common.dao.impl;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<HealthInfoDto> getHealthInfoByUserId(String userId) throws ParseException {
+	public List<HealthInfoDto> getHealthInfoByUserId(String userId) {
 
 //		List<HealthInfoDto> dtoList = new ArrayList<HealthInfoDto>();
 //		try {
@@ -94,7 +93,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto getHealthInfoByDataId(String dateId) throws ParseException {
+	public HealthInfoDto getHealthInfoByDataId(String dateId) {
 
 //		HealthInfoDto healthInfoDto = new HealthInfoDto();
 //		try {

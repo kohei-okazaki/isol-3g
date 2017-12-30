@@ -11,6 +11,7 @@ public class LoginException extends BaseMvcException {
 
 	/**
 	 * コンストラクタ<br>
+	 * @param errorCode
 	 * @param errorMessage
 	 */
 	public LoginException(ErrorCodeDefine errorCode, String errorMessage) {

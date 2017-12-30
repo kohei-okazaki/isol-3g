@@ -17,7 +17,7 @@ public interface HealthInfoSearchService {
 	 * @return List<HealthInfoDto>
 	 * @throws ParseException
 	 */
-	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException;
+	public List<HealthInfoDto> findHealthInfoByUserId(String userId);
 
 	/**
 	 * 指定されたデータIDからと一致する健康情報を返却する<br>
@@ -25,5 +25,5 @@ public interface HealthInfoSearchService {
 	 * @return HealthInfoDto
 	 * @throws ParseException
 	 */
-	public HealthInfoDto findHealthInfoByDataId(String dataId) throws ParseException;
+	public HealthInfoDto findHealthInfoByDataId(String dataId);
 }

@@ -15,6 +15,7 @@ import jp.co.isol.api.exception.HealthInfoException;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.web.api.BaseApiController;
 
 /**
  * 健康情報APIコントローラ<br>
@@ -22,7 +23,7 @@ import jp.co.isol.common.dto.HealthInfoDto;
  */
 @RestController
 @RequestMapping(value = "/healthInfo", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-public class HealthInfoController {
+public class HealthInfoController extends BaseApiController<HealthInfoException> {
 
 	/** 健康情報サービスクラス */
 	@Autowired

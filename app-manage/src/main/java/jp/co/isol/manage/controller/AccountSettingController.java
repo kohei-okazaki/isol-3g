@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.common.web.mvc.BaseWizardController;
+import jp.co.isol.manage.exception.AccountSettingException;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSearchService;
@@ -32,7 +33,7 @@ import jp.co.isol.manage.web.view.PageType;
  *
  */
 @Controller
-public class AccountSettingController extends BaseWizardController<AccountSettingForm> {
+public class AccountSettingController extends BaseWizardController<AccountSettingForm, AccountSettingException> {
 
 	/** アカウント検索サービス */
 	@Autowired

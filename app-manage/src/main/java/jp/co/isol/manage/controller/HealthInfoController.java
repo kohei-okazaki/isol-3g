@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.web.mvc.BaseWizardController;
+import jp.co.isol.manage.exception.HealthInfoException;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.CsvDownloadService;
@@ -45,7 +46,7 @@ import jp.co.isol.manage.web.view.PageType;
  *
  */
 @Controller
-public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
+public class HealthInfoController extends BaseWizardController<HealthInfoForm, HealthInfoException> {
 
 	/** 健康情報入力サービス */
 	@Autowired
@@ -129,7 +130,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm> {
 	@Override
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-complete.html")
-	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws ParseException {
+	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) {
 
 		ManageLogger logger;
 		ManageSessionManager manager;
