@@ -1,7 +1,7 @@
 package jp.co.isol.api.service;
 
-import jp.co.isol.api.exception.BaseApiException;
 import jp.co.isol.api.request.BaseRequest;
+import jp.co.isol.common.exception.BaseApiException;
 
 /**
  * 基底APIサービス<br>

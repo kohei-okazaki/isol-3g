@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.api.exception.impl.HealthInfoException;
+import jp.co.isol.api.exception.HealthInfoException;
 import jp.co.isol.api.log.ApiLoggerFactory;
 import jp.co.isol.api.request.check.HealthInfoCheck;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
@@ -151,6 +151,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 			healthInfoCheck.checkRequired(key, value);
 			// 属性チェックを行う
 			healthInfoCheck.checkType(key, value);
+			// 0チェックを行う
+			healthInfoCheck.checkZero(key, value);
 		}
 	}
 }

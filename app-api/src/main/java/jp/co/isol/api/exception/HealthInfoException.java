@@ -1,6 +1,6 @@
-package jp.co.isol.api.exception.impl;
+package jp.co.isol.api.exception;
 
-import jp.co.isol.api.exception.BaseApiException;
+import jp.co.isol.common.exception.BaseApiException;
 
 /**
  * 健康情報のExceptionクラス<br>

@@ -2,7 +2,7 @@ package jp.co.isol.api.service;
 
 import java.text.ParseException;
 
-import jp.co.isol.api.exception.impl.HealthInfoException;
+import jp.co.isol.api.exception.HealthInfoException;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.common.dto.HealthInfoDto;
 

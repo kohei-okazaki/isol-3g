@@ -6,4 +6,6 @@ package jp.co.isol.common.exception;
  */
 public enum ErrorCodeDefine {
 
+	REQUIRE;
+
 }
