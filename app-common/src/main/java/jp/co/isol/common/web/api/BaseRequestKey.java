@@ -1,4 +1,4 @@
-package jp.co.isol.common.api;
+package jp.co.isol.common.web.api;
 
 /**
  * リクエストキーのインターフェース<br>

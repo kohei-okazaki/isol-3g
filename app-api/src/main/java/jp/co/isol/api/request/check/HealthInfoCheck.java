@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 import jp.co.isol.api.exception.HealthInfoException;
 import jp.co.isol.api.request.key.HealthInfoRequestKey;
-import jp.co.isol.common.api.BaseCheck;
 import jp.co.isol.common.exception.ErrorCodeDefine;
 import jp.co.isol.common.util.StringUtil;
+import jp.co.isol.common.web.api.BaseCheck;
 
 /**
  * 健康情報のチェックを行うクラス<br>

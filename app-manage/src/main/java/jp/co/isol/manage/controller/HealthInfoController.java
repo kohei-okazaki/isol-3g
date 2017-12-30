@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.mvc.BaseWizardController;
+import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.CsvDownloadService;

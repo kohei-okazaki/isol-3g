@@ -1,4 +1,4 @@
-package jp.co.isol.common.mvc;
+package jp.co.isol.common.web.mvc;
 
 import java.text.ParseException;
 

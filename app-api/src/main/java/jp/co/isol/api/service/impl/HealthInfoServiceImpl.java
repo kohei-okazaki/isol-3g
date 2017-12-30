@@ -15,13 +15,13 @@ import jp.co.isol.api.request.check.HealthInfoCheck;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.request.key.HealthInfoRequestKey;
 import jp.co.isol.api.service.HealthInfoService;
-import jp.co.isol.common.api.BaseRequestKey;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
+import jp.co.isol.common.web.api.BaseRequestKey;
 
 /**
  * 健康情報サービス実装クラス<br>
