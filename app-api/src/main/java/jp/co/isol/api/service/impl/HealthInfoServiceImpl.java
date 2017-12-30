@@ -62,8 +62,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		String userId = (String) request.get(HealthInfoRequestKey.USER_ID);
 		BigDecimal height = new BigDecimal((String) request.get(HealthInfoRequestKey.HEIGHT));
 		BigDecimal weight = new BigDecimal((String) request.get(HealthInfoRequestKey.WEIGHT));
-		BigDecimal bmi = calcBmi(CalcUtil.convertMeterFromCentiMeter(height, 2), weight);
-		BigDecimal standardWeight = calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(height, 2));
+		BigDecimal centiMeterHeight = CalcUtil.convertMeterFromCentiMeter(height, 2);
+		BigDecimal bmi = CalcUtil.calcBmi(centiMeterHeight, weight, 2);
+		BigDecimal standardWeight = CalcUtil.calcStandardWeight(centiMeterHeight, 2);
 
 		// 最後に登録した健康情報を取得する
 		HealthInfoDto lastDto = getLastHealthInfoDto(userId);
@@ -115,25 +116,6 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 		List<HealthInfoDto> dtoList = healthInfoDao.getHealthInfoByUserId(userId);
 		return dtoList.get(dtoList.size() - 1);
-	}
-
-	/**
-	 * BMIを計算(小数第2位を四捨五入する)<br>
-	 * @param height
-	 * @param weight
-	 * @return BMIを計算(小数第2位を四捨五入する)
-	 */
-	private BigDecimal calcBmi(BigDecimal height, BigDecimal weight) {
-		return weight.divide(height.multiply(height), 1, BigDecimal.ROUND_HALF_UP);
-	}
-
-	/**
-	 * 標準体重を計算(小数第2位を四捨五入する)<br>
-	 * @param height
-	 * @return 標準体重を計算(小数第2位を四捨五入する)
-	 */
-	private BigDecimal calcStandardWeight(BigDecimal height) {
-		return height.multiply(height).multiply(new BigDecimal(22)).setScale(1, BigDecimal.ROUND_HALF_UP);
 	}
 
 	/**
