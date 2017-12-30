@@ -10,7 +10,7 @@ import jp.co.isol.manage.form.LoginForm;
  * LoginフォームのValidator
  *
  */
-public class LoginFormValidator extends BaseValidator<LoginForm> {
+public class LoginValidator extends BaseValidator<LoginForm> {
 
 	/**
 	 * {@inheritDoc}

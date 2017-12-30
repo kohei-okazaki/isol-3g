@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.LoginService;
-import jp.co.isol.manage.validator.LoginFormValidator;
+import jp.co.isol.manage.validator.LoginValidator;
 import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
@@ -44,7 +44,7 @@ public class LoginController {
 	 */
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.setValidator(new LoginFormValidator());
+		binder.setValidator(new LoginValidator());
 	}
 
 	/**
