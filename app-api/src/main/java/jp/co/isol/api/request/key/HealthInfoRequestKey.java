@@ -1,6 +1,6 @@
-package jp.co.isol.api.request.key.impl;
+package jp.co.isol.api.request.key;
 
-import jp.co.isol.api.request.key.BaseRequestKey;
+import jp.co.isol.common.api.BaseRequestKey;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

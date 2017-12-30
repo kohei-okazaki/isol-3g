@@ -1,12 +1,12 @@
-package jp.co.isol.manage.exception.impl;
+package jp.co.isol.manage.exception;
 
-import jp.co.isol.manage.exception.BaseManageException;
+import jp.co.isol.common.exception.BaseMvcException;
 
 /**
  * ログイン画面のExceptionクラス<br>
  *
  */
-public class LoginException extends BaseManageException {
+public class LoginException extends BaseMvcException {
 
 	/**
 	 * コンストラクタ<br>

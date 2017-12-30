@@ -10,7 +10,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jp.co.isol.api.request.key.BaseRequestKey;
+import jp.co.isol.common.api.BaseRequestKey;
 import lombok.Getter;
 import lombok.Setter;
 

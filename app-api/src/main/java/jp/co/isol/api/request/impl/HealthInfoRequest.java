@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 
 import jp.co.isol.api.request.BaseRequest;
-import jp.co.isol.api.request.key.impl.HealthInfoRequestKey;
+import jp.co.isol.api.request.key.HealthInfoRequestKey;
 
 /**
  * 健康情報リクエスト情報保持クラス<br>
