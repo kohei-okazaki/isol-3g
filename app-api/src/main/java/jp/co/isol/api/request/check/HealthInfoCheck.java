@@ -38,7 +38,7 @@ public class HealthInfoCheck extends BaseCheck<HealthInfoException>{
 				|| HealthInfoRequestKey.WEIGHT.getValue().equals(key)) {
 			// 身長 or 体重のとき
 
-			if (StringUtil.isHalfNumberPeriod(value)) {
+			if (!StringUtil.isHalfNumberPeriod(value)) {
 				// "半角数字 or ピリオド"でないとき
 				throw new HealthInfoException(ErrorCodeDefine.TYPE, "request内のkey：" + key + "に対するvalue:" + value + "と半角数字とピリオドではないため不正です");
 			}
