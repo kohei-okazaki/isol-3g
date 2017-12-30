@@ -1,7 +1,5 @@
 package jp.co.isol.api.controller;
 
-import java.text.ParseException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +34,10 @@ public class HealthInfoController extends BaseApiController<HealthInfoException>
 	 * Getでリクエストを受け付ける
 	 * @param request
 	 * @return
-	 * @throws ParseException
 	 * @throws HealthInfoException
 	 */
 	@GetMapping
-	public HealthInfoDto doGet(HttpServletRequest request) throws ParseException, HealthInfoException {
+	public HealthInfoDto doGet(HttpServletRequest request) throws HealthInfoException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
@@ -55,11 +52,10 @@ public class HealthInfoController extends BaseApiController<HealthInfoException>
 	 * Postでリクエストを受け付ける
 	 * @param request
 	 * @return
-	 * @throws ParseException
 	 * @throws HealthInfoException
 	 */
 	@PostMapping
-	public HealthInfoDto doPost(HttpServletRequest request) throws ParseException, HealthInfoException {
+	public HealthInfoDto doPost(HttpServletRequest request) throws HealthInfoException {
 		return doGet(request);
 	}
 
