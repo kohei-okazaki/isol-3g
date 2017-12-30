@@ -9,8 +9,8 @@ import org.springframework.validation.BindingResult;
 
 /**
  * ウィザード型式の基底コントローラ<br>
- * @param F form
  *
+ * @param <F> 対象formクラス
  */
 public abstract class BaseWizardController<F extends BaseForm> {
 

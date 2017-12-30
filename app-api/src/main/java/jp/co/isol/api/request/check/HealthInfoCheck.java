@@ -12,7 +12,7 @@ import jp.co.isol.common.util.StringUtil;
  * 健康情報のチェックを行うクラス<br>
  *
  */
-public class HealthInfoCheck extends BaseCheck<HealthInfoException>{
+public class HealthInfoCheck extends BaseCheck<HealthInfoException> {
 
 	/**
 	 * 必須チェックを行う<br>
