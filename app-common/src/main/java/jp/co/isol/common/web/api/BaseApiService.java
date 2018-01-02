@@ -21,7 +21,7 @@ public interface BaseApiService<Rq extends BaseRequest, Rs extends BaseResponse,
 	/**
 	 * メイン処理<br>
 	 * @param Rq Request実装クラス
-	 * @return 健康情報レスポンス
+	 * @return Rs 健康情報レスポンス
 	 * @throws E
 	 */
 	public Rs execute(Rq request) throws E;
