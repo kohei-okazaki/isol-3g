@@ -38,9 +38,16 @@ public class DateUtil {
 	 * @return
 	 * @throws ParseException
 	 */
-	public static Date formatDate(String target) throws ParseException {
+	public static Date formatDate(String target) {
 		SimpleDateFormat sdf = new SimpleDateFormat(YYYY_MM_DD_HH_MI_SS);
-		return sdf.parse(target);
+		Date resultDate = null;
+		try {
+			resultDate = sdf.parse(target);
+		} catch(ParseException e) {
+			System.out.println("変換に失敗しました");
+		}
+		return resultDate;
+
 	}
 
 	/**

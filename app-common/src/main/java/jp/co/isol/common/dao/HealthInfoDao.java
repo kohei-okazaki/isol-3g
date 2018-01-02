@@ -17,7 +17,7 @@ public interface HealthInfoDao {
 	 * @return result
 	 * @throws ParseException
 	 */
-	public List<HealthInfoDto> getHealthInfoByUserId(String userId) throws ParseException;
+	public List<HealthInfoDto> getHealthInfoByUserId(String userId);
 
 	/**
 	 * 指定されたデータIDに対応する健康情報を返す
@@ -25,7 +25,7 @@ public interface HealthInfoDao {
 	 * @return HealthInfoDto
 	 * @throws ParseException
 	 */
-	public HealthInfoDto getHealthInfoByDataId(String dataId) throws ParseException;
+	public HealthInfoDto getHealthInfoByDataId(String dataId);
 
 	/**
 	 * 健康情報を登録する<br>

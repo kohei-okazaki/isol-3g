@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>健康アプリ_入力画面</title>
+<title>健康アプリ_健康情報画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
 <script type="text/javascript" src="resources/js/app.js"></script>

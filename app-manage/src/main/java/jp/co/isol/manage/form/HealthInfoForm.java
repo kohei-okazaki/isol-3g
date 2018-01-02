@@ -3,7 +3,7 @@ package jp.co.isol.manage.form;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import jp.co.isol.common.mvc.BaseForm;
+import jp.co.isol.common.web.mvc.BaseForm;
 import lombok.Getter;
 import lombok.Setter;
 

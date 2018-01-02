@@ -15,13 +15,13 @@ import jp.co.isol.api.request.check.HealthInfoCheck;
 import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.request.key.HealthInfoRequestKey;
 import jp.co.isol.api.service.HealthInfoService;
-import jp.co.isol.common.api.BaseRequestKey;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
+import jp.co.isol.common.web.api.BaseRequestKey;
 
 /**
  * 健康情報サービス実装クラス<br>
@@ -38,7 +38,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto execute(HealthInfoRequest request) throws ParseException {
+	public HealthInfoDto execute(HealthInfoRequest request) {
 
 		ApiLoggerFactory.getLogger(HealthInfoServiceImpl.class).info(this.getClass(), "executeメソッド実行");
 
@@ -57,7 +57,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @return
 	 * @throws ParseException
 	 */
-	private HealthInfoDto toHealthInfoDto(HealthInfoRequest request) throws ParseException {
+	private HealthInfoDto toHealthInfoDto(HealthInfoRequest request) {
 
 		String userId = (String) request.get(HealthInfoRequestKey.USER_ID);
 		BigDecimal height = new BigDecimal((String) request.get(HealthInfoRequestKey.HEIGHT));
@@ -112,7 +112,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @return
 	 * @throws ParseException
 	 */
-	private HealthInfoDto getLastHealthInfoDto(String userId) throws ParseException {
+	private HealthInfoDto getLastHealthInfoDto(String userId) {
 
 		List<HealthInfoDto> dtoList = healthInfoDao.getHealthInfoByUserId(userId);
 		return dtoList.get(dtoList.size() - 1);

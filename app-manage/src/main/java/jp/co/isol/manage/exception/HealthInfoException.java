@@ -4,17 +4,18 @@ import jp.co.isol.common.exception.BaseMvcException;
 import jp.co.isol.common.exception.ErrorCodeDefine;
 
 /**
- * ログイン画面のExceptionクラス<br>
+ * 健康情報Exceptionクラス<br>
  *
  */
-public class LoginException extends BaseMvcException {
+public class HealthInfoException extends BaseMvcException {
 
 	/**
 	 * コンストラクタ<br>
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	public LoginException(ErrorCodeDefine errorCode, String errorMessage) {
+	public HealthInfoException(ErrorCodeDefine errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
+
 }

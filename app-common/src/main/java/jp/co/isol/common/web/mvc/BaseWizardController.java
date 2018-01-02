@@ -1,18 +1,19 @@
-package jp.co.isol.common.mvc;
-
-import java.text.ParseException;
+package jp.co.isol.common.web.mvc;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+import jp.co.isol.common.exception.BaseMvcException;
+
 /**
  * ウィザード型式の基底コントローラ<br>
  *
  * @param <F> 対象formクラス
+ * @param <E> 例外クラス
  */
-public abstract class BaseWizardController<F extends BaseForm> {
+public abstract class BaseWizardController<F extends BaseForm, E extends BaseMvcException> {
 
 	/**
 	 * 入力画面
@@ -37,8 +38,7 @@ public abstract class BaseWizardController<F extends BaseForm> {
 	 * @param form
 	 * @param request
 	 * @return
-	 * @throws ParseException
 	 */
-	public abstract String complete(Model model, F form, HttpServletRequest request) throws ParseException;
+	public abstract String complete(Model model, F form, HttpServletRequest request);
 
 }

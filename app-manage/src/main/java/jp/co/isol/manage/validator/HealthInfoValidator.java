@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
-import jp.co.isol.common.mvc.BaseValidator;
 import jp.co.isol.common.util.StringUtil;
+import jp.co.isol.common.web.mvc.BaseValidator;
 import jp.co.isol.manage.form.HealthInfoForm;
 
 /**

@@ -1,6 +1,5 @@
 package jp.co.isol.manage.service.impl;
 
-import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<HealthInfoDto> findHealthInfoByUserId(String userId) throws ParseException {
+	public List<HealthInfoDto> findHealthInfoByUserId(String userId) {
 		return this.healthInfoDao.getHealthInfoByUserId(userId);
 	}
 
@@ -32,7 +31,7 @@ public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto findHealthInfoByDataId(String dataId) throws ParseException {
+	public HealthInfoDto findHealthInfoByDataId(String dataId) {
 		return this.healthInfoDao.getHealthInfoByDataId(dataId);
 	}
 
