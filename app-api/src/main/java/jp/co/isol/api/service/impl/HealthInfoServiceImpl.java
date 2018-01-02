@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.exception.HealthInfoException;
 import jp.co.isol.api.log.ApiLoggerFactory;
+import jp.co.isol.api.request.HealthInfoRequest;
 import jp.co.isol.api.request.check.HealthInfoCheck;
-import jp.co.isol.api.request.impl.HealthInfoRequest;
 import jp.co.isol.api.request.key.HealthInfoRequestKey;
+import jp.co.isol.api.response.HealthInfoResponse;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
@@ -38,7 +39,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto execute(HealthInfoRequest request) {
+	public HealthInfoResponse execute(HealthInfoRequest request) {
 
 		ApiLoggerFactory.getLogger(HealthInfoServiceImpl.class).info(this.getClass(), "executeメソッド実行");
 
@@ -48,7 +49,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		// 登録処理を行う
 		healthInfoDao.registHealthInfo(dto);
 
-		return dto;
+		HealthInfoResponse response = toResponse(dto);
+
+		return response;
 	}
 
 	/**

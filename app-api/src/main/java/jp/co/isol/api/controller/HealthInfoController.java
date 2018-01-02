@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.isol.api.exception.HealthInfoException;
-import jp.co.isol.api.request.impl.HealthInfoRequest;
+import jp.co.isol.api.request.HealthInfoRequest;
+import jp.co.isol.api.response.HealthInfoResponse;
 import jp.co.isol.api.service.HealthInfoService;
-import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.common.web.api.BaseApiController;
+import jp.co.isol.common.web.api.BaseApiRestController;
 
 /**
  * 健康情報APIコントローラ<br>
@@ -21,7 +21,7 @@ import jp.co.isol.common.web.api.BaseApiController;
  */
 @RestController
 @RequestMapping(value = "/healthInfo", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-public class HealthInfoController extends BaseApiController<HealthInfoException> {
+public class HealthInfoController extends BaseApiRestController<HealthInfoRequest, HealthInfoResponse, HealthInfoService, HealthInfoException> {
 
 	/** 健康情報サービスクラス */
 	@Autowired
@@ -36,8 +36,9 @@ public class HealthInfoController extends BaseApiController<HealthInfoException>
 	 * @return
 	 * @throws HealthInfoException
 	 */
+	@Override
 	@GetMapping
-	public HealthInfoDto doGet(HttpServletRequest request) throws HealthInfoException {
+	public HealthInfoResponse doGet(HttpServletRequest request) throws HealthInfoException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
@@ -45,7 +46,9 @@ public class HealthInfoController extends BaseApiController<HealthInfoException>
 		// セットされたリクエスト情報のチェック実施
 		healthInfoService.checkRequest(healthInfoRequest);
 
-		return healthInfoService.execute(healthInfoRequest);
+		HealthInfoResponse response = healthInfoService.execute(healthInfoRequest);
+
+		return response;
 	}
 
 	/**
@@ -54,8 +57,9 @@ public class HealthInfoController extends BaseApiController<HealthInfoException>
 	 * @return
 	 * @throws HealthInfoException
 	 */
+	@Override
 	@PostMapping
-	public HealthInfoDto doPost(HttpServletRequest request) throws HealthInfoException {
+	public HealthInfoResponse doPost(HttpServletRequest request) throws HealthInfoException {
 		return doGet(request);
 	}
 

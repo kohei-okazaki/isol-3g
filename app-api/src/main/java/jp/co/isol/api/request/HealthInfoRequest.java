@@ -1,11 +1,11 @@
-package jp.co.isol.api.request.impl;
+package jp.co.isol.api.request;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Component;
 
-import jp.co.isol.api.request.BaseRequest;
 import jp.co.isol.api.request.key.HealthInfoRequestKey;
+import jp.co.isol.common.web.api.BaseRequest;
 
 /**
  * 健康情報リクエスト情報保持クラス<br>

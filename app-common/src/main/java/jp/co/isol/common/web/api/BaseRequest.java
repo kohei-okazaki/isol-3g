@@ -1,4 +1,4 @@
-package jp.co.isol.api.request;
+package jp.co.isol.common.web.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,12 +10,11 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jp.co.isol.common.web.api.BaseRequestKey;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 健康管理APIのBaseリクエストクラス<br>
+ * 健康管理APIの基底リクエストクラス<br>
  *
  */
 public abstract class BaseRequest {
