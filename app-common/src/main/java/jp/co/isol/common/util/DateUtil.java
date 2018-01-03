@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * 時間関係のutilクラス<br>
- *
+ * インスタンスの生成を制限<br>
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DateUtil {

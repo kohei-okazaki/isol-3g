@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * 文字列のUtilクラス<br>
- *
+ * インスタンスの生成を制限<br>
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StringUtil {

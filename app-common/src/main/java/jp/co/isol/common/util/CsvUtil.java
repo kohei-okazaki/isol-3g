@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * CsvのUtilクラス<br>
- *
+ * インスタンスの生成を制限<br>
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CsvUtil {
