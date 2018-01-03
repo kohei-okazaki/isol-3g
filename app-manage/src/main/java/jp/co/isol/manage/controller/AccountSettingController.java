@@ -46,6 +46,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	 * Validateを設定<br>
 	 * @param binder
 	 */
+	@Override
 	@InitBinder(value = "AccountSettingForm")
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new AccountSettingValidator());
@@ -57,7 +58,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@Override
 	@GetMapping
 	@RequestMapping(value = "/account-setting-input.html")
-	public String input(Model model, HttpServletRequest request) {
+	public String input(Model model, HttpServletRequest request) throws AccountSettingException {
 
 		ManageLogger logger;
 		ManageSessionManager sessionManager;
@@ -85,7 +86,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@Override
 	@PostMapping
 	@RequestMapping(value = "/account-setting-confirm.html")
-	public String confirm(Model model, @Valid AccountSettingForm form, BindingResult result) {
+	public String confirm(Model model, @Valid AccountSettingForm form, BindingResult result) throws AccountSettingException {
 
 		if (result.hasErrors()) {
 			model.addAttribute("page", PageType.INPUT.getValue());
@@ -111,7 +112,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@Override
 	@PostMapping
 	@RequestMapping(value = "/account-setting-complete.html")
-	public String complete(Model model, AccountSettingForm form, HttpServletRequest request) {
+	public String complete(Model model, AccountSettingForm form, HttpServletRequest request) throws AccountSettingException {
 
 		if (form.isDeleteFlag()) {
 			// アカウントを削除する場合

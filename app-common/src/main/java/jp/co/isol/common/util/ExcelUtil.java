@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * Excel操作のUtilクラス<br>
- *
+ * インスタンスの生成を制限<br>
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ExcelUtil {

@@ -50,6 +50,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	@Override
 	public String getDiffMessage(HealthInfoForm form, HealthInfoDto dto) {
+
 		MessageManager manager = MessageManager.getInstance();
 		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
 			// 変化なしの場合

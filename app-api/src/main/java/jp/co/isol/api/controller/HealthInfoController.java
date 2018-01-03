@@ -31,10 +31,7 @@ public class HealthInfoController extends BaseApiRestController<HealthInfoReques
 	private HealthInfoRequest healthInfoRequest;
 
 	/**
-	 * Getでリクエストを受け付ける
-	 * @param request
-	 * @return
-	 * @throws HealthInfoException
+	 * {@inheritDoc}
 	 */
 	@Override
 	@GetMapping
@@ -52,10 +49,7 @@ public class HealthInfoController extends BaseApiRestController<HealthInfoReques
 	}
 
 	/**
-	 * Postでリクエストを受け付ける
-	 * @param request
-	 * @return
-	 * @throws HealthInfoException
+	 * {@inheritDoc}
 	 */
 	@Override
 	@PostMapping

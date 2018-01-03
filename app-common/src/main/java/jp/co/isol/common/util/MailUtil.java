@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * メールのUtilクラス
- *
+ * インスタンスの生成を制限<br>
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MailUtil {
