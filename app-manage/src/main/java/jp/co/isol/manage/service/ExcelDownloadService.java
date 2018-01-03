@@ -3,8 +3,9 @@ package jp.co.isol.manage.service;
 import org.springframework.web.servlet.View;
 
 /**
- * ファイルダウンロードサービスIF
+ * ファイルダウンロードサービスインターフェース<br>
  *
+ * @param <T>
  */
 public interface ExcelDownloadService<T> {
 
