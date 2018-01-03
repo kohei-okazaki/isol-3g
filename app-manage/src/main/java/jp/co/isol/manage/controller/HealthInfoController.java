@@ -74,6 +74,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	 * formを指定しないとなぜかDtoがvalidate対象になってしまうのでvalueにformクラスに指定する<br>
 	 * @param binder
 	 */
+	@Override
 	@InitBinder(value = "HealthInfoForm")
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new HealthInfoValidator());
@@ -85,7 +86,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	@Override
 	@GetMapping
 	@RequestMapping(value = "/healthInfo-input.html")
-	public String input(Model model, HttpServletRequest request) {
+	public String input(Model model, HttpServletRequest request) throws HealthInfoException {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
@@ -104,7 +105,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	@Override
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-confirm.html")
-	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) {
+	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) throws HealthInfoException {
 
 		if (result.hasErrors()) {
 			model.addAttribute("page", PageType.INPUT.getValue());
@@ -131,7 +132,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	@Override
 	@PostMapping
 	@RequestMapping(value = "/healthInfo-complete.html")
-	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) {
+	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws HealthInfoException {
 
 		ManageLogger logger;
 		ManageSessionManager manager;
@@ -139,7 +140,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 			logger = context.getBean(ManageLogger.class);
 			manager = context.getBean(ManageSessionManager.class);
 		}
-		logger.info(this.getClass(), "# menu complete");
+		logger.info(this.getClass(), "# complete start");
 
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
