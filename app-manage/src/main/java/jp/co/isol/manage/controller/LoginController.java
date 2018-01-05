@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.validator.LoginValidator;
-import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 import jp.co.isol.manage.web.view.ManageView;

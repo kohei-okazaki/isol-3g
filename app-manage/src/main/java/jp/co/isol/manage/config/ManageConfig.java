@@ -1,4 +1,4 @@
-package jp.co.isol.manage.web.config;
+package jp.co.isol.manage.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

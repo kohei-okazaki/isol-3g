@@ -7,10 +7,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.LoginService;
-import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 

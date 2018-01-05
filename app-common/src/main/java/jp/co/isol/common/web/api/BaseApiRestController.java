@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import jp.co.isol.common.exception.BaseApiException;
 
 /**
- * API基底コントローラ<br>
- * すべてのAPI基底コントローラはこのクラスを継承すること<br>
+ * RestAPI基底コントローラ<br>
+ * すべてのRestAPIコントローラはこのクラスを継承すること<br>
  *
  * @param <Rq> リクエストクラス
  * @param <Rs> レスポンスクラス

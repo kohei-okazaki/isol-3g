@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dto.AccountDto;
+import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSettingService;
-import jp.co.isol.manage.web.config.ManageConfig;
 
 /**
  * アカウント設定サービス実装クラス<br>

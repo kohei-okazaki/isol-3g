@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.common.web.mvc.BaseWizardController;
+import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.NoticeSettingException;
 import jp.co.isol.manage.form.NoticeSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.validator.NoticeSettingValidator;
-import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.view.ManageView;
 import jp.co.isol.manage.web.view.PageType;
 
