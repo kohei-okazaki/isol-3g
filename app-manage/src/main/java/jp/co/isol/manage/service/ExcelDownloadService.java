@@ -12,6 +12,7 @@ public interface ExcelDownloadService<T> {
 	/**
 	 * メイン処理<br>
 	 * 継承先で詳細を書く<br>
+	 * 渡したいデータを引数に指定する<br>
 	 * @param t
 	 * @return
 	 */
