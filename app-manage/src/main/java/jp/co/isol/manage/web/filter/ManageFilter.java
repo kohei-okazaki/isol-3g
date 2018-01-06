@@ -14,7 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import jp.co.isol.common.web.filter.BaseFilter;
-import jp.co.isol.manage.web.config.ManageConfig;
+import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 

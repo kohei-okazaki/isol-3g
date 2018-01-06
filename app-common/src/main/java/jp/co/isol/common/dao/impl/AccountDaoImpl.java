@@ -1,5 +1,7 @@
 package jp.co.isol.common.dao.impl;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dto.AccountDto;
 
@@ -25,7 +27,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void registAccount() {
+	public void registAccount() throws DuplicateKeyException {
 		// TODO 登録処理を追加すること
 	}
 

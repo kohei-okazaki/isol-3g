@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.service.annotation.ReferenceCsv;
 import jp.co.isol.manage.service.annotation.ReferenceExcel;
-import jp.co.isol.manage.web.config.ManageConfig;
 import jp.co.isol.manage.web.view.ManageView;
 
 /**

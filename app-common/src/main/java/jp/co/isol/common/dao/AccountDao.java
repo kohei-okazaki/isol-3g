@@ -1,5 +1,7 @@
 package jp.co.isol.common.dao;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import jp.co.isol.common.dto.AccountDto;
 
 /**
@@ -18,7 +20,7 @@ public interface AccountDao {
 	/**
 	 * アカウント情報を登録する
 	 */
-	public void registAccount();
+	public void registAccount() throws DuplicateKeyException;
 
 	/**
 	 * 引数で指定されたアカウント情報を更新する
