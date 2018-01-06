@@ -6,7 +6,6 @@ import org.springframework.web.servlet.View;
  * Excelダウンロードサービスインターフェース<br>
  * 継承先で@Service(value = "サービス実装用のAnnotation") をつけてInjectionすること<br>
  * @param <T> 出力対象データ
->>>>>>> origin/master
  */
 public interface ExcelDownloadService<T> {
 
