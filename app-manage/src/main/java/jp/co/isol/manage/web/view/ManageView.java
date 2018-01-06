@@ -1,9 +1,5 @@
 package jp.co.isol.manage.web.view;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * ビューEnum<br>
  * 画面遷移先定義<br>
@@ -26,12 +22,14 @@ public enum ManageView {
 	/** 通知設定画面URL */
 	NOTICE_SETTING("notice-setting");
 
-	@Getter
-	@Setter(value = AccessLevel.PRIVATE)
 	private String name;
 
 	private ManageView(String name) {
-		setName(name);
+		this.name= name;
+	}
+
+	public String getName() {
+		return this.name;
 	}
 
 }
