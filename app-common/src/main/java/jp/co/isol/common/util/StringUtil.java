@@ -6,14 +6,10 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 /**
  * 文字列のUtilクラス<br>
  * インスタンスの生成を制限<br>
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StringUtil {
 
 	public static final String COMMA = ",";
@@ -31,6 +27,11 @@ public class StringUtil {
 
 	/** 半角英数字 */
 	public static final String HALF_CHAR = "^[0-9a-zA-Z]*$";
+
+
+	private StringUtil() {
+
+	}
 
 	/**
 	 * 半角数字かピリオドかどうか判定する<br>

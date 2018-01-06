@@ -9,17 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * フィルター基底クラス<br>
  *
  */
 public abstract class BaseFilter implements Filter {
 
-	@Getter
-	@Setter
 	protected FilterConfig filterConfig;
 
 	/**
@@ -28,7 +23,7 @@ public abstract class BaseFilter implements Filter {
 	 */
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		setFilterConfig(filterConfig);
+		this.filterConfig = filterConfig;
 	}
 
 	/**
@@ -47,6 +42,6 @@ public abstract class BaseFilter implements Filter {
 	 */
 	@Override
 	public void destroy() {
-		setFilterConfig(null);
+		this.filterConfig = null;
 	}
 }

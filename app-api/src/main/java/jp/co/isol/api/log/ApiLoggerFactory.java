@@ -2,14 +2,10 @@ package jp.co.isol.api.log;
 
 import org.slf4j.LoggerFactory;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 /**
  * ロガーファクトリークラス<br>
  *
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiLoggerFactory {
 
 	/**

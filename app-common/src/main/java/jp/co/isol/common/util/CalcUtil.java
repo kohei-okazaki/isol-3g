@@ -3,16 +3,15 @@ package jp.co.isol.common.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 /**
  * 計算処理のUtilクラス<br>
  * インスタンス生成を制限<br>
  *
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CalcUtil {
+
+	private CalcUtil() {
+	}
 
 	/** マイナス */
 	public static final String MINUS = "-";

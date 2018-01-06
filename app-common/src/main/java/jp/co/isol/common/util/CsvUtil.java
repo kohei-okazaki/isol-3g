@@ -4,20 +4,21 @@ import java.util.Arrays;
 import java.util.List;
 
 import jp.co.isol.common.file.csv.annotation.CsvHeader;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 /**
  * CsvのUtilクラス<br>
  * インスタンスの生成を制限<br>
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CsvUtil {
 
 	/** シングルクォート */
 	public static final String SINGLE_QUOTE = "\'";
 	/** ダブルクォート */
 	public static final String DOBBLE_QUOTE = "\"";
+
+	private CsvUtil() {
+
+	}
 
 	/**
 	 * ヘッダ名を取得する

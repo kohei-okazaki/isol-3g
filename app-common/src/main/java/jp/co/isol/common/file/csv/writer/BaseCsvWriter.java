@@ -9,19 +9,23 @@ import org.springframework.util.MimeTypeUtils;
 
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.StringUtil;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * CSV書き込み基底クラス<br>
  *
  */
-@NoArgsConstructor
-@AllArgsConstructor
 public abstract class BaseCsvWriter {
 
 	/** 囲い文字 */
 	protected String enclosureChar = StringUtil.EMPTY;
+
+	public BaseCsvWriter() {
+
+	}
+
+	public BaseCsvWriter(String enclosureChar) {
+		this.enclosureChar = enclosureChar;
+	}
 
 	/**
 	 * メイン処理を実施<br>

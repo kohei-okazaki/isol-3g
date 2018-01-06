@@ -8,18 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * アカウントのDto
  *
  */
-@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "ACCOUNT")
 public class AccountDto implements Serializable {
 
@@ -46,5 +39,85 @@ public class AccountDto implements Serializable {
 	/** 登録日時 */
 	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
+
+	/**
+	 * userIdを返す
+	 * @return userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 * @param userId
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * passwordを返す
+	 * @return password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * passwordを設定する
+	 * @param password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * invalidFlagを返す
+	 * @return invalidFlag
+	 */
+	public String getInvalidFlag() {
+		return invalidFlag;
+	}
+
+	/**
+	 * invalidFlagを設定する
+	 * @param invalidFlag
+	 */
+	public void setInvalidFlag(String invalidFlag) {
+		this.invalidFlag = invalidFlag;
+	}
+
+	/**
+	 * updateDateを返す
+	 * @return updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * updateDateを設定する
+	 * @param updateDate
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	/**
+	 * regDateを返す
+	 * @return regDate
+	 */
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	/**
+	 * regDateを設定する
+	 * @param regDate
+	 */
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 
 }

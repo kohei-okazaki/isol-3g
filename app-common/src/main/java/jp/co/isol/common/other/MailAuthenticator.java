@@ -3,17 +3,10 @@ package jp.co.isol.common.other;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class MailAuthenticator extends Authenticator {
 
-	@Setter
-	@Getter
 	private String mailAddress;
 
-	@Setter
-	@Getter
 	private String password;
 
 	public MailAuthenticator(String mailAddress, String password) {

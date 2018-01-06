@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import jp.co.isol.common.web.api.BaseResponse;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * 健康情報レスポンスクラス<br>
@@ -14,43 +12,155 @@ import lombok.Setter;
 public class HealthInfoResponse extends BaseResponse {
 
 	/** データID */
-	@Setter
-	@Getter
 	private String dataId;
 
 	/** ユーザID */
-	@Setter
-	@Getter
 	private String userId;
 
 	/** 身長 */
-	@Setter
-	@Getter
 	private BigDecimal height;
 
 	/** 体重 */
-	@Setter
-	@Getter
 	private BigDecimal weight;
 
 	/** BMI */
-	@Setter
-	@Getter
 	private BigDecimal bmi;
 
 	/** 標準体重 */
-	@Setter
-	@Getter
 	private BigDecimal standardWeight;
 
 	/** ユーザステータス */
-	@Setter
-	@Getter
 	private String userStatus;
 
 	/** 登録日時 */
-	@Setter
-	@Getter
 	private Date regDate;
+
+	/**
+	 * dataIdを返す
+	 * @return dataId
+	 */
+	public String getDataId() {
+		return dataId;
+	}
+
+	/**
+	 * dataIdを設定する
+	 * @param dataId
+	 */
+	public void setDataId(String dataId) {
+		this.dataId = dataId;
+	}
+
+	/**
+	 * userIdを返す
+	 * @return userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 * @param userId
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * heightを返す
+	 * @return height
+	 */
+	public BigDecimal getHeight() {
+		return height;
+	}
+
+	/**
+	 * heightを設定する
+	 * @param height
+	 */
+	public void setHeight(BigDecimal height) {
+		this.height = height;
+	}
+
+	/**
+	 * weightを返す
+	 * @return weight
+	 */
+	public BigDecimal getWeight() {
+		return weight;
+	}
+
+	/**
+	 * weightを設定する
+	 * @param weight
+	 */
+	public void setWeight(BigDecimal weight) {
+		this.weight = weight;
+	}
+
+	/**
+	 * bmiを返す
+	 * @return bmi
+	 */
+	public BigDecimal getBmi() {
+		return bmi;
+	}
+
+	/**
+	 * bmiを設定する
+	 * @param bmi
+	 */
+	public void setBmi(BigDecimal bmi) {
+		this.bmi = bmi;
+	}
+
+	/**
+	 * standardWeightを返す
+	 * @return standardWeight
+	 */
+	public BigDecimal getStandardWeight() {
+		return standardWeight;
+	}
+
+	/**
+	 * standardWeightを設定する
+	 * @param standardWeight
+	 */
+	public void setStandardWeight(BigDecimal standardWeight) {
+		this.standardWeight = standardWeight;
+	}
+
+	/**
+	 * userStatusを返す
+	 * @return userStatus
+	 */
+	public String getUserStatus() {
+		return userStatus;
+	}
+
+	/**
+	 * userStatusを設定する
+	 * @param userStatus
+	 */
+	public void setUserStatus(String userStatus) {
+		this.userStatus = userStatus;
+	}
+
+	/**
+	 * regDateを返す
+	 * @return regDate
+	 */
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	/**
+	 * regDateを設定する
+	 * @param regDate
+	 */
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 
 }

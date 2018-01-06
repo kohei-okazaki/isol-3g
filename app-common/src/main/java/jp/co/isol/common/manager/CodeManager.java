@@ -18,14 +18,11 @@ import org.slf4j.LoggerFactory;
 
 import jp.co.isol.common.dto.CodeDto;
 import jp.co.isol.common.util.StringUtil;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 /**
  * 健康管理_コードマネージャクラス<br>
  *
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CodeManager {
 
 	/** singletonパターン */
@@ -36,6 +33,10 @@ public class CodeManager {
 	private static final String SHEET_NAME = "PARAMETER";
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
+	private CodeManager() {
+
+	}
 
 	/**
 	 * CodeManagerインスタンスを取得する<br>
