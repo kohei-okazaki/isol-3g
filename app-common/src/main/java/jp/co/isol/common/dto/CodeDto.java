@@ -6,18 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * 定数クラスのDto
  *
  */
-@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "PARAMETER")
 public class CodeDto implements Serializable {
 
@@ -32,4 +25,53 @@ public class CodeDto implements Serializable {
 
 	@Column(name = "VALUE", nullable = false)
 	private String value;
+
+	/**
+	 * mainKeyを返す
+	 * @return mainKey
+	 */
+	public String getMainKey() {
+		return mainKey;
+	}
+
+	/**
+	 * mainKeyを設定する
+	 * @param mainKey
+	 */
+	public void setMainKey(String mainKey) {
+		this.mainKey = mainKey;
+	}
+
+	/**
+	 * subKeyを返す
+	 * @return subKey
+	 */
+	public String getSubKey() {
+		return subKey;
+	}
+
+	/**
+	 * subKeyを設定する
+	 * @param subKey
+	 */
+	public void setSubKey(String subKey) {
+		this.subKey = subKey;
+	}
+
+	/**
+	 * valueを返す
+	 * @return value
+	 */
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * valueを設定する
+	 * @param value
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
+
 }

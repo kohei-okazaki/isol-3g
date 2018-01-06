@@ -11,22 +11,14 @@ import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * 健康情報CSVを書きこむクラス<br>
  *
  */
-@NoArgsConstructor
-@AllArgsConstructor
 public class HealthInfoCsvWriter extends BaseCsvWriter {
 
 	/** 健康情報CSVモデル */
-	@Setter
-	@Getter
 	private HealthInfoCsvModel model;
 
 	/**
@@ -34,6 +26,22 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	 */
 	public HealthInfoCsvWriter(String enclosureChar) {
 		super(enclosureChar);
+	}
+
+	/**
+	 * modelを返す
+	 * @return model
+	 */
+	public HealthInfoCsvModel getModel() {
+		return model;
+	}
+
+	/**
+	 * modelを設定する
+	 * @param model
+	 */
+	public void setModel(HealthInfoCsvModel model) {
+		this.model = model;
 	}
 
 	/**

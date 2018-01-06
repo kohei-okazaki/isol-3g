@@ -42,7 +42,7 @@ import jp.co.isol.manage.web.view.ManageView;
 import jp.co.isol.manage.web.view.PageType;
 
 /**
- * 健康管理_健康情報入力画面コントローラ
+ * 健康管理_健康情報入力画面コントローラ<br>
  *
  */
 @Controller

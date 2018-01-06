@@ -16,20 +16,20 @@ import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.file.excel.model.HealthInfoExcelModel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * 健康情報入力画面Excel生成クラス<br>
  *
  */
-@NoArgsConstructor
-@AllArgsConstructor
 @ExcelSheet("健康情報")
 public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 
 	/** 健康情報クラス */
 	private HealthInfoExcelModel model;
+
+	public HealthInfoExcelBuilder(HealthInfoExcelModel model) {
+		this.model = model;
+	}
 
 	/**
 	 * {@inheritDoc}

@@ -16,20 +16,20 @@ import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.file.excel.model.ReferenceExcelModel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * 結果照会画面Excel生成クラス<br>
  *
  */
-@NoArgsConstructor
-@AllArgsConstructor
 @ExcelSheet("健康情報")
 public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 
 	/** 結果照会Excelモデルクラスリスト */
 	private List<ReferenceExcelModel> modelList;
+
+	public ResultReferenceExcelBuiler(List<ReferenceExcelModel> modelList) {
+		this.modelList = modelList;
+	}
 
 	/**
 	 * {@inheritDoc}

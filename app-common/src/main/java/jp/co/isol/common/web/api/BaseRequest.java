@@ -10,9 +10,6 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * 健康管理APIの基底リクエストクラス<br>
  *
@@ -20,8 +17,6 @@ import lombok.Setter;
 public abstract class BaseRequest {
 
 	/** リクエストマップ */
-	@Getter
-	@Setter
 	protected Map<BaseRequestKey, Object> requestInfoMap;
 
 	/**

@@ -1,13 +1,9 @@
 package jp.co.isol.common.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 /**
  * メールのUtilクラス
  * インスタンスの生成を制限<br>
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MailUtil {
 
 	/** エンコード */
@@ -28,5 +24,9 @@ public class MailUtil {
 	public static final String SMTP_SOCKET_FALLBACK = "mail.smtp.socketFactory.fallback";
 
 	public static final String SMTP_SOCKET_PORT = "mail.smtp.socketFactory.port";
+
+	private MailUtil() {
+
+	}
 
 }

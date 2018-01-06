@@ -8,19 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * メール情報Dto<br>
  * ユーザのメール情報を持つDtoクラス<br>
  *
  */
-@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "MAIL_INFO")
 public class MailInfoDto implements Serializable {
 
@@ -47,5 +40,85 @@ public class MailInfoDto implements Serializable {
 	/** 登録日時 */
 	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
+
+	/**
+	 * userIdを返す
+	 * @return userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 * @param userId
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * mailAddressを返す
+	 * @return mailAddress
+	 */
+	public String getMailAddress() {
+		return mailAddress;
+	}
+
+	/**
+	 * mailAddressを設定する
+	 * @param mailAddress
+	 */
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
+	}
+
+	/**
+	 * mailPasswordを返す
+	 * @return mailPassword
+	 */
+	public String getMailPassword() {
+		return mailPassword;
+	}
+
+	/**
+	 * mailPasswordを設定する
+	 * @param mailPassword
+	 */
+	public void setMailPassword(String mailPassword) {
+		this.mailPassword = mailPassword;
+	}
+
+	/**
+	 * updateDateを返す
+	 * @return updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * updateDateを設定する
+	 * @param updateDate
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	/**
+	 * regDateを返す
+	 * @return regDate
+	 */
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	/**
+	 * regDateを設定する
+	 * @param regDate
+	 */
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 
 }

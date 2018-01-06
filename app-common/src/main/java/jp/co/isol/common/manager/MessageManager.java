@@ -12,14 +12,11 @@ import org.slf4j.LoggerFactory;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.FileUtil;
 import jp.co.isol.common.util.StringUtil;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 /**
  * 健康管理_メッセージマネージャクラス<br>
  *
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MessageManager {
 
 	/** singletonパターン */
@@ -28,6 +25,10 @@ public class MessageManager {
 	private static final String MESSAGE_PROPERTIES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\message.properties";
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
+	private MessageManager() {
+
+	}
 
 	/**
 	 * MessageManagerインスタンスを取得する<br>

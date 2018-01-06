@@ -9,17 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * 健康情報を保持するDto
  */
-@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "HEALTH_INFO")
 public class HealthInfoDto implements Serializable {
 
@@ -58,5 +51,133 @@ public class HealthInfoDto implements Serializable {
 	/** 登録日時 */
 	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
+
+	/**
+	 * dataIdを返す
+	 * @return dataId
+	 */
+	public String getDataId() {
+		return dataId;
+	}
+
+	/**
+	 * dataIdを設定する
+	 * @param dataId
+	 */
+	public void setDataId(String dataId) {
+		this.dataId = dataId;
+	}
+
+	/**
+	 * userIdを返す
+	 * @return userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 * @param userId
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * heightを返す
+	 * @return height
+	 */
+	public BigDecimal getHeight() {
+		return height;
+	}
+
+	/**
+	 * heightを設定する
+	 * @param height
+	 */
+	public void setHeight(BigDecimal height) {
+		this.height = height;
+	}
+
+	/**
+	 * weightを返す
+	 * @return weight
+	 */
+	public BigDecimal getWeight() {
+		return weight;
+	}
+
+	/**
+	 * weightを設定する
+	 * @param weight
+	 */
+	public void setWeight(BigDecimal weight) {
+		this.weight = weight;
+	}
+
+	/**
+	 * bmiを返す
+	 * @return bmi
+	 */
+	public BigDecimal getBmi() {
+		return bmi;
+	}
+
+	/**
+	 * bmiを設定する
+	 * @param bmi
+	 */
+	public void setBmi(BigDecimal bmi) {
+		this.bmi = bmi;
+	}
+
+	/**
+	 * standardWeightを返す
+	 * @return standardWeight
+	 */
+	public BigDecimal getStandardWeight() {
+		return standardWeight;
+	}
+
+	/**
+	 * standardWeightを設定する
+	 * @param standardWeight
+	 */
+	public void setStandardWeight(BigDecimal standardWeight) {
+		this.standardWeight = standardWeight;
+	}
+
+	/**
+	 * userStatusを返す
+	 * @return userStatus
+	 */
+	public String getUserStatus() {
+		return userStatus;
+	}
+
+	/**
+	 * userStatusを設定する
+	 * @param userStatus
+	 */
+	public void setUserStatus(String userStatus) {
+		this.userStatus = userStatus;
+	}
+
+	/**
+	 * regDateを返す
+	 * @return regDate
+	 */
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	/**
+	 * regDateを設定する
+	 * @param regDate
+	 */
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 
 }

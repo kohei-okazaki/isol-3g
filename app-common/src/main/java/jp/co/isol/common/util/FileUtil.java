@@ -2,20 +2,20 @@ package jp.co.isol.common.util;
 
 import java.io.File;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 /**
  * ファイルのUtilクラス<br>
  * インスタンスの生成を制限<br>
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FileUtil {
 
 	/** 改行 */
 	public static final String NEW_LINE = System.getProperty("line.separator");
 	/** ファイルの区切り文字 */
 	public static final String SEPARATOR = System.getProperty("file.separator");
+
+	private FileUtil() {
+
+	}
 
 	/**
 	 * 指定されたパスからファイルを返す<br>

@@ -12,8 +12,6 @@ import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.file.csv.model.ReferenceCsvModel;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * 結果照会CSV書き込みクラス<br>
@@ -21,21 +19,37 @@ import lombok.Setter;
  */
 public class ReferenceCsvWriter extends BaseCsvWriter {
 
-	@Setter
-	@Getter
+	/** モデルリスト */
 	private List<ReferenceCsvModel> modelList;
 
 	/**
-	 * {@inheritDoc}
+	 * コンストラクタ<br>
 	 */
 	public ReferenceCsvWriter() {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * コンストラクタ<br>
+	 * @param enclosureChar
 	 */
 	public ReferenceCsvWriter(String enclosureChar) {
 		super(enclosureChar);
+	}
+
+	/**
+	 * modelListを返す
+	 * @return modelList
+	 */
+	public List<ReferenceCsvModel> getModelList() {
+		return modelList;
+	}
+
+	/**
+	 * modelListを設定する
+	 * @param modelList
+	 */
+	public void setModelList(List<ReferenceCsvModel> modelList) {
+		this.modelList = modelList;
 	}
 
 	/**

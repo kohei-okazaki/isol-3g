@@ -11,15 +11,16 @@ import org.apache.poi.ss.usermodel.Sheet;
 
 import jp.co.isol.common.file.excel.annotation.ExcelHeader;
 import jp.co.isol.common.file.excel.annotation.ExcelSheet;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 /**
  * Excel操作のUtilクラス<br>
  * インスタンスの生成を制限<br>
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ExcelUtil {
+
+	private ExcelUtil() {
+
+	}
 
 	/**
 	 * セルを返す<br>

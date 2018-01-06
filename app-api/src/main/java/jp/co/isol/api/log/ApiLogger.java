@@ -3,14 +3,11 @@ package jp.co.isol.api.log;
 import org.slf4j.Logger;
 
 import jp.co.isol.common.log.BaseLogger;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 /**
  * APIロガークラス<br>
  *
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiLogger extends BaseLogger {
 
 	/** ロガー */
