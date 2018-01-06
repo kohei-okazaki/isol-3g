@@ -99,7 +99,7 @@ public class ResultReferenceController {
 	 * @throws IOException
 	 */
 	@GetMapping
-	@RequestMapping(value = "/reference-csvDoowload")
+	@RequestMapping(value = "/result-reference-csvDownload")
 	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
 		ManageLogger logger;
