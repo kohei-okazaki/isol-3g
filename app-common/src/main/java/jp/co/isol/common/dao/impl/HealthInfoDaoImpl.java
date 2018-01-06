@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.manager.CodeManager;
@@ -144,7 +146,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void registHealthInfo(HealthInfoDto dto) {
+	public void registHealthInfo(HealthInfoDto dto) throws DuplicateKeyException {
 		// TODO 登録処理を追加すること
 //		try (FileInputStream in = new FileInputStream(RESOURCES)) {
 //			Workbook workbook = WorkbookFactory.create(in);

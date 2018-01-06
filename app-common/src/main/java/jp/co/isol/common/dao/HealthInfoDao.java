@@ -3,6 +3,8 @@ package jp.co.isol.common.dao;
 import java.text.ParseException;
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import jp.co.isol.common.dto.HealthInfoDto;
 
 /**
@@ -31,6 +33,6 @@ public interface HealthInfoDao {
 	 * 健康情報を登録する<br>
 	 * @param dto
 	 */
-	public void registHealthInfo(HealthInfoDto dto);
+	public void registHealthInfo(HealthInfoDto dto) throws DuplicateKeyException;
 
 }

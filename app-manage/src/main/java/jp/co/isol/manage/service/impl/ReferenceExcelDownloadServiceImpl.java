@@ -15,7 +15,7 @@ import jp.co.isol.manage.file.excel.model.ReferenceExcelModel;
 import jp.co.isol.manage.service.ExcelDownloadService;
 
 /**
- * 結果照会画面エクエルダウンロードサービス実装クラス
+ * 結果照会画面Excelダウンロードサービス実装クラス
  *
  */
 @Service(value = "referenceExcel")

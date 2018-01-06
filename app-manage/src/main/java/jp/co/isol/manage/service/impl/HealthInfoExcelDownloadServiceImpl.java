@@ -11,7 +11,7 @@ import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.ExcelDownloadService;
 
 /**
- * 健康情報エクエルダウンロードサービス実装クラス
+ * 健康情報Excelダウンロードサービス実装クラス
  *
  */
 @Service(value = "healthInfoExcel")
