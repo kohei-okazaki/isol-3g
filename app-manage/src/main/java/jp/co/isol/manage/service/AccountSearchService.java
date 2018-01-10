@@ -3,7 +3,7 @@ package jp.co.isol.manage.service;
 import jp.co.isol.common.dto.AccountDto;
 
 /**
- * アカウント検索サービスIF<br>
+ * アカウント検索サービスインターフェース<br>
  *
  */
 public interface AccountSearchService {
