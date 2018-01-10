@@ -5,6 +5,10 @@ import org.springframework.validation.Errors;
 import jp.co.isol.common.web.mvc.BaseValidator;
 import jp.co.isol.manage.form.AccountSettingForm;
 
+/**
+ * アカウント設定Validateクラス<br>
+ *
+ */
 public class AccountSettingValidator extends BaseValidator<AccountSettingForm> {
 
 	/**
@@ -20,7 +24,8 @@ public class AccountSettingValidator extends BaseValidator<AccountSettingForm> {
 	 */
 	@Override
 	public void validate(Object target, Errors errors) {
-		// TODO 自動生成されたメソッド・スタブ
+
+		AccountSettingForm form = (AccountSettingForm) target;
 
 	}
 
