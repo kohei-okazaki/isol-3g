@@ -33,7 +33,7 @@ public class ApiAspect {
 	 */
 	@After("execution(* *..*ServiceImpl.execute(..))*")
 	public void outEndServiceLog(JoinPoint joinpoint) {
-		System.out.println("■■■■■■■■■■■■■■■サービスクラス終了■■■■■■■■■■■■■■■" + joinpoint.toString());
+		System.out.println("■■■■■■■■■■■■■■■■■サービスクラス終了■■■■■■■■■■■■■■■" + joinpoint.toString());
 	}
 
 	/**
