@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.LoginForm;
-import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.LoginService;
 import jp.co.isol.manage.validator.LoginValidator;
 import jp.co.isol.manage.web.session.ManageSessionKey;
@@ -57,15 +56,12 @@ public class LoginController {
 	@RequestMapping("/login.html")
 	public String input(Model model, HttpServletRequest request) {
 
-		ManageLogger logger;
 		ManageSessionManager sessionManager;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
 			sessionManager = context.getBean(ManageSessionManager.class);
 		}
 
 		sessionManager.removeKey(request.getSession(), ManageSessionKey.USER_ID);
-		logger.info(this.getClass(), "# login start");
 
 		return ManageView.LOGIN.getName();
 	}
@@ -94,12 +90,6 @@ public class LoginController {
 		}
 		// セッションにユーザIDを登録する。
 		this.loginService.registSession(request.getSession(), loginForm.getUserId());
-
-		ManageLogger logger;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
-		}
-		logger.info(this.getClass(), "# menu start");
 
 		return ManageView.MENU.getName();
 

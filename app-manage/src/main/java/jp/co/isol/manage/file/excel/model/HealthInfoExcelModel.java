@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import jp.co.isol.common.file.excel.annotation.ExcelHeader;
 import jp.co.isol.common.file.excel.annotation.ExcelModel;
+import jp.co.isol.common.file.excel.model.BaseExcelModel;
 
 /**
  * 健康情報Excel出力モデルクラス<br>
@@ -11,17 +12,14 @@ import jp.co.isol.common.file.excel.annotation.ExcelModel;
  */
 @ExcelModel
 @ExcelHeader(names = {"身長", "体重", "BMI", "標準体重"})
-public class HealthInfoExcelModel {
+public class HealthInfoExcelModel implements BaseExcelModel {
 
 	/** 身長 */
 	private BigDecimal height;
-
 	/** 体重 */
 	private BigDecimal weight;
-
 	/** BMI */
 	private BigDecimal bmi;
-
 	/** 標準体重 */
 	private BigDecimal standardWeight;
 

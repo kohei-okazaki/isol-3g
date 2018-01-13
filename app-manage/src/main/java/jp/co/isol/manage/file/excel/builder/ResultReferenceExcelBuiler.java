@@ -27,6 +27,10 @@ public class ResultReferenceExcelBuiler extends BaseExcelBuilder {
 	/** 結果照会Excelモデルクラスリスト */
 	private List<ReferenceExcelModel> modelList;
 
+	/**
+	 * コンストラクタ<br>
+	 * @param modelList
+	 */
 	public ResultReferenceExcelBuiler(List<ReferenceExcelModel> modelList) {
 		this.modelList = modelList;
 	}

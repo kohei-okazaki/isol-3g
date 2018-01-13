@@ -12,6 +12,13 @@ public abstract class BaseAppException extends Exception {
 	protected String errorMessage;
 
 	/**
+	 * コンストラクタ<br>
+	 */
+	public BaseAppException() {
+
+	}
+
+	/**
 	 * 例外コンストラクタ<br>
 	 * @param errorCode
 	 * @param errorMessage

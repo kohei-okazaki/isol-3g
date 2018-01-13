@@ -88,13 +88,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	@RequestMapping(value = "/healthInfo-input.html")
 	public String input(Model model, HttpServletRequest request) throws HealthInfoException {
 
-		ManageLogger logger;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
-		}
-		logger.info(this.getClass(), "#input start");
-
-		model.addAttribute("page", PageType.INPUT.getValue());
+		model.addAttribute("page", PageType.INPUT.getName());
 
 		return ManageView.HEALTH_INFO.getName();
 	}
@@ -108,20 +102,14 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) throws HealthInfoException {
 
 		if (result.hasErrors()) {
-			model.addAttribute("page", PageType.INPUT.getValue());
+			model.addAttribute("page", PageType.INPUT.getName());
 			return ManageView.HEALTH_INFO.getName();
 		}
-
-		ManageLogger logger;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
-		}
-		logger.info(this.getClass(), "# confirm start");
 
 		// 入力情報を設定
 		model.addAttribute("form", form);
 
-		model.addAttribute("page", PageType.CONFIRM.getValue());
+		model.addAttribute("page", PageType.CONFIRM.getName());
 
 		return ManageView.HEALTH_INFO.getName();
 	}
@@ -134,13 +122,10 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	@RequestMapping(value = "/healthInfo-complete.html")
 	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws HealthInfoException {
 
-		ManageLogger logger;
 		ManageSessionManager manager;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
 			manager = context.getBean(ManageSessionManager.class);
 		}
-		logger.info(this.getClass(), "# complete start");
 
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
@@ -166,7 +151,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
 		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastDto));
 
-		model.addAttribute("page", PageType.COMPLETE.getValue());
+		model.addAttribute("page", PageType.COMPLETE.getName());
 
 		return ManageView.HEALTH_INFO.getName();
 	}
@@ -232,7 +217,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		this.mailService.sendMail(form);
 
-		model.addAttribute("page", PageType.COMPLETE.getValue());
+		model.addAttribute("page", PageType.COMPLETE.getName());
 
 		return ManageView.MENU.getName();
 	}

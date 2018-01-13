@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.api.exception.HealthInfoException;
-import jp.co.isol.api.log.ApiLoggerFactory;
 import jp.co.isol.api.request.HealthInfoRequest;
 import jp.co.isol.api.request.check.HealthInfoCheck;
 import jp.co.isol.api.request.key.HealthInfoRequestKey;
@@ -40,8 +39,6 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	@Override
 	public HealthInfoResponse execute(HealthInfoRequest request) {
-
-		ApiLoggerFactory.getLogger(HealthInfoServiceImpl.class).info(this.getClass(), "executeメソッド実行");
 
 		// リクエスト情報をDtoにつめる
 		HealthInfoDto dto = toHealthInfoDto(request);

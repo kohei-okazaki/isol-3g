@@ -7,6 +7,13 @@ package jp.co.isol.common.exception;
 public abstract class BaseMvcException extends BaseAppException {
 
 	/**
+	 * コンストラクタ<br>
+	 */
+	public BaseMvcException() {
+		super();
+	}
+
+	/**
 	 * 例外コンストラクタ<br>
 	 * @param errorCode エラーコード
 	 * @param errorMessage エラーメッセージ
