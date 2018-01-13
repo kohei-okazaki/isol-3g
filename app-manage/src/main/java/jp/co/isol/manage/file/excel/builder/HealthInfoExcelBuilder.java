@@ -27,6 +27,10 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	/** 健康情報クラス */
 	private HealthInfoExcelModel model;
 
+	/**
+	 * コンストラクタ<br>
+	 * @param model
+	 */
 	public HealthInfoExcelBuilder(HealthInfoExcelModel model) {
 		this.model = model;
 	}

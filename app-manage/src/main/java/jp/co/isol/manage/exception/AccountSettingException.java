@@ -11,6 +11,13 @@ public class AccountSettingException extends BaseMvcException {
 
 	/**
 	 * コンストラクタ<br>
+	 */
+	public AccountSettingException() {
+		super();
+	}
+
+	/**
+	 * コンストラクタ<br>
 	 * @param errorCode
 	 * @param errorMessage
 	 */

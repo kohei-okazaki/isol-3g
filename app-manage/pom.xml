@@ -18,8 +18,8 @@
 		<org.aspectj-version>1.8.13</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 		<poi-version>3.17</poi-version>
-		<jackson-version>2.9.2</jackson-version>
-		<lombok-version>1.16.18</lombok-version>
+		<jackson-version>2.9.3</jackson-version>
+		<lombok-version>1.16.20</lombok-version>
 		<org.thymeleaf-version>3.0.2.RELEASE</org.thymeleaf-version>
 	</properties>
 
@@ -49,16 +49,19 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 
@@ -108,7 +111,7 @@
 		</dependency>
 
 		<!-- lombok -->
-		<!-- <dependency>
+<!-- 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${lombok-version}</version>
@@ -153,6 +156,11 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
 

@@ -20,14 +20,14 @@ public enum PageType {
 	/** 完了 */
 	COMPLETE(CodeManager.getInstance().getValue(MainKey.PAGE_VIEW, SubKey.COMPLETE));
 
-	private String value;
+	private String name;
 
-	private PageType(String value) {
-		this.value = value;
+	private PageType(String name) {
+		this.name = name;
 	}
 
-	public String getValue() {
-		return this.value;
+	public String getName() {
+		return this.name;
 	}
 
 }

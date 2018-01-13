@@ -19,7 +19,6 @@ import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.AccountSettingException;
 import jp.co.isol.manage.form.AccountSettingForm;
-import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.AccountSettingService;
 import jp.co.isol.manage.validator.AccountSettingValidator;
@@ -60,21 +59,17 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@RequestMapping(value = "/account-setting-input.html")
 	public String input(Model model, HttpServletRequest request) throws AccountSettingException {
 
-		ManageLogger logger;
 		ManageSessionManager sessionManager;
-
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
 			sessionManager = context.getBean(ManageSessionManager.class);
 		}
-		logger.info(this.getClass(), "#accountSetttingInput start");
 
 		// セッションからユーザIDを取得
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		model.addAttribute("dto", this.accountSearchService.findAccountByUserId(userId));
 
-		model.addAttribute("page", PageType.INPUT.getValue());
+		model.addAttribute("page", PageType.INPUT.getName());
 
 		return ManageView.ACCOUNT_SETTING.getName();
 	}
@@ -89,19 +84,19 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	public String confirm(Model model, @Valid AccountSettingForm form, BindingResult result) throws AccountSettingException {
 
 		if (result.hasErrors()) {
-			model.addAttribute("page", PageType.INPUT.getValue());
+			model.addAttribute("page", PageType.INPUT.getName());
 			return ManageView.ACCOUNT_SETTING.getName();
 		}
 
 		if (this.accountSettingService.invalidForm(form)) {
 			// 入力情報が不正の場合
-			model.addAttribute("page", PageType.INPUT.getValue());
+			model.addAttribute("page", PageType.INPUT.getName());
 			model.addAttribute("errorMessage", "アカウント設定の変更情報が不正です");
 
 			return ManageView.ACCOUNT_SETTING.getName();
 		}
 		model.addAttribute("form", form);
-		model.addAttribute("page", PageType.CONFIRM.getValue());
+		model.addAttribute("page", PageType.CONFIRM.getName());
 
 		return ManageView.ACCOUNT_SETTING.getName();
 	}
@@ -122,7 +117,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 		// アカウントを更新する
 		this.accountSettingService.updateAccount(form);
 
-		model.addAttribute("page", PageType.COMPLETE.getValue());
+		model.addAttribute("page", PageType.COMPLETE.getName());
 
 		return ManageView.ACCOUNT_SETTING.getName();
 	}

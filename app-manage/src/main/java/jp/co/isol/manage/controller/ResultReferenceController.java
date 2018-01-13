@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dto.HealthInfoDto;
-import jp.co.isol.manage.config.ManageConfig;
-import jp.co.isol.manage.log.ManageLogger;
 import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
@@ -59,12 +55,6 @@ public class ResultReferenceController {
 	@RequestMapping(value = "/result-reference.html")
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
-		ManageLogger logger;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
-		}
-		logger.info(this.getClass(), "# resultReference start");
-
 		// ログイン中のユーザの全レコードを検索する
 		model.addAttribute("resultList", this.healthInfoSearchService.findHealthInfoByUserId(userId));
 
@@ -81,12 +71,6 @@ public class ResultReferenceController {
 	@RequestMapping(value = "/result-reference-excelDownload.html")
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
-		ManageLogger logger;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
-		}
-		logger.info(this.getClass(), "# excelDownload start");
-
 		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 		return new ModelAndView(this.fileDownloadService.execute(dtoList));
 	}
@@ -102,11 +86,6 @@ public class ResultReferenceController {
 	@RequestMapping(value = "/result-reference-csvDownload")
 	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
-		ManageLogger logger;
-		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
-			logger = context.getBean(ManageLogger.class);
-		}
-		logger.info(this.getClass(), "# csvDownload start");
 		this.csvDownloadService.execute(request, response);
 	}
 

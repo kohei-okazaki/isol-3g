@@ -5,6 +5,7 @@ import java.util.Date;
 
 import jp.co.isol.common.file.csv.annotation.CsvHeader;
 import jp.co.isol.common.file.csv.annotation.CsvModel;
+import jp.co.isol.common.file.csv.model.BaseCsvModel;
 
 /**
  * 健康情報CSV出力モデル<br>
@@ -13,7 +14,7 @@ import jp.co.isol.common.file.csv.annotation.CsvModel;
  */
 @CsvModel
 @CsvHeader(names = { "ユーザID", "身長", "体重", "BMI", "標準体重", "登録日時" })
-public class HealthInfoCsvModel {
+public class HealthInfoCsvModel implements BaseCsvModel {
 
 	/** ユーザID */
 	private String userId;
