@@ -16,13 +16,20 @@ import jp.co.isol.common.util.StringUtil;
  */
 public abstract class BaseCsvWriter {
 
-	/** 囲い文字 */
+	/** 囲い文字(デフォルトでは空文字(未指定)) */
 	protected String enclosureChar = StringUtil.EMPTY;
 
+	/**
+	 * コンストラクタ<br>
+	 */
 	public BaseCsvWriter() {
 
 	}
 
+	/**
+	 * コンストラクタ<br>
+	 * @param enclosureChar
+	 */
 	public BaseCsvWriter(String enclosureChar) {
 		this.enclosureChar = enclosureChar;
 	}
