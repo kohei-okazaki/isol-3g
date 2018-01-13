@@ -37,7 +37,7 @@ public class ManageAspect {
 	}
 
 	/**
-	 * サービスクラスのメソッド実行ログを出力
+	 * サービスクラスのメソッド実行ログを出力<br>
 	 * @param pjp
 	 * @return
 	 * @throws Throwable
