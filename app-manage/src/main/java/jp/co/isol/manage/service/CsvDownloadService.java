@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * CSVダウンロードサービスインターフェイス<br>
+ * CSVダウンロードサービスインターフェース<br>
  *
  */
 public interface CsvDownloadService {

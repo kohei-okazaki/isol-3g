@@ -9,7 +9,7 @@ import jp.co.isol.common.web.mvc.BaseValidator;
 import jp.co.isol.manage.form.LoginForm;
 
 /**
- * LoginフォームのValidator
+ * ログイン画面のValidateクラス<br>
  *
  */
 public class LoginValidator extends BaseValidator<LoginForm> {

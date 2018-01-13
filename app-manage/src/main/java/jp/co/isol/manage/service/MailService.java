@@ -3,7 +3,7 @@ package jp.co.isol.manage.service;
 import jp.co.isol.manage.form.HealthInfoForm;
 
 /**
- * メールサービスIF
+ * メールサービスインターフェース<br>
  *
  */
 public interface MailService {

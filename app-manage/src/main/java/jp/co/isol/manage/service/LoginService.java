@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 import jp.co.isol.manage.form.LoginForm;
 
 /**
- * ログインサービスIF
+ * ログインサービスインターフェース<br>
  */
 public interface LoginService {
 
