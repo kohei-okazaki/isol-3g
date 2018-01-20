@@ -25,12 +25,20 @@ public class AccountDto implements Serializable {
 	private String userId;
 
 	/** パスワード */
-	@Column(name = "PASSWORD", nullable = false)
+	@Column(name = "PASSWORD", nullable = false, length = 16)
 	private String password;
 
 	/** 利用停止フラグ */
 	@Column(name = "INVALID_FLAG", nullable = false, length = 1)
 	private String invalidFlag;
+
+	/** パスワード有効期限 */
+	@Column(name = "PASSWORD_EXPIRE", nullable = false)
+	private Date passwordExpire;
+
+	/** 備考 */
+	@Column(name = "REMARKS", nullable = false)
+	private String remarks;
 
 	/** 更新日時 */
 	@Column(name = "UPDATE_DATE", nullable = true)

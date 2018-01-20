@@ -29,6 +29,10 @@
 			<input type="submit" value="ログイン">
 		</form>
 	</fieldset>
+	<br>
+	<div>
+		<a href="/isol-manage/account-create-input.html">アカウントを作成する</a>
+	</div>
 
 </body>
 </html>
