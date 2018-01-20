@@ -3,7 +3,7 @@ package jp.co.isol.api.log;
 import org.slf4j.LoggerFactory;
 
 /**
- * ロガーファクトリークラス<br>
+ * APIロガーファクトリークラス<br>
  *
  */
 public class ApiLoggerFactory {
