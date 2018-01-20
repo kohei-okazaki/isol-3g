@@ -1,7 +1,9 @@
 package jp.co.isol.manage.validator;
 
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 
+import jp.co.isol.common.exception.ErrorCodeDefine;
 import jp.co.isol.common.web.mvc.BaseValidator;
 import jp.co.isol.manage.form.AccountCreateForm;
 
@@ -27,6 +29,19 @@ public class AccountCreateValidator extends BaseValidator<AccountCreateForm> {
 
 		AccountCreateForm form = (AccountCreateForm) object;
 
+		// 必須チェックを行う
+		checkRequire(errors);
+
+	}
+
+	/**
+	 * 必須チェックを行う<br>
+	 * @param errors
+	 */
+	private void checkRequire(Errors errors) {
+
+		ValidationUtils.rejectIfEmpty(errors, "height", ErrorCodeDefine.REQUIRE.getErrorCode());
+		ValidationUtils.rejectIfEmpty(errors, "weight", ErrorCodeDefine.REQUIRE.getErrorCode());
 	}
 
 }

@@ -24,7 +24,7 @@ import jp.co.isol.manage.web.view.PageType;
  *
  */
 @Controller
-public class AccounCreateController extends BaseWizardController<AccountCreateForm, AccountCreateException>{
+public class AccounCreateController extends BaseWizardController<AccountCreateForm, AccountCreateException> {
 
 	/** アカウント作成サービス */
 	@Autowired
@@ -37,7 +37,6 @@ public class AccounCreateController extends BaseWizardController<AccountCreateFo
 	@InitBinder("AccountCreateForm")
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new AccountCreateValidator());
-
 	}
 
 	/**
