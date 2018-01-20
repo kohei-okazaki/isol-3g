@@ -41,6 +41,8 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 		AccountDto accountDto = new AccountDto();
 		accountDto.setUserId(form.getUserId());
 		accountDto.setPassword(form.getPassword());
+		accountDto.setFileEnclosureCharFlag(form.getFileEnclosureCharFlag());
+		accountDto.setRemarks(form.getRemarks());
 		accountDto.setUpdateDate(new Date());
 		this.accountDao.updateAccount(accountDto);
 	}

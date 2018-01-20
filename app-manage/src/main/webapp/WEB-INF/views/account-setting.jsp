@@ -87,6 +87,23 @@
 					</td>
 				</tr>
 				<tr>
+					<th>
+						<c:out value="ユーザID" />
+					</th>
+					<td>
+						<c:out value="${dto.userId}" />
+						<input type="hidden" name="userId" value="${dto.userId}" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<c:out value="パスワード" />
+					</th>
+					<td>
+						<input type="text" name="password" value="${dto.password}" required="required" />
+					</td>
+				</tr>
+				<tr>
 					<th width="130px">
 						<c:out value="囲い文字を利用" />
 					</th>
@@ -100,20 +117,8 @@
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<c:out value="ユーザID" />
-					</th>
-					<td>
-						<c:out value="${dto.userId}" />
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<c:out value="パスワード" />
-					</th>
-					<td>
-						<input type="text" name="password" value="${dto.password}" required="required" />
-					</td>
+					<th><c:out value="備 考" /></th>
+					<td><textarea rows="10" cols="30" name="remarks" ></textarea></td>
 				</tr>
 			</table>
 			<br><br>
@@ -134,34 +139,65 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th width="130px"><c:out value="削除" /></th>
+					<th width="130px">
+						<c:out value="削除" />
+					</th>
 					<td width="250px">
 						<c:if test="${form.deleteFlag == true}">する</c:if>
 						<c:if test="${form.deleteFlag == false}">しない</c:if>
+						<input type="hidden" name="deleteFlag" value="${form.deleteFlag}" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px"><c:out value="囲い文字利用" /></th>
+					<th>
+						<c:out value="ユーザID" />
+					</th>
+					<td>
+						<c:out value="${form.userId}" />
+						<input type="hidden" name="userId" value="${form.userId}" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<c:out value="パスワード" />
+					</th>
+					<td>
+						<c:out value="${form.password}" />
+						<input type="hidden" name="password" value="${form.password}" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="囲い文字利用" />
+					</th>
 					<td width="250px">
 						<c:if test="${form.fileEnclosureCharFlag == true}">する</c:if>
 						<c:if test="${form.fileEnclosureCharFlag == false}">しない</c:if>
+						<input type="hidden" name="fileEnclosureCharFlag" value="${form.fileEnclosureCharFlag}" />
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="ユーザID" /></th>
-					<td><input type="text" name="userId" value="${form.userId}" disabled="disabled" /></td>
-				</tr>
-				<tr>
-					<th><c:out value="パスワード" /></th>
-					<td><input type="text" name="password" value="${form.password}" disabled="disabled" /></td>
+					<th>
+						<c:out value="備 考" />
+					</th>
+					<td>
+						<c:out value="${form.remarks}" />
+						<input type="hidden" name="remarks" value="${form.remarks}" />
+					</td>
 				</tr>
 			</table>
 			<br><br>
 			<table>
 				<tr>
-					<td><input type="submit" value="確 定" /></td>
-					<td><c:out value="　　" /></td>
-					<td><input type="button" value="戻 る" onclick="history.back()"></td>
+					<td>
+						<input type="submit" value="確 定" />
+					</td>
+					<td>
+						<c:out value="　　" />
+					</td>
+					<td>
+						<input type="button" value="戻 る" onclick="history.back()">
+					</td>
 				</tr>
 			</table>
 		</div>
@@ -187,9 +223,6 @@
 			</table>
 		</div>
 	</c:if>
-
-
-
 
 	<br><br>
 	<hr>
