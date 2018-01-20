@@ -10,7 +10,7 @@ import jp.co.isol.common.exception.BaseMvcException;
 
 /**
  * ウィザード型式の基底コントローラ<br>
- *
+ * 全てのウィザード形式コントローラクラスはこのクラスを継承すること。<br>
  * @param <F> 対象formクラス
  * @param <E> 例外クラス
  */
