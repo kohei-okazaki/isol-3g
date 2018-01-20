@@ -125,11 +125,8 @@
 			<table>
 				<tr>
 					<td align="center">
-						<!-- メニュー画面へ -->
-						<form action="/isol-manage/menu.html" method="get">
-							<div>
-								<input class="menuicon" type="image" src="resources/image/icon_menu.jpg">
-							</div>
+						<form action="/isol-manage/login.html" method="get">
+							<input type="submit" value="ログイン画面へ" />
 						</form>
 					</td>
 				</tr>

@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.AccountSettingException;
@@ -109,7 +112,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@RequestMapping(value = "/account-setting-complete.html")
 	public String complete(Model model, AccountSettingForm form, HttpServletRequest request) throws AccountSettingException {
 
-		if (form.isDeleteFlag()) {
+		if (CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, form.getDeleteFlag())) {
 			// アカウントを削除する場合
 			this.accountSettingService.deleteAccount(form);
 		}

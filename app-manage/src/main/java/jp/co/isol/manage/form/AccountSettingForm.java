@@ -17,7 +17,13 @@ public class AccountSettingForm extends BaseForm implements Serializable {
 	private String password;
 
 	/** 削除フラグ */
-	private boolean deleteFlag;
+	private String deleteFlag;
+
+	/** ファイル区切り文字利用フラグ */
+	private String fileEnclosureCharFlag;
+
+	/** 備考 */
+	private String remarks;
 
 	/**
 	 * userIdを返す
@@ -55,7 +61,7 @@ public class AccountSettingForm extends BaseForm implements Serializable {
 	 * deleteFlagを返す
 	 * @return deleteFlag
 	 */
-	public boolean isDeleteFlag() {
+	public String getDeleteFlag() {
 		return deleteFlag;
 	}
 
@@ -63,10 +69,40 @@ public class AccountSettingForm extends BaseForm implements Serializable {
 	 * deleteFlagを設定する
 	 * @param deleteFlag
 	 */
-	public void setDeleteFlag(boolean deleteFlag) {
+	public void setDeleteFlag(String deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
 
+	/**
+	 * fileEnclosureCharFlagを返す
+	 * @return fileEnclosureCharFlag
+	 */
+	public String getFileEnclosureCharFlag() {
+		return fileEnclosureCharFlag;
+	}
 
+	/**
+	 * fileEnclosureCharFlagを設定する
+	 * @param fileEnclosureCharFlag
+	 */
+	public void setFileEnclosureCharFlag(String fileEnclosureCharFlag) {
+		this.fileEnclosureCharFlag = fileEnclosureCharFlag;
+	}
+
+	/**
+	 * remarksを返す
+	 * @return remarks
+	 */
+	public String getRemarks() {
+		return remarks;
+	}
+
+	/**
+	 * remarksを設定する
+	 * @param remarks
+	 */
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 
 }

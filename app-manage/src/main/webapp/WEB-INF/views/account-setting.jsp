@@ -77,10 +77,21 @@
 					<th width="130px"><c:out value="削除" /></th>
 					<td width="250px">
 						<div class="radio">
-							<input type="radio" name="deleteFlag" id="true" value="1" checked="checked">
-							<label for="true">する</label>
-							<input type="radio" name="deleteFlag" id="false" value="0">
-							<label for="false" class="switch-off">しない</label>
+							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1" checked="checked">
+							<label for="deleteFlagTrue">する</label>
+							<input type="radio" name="deleteFlag" id="deleteFlagFalse" value="0">
+							<label for="deleteFlagFalse" class="switch-off">しない</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th width="130px"><c:out value="囲い文字利用" /></th>
+					<td width="250px">
+						<div class="radio">
+							<input type="radio" name="fileEnclosureCharFlag" id="fileEnclosureCharFlagTrue" value="1" checked="checked">
+							<label for="fileEnclosureCharFlagTrue">する</label>
+							<input type="radio" name="fileEnclosureCharFlag" id="fileEnclosureCharFlagFalse" value="0">
+							<label for="fileEnclosureCharFlagFalse" class="switch-off">しない</label>
 						</div>
 					</td>
 				</tr>

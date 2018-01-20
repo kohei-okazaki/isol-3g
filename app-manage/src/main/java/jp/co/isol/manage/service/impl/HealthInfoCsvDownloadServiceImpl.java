@@ -12,11 +12,16 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.common.dto.AccountDto;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
 import jp.co.isol.manage.file.csv.writer.HealthInfoCsvWriter;
+import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 import jp.co.isol.manage.web.session.ManageSessionKey;
@@ -32,6 +37,9 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 	/** 健康情報検索サービス */
 	@Autowired
 	private HealthInfoSearchService healthInfoSearchService;
+	/** アカウント検索サービス */
+	@Autowired
+	private AccountSearchService accountSearchService;
 
 	/**
 	 * {@inheritDoc}
@@ -51,8 +59,11 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
 		HealthInfoCsvModel model = toModel(dto);
 
+		AccountDto accountDto = accountSearchService.findAccountByUserId(userId);
+		boolean enclosureFlag = CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, accountDto.getFileEnclosureCharFlag());
+
 		// CSVに書き込む
-		HealthInfoCsvWriter writer = new HealthInfoCsvWriter(CsvUtil.DOBBLE_QUOTE);
+		HealthInfoCsvWriter writer = enclosureFlag ? new HealthInfoCsvWriter(CsvUtil.DOBBLE_QUOTE) : new HealthInfoCsvWriter();
 		writer.setModel(model);
 		writer.execute(response);
 

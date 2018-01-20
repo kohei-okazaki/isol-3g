@@ -20,6 +20,9 @@ public enum SubKey {
 	COMPLETE,
 
 	HEALTH_INFO,
-	REFERNCE_RESULT;
+	REFERNCE_RESULT,
+
+	TRUE,
+	FALSE;
 
 }
