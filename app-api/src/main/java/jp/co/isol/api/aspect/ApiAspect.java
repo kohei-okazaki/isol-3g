@@ -20,20 +20,20 @@ public class ApiAspect {
 
 	/**
 	 * 開始ログ出力する<br>
-	 * @param joinpoint
+	 * @param jp
 	 */
 	@Before("execution(* *..*ServiceImpl.execute(..))*")
-	public void outStartServiceLog(JoinPoint joinpoint) {
-		System.out.println("■■■■■■■■■■■■■■■■■サービスクラス開始■■■■■■■■■■■■■■■" + joinpoint.toString());
+	public void outStartServiceLog(JoinPoint jp) {
+		System.out.println("■■■■■■■■■■■■■■■■■サービスクラス開始■■■■■■■■■■■■■■■" + jp.toString());
 	}
 
 	/**
 	 * 終了ログ出力する<br>
-	 * @param joinpoint
+	 * @param jp
 	 */
 	@After("execution(* *..*ServiceImpl.execute(..))*")
-	public void outEndServiceLog(JoinPoint joinpoint) {
-		System.out.println("■■■■■■■■■■■■■■■■■サービスクラス終了■■■■■■■■■■■■■■■" + joinpoint.toString());
+	public void outEndServiceLog(JoinPoint jp) {
+		System.out.println("■■■■■■■■■■■■■■■■■サービスクラス終了■■■■■■■■■■■■■■■" + jp.toString());
 	}
 
 	/**
