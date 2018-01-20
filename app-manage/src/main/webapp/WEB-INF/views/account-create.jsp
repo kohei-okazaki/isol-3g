@@ -110,19 +110,24 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th width="130px"><c:out value="削除" /></th>
+					<th width="130px">
+						<c:out value="パスワード" />
+					</th>
 					<td width="250px">
-						<c:if test="${form.deleteFlag == true}">する</c:if>
-						<c:if test="${form.deleteFlag == false}">しない</c:if>
+						<input type="text" name="password" maxlength="16" required="required" value="${form.password}" disabled="disabled" />
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="ユーザID" /></th>
-					<td><input type="text" name="userId" value="${form.userId}" disabled="disabled" /></td>
+					<th>
+						<c:out value="確認用 パスワード" />
+					</th>
+					<td width="250px">
+						<input type="text" name="confirmPassword" maxlength="16" required="required" value="${form.confirmPassword}" disabled="disabled" />
+					</td>
 				</tr>
 				<tr>
-					<th><c:out value="パスワード" /></th>
-					<td><input type="text" name="password" value="${form.password}" disabled="disabled" /></td>
+					<th><c:out value="備 考" /></th>
+					<td><textarea rows="10" cols="30" name="remarks" value="${form.remarks}"></textarea></td>
 				</tr>
 			</table>
 			<br><br>
