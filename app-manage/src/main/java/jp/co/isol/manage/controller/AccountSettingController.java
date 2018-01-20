@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.isol.common.dto.AccountDto;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
@@ -70,7 +71,8 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 		// セッションからユーザIDを取得
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		model.addAttribute("dto", this.accountSearchService.findAccountByUserId(userId));
+		AccountDto dto = this.accountSearchService.findAccountByUserId(userId);
+		model.addAttribute("dto", dto);
 
 		model.addAttribute("page", PageType.INPUT.getName());
 

@@ -74,7 +74,9 @@
 			<table border="1">
 
 				<tr>
-					<th width="130px"><c:out value="削除" /></th>
+					<th width="130px">
+						<c:out value="削除" />
+					</th>
 					<td width="250px">
 						<div class="radio">
 							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1" checked="checked">
@@ -85,7 +87,9 @@
 					</td>
 				</tr>
 				<tr>
-					<th width="130px"><c:out value="囲い文字利用" /></th>
+					<th width="130px">
+						<c:out value="囲い文字を利用" />
+					</th>
 					<td width="250px">
 						<div class="radio">
 							<input type="radio" name="fileEnclosureCharFlag" id="fileEnclosureCharFlagTrue" value="1" checked="checked">
@@ -96,18 +100,28 @@
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="ユーザID" /></th>
-					<td><input type="text" name="userId" value="${dto.userId}" disabled="disabled" /></td>
+					<th>
+						<c:out value="ユーザID" />
+					</th>
+					<td>
+						<c:out value="${dto.userId}" />
+					</td>
 				</tr>
 				<tr>
-					<th><c:out value="パスワード" /></th>
-					<td><input type="text" name="password" value="${dto.password}" required="required" /></td>
+					<th>
+						<c:out value="パスワード" />
+					</th>
+					<td>
+						<input type="text" name="password" value="${dto.password}" required="required" />
+					</td>
 				</tr>
 			</table>
 			<br><br>
 			<table>
 				<tr>
-					<td><input type="submit" value="確 認" /></td>
+					<td>
+						<input type="submit" value="確 認" />
+					</td>
 				</tr>
 			</table>
 		</div>
@@ -124,6 +138,13 @@
 					<td width="250px">
 						<c:if test="${form.deleteFlag == true}">する</c:if>
 						<c:if test="${form.deleteFlag == false}">しない</c:if>
+					</td>
+				</tr>
+				<tr>
+					<th width="130px"><c:out value="囲い文字利用" /></th>
+					<td width="250px">
+						<c:if test="${form.fileEnclosureCharFlag == true}">する</c:if>
+						<c:if test="${form.fileEnclosureCharFlag == false}">しない</c:if>
 					</td>
 				</tr>
 				<tr>
