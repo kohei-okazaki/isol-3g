@@ -26,6 +26,13 @@ public class AccountSettingForm extends BaseForm implements Serializable {
 	private String mailPassword;
 
 	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public AccountSettingForm() {
+
+	}
+
+	/**
 	 * userIdを返す
 	 * @return userId
 	 */

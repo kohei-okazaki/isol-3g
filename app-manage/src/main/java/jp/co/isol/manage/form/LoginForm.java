@@ -16,6 +16,13 @@ public class LoginForm extends BaseForm implements Serializable {
 	private String password;
 
 	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public LoginForm() {
+
+	}
+
+	/**
 	 * userIdを返す
 	 * @return userId
 	 */

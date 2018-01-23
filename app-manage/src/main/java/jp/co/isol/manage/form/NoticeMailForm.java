@@ -26,6 +26,13 @@ public class NoticeMailForm extends BaseForm implements Serializable {
 	private String replyTo;
 
 	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public NoticeMailForm() {
+
+	}
+
+	/**
 	 * fromを返す
 	 * @return from
 	 */

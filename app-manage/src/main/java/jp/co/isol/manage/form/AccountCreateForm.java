@@ -18,6 +18,13 @@ public class AccountCreateForm extends BaseForm implements Serializable {
 	private String remarks;
 
 	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public AccountCreateForm() {
+
+	}
+
+	/**
 	 * passwordを返す
 	 * @return password
 	 */

@@ -7,4 +7,11 @@ package jp.co.isol.common.web.mvc;
  */
 public abstract class BaseForm {
 
+	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public BaseForm() {
+
+	}
+
 }

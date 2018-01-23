@@ -23,6 +23,13 @@ public class HealthInfoForm extends BaseForm implements Serializable {
 	private BigDecimal standardWeight;
 
 	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public HealthInfoForm() {
+
+	}
+
+	/**
 	 * userIdを返す
 	 * @return userId
 	 */
