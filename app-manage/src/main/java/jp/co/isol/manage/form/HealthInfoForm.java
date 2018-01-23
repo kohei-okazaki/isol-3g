@@ -13,16 +13,12 @@ public class HealthInfoForm extends BaseForm implements Serializable {
 
 	/** ユーザID */
 	private String userId;
-
 	/** 身長 */
 	private BigDecimal height;
-
 	/** 体重 */
 	private BigDecimal weight;
-
 	/** BMI */
 	private BigDecimal bmi;
-
 	/** 標準体重 */
 	private BigDecimal standardWeight;
 

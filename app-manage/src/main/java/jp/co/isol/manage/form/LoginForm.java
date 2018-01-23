@@ -12,7 +12,6 @@ public class LoginForm extends BaseForm implements Serializable {
 
 	/** ユーザID */
 	private String userId;
-
 	/** パスワード */
 	private String password;
 

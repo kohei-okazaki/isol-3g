@@ -12,16 +12,12 @@ public class AccountSettingForm extends BaseForm implements Serializable {
 
 	/** ユーザID */
 	private String userId;
-
 	/** パスワード */
 	private String password;
-
 	/** 削除フラグ */
 	private String deleteFlag;
-
-	/** ファイル区切り文字利用フラグ */
+	/** ファイル囲い文字利用フラグ */
 	private String fileEnclosureCharFlag;
-
 	/** 備考 */
 	private String remarks;
 

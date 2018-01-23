@@ -1,12 +1,14 @@
 package jp.co.isol.manage.form;
 
+import java.io.Serializable;
+
 import jp.co.isol.common.web.mvc.BaseForm;
 
 /**
  * アカウント作成Form
  *
  */
-public class AccountCreateForm extends BaseForm {
+public class AccountCreateForm extends BaseForm implements Serializable {
 
 	/** パスワード */
 	private String password;
