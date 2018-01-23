@@ -1,6 +1,7 @@
 package jp.co.isol.manage.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,7 +56,7 @@ public class AccounCreateController extends BaseWizardController<AccountCreateFo
 	 */
 	@Override
 	@PostMapping(value = "/account-create-confirm.html")
-	public String confirm(Model model, AccountCreateForm form, BindingResult result) throws AccountCreateException {
+	public String confirm(Model model, @Valid AccountCreateForm form, BindingResult result) throws AccountCreateException {
 
 		if (result.hasErrors()) {
 			// validatationエラーの場合

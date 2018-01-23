@@ -91,8 +91,8 @@
 						<c:out value="ユーザID" />
 					</th>
 					<td>
-						<c:out value="${dto.userId}" />
-						<input type="hidden" name="userId" value="${dto.userId}" />
+						<c:out value="${accountDto.userId}" />
+						<input type="hidden" name="userId" value="${accountDto.userId}" />
 					</td>
 				</tr>
 				<tr>
@@ -100,7 +100,7 @@
 						<c:out value="パスワード" />
 					</th>
 					<td>
-						<input type="text" name="password" value="${dto.password}" required="required" />
+						<input type="text" name="password" value="${accountDto.password}" required="required" />
 					</td>
 				</tr>
 				<tr>
@@ -114,6 +114,22 @@
 							<input type="radio" name="fileEnclosureCharFlag" id="fileEnclosureCharFlagFalse" value="0">
 							<label for="fileEnclosureCharFlagFalse" class="switch-off">しない</label>
 						</div>
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールアドレス" />
+					</th>
+					<td>
+						<input type="email" name="mailAddress" value="${mailInfoDto.mailAddress}" required="required" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールパスワード" />
+					</th>
+					<td>
+						<input type="text" name="mailPassword" value="${mailInfoDto.mailPassword}" required="required" />
 					</td>
 				</tr>
 				<tr>
@@ -174,6 +190,24 @@
 						<c:if test="${form.fileEnclosureCharFlag == true}">する</c:if>
 						<c:if test="${form.fileEnclosureCharFlag == false}">しない</c:if>
 						<input type="hidden" name="fileEnclosureCharFlag" value="${form.fileEnclosureCharFlag}" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールアドレス" />
+					</th>
+					<td>
+						<c:out value="${form.mailAddress}" />
+						<input type="hidden" name="mailAddress" value="${form.mailAddress}" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールパスワード" />
+					</th>
+					<td>
+						<c:out value="${form.mailPassword}" />
+						<input type="hidden" name="mailPassword" value="${form.mailPassword}" />
 					</td>
 				</tr>
 				<tr>
