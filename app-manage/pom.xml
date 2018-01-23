@@ -20,7 +20,7 @@
 		<poi-version>3.17</poi-version>
 		<jackson-version>2.9.3</jackson-version>
 		<lombok-version>1.16.20</lombok-version>
-		<org.thymeleaf-version>3.0.9.RELEASE</org.thymeleaf-version>
+		<org.thymeleaf-version>3.0.2.RELEASE</org.thymeleaf-version>
 	</properties>
 
 	<dependencies>
