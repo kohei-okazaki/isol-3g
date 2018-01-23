@@ -22,6 +22,12 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	private HealthInfoCsvModel model;
 
 	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public HealthInfoCsvWriter() {
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	public HealthInfoCsvWriter(String enclosureChar) {

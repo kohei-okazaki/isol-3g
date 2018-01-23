@@ -54,7 +54,6 @@
 				<li><a href="#">アカウント</a>
 					<ul>
 						<li><a href="/isol-manage/account-setting-input.html">設定変更</a></li>
-						<li><a href="/isol-manage/account-create-input.html">新規作成</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -75,29 +74,75 @@
 			<table border="1">
 
 				<tr>
-					<th width="130px"><c:out value="削除" /></th>
+					<th width="130px">
+						<c:out value="削除" />
+					</th>
 					<td width="250px">
 						<div class="radio">
-							<input type="radio" name="deleteFlag" id="true" value="1" checked="checked">
-							<label for="true">する</label>
-							<input type="radio" name="deleteFlag" id="false" value="0">
-							<label for="false" class="switch-off">しない</label>
+							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1" checked="checked">
+							<label for="deleteFlagTrue">する</label>
+							<input type="radio" name="deleteFlag" id="deleteFlagFalse" value="0">
+							<label for="deleteFlagFalse" class="switch-off">しない</label>
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="ユーザID" /></th>
-					<td><input type="text" name="userId" value="${dto.userId}" disabled="disabled" /></td>
+					<th>
+						<c:out value="ユーザID" />
+					</th>
+					<td>
+						<c:out value="${accountDto.userId}" />
+						<input type="hidden" name="userId" value="${accountDto.userId}" />
+					</td>
 				</tr>
 				<tr>
-					<th><c:out value="パスワード" /></th>
-					<td><input type="text" name="password" value="${dto.password}" required="required" /></td>
+					<th>
+						<c:out value="パスワード" />
+					</th>
+					<td>
+						<input type="text" name="password" value="${accountDto.password}" required="required" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="囲い文字を利用" />
+					</th>
+					<td width="250px">
+						<div class="radio">
+							<input type="radio" name="fileEnclosureCharFlag" id="fileEnclosureCharFlagTrue" value="1" checked="checked">
+							<label for="fileEnclosureCharFlagTrue">する</label>
+							<input type="radio" name="fileEnclosureCharFlag" id="fileEnclosureCharFlagFalse" value="0">
+							<label for="fileEnclosureCharFlagFalse" class="switch-off">しない</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールアドレス" />
+					</th>
+					<td>
+						<input type="email" name="mailAddress" value="${mailInfoDto.mailAddress}" required="required" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールパスワード" />
+					</th>
+					<td>
+						<input type="text" name="mailPassword" value="${mailInfoDto.mailPassword}" required="required" />
+					</td>
+				</tr>
+				<tr>
+					<th><c:out value="備 考" /></th>
+					<td><textarea rows="10" cols="30" name="remarks" ></textarea></td>
 				</tr>
 			</table>
 			<br><br>
 			<table>
 				<tr>
-					<td><input type="submit" value="確 認" /></td>
+					<td>
+						<input type="submit" value="確 認" />
+					</td>
 				</tr>
 			</table>
 		</div>
@@ -110,27 +155,83 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th width="130px"><c:out value="削除" /></th>
+					<th width="130px">
+						<c:out value="削除" />
+					</th>
 					<td width="250px">
 						<c:if test="${form.deleteFlag == true}">する</c:if>
 						<c:if test="${form.deleteFlag == false}">しない</c:if>
+						<input type="hidden" name="deleteFlag" value="${form.deleteFlag}" />
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="ユーザID" /></th>
-					<td><input type="text" name="userId" value="${form.userId}" disabled="disabled" /></td>
+					<th>
+						<c:out value="ユーザID" />
+					</th>
+					<td>
+						<c:out value="${form.userId}" />
+						<input type="hidden" name="userId" value="${form.userId}" />
+					</td>
 				</tr>
 				<tr>
-					<th><c:out value="パスワード" /></th>
-					<td><input type="text" name="password" value="${form.password}" disabled="disabled" /></td>
+					<th>
+						<c:out value="パスワード" />
+					</th>
+					<td>
+						<c:out value="${form.password}" />
+						<input type="hidden" name="password" value="${form.password}" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="囲い文字利用" />
+					</th>
+					<td width="250px">
+						<c:if test="${form.fileEnclosureCharFlag == true}">する</c:if>
+						<c:if test="${form.fileEnclosureCharFlag == false}">しない</c:if>
+						<input type="hidden" name="fileEnclosureCharFlag" value="${form.fileEnclosureCharFlag}" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールアドレス" />
+					</th>
+					<td>
+						<c:out value="${form.mailAddress}" />
+						<input type="hidden" name="mailAddress" value="${form.mailAddress}" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
+						<c:out value="メールパスワード" />
+					</th>
+					<td>
+						<c:out value="${form.mailPassword}" />
+						<input type="hidden" name="mailPassword" value="${form.mailPassword}" />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<c:out value="備 考" />
+					</th>
+					<td>
+						<c:out value="${form.remarks}" />
+						<input type="hidden" name="remarks" value="${form.remarks}" />
+					</td>
 				</tr>
 			</table>
 			<br><br>
 			<table>
 				<tr>
-					<td><input type="submit" value="確 定" /></td>
-					<td><c:out value="　　" /></td>
-					<td><input type="button" value="戻 る" onclick="history.back()"></td>
+					<td>
+						<input type="submit" value="確 定" />
+					</td>
+					<td>
+						<c:out value="　　" />
+					</td>
+					<td>
+						<input type="button" value="戻 る" onclick="history.back()">
+					</td>
 				</tr>
 			</table>
 		</div>
@@ -156,9 +257,6 @@
 			</table>
 		</div>
 	</c:if>
-
-
-
 
 	<br><br>
 	<hr>

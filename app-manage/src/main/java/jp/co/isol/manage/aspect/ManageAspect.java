@@ -20,20 +20,20 @@ public class ManageAspect {
 
 	/**
 	 * 開始ログ出力する<br>
-	 * @param joinpoint
+	 * @param jp
 	 */
 	@Before("execution(* *..*ServiceImpl.*(..))*")
-	public void startServiceLog(JoinPoint joinpoint) {
-		System.out.println("■■■■■■■■■■■■■■■開始■■■■■■■■■■■■■■■" + joinpoint.toString());
+	public void startServiceLog(JoinPoint jp) {
+		System.out.println("■■■■■■■■■■■■■■■開始■■■■■■■■■■■■■■■" + jp.toString());
 	}
 
 	/**
 	 * 終了ログ出力する<br>
-	 * @param joinpoint
+	 * @param jp
 	 */
 	@After("execution(* *..*ServiceImpl.*(..))*")
-	public void endServiceLog(JoinPoint joinpoint) {
-		System.out.println("■■■■■■■■■■■■■■■終了■■■■■■■■■■■■■■■" + joinpoint.toString());
+	public void endServiceLog(JoinPoint jp) {
+		System.out.println("■■■■■■■■■■■■■■■終了■■■■■■■■■■■■■■■" + jp.toString());
 	}
 
 	/**

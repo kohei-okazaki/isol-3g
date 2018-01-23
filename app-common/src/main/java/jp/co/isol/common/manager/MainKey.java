@@ -8,6 +8,7 @@ public enum MainKey {
 
 	HEALTH_INFO_USER_STATUS,
 	PAGE_VIEW,
-	CSV_FILE_NAME;
+	CSV_FILE_NAME,
+	FLAG;
 
 }

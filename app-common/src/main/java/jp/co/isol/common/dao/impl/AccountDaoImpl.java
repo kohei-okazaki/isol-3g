@@ -1,5 +1,7 @@
 package jp.co.isol.common.dao.impl;
 
+import java.util.Date;
+
 import org.springframework.dao.DuplicateKeyException;
 
 import jp.co.isol.common.dao.AccountDao;
@@ -20,6 +22,9 @@ public class AccountDaoImpl implements AccountDao {
 		dto.setUserId(userId);
 		dto.setPassword("password");
 		dto.setInvalidFlag("0");
+		dto.setPasswordExpire(new Date());
+		dto.setRemarks("ここは備考です。");
+		dto.setFileEnclosureCharFlag("1");
 		return dto;
 	}
 

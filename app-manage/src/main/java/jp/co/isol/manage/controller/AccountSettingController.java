@@ -15,12 +15,18 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.isol.common.dto.AccountDto;
+import jp.co.isol.common.dto.MailInfoDto;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.AccountSettingException;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.AccountSettingService;
+import jp.co.isol.manage.service.MailInfoSearchService;
 import jp.co.isol.manage.validator.AccountSettingValidator;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
@@ -40,6 +46,9 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	/** アカウント設定サービス */
 	@Autowired
 	private AccountSettingService accountSettingService;
+	/** メール情報検索サービス */
+	@Autowired
+	private MailInfoSearchService mailInfoSearchService;
 
 	/**
 	 * Validateを設定<br>
@@ -67,7 +76,13 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 		// セッションからユーザIDを取得
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		model.addAttribute("dto", this.accountSearchService.findAccountByUserId(userId));
+		// アカウント情報を検索
+		AccountDto accountDto = this.accountSearchService.findAccountByUserId(userId);
+		model.addAttribute("accountDto", accountDto);
+
+		// メール情報を検索
+		MailInfoDto mailInfoDto = this.mailInfoSearchService.findMailInfoByUserId(userId);
+		model.addAttribute("mailInfoDto", mailInfoDto);
 
 		model.addAttribute("page", PageType.INPUT.getName());
 
@@ -109,13 +124,13 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@RequestMapping(value = "/account-setting-complete.html")
 	public String complete(Model model, AccountSettingForm form, HttpServletRequest request) throws AccountSettingException {
 
-		if (form.isDeleteFlag()) {
+		if (CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, form.getDeleteFlag())) {
 			// アカウントを削除する場合
 			this.accountSettingService.deleteAccount(form);
 		}
 
-		// アカウントを更新する
-		this.accountSettingService.updateAccount(form);
+		// 更新処理を行う
+		this.accountSettingService.update(form);
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 

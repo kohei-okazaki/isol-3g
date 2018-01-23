@@ -23,7 +23,7 @@ public class ReferenceCsvWriter extends BaseCsvWriter {
 	private List<ReferenceCsvModel> modelList;
 
 	/**
-	 * コンストラクタ<br>
+	 * デフォルトコンストラクタ<br>
 	 */
 	public ReferenceCsvWriter() {
 	}

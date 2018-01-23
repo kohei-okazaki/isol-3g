@@ -25,12 +25,24 @@ public class AccountDto implements Serializable {
 	private String userId;
 
 	/** パスワード */
-	@Column(name = "PASSWORD", nullable = false)
+	@Column(name = "PASSWORD", nullable = false, length = 16)
 	private String password;
 
 	/** 利用停止フラグ */
 	@Column(name = "INVALID_FLAG", nullable = false, length = 1)
 	private String invalidFlag;
+
+	/** パスワード有効期限 */
+	@Column(name = "PASSWORD_EXPIRE", nullable = false)
+	private Date passwordExpire;
+
+	/** 備考 */
+	@Column(name = "REMARKS", nullable = false)
+	private String remarks;
+
+	/** 囲い文字利用フラグ */
+	@Column(name = "FILE_ENCLOSURE_CHAR_FLAG", nullable = true)
+	private String fileEnclosureCharFlag;
 
 	/** 更新日時 */
 	@Column(name = "UPDATE_DATE", nullable = true)
@@ -86,6 +98,54 @@ public class AccountDto implements Serializable {
 	 */
 	public void setInvalidFlag(String invalidFlag) {
 		this.invalidFlag = invalidFlag;
+	}
+
+	/**
+	 * passwordExpireを返す
+	 * @return passwordExpire
+	 */
+	public Date getPasswordExpire() {
+		return passwordExpire;
+	}
+
+	/**
+	 * passwordExpireを設定する
+	 * @param passwordExpire
+	 */
+	public void setPasswordExpire(Date passwordExpire) {
+		this.passwordExpire = passwordExpire;
+	}
+
+	/**
+	 * remarksを返す
+	 * @return remarks
+	 */
+	public String getRemarks() {
+		return remarks;
+	}
+
+	/**
+	 * remarksを設定する
+	 * @param remarks
+	 */
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	/**
+	 * fileEnclosureCharFlagを返す
+	 * @return fileEnclosureCharFlag
+	 */
+	public String getFileEnclosureCharFlag() {
+		return fileEnclosureCharFlag;
+	}
+
+	/**
+	 * fileEnclosureCharFlagを設定する
+	 * @param fileEnclosureCharFlag
+	 */
+	public void setFileEnclosureCharFlag(String fileEnclosureCharFlag) {
+		this.fileEnclosureCharFlag = fileEnclosureCharFlag;
 	}
 
 	/**

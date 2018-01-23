@@ -37,19 +37,12 @@
 				<li><a href="/isol-manage/menu.html">メニュー戻る</a></li>
 			</ul>
 		</li>
-		<li><a href="#">ダウンロード</a>
-			<ul>
-				<li><a onclick="referenceExcelDownload();">エクセル</a></li>
-				<li><a href="/isol-manage/result-reference-csvDownload">テキストファイル</a></li>
-			</ul>
-		</li>
 		<li><a href="#">設定</a>
 			<ul>
 				<li><a href="#">出力設定</a></li>
 				<li><a href="#">アカウント</a>
 					<ul>
 						<li><a href="/isol-manage/account-setting-input.html">設定変更</a></li>
-						<li><a href="#">新規作成</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -79,6 +72,28 @@
 		</table>
 	</div>
 	<br><br>
+
+	<div align="center">
+		<table>
+			<tr>
+				<td align="center">
+					<form action="/isol-manage/result-reference-excelDownload.html" method="get">
+						<div>
+							<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
+						</div>
+					</form>
+				</td>
+				<td>　　</td>
+				<td align="center">
+					<form action="/isol-manage/result-reference-csvDownload">
+						<div>
+							<input class="menuicon" type="image" src="resources/image/icon_csv.png">
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
 
 	<hr>
 

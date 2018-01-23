@@ -10,4 +10,11 @@ import jp.co.isol.common.web.mvc.BaseForm;
  */
 public class NoticeSettingForm extends BaseForm implements Serializable {
 
+	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public NoticeSettingForm() {
+
+	}
+
 }

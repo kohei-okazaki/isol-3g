@@ -20,12 +20,21 @@ public enum PageType {
 	/** 完了 */
 	COMPLETE(CodeManager.getInstance().getValue(MainKey.PAGE_VIEW, SubKey.COMPLETE));
 
+	/** ページ種別名 */
 	private String name;
 
+	/**
+	 * コンストラクタ<br>
+	 * @param name
+	 */
 	private PageType(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * ページ種別名を返す<br>
+	 * @return
+	 */
 	public String getName() {
 		return this.name;
 	}

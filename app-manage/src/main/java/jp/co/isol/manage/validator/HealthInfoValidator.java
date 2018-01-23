@@ -3,9 +3,8 @@ package jp.co.isol.manage.validator;
 import java.math.BigDecimal;
 
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 
-import jp.co.isol.common.util.StringUtil;
+import jp.co.isol.common.util.ValidationUtil;
 import jp.co.isol.common.web.mvc.BaseValidator;
 import jp.co.isol.manage.form.HealthInfoForm;
 
@@ -44,12 +43,9 @@ public class HealthInfoValidator extends BaseValidator<HealthInfoForm> {
 	 */
 	private void checkType(HealthInfoForm form, Errors errors) {
 
-		if (!StringUtil.isHalfNumberPeriod(form.getHeight().toString())) {
-			errors.rejectValue("height", "errors.halfNumberPeriod");
-		}
-		if (!StringUtil.isHalfNumberPeriod(form.getWeight().toString())) {
-			errors.rejectValue("weight", "errors.halfNumberPeriod");
-		}
+		// 半角数字-ピリオドかどうか確認
+		ValidationUtil.rejectIfNotHalfNumberPeriod(errors, "height");
+		ValidationUtil.rejectIfNotHalfNumberPeriod(errors, "weight");
 
 		if (BigDecimal.ZERO.equals(form.getHeight())) {
 			errors.rejectValue("height", "errors.zero");
@@ -66,8 +62,8 @@ public class HealthInfoValidator extends BaseValidator<HealthInfoForm> {
 	 */
 	private void checkRequire(Errors errors) {
 
-		ValidationUtils.rejectIfEmpty(errors, "height", "REQUIRED");
-		ValidationUtils.rejectIfEmpty(errors, "weight", "REQUIRED");
+		ValidationUtil.rejectIfEmpty(errors, "height");
+		ValidationUtil.rejectIfEmpty(errors, "weight");
 	}
 
 }

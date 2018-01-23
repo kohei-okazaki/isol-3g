@@ -12,24 +12,25 @@ public class NoticeMailForm extends BaseForm implements Serializable {
 
 	/** from */
 	private String from;
-
 	/** subject */
 	private String subject;
-
 	/** body */
 	private String body;
-
 	/** to */
 	private String to;
-
 	/** cc */
 	private String cc;
-
 	/** bcc */
 	private String bcc;
-
 	/** replyTo */
 	private String replyTo;
+
+	/**
+	 * デフォルトコンストラクタ<br>
+	 */
+	public NoticeMailForm() {
+
+	}
 
 	/**
 	 * fromを返す
