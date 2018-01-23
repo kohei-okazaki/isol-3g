@@ -9,10 +9,10 @@ import jp.co.isol.manage.form.AccountSettingForm;
 public interface AccountSettingService {
 
 	/**
-	 * アカウント設定formで指定されたアカウント情報に更新する<br>
+	 * 更新処理を行う<br>
 	 * @param form
 	 */
-	public void updateAccount(AccountSettingForm form);
+	public void update(AccountSettingForm form);
 
 	/**
 	 * 指定されたアカウント情報の削除をする<br>

@@ -20,6 +20,10 @@ public class AccountSettingForm extends BaseForm implements Serializable {
 	private String fileEnclosureCharFlag;
 	/** 備考 */
 	private String remarks;
+	/** メールアドレス */
+	private String mailAddress;
+	/** メールパスワード */
+	private String mailPassword;
 
 	/**
 	 * userIdを返す
@@ -99,6 +103,38 @@ public class AccountSettingForm extends BaseForm implements Serializable {
 	 */
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	/**
+	 * mailAddressを返す
+	 * @return mailAddress
+	 */
+	public String getMailAddress() {
+		return mailAddress;
+	}
+
+	/**
+	 * mailAddressを設定する
+	 * @param mailAddress
+	 */
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
+	}
+
+	/**
+	 * mailPasswordを返す
+	 * @return mailPassword
+	 */
+	public String getMailPassword() {
+		return mailPassword;
+	}
+
+	/**
+	 * mailPasswordを設定する
+	 * @param mailPassword
+	 */
+	public void setMailPassword(String mailPassword) {
+		this.mailPassword = mailPassword;
 	}
 
 }

@@ -119,8 +119,8 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 			this.accountSettingService.deleteAccount(form);
 		}
 
-		// アカウントを更新する
-		this.accountSettingService.updateAccount(form);
+		// 更新処理を行う
+		this.accountSettingService.update(form);
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 

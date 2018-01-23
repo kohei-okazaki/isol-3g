@@ -15,7 +15,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dao.AccountDao;
+import jp.co.isol.common.dao.MailInfoDao;
 import jp.co.isol.common.dto.AccountDto;
+import jp.co.isol.common.dto.MailInfoDto;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
@@ -31,12 +33,27 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	/** アカウント情報Dao */
 	@Autowired
 	private AccountDao accountDao;
+	/** メール情報Dao */
+	@Autowired
+	private MailInfoDao mailInfoDao;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void updateAccount(AccountSettingForm form) {
+	public void update(AccountSettingForm form) {
+
+		// アカウント情報を更新する
+		updateAccount(form);
+
+		// メール情報を更新する
+		updateMainInfo(form);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	private void updateAccount(AccountSettingForm form) {
 
 		AccountDto accountDto = new AccountDto();
 		accountDto.setUserId(form.getUserId());
@@ -44,7 +61,19 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 		accountDto.setFileEnclosureCharFlag(form.getFileEnclosureCharFlag());
 		accountDto.setRemarks(form.getRemarks());
 		accountDto.setUpdateDate(new Date());
-		this.accountDao.updateAccount(accountDto);
+		accountDao.updateAccount(accountDto);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	private void updateMainInfo(AccountSettingForm form) {
+
+		MailInfoDto mailInfoDto = new MailInfoDto();
+		mailInfoDto.setUserId(form.getUserId());
+		mailInfoDto.setMailAddress(form.getMailAddress());
+		mailInfoDto.setMailPassword(form.getMailPassword());
+		mailInfoDao.updateMailInfo(mailInfoDto);
 	}
 
 	/**
@@ -52,7 +81,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	@Override
 	public void deleteAccount(AccountSettingForm form) {
-		this.accountDao.deleteAccount(form.getUserId());
+		accountDao.deleteAccount(form.getUserId());
 	}
 
 	/**
