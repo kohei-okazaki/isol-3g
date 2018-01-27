@@ -25,7 +25,7 @@ import jp.co.isol.manage.web.view.PageType;
  *
  */
 @Controller
-public class AccounCreateController extends BaseWizardController<AccountCreateForm, AccountCreateException> {
+public class AccountCreateController extends BaseWizardController<AccountCreateForm, AccountCreateException> {
 
 	/** アカウント作成サービス */
 	@Autowired
