@@ -55,10 +55,12 @@ public class CodeManager {
 	 */
 	public String getValue(MainKey mainKey, SubKey subKey) {
 
-		if (Objects.isNull(mainKey) || Objects.isNull(subKey)) {
-			return StringUtil.EMPTY;
-		}
 		String value = StringUtil.EMPTY;
+
+		if (Objects.isNull(mainKey) || Objects.isNull(subKey)) {
+			return value;
+		}
+
 		try {
 			Iterator<Row> rowIterator  = getRowIterator();
 			while (rowIterator.hasNext()) {
