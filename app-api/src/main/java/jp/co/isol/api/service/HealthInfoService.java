@@ -21,6 +21,7 @@ public interface HealthInfoService extends BaseApiService<HealthInfoRequest, Hea
 
 		HealthInfoResponse response = new HealthInfoResponse();
 		response.setDataId(dto.getDataId());
+		response.setUserId(dto.getUserId());
 		response.setHeight(dto.getHeight());
 		response.setWeight(dto.getWeight());
 		response.setBmi(dto.getBmi());

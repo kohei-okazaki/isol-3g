@@ -4,8 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,8 +32,7 @@ public class HealthInfoController extends BaseApiRestController<HealthInfoReques
 	 * {@inheritDoc}
 	 */
 	@Override
-	@GetMapping
-	public HealthInfoResponse doGet(HttpServletRequest request) throws HealthInfoException {
+	public HealthInfoResponse execute(HttpServletRequest request) throws HealthInfoException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
@@ -46,15 +43,6 @@ public class HealthInfoController extends BaseApiRestController<HealthInfoReques
 		HealthInfoResponse response = healthInfoService.execute(healthInfoRequest);
 
 		return response;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	@PostMapping
-	public HealthInfoResponse doPost(HttpServletRequest request) throws HealthInfoException {
-		return doGet(request);
 	}
 
 }
