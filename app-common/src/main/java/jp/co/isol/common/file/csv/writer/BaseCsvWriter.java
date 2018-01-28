@@ -63,4 +63,10 @@ public abstract class BaseCsvWriter {
 		joiner.add(enclosureChar + data + enclosureChar);
 	}
 
+	/**
+	 * ファイル名を取得<br>
+	 * @return fileName
+	 */
+	protected abstract String getFileName();
+
 }
