@@ -12,13 +12,27 @@
 
 	<annotation-driven />
 
-	<!-- <resources mapping="/resources/**" location="/resources/" />
+	<!--
+	<resources mapping="/resources/**" location="/resources/" />
+	-->
 
+	<!--
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	-->
 
-	<context:component-scan base-package="jp.co.isol.common" /> -->
+	<!--
+	<context:component-scan base-package="jp.co.isol.common" />
+	-->
+
+	<!--
+	<beans:bean id="codeParameter" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<beans:property name="location">
+			<beans:value>classpath:META-INF/codeParameter.xlsx</beans:value>
+		</beans:property>
+	</beans:bean>
+	-->
 
 </beans:beans>
