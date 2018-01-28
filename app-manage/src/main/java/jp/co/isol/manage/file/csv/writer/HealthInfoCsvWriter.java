@@ -58,9 +58,7 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	 */
 	public void execute(HttpServletResponse response) throws IOException {
 
-//		String fileName = "\"HealthInfo.csv\"";
 		String fileName = getFileName();
-//		fileName = "test.csv";
 		init(response, fileName);
 
 		try (PrintWriter writer = response.getWriter()) {
