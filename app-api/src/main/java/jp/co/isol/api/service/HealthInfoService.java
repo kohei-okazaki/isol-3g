@@ -17,17 +17,6 @@ public interface HealthInfoService extends BaseApiService<HealthInfoRequest, Hea
 	 * @param dto
 	 * @return
 	 */
-	public default HealthInfoResponse toResponse(HealthInfoDto dto) {
+	public HealthInfoResponse toResponse(HealthInfoDto dto);
 
-		HealthInfoResponse response = new HealthInfoResponse();
-		response.setDataId(dto.getDataId());
-		response.setHeight(dto.getHeight());
-		response.setWeight(dto.getWeight());
-		response.setBmi(dto.getBmi());
-		response.setStandardWeight(dto.getStandardWeight());
-		response.setUserStatus(dto.getUserStatus());
-		response.setRegDate(dto.getRegDate());
-
-		return response;
-	}
 }

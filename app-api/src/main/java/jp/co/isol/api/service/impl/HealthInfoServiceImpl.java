@@ -52,6 +52,25 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public HealthInfoResponse toResponse(HealthInfoDto dto) {
+
+		HealthInfoResponse response = new HealthInfoResponse();
+		response.setDataId(dto.getDataId());
+		response.setUserId(dto.getUserId());
+		response.setHeight(dto.getHeight());
+		response.setWeight(dto.getWeight());
+		response.setBmi(dto.getBmi());
+		response.setStandardWeight(dto.getStandardWeight());
+		response.setUserStatus(dto.getUserStatus());
+		response.setRegDate(dto.getRegDate());
+
+		return response;
+	}
+
+	/**
 	 * 健康情報Dtoにリクエスト情報をつめる
 	 * @param request
 	 * @return

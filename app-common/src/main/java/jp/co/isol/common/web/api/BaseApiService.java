@@ -20,6 +20,7 @@ public interface BaseApiService<Rq extends BaseRequest, Rs extends BaseResponse,
 
 	/**
 	 * メイン処理<br>
+	 * リクエスト型を処理し、レスポンス型で返す<br>
 	 * @param Rq Request実装クラス
 	 * @return Rs Response実装クラス
 	 * @throws E
