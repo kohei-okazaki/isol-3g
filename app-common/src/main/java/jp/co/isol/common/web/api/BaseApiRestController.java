@@ -49,5 +49,6 @@ public abstract class BaseApiRestController<Rq extends BaseRequest
 	 * @return
 	 * @throws E
 	 */
-	protected abstract Rs execute(HttpServletRequest request) throws E ;
+	protected abstract Rs execute(HttpServletRequest request) throws E;
+
 }

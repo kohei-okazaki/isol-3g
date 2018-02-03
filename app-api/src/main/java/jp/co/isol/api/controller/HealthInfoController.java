@@ -32,12 +32,12 @@ public class HealthInfoController extends BaseApiRestController<HealthInfoReques
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoResponse execute(HttpServletRequest request) throws HealthInfoException {
+	protected HealthInfoResponse execute(HttpServletRequest request) throws HealthInfoException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
 
-		// セットされたリクエスト情報のチェック実施
+		// リクエスト情報のチェック実施
 		healthInfoService.checkRequest(healthInfoRequest);
 
 		HealthInfoResponse response = healthInfoService.execute(healthInfoRequest);
