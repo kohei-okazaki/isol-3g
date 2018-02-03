@@ -18,19 +18,14 @@ public class ReferenceCsvModel implements BaseCsvModel {
 
 	/** ユーザID */
 	private String userId;
-
 	/** 身長 */
 	private BigDecimal height;
-
 	/** 体重 */
 	private BigDecimal weight;
-
 	/** BMI */
 	private BigDecimal bmi;
-
 	/** 標準体重 */
 	private BigDecimal standardWeight;
-
 	/** 登録日時 */
 	private Date regDate;
 
