@@ -14,7 +14,7 @@ public class NoticeSettingException extends BaseMvcException {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	protected NoticeSettingException(ErrorCodeDefine errorCode, String errorMessage) {
+	public NoticeSettingException(ErrorCodeDefine errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 
