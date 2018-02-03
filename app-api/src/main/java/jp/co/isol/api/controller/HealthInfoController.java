@@ -40,7 +40,9 @@ public class HealthInfoController extends BaseApiRestController<HealthInfoReques
 		// リクエスト情報のチェック実施
 		healthInfoService.checkRequest(healthInfoRequest);
 
-		return healthInfoService.execute(healthInfoRequest);
+		HealthInfoResponse response = healthInfoService.execute(healthInfoRequest);
+
+		return response;
 	}
 
 }

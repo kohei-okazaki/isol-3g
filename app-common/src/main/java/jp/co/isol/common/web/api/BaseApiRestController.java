@@ -28,7 +28,7 @@ public abstract class BaseApiRestController<Rq extends BaseRequest
 	 * @throws E
 	 */
 	@GetMapping
-	protected Rs doGet(HttpServletRequest request) throws E {
+	Rs doGet(HttpServletRequest request) throws E {
 		return this.execute(request);
 	}
 
@@ -39,15 +39,16 @@ public abstract class BaseApiRestController<Rq extends BaseRequest
 	 * @throws E
 	 */
 	@PostMapping
-	protected Rs doPost(HttpServletRequest request) throws E {
+	Rs doPost(HttpServletRequest request) throws E {
 		return this.execute(request);
 	}
 
 	/**
-	 * 継承先で実装<br>
+	 * 継承先のコントローラクラスで処理する<br>
 	 * @param request
 	 * @return
 	 * @throws E
 	 */
 	protected abstract Rs execute(HttpServletRequest request) throws E;
+
 }

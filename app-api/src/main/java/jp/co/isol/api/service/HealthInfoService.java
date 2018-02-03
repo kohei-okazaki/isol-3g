@@ -18,5 +18,4 @@ public interface HealthInfoService extends BaseApiService<HealthInfoRequest, Hea
 	 * @return
 	 */
 	public HealthInfoResponse toResponse(HealthInfoDto dto);
-
 }
