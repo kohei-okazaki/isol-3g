@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
+
+import jp.co.isol.common.other.DateFormatDefine;
 
 /**
  * 時間関係のutilクラス<br>
@@ -14,7 +17,6 @@ import java.util.Locale;
 public class DateUtil {
 
 	public static final String YYYY_MM_DD_HH_MI_SS = "yyyy/MM/dd hh:mm:ss";
-	public static final String YYYYMMDD_HHMMSS = "yyyy/MM/dd HH:mm:ss";
 
 	private DateUtil() {
 
@@ -80,11 +82,11 @@ public class DateUtil {
 	 * Date型を指定されたフォーマットに変える<br>
 	 * @return
 	 */
-	public static String toString(Date targetDate, String format) {
-		if (StringUtil.isEmpty(format)) {
+	public static String toString(Date targetDate, DateFormatDefine format) {
+		if (Objects.isNull(format) || StringUtil.isEmpty(format.getValue())) {
 			return StringUtil.EMPTY;
 		}
-		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format.getValue());
 		return dateFormat.format(targetDate);
 	}
 }
