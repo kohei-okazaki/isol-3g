@@ -34,7 +34,7 @@ public class CalcUtil {
 	 * @return センチメートル
 	 */
 	public static BigDecimal convertCentiMeterFromMeter(BigDecimal target) {
-		return target.multiply(new BigDecimal("100"));
+		return target.scaleByPowerOfTen(2);
 	}
 
 	/**
