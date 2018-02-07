@@ -83,7 +83,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		BigDecimal weight = new BigDecimal((String) request.get(HealthInfoRequestKey.WEIGHT));
 
 		// メートルに変換する
-		BigDecimal centiMeterHeight = CalcUtil.convertMeterFromCentiMeter(height, 2);
+		BigDecimal centiMeterHeight = CalcUtil.convertMeterFromCentiMeter(height);
 		BigDecimal bmi = CalcUtil.calcBmi(centiMeterHeight, weight, 2);
 		BigDecimal standardWeight = CalcUtil.calcStandardWeight(centiMeterHeight, 2);
 

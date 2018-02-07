@@ -20,11 +20,11 @@ public class CalcUtil {
 	 * 単位を以下に変換する</br>
 	 * cm → m
 	 * @param target 対象の値
-	 * @param digit 四捨五入時の桁
 	 * @return メートル
 	 */
-	public static BigDecimal convertMeterFromCentiMeter(BigDecimal target, int digit) {
-		return target.divide(new BigDecimal("100"), digit, RoundingMode.HALF_UP);
+	public static BigDecimal convertMeterFromCentiMeter(BigDecimal target) {
+		target.scaleByPowerOfTen(-2);
+		return target.scaleByPowerOfTen(-2);
 	}
 
 	/**
