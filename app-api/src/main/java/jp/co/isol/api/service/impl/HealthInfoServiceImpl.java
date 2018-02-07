@@ -94,7 +94,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		Date regDate = new Date();
 
 		HealthInfoDto dto = new HealthInfoDto();
-		Integer nextId = new Integer(lastDto.getDataId()) + 1;
+		Integer nextId = Integer.valueOf(lastDto.getDataId()) + 1;
 		dto.setDataId(nextId.toString());
 		dto.setUserId(userId);
 		dto.setHeight(height);

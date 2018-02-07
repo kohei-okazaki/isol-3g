@@ -45,7 +45,7 @@ public class CalcUtil {
 	 * @return BMIを計算
 	 */
 	public static BigDecimal calcBmi(BigDecimal height, BigDecimal weight, int digit) {
-		return weight.divide(height.multiply(height), digit, BigDecimal.ROUND_HALF_UP);
+		return weight.divide(height.multiply(height), digit, RoundingMode.HALF_UP);
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class CalcUtil {
 	 * @return 標準体重を計算
 	 */
 	public static BigDecimal calcStandardWeight(BigDecimal height, int digit) {
-		return height.multiply(height).multiply(new BigDecimal(22)).setScale(digit, BigDecimal.ROUND_HALF_UP);
+		return height.multiply(height).multiply(new BigDecimal(22)).setScale(digit, RoundingMode.HALF_UP);
 	}
 
 }
