@@ -19,8 +19,7 @@
 
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!--  <beans:bean class="jp.co.isol.manage.web.view.ManageInternalResourceViewResolver">-->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean class="jp.co.isol.manage.web.view.ManageInternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
