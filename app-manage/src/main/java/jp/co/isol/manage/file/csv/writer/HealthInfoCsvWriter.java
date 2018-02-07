@@ -10,6 +10,7 @@ import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
+import jp.co.isol.common.other.DateFormatDefine;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.common.util.StringUtil;
@@ -100,7 +101,7 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 		// 標準体重
 		write(joiner, model.getStandardWeight().toString());
 		// 登録日時
-		write(joiner, DateUtil.toString(model.getRegDate(), DateUtil.YYYYMMDD_HHMMSS));
+		write(joiner, DateUtil.toString(model.getRegDate(), DateFormatDefine.YYYYMMDD_HHMMSS));
 
 		// 1行書き込む
 		recordJoiner.add(joiner.toString());
