@@ -1,6 +1,7 @@
 package jp.co.isol.manage.service.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class CalcServiceImpl implements CalcService {
 	 */
 	@Override
 	public BigDecimal calcDiffWeight(BigDecimal before, BigDecimal now) {
-		return now.subtract(before).abs().setScale(1, BigDecimal.ROUND_HALF_UP);
+		return now.subtract(before).abs().setScale(1, RoundingMode.HALF_UP);
 	}
 
 }

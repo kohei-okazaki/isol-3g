@@ -7,7 +7,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.ConfigurableApplicationContext;
@@ -22,7 +21,6 @@ import jp.co.isol.manage.web.session.ManageSessionManager;
  * 健康情報管理画面フィルタークラス<br>
  *
  */
-@WebFilter
 public class ManageFilter extends BaseFilter {
 
 	/**
