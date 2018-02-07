@@ -23,7 +23,6 @@ public class CalcUtil {
 	 * @return メートル
 	 */
 	public static BigDecimal convertMeterFromCentiMeter(BigDecimal target) {
-		target.scaleByPowerOfTen(-2);
 		return target.scaleByPowerOfTen(-2);
 	}
 
