@@ -37,24 +37,7 @@
 
 	<hr>
 
-	<ul id="dropmenu">
-		<li><a href="#">MENU</a>
-			<ul>
-				<li><a href="/isol-manage/menu.html">メニュー戻る</a></li>
-			</ul>
-		</li>
-		<li><a href="#">設定</a>
-			<ul>
-				<li><a href="#">出力設定</a></li>
-				<li><a href="#">アカウント</a>
-					<ul>
-						<li><a href="/isol-manage/account-setting-input.html">設定変更</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li><a href="/isol-manage/login.html">ログアウト</a></li>
-	</ul>
+	<jsp:include page="navigation.jsp" />
 
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">

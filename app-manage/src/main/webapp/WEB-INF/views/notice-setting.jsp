@@ -20,59 +20,7 @@
 		<c:out value="通知設定画面" />
 	</h1>
 
-	<hr>
-		<ul id="dropmenu">
-		<li><a href="#">MENU</a>
-			<ul>
-				<li><a href="#">子メニュー1</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a>
-							<ul>
-								<li><a href="#">ひ孫メニュー1</a></li>
-								<li><a href="#">ひ孫メニュー2</a></li>
-							</ul>
-						</li>
-						<li><a href="#">孫メニュー2</a></li>
-					</ul>
-				</li>
-				<li><a href="#">子メニュー2</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a></li>
-						<li><a href="#">孫メニュー4</a></li>
-					</ul>
-				</li>
-				<li><a href="#">子メニュー3</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a>
-							<ul>
-								<li><a href="#">ひ孫メニュー</a></li>
-							</ul></li>
-						<li><a href="#">孫メニュー4</a></li>
-					</ul>
-				</li>
-				<li><a href="#">子メニュー4</a>
-					<ul>
-						<li><a href="#">孫メニュー1</a></li>
-						<li><a href="#">孫メニュー2</a></li>
-						<li><a href="#">孫メニュー3</a></li>
-						<li><a href="#">孫メニュー4</a></li>
-					</ul>
-				</li>
-				<li><a href="/isol-manage/menu.html">メニュー画面</a></li>
-			</ul>
-		</li>
-		<li><a href="#">設定</a>
-			<ul>
-				<li><a href="/isol-manage/account-setting-input.html">アカウント設定</a></li>
-				<li><a href="#">出力設定</a></li>
-			</ul>
-		</li>
-		<li><a href="/isol-manage/login.html"> ログアウト </a></li>
-	</ul>
+	<jsp:include page="navigation.jsp" />
 	<br><br>
 
 
