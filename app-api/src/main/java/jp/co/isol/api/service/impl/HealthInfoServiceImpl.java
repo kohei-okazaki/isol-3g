@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,13 +90,17 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 		// 最後に登録した健康情報を取得する
 		HealthInfoDto lastDto = getLastHealthInfoDto(userId);
+		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN);
+		if (Objects.nonNull(lastDto)) {
+			// 初回登録でない場合
+			userStatus = getUserStatus(weight, lastDto.getWeight());
+		}
 
-		String userStatus = getUserStatus(weight, lastDto.getWeight());
 		Date regDate = new Date();
 
 		HealthInfoDto dto = new HealthInfoDto();
-		Integer nextId = Integer.valueOf(lastDto.getDataId()) + 1;
-		dto.setDataId(nextId.toString());
+		String nextDataId = getNextDataId(lastDto);
+		dto.setDataId(nextDataId);
 		dto.setUserId(userId);
 		dto.setHeight(height);
 		dto.setWeight(weight);
@@ -105,6 +110,15 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		dto.setRegDate(regDate);
 
 		return dto;
+	}
+
+	/**
+	 * 次のデータIDを取得する
+	 * @param dto
+	 * @return
+	 */
+	private String getNextDataId(HealthInfoDto dto) {
+		return Objects.isNull(dto) ? "1" : String.valueOf(Integer.valueOf(dto.getDataId()) + 1);
 	}
 
 	/**
@@ -131,11 +145,14 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * 指定されたユーザIDで最後に登録した健康情報Dtoを返す<br>
 	 * @param userId
 	 * @return
-	 * @throws ParseException
 	 */
 	private HealthInfoDto getLastHealthInfoDto(String userId) {
 
 		List<HealthInfoDto> dtoList = healthInfoDao.getHealthInfoByUserId(userId);
+
+		if (dtoList.size() == 0) {
+			return null;
+		}
 		return dtoList.get(dtoList.size() - 1);
 	}
 

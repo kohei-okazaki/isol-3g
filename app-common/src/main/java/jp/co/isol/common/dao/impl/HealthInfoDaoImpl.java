@@ -22,6 +22,7 @@ import org.springframework.dao.DuplicateKeyException;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.other.DateFormatDefine;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -30,9 +31,9 @@ import jp.co.isol.common.util.DateUtil;
  */
 public class HealthInfoDaoImpl implements HealthInfoDao {
 
-//	private static final String RESOURCES = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\data.xlsx";
 	private static final String RESOURCES = "C:\\work\\data.xlsx";
 	private static final String SHEET = "HEALTH_INFO";
+	private static final int HEADER_POSITION = 0;
 
 	/**
 	 * {@inheritDoc}
@@ -40,8 +41,6 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	@Override
 	public List<HealthInfoDto> getHealthInfoByUserId(String userId) {
 
-		String RESOURCES = "C:\\work\\data.xlsx";
-		String SHEET = "HEALTH_INFO";
 		List<HealthInfoDto> dtoList = new ArrayList<HealthInfoDto>();
 		try (Workbook workbook = WorkbookFactory.create(new File(RESOURCES))) {
 			Sheet sheet = workbook.getSheet(SHEET);
@@ -50,8 +49,8 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 			while (iteRow.hasNext()) {
 				HealthInfoDto healthInfoDto = new HealthInfoDto();
 				Row row = iteRow.next();
-				if (row.getRowNum() == 0) {
-					// ヘッダーの場合は次のレコードに進む
+				if (row.getRowNum() == HEADER_POSITION) {
+					// ヘッダーの場合、次のレコードに進む
 					continue;
 				}
 				if (userId.equals(row.getCell(1).getStringCellValue())) {
@@ -66,7 +65,11 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 					dtoList.add(healthInfoDto);
 				}
 			}
-		} catch (EncryptedDocumentException | InvalidFormatException | IOException e) {
+		} catch (EncryptedDocumentException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
@@ -111,12 +114,12 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	public HealthInfoDto getHealthInfoByDataId(String dateId) {
 
 		HealthInfoDto healthInfoDto = new HealthInfoDto();
-		try {
-			Workbook workbook = WorkbookFactory.create(new File(RESOURCES));
+		try (Workbook workbook = WorkbookFactory.create(new File(RESOURCES))) {
 			Sheet sheet = workbook.getSheet(SHEET);
 
 			Iterator<Row> iteRow = sheet.rowIterator();
 			while (iteRow.hasNext()) {
+				// 1行読み込む
 				Row row = iteRow.next();
 				if (row.getRowNum() == 0) {
 					// ヘッダーの場合は次のレコードに進む
@@ -159,21 +162,20 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	@Override
 	public void registHealthInfo(HealthInfoDto dto) throws DuplicateKeyException {
 
-		// TODO 登録処理を追加すること
-		try (FileInputStream in = new FileInputStream(RESOURCES)) {
-			Workbook workbook = WorkbookFactory.create(in);
+		try (FileInputStream in = new FileInputStream(RESOURCES);
+				Workbook workbook = WorkbookFactory.create(in)) {
 			Sheet sheet = workbook.getSheet(SHEET);
 
 			Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
 
-			newRow.createCell(0).setCellValue(String.valueOf(sheet.getLastRowNum()));						// データID
-			newRow.createCell(1).setCellValue(dto.getUserId());												// ユーザID
-			newRow.createCell(2).setCellValue(dto.getHeight().toString());									// 身長
-			newRow.createCell(3).setCellValue(dto.getWeight().toString());									// 体重
-			newRow.createCell(4).setCellValue(dto.getBmi().toString());										// BMI
-			newRow.createCell(5).setCellValue(dto.getStandardWeight().toString());							// 標準体重
-			newRow.createCell(6).setCellValue(dto.getUserStatus());											// ユーザステータス
-			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateUtil.YYYYMMDD_HHMMSS));		// 登録日時
+			newRow.createCell(0).setCellValue(String.valueOf(sheet.getLastRowNum()));								// データID
+			newRow.createCell(1).setCellValue(dto.getUserId());														// ユーザID
+			newRow.createCell(2).setCellValue(dto.getHeight().toString());											// 身長
+			newRow.createCell(3).setCellValue(dto.getWeight().toString());											// 体重
+			newRow.createCell(4).setCellValue(dto.getBmi().toString());												// BMI
+			newRow.createCell(5).setCellValue(dto.getStandardWeight().toString());									// 標準体重
+			newRow.createCell(6).setCellValue(dto.getUserStatus());													// ユーザステータス
+			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));		// 登録日時
 
 			try (FileOutputStream fos = new FileOutputStream(RESOURCES)) {
 

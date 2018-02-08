@@ -17,10 +17,13 @@ public interface AccountDao {
 	 */
 	public AccountDto getAccountByUserId(String userId);
 
+
 	/**
-	 * アカウント情報を登録する
+	 * アカウント情報を登録する<br>
+	 * @param accountDto
+	 * @throws DuplicateKeyException
 	 */
-	public void registAccount() throws DuplicateKeyException;
+	public void registAccount(AccountDto accountDto) throws DuplicateKeyException;
 
 	/**
 	 * 引数で指定されたアカウント情報を更新する

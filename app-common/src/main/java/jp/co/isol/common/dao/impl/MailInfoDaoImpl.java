@@ -32,4 +32,13 @@ public class MailInfoDaoImpl implements MailInfoDao {
 		// TODO 更新処理を追加すること
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void registMailInfo(MailInfoDto mailInfoDto) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
 }
