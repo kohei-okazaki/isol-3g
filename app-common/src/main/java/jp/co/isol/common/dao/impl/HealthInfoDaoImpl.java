@@ -33,6 +33,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 
 	private static final String RESOURCES = "C:\\work\\data.xlsx";
 	private static final String SHEET = "HEALTH_INFO";
+	private static final int HEADER_POSITION = 0;
 
 	/**
 	 * {@inheritDoc}
@@ -48,8 +49,8 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 			while (iteRow.hasNext()) {
 				HealthInfoDto healthInfoDto = new HealthInfoDto();
 				Row row = iteRow.next();
-				if (row.getRowNum() == 0) {
-					// ヘッダーの場合は次のレコードに進む
+				if (row.getRowNum() == HEADER_POSITION) {
+					// ヘッダーの場合、次のレコードに進む
 					continue;
 				}
 				if (userId.equals(row.getCell(1).getStringCellValue())) {
@@ -64,7 +65,11 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 					dtoList.add(healthInfoDto);
 				}
 			}
-		} catch (EncryptedDocumentException | InvalidFormatException | IOException e) {
+		} catch (EncryptedDocumentException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
