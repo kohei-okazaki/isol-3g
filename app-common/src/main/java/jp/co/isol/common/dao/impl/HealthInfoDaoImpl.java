@@ -40,8 +40,6 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	@Override
 	public List<HealthInfoDto> getHealthInfoByUserId(String userId) {
 
-		String RESOURCES = "C:\\work\\data.xlsx";
-		String SHEET = "HEALTH_INFO";
 		List<HealthInfoDto> dtoList = new ArrayList<HealthInfoDto>();
 		try (Workbook workbook = WorkbookFactory.create(new File(RESOURCES))) {
 			Sheet sheet = workbook.getSheet(SHEET);
@@ -111,8 +109,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	public HealthInfoDto getHealthInfoByDataId(String dateId) {
 
 		HealthInfoDto healthInfoDto = new HealthInfoDto();
-		try {
-			Workbook workbook = WorkbookFactory.create(new File(RESOURCES));
+		try (Workbook workbook = WorkbookFactory.create(new File(RESOURCES))) {
 			Sheet sheet = workbook.getSheet(SHEET);
 
 			Iterator<Row> iteRow = sheet.rowIterator();

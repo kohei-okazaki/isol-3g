@@ -13,6 +13,9 @@ import jp.co.isol.common.dto.AccountDto;
  */
 public class AccountDaoImpl implements AccountDao {
 
+	private static final String RESOURCES = "C:\\work\\data.xlsx";
+	private static final String SHEET = "ACCOUNT";
+
 	/**
 	 * {@inheritDoc}
 	 */
