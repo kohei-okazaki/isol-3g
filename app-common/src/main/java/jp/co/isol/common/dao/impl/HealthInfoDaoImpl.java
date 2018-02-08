@@ -22,6 +22,7 @@ import org.springframework.dao.DuplicateKeyException;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.other.DateFormatDefine;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -173,7 +174,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 			newRow.createCell(4).setCellValue(dto.getBmi().toString());										// BMI
 			newRow.createCell(5).setCellValue(dto.getStandardWeight().toString());							// 標準体重
 			newRow.createCell(6).setCellValue(dto.getUserStatus());											// ユーザステータス
-			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateUtil.YYYYMMDD_HHMMSS));		// 登録日時
+			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));		// 登録日時
 
 			try (FileOutputStream fos = new FileOutputStream(RESOURCES)) {
 
