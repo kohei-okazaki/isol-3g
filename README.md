@@ -13,4 +13,5 @@
  - Dao  
  - Dto  
  - Base系  
+ - data.xlsxをWindowsの場合C/work/の下に、macの場合は/Applications/の下に配置して下さい。  
  
