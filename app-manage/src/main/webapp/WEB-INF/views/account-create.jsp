@@ -50,6 +50,14 @@
 			<table border="1">
 				<tr>
 					<th width="130px">
+						<c:out value="ユーザID" />
+					</th>
+					<td width="250px">
+						<input type="text" name="userId" maxlength="16" required="required" />
+					</td>
+				</tr>
+				<tr>
+					<th width="130px">
 						<c:out value="パスワード" />
 					</th>
 					<td width="250px">
@@ -84,6 +92,14 @@
 		<form action="/isol-manage/account-create-complete.html" method="post">
 		<div align="center">
 			<table border="1">
+				<tr>
+					<th width="130px">
+						<c:out value="ユーザID" />
+					</th>
+					<td width="250px">
+						<input type="text" name="userId" maxlength="16" required="required" value="${form.userId}" disabled="disabled" />
+					</td>
+				</tr>
 				<tr>
 					<th width="130px">
 						<c:out value="パスワード" />

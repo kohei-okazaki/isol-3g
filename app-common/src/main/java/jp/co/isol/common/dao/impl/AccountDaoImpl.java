@@ -3,6 +3,7 @@ package jp.co.isol.common.dao.impl;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
@@ -87,9 +88,12 @@ public class AccountDaoImpl implements AccountDao {
 		// TODO 登録処理を追加すること
 
 		try (FileInputStream in = new FileInputStream(RESOURCES);
-				Workbook workbook = WorkbookFactory.create(in)) {
+				Workbook workbook = WorkbookFactory.create(in);
+				FileOutputStream fos = new FileOutputStream(RESOURCES)) {
 			Sheet sheet = workbook.getSheet(SHEET);
+
 			Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
+
 			newRow.createCell(0).setCellValue(account.getUserId());
 			newRow.createCell(1).setCellValue(account.getPassword());
 			newRow.createCell(2).setCellValue(account.getInvalidFlag());
@@ -98,6 +102,10 @@ public class AccountDaoImpl implements AccountDao {
 			newRow.createCell(5).setCellValue(account.getFileEnclosureCharFlag());
 			newRow.createCell(6).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));
 			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));
+
+			fos.flush();
+			workbook.write(fos);
+
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

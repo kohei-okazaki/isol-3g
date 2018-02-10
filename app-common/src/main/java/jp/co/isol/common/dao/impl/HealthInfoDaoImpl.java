@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -164,7 +163,8 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	public void registHealthInfo(HealthInfo healthInfo) throws DuplicateKeyException {
 
 		try (FileInputStream in = new FileInputStream(RESOURCES);
-				Workbook workbook = WorkbookFactory.create(in)) {
+				Workbook workbook = WorkbookFactory.create(in);
+				FileOutputStream fos = new FileOutputStream(RESOURCES)) {
 			Sheet sheet = workbook.getSheet(SHEET);
 
 			Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
@@ -178,15 +178,9 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 			newRow.createCell(6).setCellValue(healthInfo.getUserStatus());													// ユーザステータス
 			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));		// 登録日時
 
-			try (FileOutputStream fos = new FileOutputStream(RESOURCES)) {
+			fos.flush();
+			workbook.write(fos);
 
-				fos.flush();
-				workbook.write(fos);
-			} finally {
-				if (Objects.nonNull(workbook)) {
-					workbook.close();
-				}
-			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

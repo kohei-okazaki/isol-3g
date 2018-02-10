@@ -1,7 +1,16 @@
 package jp.co.isol.manage.service.impl;
 
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.common.dao.AccountDao;
+import jp.co.isol.common.entity.Account;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
+import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.manage.form.AccountCreateForm;
 import jp.co.isol.manage.service.AccountCreateService;
 
@@ -12,12 +21,32 @@ import jp.co.isol.manage.service.AccountCreateService;
 @Service
 public class AccountCreateServiceImpl implements AccountCreateService {
 
+	@Autowired
+	private AccountDao accountDao;
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void create(AccountCreateForm form) {
-		// TODO
+	public void create(Account account) {
+		accountDao.registAccount(account);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Account toAccount(AccountCreateForm form) {
+
+		Account account = new Account();
+		account.setUserId(form.getUserId());
+		account.setPassword(form.getPassword());
+		account.setInvalidFlag(CodeManager.getInstance().getValue(MainKey.FLAG, SubKey.FALSE));
+		account.setRemarks(form.getRemarks());
+		account.setFileEnclosureCharFlag(CodeManager.getInstance().getValue(MainKey.FLAG, SubKey.FALSE));
+		account.setPasswordExpire(DateUtil.addMonth(new Date(), 6));
+
+		return account;
 	}
 
 }
