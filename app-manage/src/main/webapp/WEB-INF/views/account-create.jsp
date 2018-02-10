@@ -49,32 +49,36 @@
 			</c:if>
 			<table border="1">
 				<tr>
-					<th width="130px">
+					<th class="headercolor" width="130px">
 						<c:out value="ユーザID" />
 					</th>
-					<td width="250px">
+					<td class="datacolor" width="250px">
 						<input type="text" name="userId" maxlength="16" required="required" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="headercolor" width="130px">
 						<c:out value="パスワード" />
 					</th>
-					<td width="250px">
+					<td class="datacolor" width="250px">
 						<input type="text" name="password" maxlength="16" required="required" />
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<th class="headercolor">
 						<c:out value="確認用 パスワード" />
 					</th>
-					<td width="250px">
+					<td class="datacolor" width="250px">
 						<input type="text" name="confirmPassword" maxlength="16" required="required" />
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="備 考" /></th>
-					<td><textarea rows="10" cols="30" name="remarks" ></textarea></td>
+					<th class="headercolor">
+						<c:out value="備 考" />
+					</th>
+					<td class="datacolor">
+						<textarea rows="10" cols="30" name="remarks" ></textarea>
+					</td>
 				</tr>
 			</table>
 			<br><br>
@@ -93,32 +97,36 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th width="130px">
+					<th class="headercolor" width="130px">
 						<c:out value="ユーザID" />
 					</th>
-					<td width="250px">
+					<td class="datacolor" width="250px">
 						<input type="text" name="userId" maxlength="16" required="required" value="${form.userId}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="headercolor" width="130px">
 						<c:out value="パスワード" />
 					</th>
-					<td width="250px">
+					<td class="datacolor" width="250px">
 						<input type="text" name="password" maxlength="16" required="required" value="${form.password}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<th class="headercolor">
 						<c:out value="確認用 パスワード" />
 					</th>
-					<td width="250px">
+					<td class="datacolor" width="250px">
 						<input type="text" name="confirmPassword" maxlength="16" required="required" value="${form.confirmPassword}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="備 考" /></th>
-					<td><textarea rows="10" cols="30" name="remarks" value="${form.remarks}"></textarea></td>
+					<th class="headercolor">
+						<c:out value="備 考" />
+					</th>
+					<td class="datacolor">
+						<textarea rows="10" cols="30" name="remarks" value="${form.remarks}"></textarea>
+					</td>
 				</tr>
 			</table>
 			<br><br>
@@ -142,7 +150,7 @@
 				<tr>
 					<td align="center">
 						<form action="/isol-manage/login.html" method="get">
-							<input type="submit" value="ログイン画面へ" />
+							<input type="submit" value="ログイン画面" />
 						</form>
 					</td>
 				</tr>

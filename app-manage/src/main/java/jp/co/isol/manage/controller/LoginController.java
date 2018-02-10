@@ -1,7 +1,5 @@
 package jp.co.isol.manage.controller;
 
-import java.text.ParseException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -72,11 +70,10 @@ public class LoginController {
 	 * @param request
 	 * @param loginForm
 	 * @return
-	 * @throws ParseException
 	 */
 	@PostMapping
 	@RequestMapping("/menu.html")
-	public String menu(Model model, HttpServletRequest request, @Valid LoginForm loginForm, BindingResult result) throws ParseException {
+	public String menu(Model model, HttpServletRequest request, @Valid LoginForm loginForm, BindingResult result) {
 
 		if (result.hasErrors()) {
 			// バインドエラー時の処理
