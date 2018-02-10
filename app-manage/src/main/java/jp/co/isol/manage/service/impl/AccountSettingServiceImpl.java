@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dao.MailInfoDao;
-import jp.co.isol.common.dto.AccountDto;
-import jp.co.isol.common.dto.MailInfoDto;
+import jp.co.isol.common.entity.Account;
+import jp.co.isol.common.entity.MailInfo;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.log.ManageLogger;
@@ -55,13 +55,13 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	private void updateAccount(AccountSettingForm form) {
 
-		AccountDto accountDto = new AccountDto();
-		accountDto.setUserId(form.getUserId());
-		accountDto.setPassword(form.getPassword());
-		accountDto.setFileEnclosureCharFlag(form.getFileEnclosureCharFlag());
-		accountDto.setRemarks(form.getRemarks());
-		accountDto.setUpdateDate(new Date());
-		accountDao.updateAccount(accountDto);
+		Account account = new Account();
+		account.setUserId(form.getUserId());
+		account.setPassword(form.getPassword());
+		account.setFileEnclosureCharFlag(form.getFileEnclosureCharFlag());
+		account.setRemarks(form.getRemarks());
+		account.setUpdateDate(new Date());
+		accountDao.updateAccount(account);
 	}
 
 	/**
@@ -69,11 +69,11 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 	 */
 	private void updateMainInfo(AccountSettingForm form) {
 
-		MailInfoDto mailInfoDto = new MailInfoDto();
-		mailInfoDto.setUserId(form.getUserId());
-		mailInfoDto.setMailAddress(form.getMailAddress());
-		mailInfoDto.setMailPassword(form.getMailPassword());
-		mailInfoDao.updateMailInfo(mailInfoDto);
+		MailInfo mailInfo = new MailInfo();
+		mailInfo.setUserId(form.getUserId());
+		mailInfo.setMailAddress(form.getMailAddress());
+		mailInfo.setMailPassword(form.getMailPassword());
+		mailInfoDao.updateMailInfo(mailInfo);
 	}
 
 	/**

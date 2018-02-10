@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.HealthInfoException;
@@ -131,25 +132,27 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		HealthInfoDto dto = this.healthInfoService.convertHealthInfoDto(form, userId);
 
+		HealthInfo healthInfo = this.healthInfoService.convertHealthInfo(dto);
+
 		// 入力画面から入力した情報を登録する
-		this.healthInfoDao.registHealthInfo(dto);
+		this.healthInfoDao.registHealthInfo(healthInfo);
 
 		// ユーザIDから健康情報のリストを取得
-		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
+		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 
 		// 最後に入力した体重をセット
-		int lastIndex = dtoList.size() - 1;
-		HealthInfoDto lastDto = dtoList.get(lastIndex);
-		model.addAttribute("beforeWeight", lastDto.getWeight());
+		int lastIndex = healthInfoList.size() - 1;
+		HealthInfo lastHealthInfo = healthInfoList.get(lastIndex);
+		model.addAttribute("beforeWeight", lastHealthInfo.getWeight());
 
 		// Dtoを設定する
-		model.addAttribute("dto", dto);
+		model.addAttribute("healthInfo", healthInfo);
 
 		// 入力した今の体重と前回入力した体重の差を設定
-		model.addAttribute("diffWeight", this.healthInfoService.getDiffWeight(form, lastDto));
+		model.addAttribute("diffWeight", this.healthInfoService.getDiffWeight(form, lastHealthInfo));
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastDto));
+		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastHealthInfo));
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 

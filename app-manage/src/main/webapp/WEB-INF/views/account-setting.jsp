@@ -67,8 +67,8 @@
 						<c:out value="ユーザID" />
 					</th>
 					<td>
-						<c:out value="${accountDto.userId}" />
-						<input type="hidden" name="userId" value="${accountDto.userId}" />
+						<c:out value="${account.userId}" />
+						<input type="hidden" name="userId" value="${account.userId}" />
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +76,7 @@
 						<c:out value="パスワード" />
 					</th>
 					<td>
-						<input type="text" name="password" value="${accountDto.password}" required="required" />
+						<input type="text" name="password" value="${account.password}" required="required" />
 					</td>
 				</tr>
 				<tr>
@@ -97,7 +97,7 @@
 						<c:out value="メールアドレス" />
 					</th>
 					<td>
-						<input type="email" name="mailAddress" value="${mailInfoDto.mailAddress}" required="required" />
+						<input type="email" name="mailAddress" value="${mailInfo.mailAddress}" required="required" />
 					</td>
 				</tr>
 				<tr>

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
@@ -37,7 +37,7 @@ public class ResultReferenceController {
 	/** 結果照会Excelダウンロードサービス */
 	@Autowired
 	@ReferenceExcel
-	private ExcelDownloadService<List<HealthInfoDto>> fileDownloadService;
+	private ExcelDownloadService<List<HealthInfo>> fileDownloadService;
 
 	/** 結果照会CSVダウンロードサービス */
 	@Autowired
@@ -71,8 +71,8 @@ public class ResultReferenceController {
 	@RequestMapping(value = "/result-reference-excelDownload.html")
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
-		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
-		return new ModelAndView(this.fileDownloadService.execute(dtoList));
+		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
+		return new ModelAndView(this.fileDownloadService.execute(healthInfoList));
 	}
 
 	/**

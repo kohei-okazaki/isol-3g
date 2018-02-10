@@ -16,8 +16,11 @@ import jp.co.isol.api.request.check.HealthInfoCheck;
 import jp.co.isol.api.request.key.HealthInfoRequestKey;
 import jp.co.isol.api.response.HealthInfoResponse;
 import jp.co.isol.api.service.HealthInfoService;
+import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.Account;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
@@ -34,6 +37,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	/** 健康情報Dao */
 	@Autowired
 	private HealthInfoDao healthInfoDao;
+	/** アカウントDao */
+	@Autowired
+	private AccountDao accountDao;
 
 	/**
 	 * {@inheritDoc}
@@ -44,10 +50,13 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		// リクエスト情報をDtoにつめる
 		HealthInfoDto dto = toHealthInfoDto(request);
 
-		// 登録処理を行う
-		healthInfoDao.registHealthInfo(dto);
+		// DtoをEntityにつめる
+		HealthInfo healthInfo = toEntity(dto);
 
-		HealthInfoResponse response = toResponse(dto);
+		// 登録処理を行う
+		healthInfoDao.registHealthInfo(healthInfo);
+
+		HealthInfoResponse response = toResponse(healthInfo);
 
 		return response;
 	}
@@ -56,17 +65,17 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoResponse toResponse(HealthInfoDto dto) {
+	public HealthInfoResponse toResponse(HealthInfo healthInfo) {
 
 		HealthInfoResponse response = new HealthInfoResponse();
-		response.setDataId(dto.getDataId());
-		response.setUserId(dto.getUserId());
-		response.setHeight(dto.getHeight());
-		response.setWeight(dto.getWeight());
-		response.setBmi(dto.getBmi());
-		response.setStandardWeight(dto.getStandardWeight());
-		response.setUserStatus(dto.getUserStatus());
-		response.setRegDate(dto.getRegDate());
+		response.setDataId(healthInfo.getDataId());
+		response.setUserId(healthInfo.getUserId());
+		response.setHeight(healthInfo.getHeight());
+		response.setWeight(healthInfo.getWeight());
+		response.setBmi(healthInfo.getBmi());
+		response.setStandardWeight(healthInfo.getStandardWeight());
+		response.setUserStatus(healthInfo.getUserStatus());
+		response.setRegDate(healthInfo.getRegDate());
 
 		return response;
 	}
@@ -89,27 +98,47 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		BigDecimal standardWeight = CalcUtil.calcStandardWeight(centiMeterHeight, 2);
 
 		// 最後に登録した健康情報を取得する
-		HealthInfoDto lastDto = getLastHealthInfoDto(userId);
+		HealthInfo lastHealthInfo = getLastHealthInfo(userId);
 		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN);
-		if (Objects.nonNull(lastDto)) {
+		if (Objects.nonNull(lastHealthInfo)) {
 			// 初回登録でない場合
-			userStatus = getUserStatus(weight, lastDto.getWeight());
+			userStatus = getUserStatus(weight, lastHealthInfo.getWeight());
 		}
 
 		Date regDate = new Date();
 
-		HealthInfoDto dto = new HealthInfoDto();
-		String nextDataId = getNextDataId(lastDto);
-		dto.setDataId(nextDataId);
-		dto.setUserId(userId);
-		dto.setHeight(height);
-		dto.setWeight(weight);
-		dto.setBmi(bmi);
-		dto.setStandardWeight(standardWeight);
-		dto.setUserStatus(userStatus);
-		dto.setRegDate(regDate);
+		HealthInfoDto healthInfo = new HealthInfoDto();
+		String nextDataId = getNextDataId(lastHealthInfo);
+		healthInfo.setDataId(nextDataId);
+		healthInfo.setUserId(userId);
+		healthInfo.setHeight(height);
+		healthInfo.setWeight(weight);
+		healthInfo.setBmi(bmi);
+		healthInfo.setStandardWeight(standardWeight);
+		healthInfo.setUserStatus(userStatus);
+		healthInfo.setRegDate(regDate);
 
-		return dto;
+		return healthInfo;
+	}
+
+	/**
+	 * DtoをEntityにつめる
+	 * @param dto
+	 * @return
+	 */
+	private HealthInfo toEntity(HealthInfoDto dto) {
+
+		HealthInfo healthInfo = new HealthInfo();
+		healthInfo.setDataId(dto.getDataId());
+		healthInfo.setUserId(dto.getUserId());
+		healthInfo.setHeight(dto.getHeight());
+		healthInfo.setWeight(dto.getWeight());
+		healthInfo.setBmi(dto.getBmi());
+		healthInfo.setStandardWeight(dto.getStandardWeight());
+		healthInfo.setUserStatus(dto.getUserStatus());
+		healthInfo.setRegDate(dto.getRegDate());
+
+		return healthInfo;
 	}
 
 	/**
@@ -117,8 +146,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @param dto
 	 * @return
 	 */
-	private String getNextDataId(HealthInfoDto dto) {
-		return Objects.isNull(dto) ? "1" : String.valueOf(Integer.valueOf(dto.getDataId()) + 1);
+	private String getNextDataId(HealthInfo healthInfo) {
+		return Objects.isNull(healthInfo) ? "1" : String.valueOf(Integer.valueOf(healthInfo.getDataId()) + 1);
 	}
 
 	/**
@@ -146,14 +175,14 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * @param userId
 	 * @return
 	 */
-	private HealthInfoDto getLastHealthInfoDto(String userId) {
+	private HealthInfo getLastHealthInfo(String userId) {
 
-		List<HealthInfoDto> dtoList = healthInfoDao.getHealthInfoByUserId(userId);
+		List<HealthInfo> healthInfoList = healthInfoDao.getHealthInfoByUserId(userId);
 
-		if (dtoList.size() == 0) {
+		if (healthInfoList.size() == 0) {
 			return null;
 		}
-		return dtoList.get(dtoList.size() - 1);
+		return healthInfoList.get(healthInfoList.size() - 1);
 	}
 
 	/**
@@ -163,6 +192,12 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	public void checkRequest(HealthInfoRequest request) throws HealthInfoException {
 
 		HealthInfoCheck healthInfoCheck = new HealthInfoCheck();
+		Account account = accountDao.getAccountByUserId((String) request.get(HealthInfoRequestKey.USER_ID));
+
+		if (Objects.isNull(account)) {
+			// アカウント情報が存在しない場合
+			return;
+		}
 
 		for (Entry<BaseRequestKey, Object> entry : request.getKeyValue()) {
 			String key = entry.getKey().getValue();

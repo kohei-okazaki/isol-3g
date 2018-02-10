@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.dao.DuplicateKeyException;
 
-import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.HealthInfo;
 
 /**
  * 健康情報のDaoインターフェイス
@@ -15,22 +15,22 @@ public interface HealthInfoDao {
 	/**
 	 * 指定したユーザIDの健康情報を返す<br>
 	 * @param userId
-	 * @return List<HealthInfoDto>
+	 * @return List<HealthInfo>
 	 */
-	public List<HealthInfoDto> getHealthInfoByUserId(String userId);
+	public List<HealthInfo> getHealthInfoByUserId(String userId);
 
 	/**
 	 * 指定されたデータIDに対応する健康情報を返す<br>
 	 * @param dataId
-	 * @return HealthInfoDto
+	 * @return HealthInfo
 	 */
-	public HealthInfoDto getHealthInfoByDataId(String dataId);
+	public HealthInfo getHealthInfoByDataId(String dataId);
 
 	/**
 	 * 健康情報を登録する<br>
 	 * @param dto
 	 * @throws DuplicateKeyException
 	 */
-	public void registHealthInfo(HealthInfoDto dto) throws DuplicateKeyException;
+	public void registHealthInfo(HealthInfo healthInfo) throws DuplicateKeyException;
 
 }

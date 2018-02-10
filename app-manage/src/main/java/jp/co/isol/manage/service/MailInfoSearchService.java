@@ -1,6 +1,6 @@
 package jp.co.isol.manage.service;
 
-import jp.co.isol.common.dto.MailInfoDto;
+import jp.co.isol.common.entity.MailInfo;
 
 /**
  * メール情報検索サービスインターフェース<br>
@@ -13,6 +13,6 @@ public interface MailInfoSearchService {
 	 * @param userId
 	 * @return メール情報
 	 */
-	public MailInfoDto findMailInfoByUserId(String userId);
+	public MailInfo findMailInfoByUserId(String userId);
 
 }

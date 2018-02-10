@@ -1,28 +1,52 @@
-package jp.co.isol.common.dto;
+package jp.co.isol.common.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * 健康情報を保持するDto
  */
-public class HealthInfoDto {
+@Entity
+@Table(name = "HEALTH_INFO")
+public class HealthInfo implements Serializable {
 
 	/** データID */
+	@Id
+	@Column(name = "DATA_ID", nullable = false, length = 3)
 	private String dataId;
+
 	/** ユーザID */
+	@Column(name = "USER_ID", nullable = false, length = 3)
 	private String userId;
+
 	/** 身長 */
+	@Column(name = "HEIGHT", nullable = false)
 	private BigDecimal height;
+
 	/** 体重 */
+	@Column(name = "WEIGHT", nullable = false)
 	private BigDecimal weight;
+
 	/** BMI */
+	@Column(name = "BMI", nullable = false)
 	private BigDecimal bmi;
+
 	/** 標準体重 */
+	@Column(name = "STANDARD_WEIGHT", nullable = false)
 	private BigDecimal standardWeight;
+
 	/** ユーザステータス */
+	@Column(name = "USER_STATUS", nullable = false)
 	private String userStatus;
+
 	/** 登録日時 */
+	@Column(name = "REG_DATE", nullable = false)
 	private Date regDate;
 
 	/**

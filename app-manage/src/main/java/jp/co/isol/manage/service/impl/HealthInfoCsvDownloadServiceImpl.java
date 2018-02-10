@@ -12,8 +12,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.common.dto.AccountDto;
-import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.Account;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
@@ -55,12 +55,12 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 
 		// 最後に登録した健康情報を検索
 		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
-		List<HealthInfoDto> dtoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
-		HealthInfoDto dto = dtoList.get(dtoList.size() - 1);
-		HealthInfoCsvModel model = toModel(dto);
+		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
+		HealthInfo healthInfo = healthInfoList.get(healthInfoList.size() - 1);
+		HealthInfoCsvModel model = toModel(healthInfo);
 
-		AccountDto accountDto = accountSearchService.findAccountByUserId(userId);
-		boolean enclosureFlag = CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, accountDto.getFileEnclosureCharFlag());
+		Account account = accountSearchService.findAccountByUserId(userId);
+		boolean enclosureFlag = CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, account.getFileEnclosureCharFlag());
 
 		// CSVに書き込む
 		HealthInfoCsvWriter writer = enclosureFlag ? new HealthInfoCsvWriter(CsvUtil.DOBBLE_QUOTE) : new HealthInfoCsvWriter();
@@ -71,18 +71,18 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 
 	/**
 	 * CSVモデルにDtoに変換する<br>
-	 * @param dto
+	 * @param healthInfo
 	 * @return model
 	 */
-	private HealthInfoCsvModel toModel(HealthInfoDto dto) {
+	private HealthInfoCsvModel toModel(HealthInfo healthInfo) {
 
 		HealthInfoCsvModel model = new HealthInfoCsvModel();
-		model.setUserId(dto.getUserId());
-		model.setHeight(dto.getHeight());
-		model.setWeight(dto.getWeight());
-		model.setBmi(dto.getBmi());
-		model.setStandardWeight(dto.getStandardWeight());
-		model.setRegDate(dto.getRegDate());
+		model.setUserId(healthInfo.getUserId());
+		model.setHeight(healthInfo.getHeight());
+		model.setWeight(healthInfo.getWeight());
+		model.setBmi(healthInfo.getBmi());
+		model.setStandardWeight(healthInfo.getStandardWeight());
+		model.setRegDate(healthInfo.getRegDate());
 
 		return model;
 	}

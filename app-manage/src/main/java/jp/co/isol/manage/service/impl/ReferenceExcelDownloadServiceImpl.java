@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
-import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.manage.file.excel.builder.ResultReferenceExcelBuiler;
 import jp.co.isol.manage.file.excel.model.ReferenceExcelModel;
 import jp.co.isol.manage.service.ExcelDownloadService;
@@ -17,13 +17,13 @@ import jp.co.isol.manage.service.ExcelDownloadService;
  *
  */
 @Service(value = "referenceExcel")
-public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<List<HealthInfoDto>> {
+public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<List<HealthInfo>> {
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public View execute(List<HealthInfoDto> historyList) {
+	public View execute(List<HealthInfo> historyList) {
 
 		List<ReferenceExcelModel> modelList = toModel(historyList);
 
@@ -35,16 +35,16 @@ public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<L
 	 * @param historyList 健康情報リスト履歴リスト
 	 * @return modelList
 	 */
-	private List<ReferenceExcelModel> toModel(List<HealthInfoDto> historyList) {
+	private List<ReferenceExcelModel> toModel(List<HealthInfo> historyList) {
 
 		List<ReferenceExcelModel> modelList = new ArrayList<ReferenceExcelModel>();
 		Stream.iterate(0, i -> ++i).limit(historyList.size()).forEach(i -> {
 			ReferenceExcelModel model = new ReferenceExcelModel();
-			HealthInfoDto dto = historyList.get(i);
-			model.setHeight(dto.getHeight());
-			model.setWeight(dto.getWeight());
-			model.setBmi(dto.getBmi());
-			model.setStandardWeight(dto.getStandardWeight());
+			HealthInfo healthInfo = historyList.get(i);
+			model.setHeight(healthInfo.getHeight());
+			model.setWeight(healthInfo.getWeight());
+			model.setBmi(healthInfo.getBmi());
+			model.setStandardWeight(healthInfo.getStandardWeight());
 			modelList.add(model);
 		});
 
