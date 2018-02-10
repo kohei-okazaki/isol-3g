@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jp.co.isol.common.dto.CodeDto;
+import jp.co.isol.common.other.OSDefine;
 import jp.co.isol.common.util.StringUtil;
 
 /**
@@ -28,7 +29,9 @@ public class CodeManager {
 	/** singletonパターン */
 	private static CodeManager instance = new CodeManager();
 	/** コードエクセルファイル */
-	private static final String CODE_EXCEL = "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\codeParameter.xlsx";
+	private static final String CODE_EXCEL = OSDefine.isWin()
+			? "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\codeParameter.xlsx"
+			: "/Applications/Eclipse_4.7.2.app/Contents/workspace/isol-3g/app-common/src/main/resources/META-INF/codeParameter.xlsx";
 	/** シート名 */
 	private static final String SHEET_NAME = "PARAMETER";
 
