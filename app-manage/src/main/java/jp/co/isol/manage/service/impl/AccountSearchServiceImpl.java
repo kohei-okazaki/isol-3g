@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dao.AccountDao;
-import jp.co.isol.common.dto.AccountDto;
+import jp.co.isol.common.entity.Account;
 import jp.co.isol.manage.service.AccountSearchService;
 
 /**
@@ -22,7 +22,7 @@ public class AccountSearchServiceImpl implements AccountSearchService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AccountDto findAccountByUserId(String userId) {
+	public Account findAccountByUserId(String userId) {
 		return this.accountDao.getAccountByUserId(userId);
 	}
 

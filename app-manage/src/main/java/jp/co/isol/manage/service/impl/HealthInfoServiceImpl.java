@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.MessageManager;
@@ -49,13 +50,13 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getDiffMessage(HealthInfoForm form, HealthInfoDto dto) {
+	public String getDiffMessage(HealthInfoForm form, HealthInfo healthInfo) {
 
 		MessageManager manager = MessageManager.getInstance();
-		if (form.getWeight().compareTo(dto.getWeight()) == 0) {
+		if (form.getWeight().compareTo(healthInfo.getWeight()) == 0) {
 			// 変化なしの場合
 			return manager.getValue("even");
-		} else if (form.getWeight().compareTo(dto.getWeight()) == 1) {
+		} else if (form.getWeight().compareTo(healthInfo.getWeight()) == 1) {
 			// 増加した場合
 			return manager.getValue("increase");
 		} else {
@@ -68,7 +69,25 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfoDto dto) {
-		return this.calcService.calcDiffWeight(dto.getWeight(), form.getWeight());
+	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfo healthInfo) {
+		return this.calcService.calcDiffWeight(healthInfo.getWeight(), form.getWeight());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public HealthInfo convertHealthInfo(HealthInfoDto dto) {
+
+		HealthInfo healthInfo = new HealthInfo();
+		healthInfo.setDataId(dto.getDataId());
+		healthInfo.setUserId(dto.getUserId());
+		healthInfo.setHeight(dto.getHeight());
+		healthInfo.setWeight(dto.getWeight());
+		healthInfo.setBmi(dto.getBmi());
+		healthInfo.setStandardWeight(dto.getStandardWeight());
+		healthInfo.setUserStatus(dto.getUserStatus());
+		healthInfo.setRegDate(dto.getRegDate());
+		return healthInfo;
 	}
 }

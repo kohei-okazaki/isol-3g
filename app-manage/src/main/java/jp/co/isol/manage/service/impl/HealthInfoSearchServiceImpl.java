@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dao.HealthInfoDao;
-import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.manage.service.HealthInfoSearchService;
 
 /**
@@ -23,7 +23,7 @@ public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<HealthInfoDto> findHealthInfoByUserId(String userId) {
+	public List<HealthInfo> findHealthInfoByUserId(String userId) {
 		return this.healthInfoDao.getHealthInfoByUserId(userId);
 	}
 
@@ -31,7 +31,7 @@ public class HealthInfoSearchServiceImpl implements HealthInfoSearchService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto findHealthInfoByDataId(String dataId) {
+	public HealthInfo findHealthInfoByDataId(String dataId) {
 		return this.healthInfoDao.getHealthInfoByDataId(dataId);
 	}
 

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.dao.MailInfoDao;
-import jp.co.isol.common.dto.MailInfoDto;
+import jp.co.isol.common.entity.MailInfo;
 import jp.co.isol.manage.service.MailInfoSearchService;
 
 /**
@@ -22,7 +22,7 @@ public class MailInfoSearchServiceImpl implements MailInfoSearchService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public MailInfoDto findMailInfoByUserId(String userId) {
+	public MailInfo findMailInfoByUserId(String userId) {
 		return this.mailInfoDao.getMailInfoByUserId(userId);
 	}
 

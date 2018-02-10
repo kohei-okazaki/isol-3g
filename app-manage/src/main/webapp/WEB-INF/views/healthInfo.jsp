@@ -99,13 +99,13 @@
 	<c:if test="${page == 2}">
 	<div align="center">
 		<br>
-		<c:out value="今のあなたの身長(${dto.height}cm)の" />
+		<c:out value="今のあなたの身長(${healthInfo.height}cm)の" />
 		<br>
-		<c:out value="標準体重は${dto.standardWeight}kgです。" />
+		<c:out value="標準体重は${healthInfo.standardWeight}kgです。" />
 		<br><br>
 		<c:out value="前回より${diffWeight}kg ${resultMessage}" />
 		<br>
-		<c:out value="${beforeWeight}kg→${dto.weight}kg" />
+		<c:out value="${beforeWeight}kg→${healthInfo.weight}kg" />
 		<br><br><br>
 		<table class="custom">
 			<tr class="headercolor">
@@ -115,10 +115,10 @@
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
 			<tr class="datacolor">
-				<td align="center"><c:out value="${dto.height}" /></td>
-				<td align="center"><c:out value="${dto.weight}" /></td>
-				<td align="center"><c:out value="${dto.standardWeight}" /></td>
-				<td align="center"><c:out value="${dto.bmi}" /></td>
+				<td align="center"><c:out value="${healthInfo.height}" /></td>
+				<td align="center"><c:out value="${healthInfo.weight}" /></td>
+				<td align="center"><c:out value="${healthInfo.standardWeight}" /></td>
+				<td align="center"><c:out value="${healthInfo.bmi}" /></td>
 			</tr>
 		</table>
 		<br><br>
@@ -129,10 +129,10 @@
 				<td align="center">
 				<!-- 通知  -->
 				<form action="/isol-manage/notice.html" method="post">
-					<input type="hidden" name="height" value="${dto.height}">
-					<input type="hidden" name="weight" value="${dto.weight}">
-					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
-					<input type="hidden" name="bmi" value="${dto.bmi}">
+					<input type="hidden" name="height" value="${healthInfo.height}">
+					<input type="hidden" name="weight" value="${healthInfo.weight}">
+					<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
+					<input type="hidden" name="bmi" value="${healthInfo.bmi}">
 					<div>
 						<input class="menuicon" type="image" src="resources/image/icon_mail.png">
 					</div>
@@ -142,10 +142,10 @@
 				<td align="center">
 				<!-- Excel出力 -->
 				<form action="/isol-manage/healthInfo-excelDownload.html" method="get">
-					<input type="hidden" name="height" value="${dto.height}">
-					<input type="hidden" name="weight" value="${dto.weight}">
-					<input type="hidden" name="standardWeight" value="${dto.standardWeight}">
-					<input type="hidden" name="bmi" value="${dto.bmi}">
+					<input type="hidden" name="height" value="${healthInfo.height}">
+					<input type="hidden" name="weight" value="${healthInfo.weight}">
+					<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
+					<input type="hidden" name="bmi" value="${healthInfo.bmi}">
 					<div>
 						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
 					</div>

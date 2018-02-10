@@ -3,6 +3,7 @@ package jp.co.isol.manage.service;
 import java.math.BigDecimal;
 
 import jp.co.isol.common.dto.HealthInfoDto;
+import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.manage.form.HealthInfoForm;
 
 /**
@@ -22,17 +23,24 @@ public interface HealthInfoService {
 	/**
 	 * 入力した体重と最後に入力した体重との差を表示する<br>
 	 * @param form
-	 * @param dto
+	 * @param lastHealthInfo
 	 * @return 体重差のメッセージ
 	 */
-	public String getDiffMessage(HealthInfoForm form, HealthInfoDto dto);
+	public String getDiffMessage(HealthInfoForm form, HealthInfo lastHealthInfo);
 
 	/**
 	 * 最後に入力した体重とフォームから体重差を返却
 	 * @param form
-	 * @param dto
+	 * @param lastHealthInfo
 	 * @return 体重差
 	 */
-	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfoDto dto);
+	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfo lastHealthInfo);
+
+	/**
+	 * 健康情報Dtoを健康情報Entityにつめる<br>
+	 * @param dto
+	 * @return
+	 */
+	public HealthInfo convertHealthInfo(HealthInfoDto dto);
 
 }

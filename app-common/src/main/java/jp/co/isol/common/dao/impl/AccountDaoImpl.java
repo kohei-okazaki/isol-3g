@@ -16,8 +16,9 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.dao.DuplicateKeyException;
 
 import jp.co.isol.common.dao.AccountDao;
-import jp.co.isol.common.dto.AccountDto;
+import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.other.DateFormatDefine;
+import jp.co.isol.common.other.OSDefine;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -26,7 +27,7 @@ import jp.co.isol.common.util.DateUtil;
  */
 public class AccountDaoImpl implements AccountDao {
 
-	private static final String RESOURCES = "C:\\work\\data.xlsx";
+	private static final String RESOURCES = OSDefine.isWin() ? "C:\\work\\data.xlsx" : "/Applications/data.xlsx";
 	private static final String SHEET = "ACCOUNT";
 	private static final int HEADER_POSITION = 0;
 
@@ -34,9 +35,9 @@ public class AccountDaoImpl implements AccountDao {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AccountDto getAccountByUserId(String userId) {
+	public Account getAccountByUserId(String userId) {
 
-		AccountDto dto = new AccountDto();
+		Account account = new Account();
 
 		try (Workbook workbook = WorkbookFactory.create(new File(RESOURCES))) {
 			Sheet sheet = workbook.getSheet(SHEET);
@@ -50,14 +51,14 @@ public class AccountDaoImpl implements AccountDao {
 					continue;
 				}
 				if (userId.equals(row.getCell(0).getStringCellValue())) {
-					dto.setUserId(row.getCell(0).getStringCellValue());
-					dto.setPassword(row.getCell(1).getStringCellValue());
-					dto.setInvalidFlag(row.getCell(2).getStringCellValue());
-					dto.setPasswordExpire(DateUtil.formatDate(row.getCell(3).getStringCellValue()));
-					dto.setRemarks(row.getCell(4).getStringCellValue());
-					dto.setFileEnclosureCharFlag(row.getCell(5).getStringCellValue());
-					dto.setUpdateDate(DateUtil.formatDate(row.getCell(6).getStringCellValue()));
-					dto.setRegDate(DateUtil.formatDate(row.getCell(7).getStringCellValue()));
+					account.setUserId(row.getCell(0).getStringCellValue());
+					account.setPassword(row.getCell(1).getStringCellValue());
+					account.setInvalidFlag(row.getCell(2).getStringCellValue());
+					account.setPasswordExpire(DateUtil.formatDate(row.getCell(3).getStringCellValue()));
+					account.setRemarks(row.getCell(4).getStringCellValue());
+					account.setFileEnclosureCharFlag(row.getCell(5).getStringCellValue());
+					account.setUpdateDate(DateUtil.formatDate(row.getCell(6).getStringCellValue()));
+					account.setRegDate(DateUtil.formatDate(row.getCell(7).getStringCellValue()));
 				}
 			}
 		} catch (EncryptedDocumentException e) {
@@ -75,26 +76,26 @@ public class AccountDaoImpl implements AccountDao {
 //		dto.setPasswordExpire(new Date());
 //		dto.setRemarks("ここは備考です。");
 //		dto.setFileEnclosureCharFlag("1");
-		return dto;
+		return account;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void registAccount(AccountDto accountDto) throws DuplicateKeyException {
+	public void registAccount(Account account) throws DuplicateKeyException {
 		// TODO 登録処理を追加すること
 
 		try (FileInputStream in = new FileInputStream(RESOURCES);
 				Workbook workbook = WorkbookFactory.create(in)) {
 			Sheet sheet = workbook.getSheet(SHEET);
 			Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
-			newRow.createCell(0).setCellValue(accountDto.getUserId());
-			newRow.createCell(1).setCellValue(accountDto.getPassword());
-			newRow.createCell(2).setCellValue(accountDto.getInvalidFlag());
-			newRow.createCell(3).setCellValue(DateUtil.toString(accountDto.getPasswordExpire(), DateFormatDefine.YYYYMMDD_HHMMSS));
-			newRow.createCell(4).setCellValue(accountDto.getRemarks());
-			newRow.createCell(5).setCellValue(accountDto.getFileEnclosureCharFlag());
+			newRow.createCell(0).setCellValue(account.getUserId());
+			newRow.createCell(1).setCellValue(account.getPassword());
+			newRow.createCell(2).setCellValue(account.getInvalidFlag());
+			newRow.createCell(3).setCellValue(DateUtil.toString(account.getPasswordExpire(), DateFormatDefine.YYYYMMDD_HHMMSS));
+			newRow.createCell(4).setCellValue(account.getRemarks());
+			newRow.createCell(5).setCellValue(account.getFileEnclosureCharFlag());
 			newRow.createCell(6).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));
 			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));
 
@@ -113,7 +114,7 @@ public class AccountDaoImpl implements AccountDao {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void updateAccount(AccountDto accountDto) {
+	public void updateAccount(Account account) {
 		// TODO 更新処理を追加すること
 	}
 
