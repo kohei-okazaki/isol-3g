@@ -32,4 +32,13 @@ public interface LoginService {
 	 */
 	public boolean existAccount(LoginForm loginForm);
 
+
+	/**
+	 * アカウント情報が有効かどうかチェック<br>
+	 * 有効でない場合true, そうでない場合false<br>
+	 * @param loginForm
+	 * @return
+	 */
+	public boolean invalidAccount(LoginForm loginForm);
+
 }

@@ -94,6 +94,12 @@ public class LoginController {
 			return ManageView.LOGIN.getName();
 		}
 
+		if (this.loginService.invalidAccount(loginForm)) {
+			// アカウント情報が有効期限切の場合
+			model.addAttribute("errorMessage", "ユーザID : " + loginForm.getUserId() + "は有効期限切れです。");
+			return ManageView.LOGIN.getName();
+		}
+
 		// セッションにユーザIDを登録する。
 		this.loginService.registSession(request.getSession(), loginForm.getUserId());
 

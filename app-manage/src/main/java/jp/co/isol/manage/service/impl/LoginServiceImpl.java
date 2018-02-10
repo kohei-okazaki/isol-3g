@@ -10,6 +10,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.entity.Account;
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.service.AccountSearchService;
@@ -62,6 +65,16 @@ public class LoginServiceImpl implements LoginService {
 
 		Account account = accountSearchService.findAccountByUserId(loginForm.getUserId());
 		return Objects.nonNull(account.getUserId());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean invalidAccount(LoginForm loginForm) {
+
+		Account account = accountSearchService.findAccountByUserId(loginForm.getUserId());
+		return CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, account.getInvalidFlag());
 	}
 
 }
