@@ -97,7 +97,7 @@
 						<c:out value="ユーザID" />
 					</th>
 					<td width="250px">
-						<input type="text" name="userId" maxlength="16" required="required" value="${form.userId}" disabled="disabled" />
+						<input type="text" name="userId" maxlength="16" required="required" value="${form.userId}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
@@ -105,7 +105,7 @@
 						<c:out value="パスワード" />
 					</th>
 					<td width="250px">
-						<input type="text" name="password" maxlength="16" required="required" value="${form.password}" disabled="disabled" />
+						<input type="text" name="password" maxlength="16" required="required" value="${form.password}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
@@ -113,7 +113,7 @@
 						<c:out value="確認用 パスワード" />
 					</th>
 					<td width="250px">
-						<input type="text" name="confirmPassword" maxlength="16" required="required" value="${form.confirmPassword}" disabled="disabled" />
+						<input type="text" name="confirmPassword" maxlength="16" required="required" value="${form.confirmPassword}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
