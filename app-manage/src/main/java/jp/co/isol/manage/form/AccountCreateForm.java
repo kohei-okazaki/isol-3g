@@ -10,6 +10,8 @@ import jp.co.isol.common.web.mvc.BaseForm;
  */
 public class AccountCreateForm extends BaseForm implements Serializable {
 
+	/** ユーザID */
+	private String userId;
 	/** パスワード */
 	private String password;
 	/** 確認用パスワード */
@@ -22,6 +24,22 @@ public class AccountCreateForm extends BaseForm implements Serializable {
 	 */
 	public AccountCreateForm() {
 
+	}
+
+	/**
+	 * userIdを返す
+	 * @return userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 * @param userId
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**

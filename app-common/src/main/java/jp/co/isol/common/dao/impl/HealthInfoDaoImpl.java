@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -62,7 +61,7 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 					healthInfo.setBmi(new BigDecimal(row.getCell(4).getStringCellValue()));					// BMI
 					healthInfo.setStandardWeight(new BigDecimal(row.getCell(5).getStringCellValue()));		// 標準体重
 					healthInfo.setUserStatus(row.getCell(6).getStringCellValue());							// ユーザステータス
-					healthInfo.setRegDate(DateUtil.formatDate(row.getCell(7).getStringCellValue()));			// 登録日時
+					healthInfo.setRegDate(DateUtil.formatDate(row.getCell(7).getStringCellValue()));		// 登録日時
 					healthInfoList.add(healthInfo);
 				}
 			}
@@ -164,29 +163,24 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 	public void registHealthInfo(HealthInfo healthInfo) throws DuplicateKeyException {
 
 		try (FileInputStream in = new FileInputStream(RESOURCES);
-				Workbook workbook = WorkbookFactory.create(in)) {
+				Workbook workbook = WorkbookFactory.create(in);
+				FileOutputStream fos = new FileOutputStream(RESOURCES)) {
 			Sheet sheet = workbook.getSheet(SHEET);
 
 			Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
 
-			newRow.createCell(0).setCellValue(String.valueOf(sheet.getLastRowNum()));								// データID
+			newRow.createCell(0).setCellValue(String.valueOf(sheet.getLastRowNum()));										// データID
 			newRow.createCell(1).setCellValue(healthInfo.getUserId());														// ユーザID
 			newRow.createCell(2).setCellValue(healthInfo.getHeight().toString());											// 身長
 			newRow.createCell(3).setCellValue(healthInfo.getWeight().toString());											// 体重
 			newRow.createCell(4).setCellValue(healthInfo.getBmi().toString());												// BMI
 			newRow.createCell(5).setCellValue(healthInfo.getStandardWeight().toString());									// 標準体重
 			newRow.createCell(6).setCellValue(healthInfo.getUserStatus());													// ユーザステータス
-			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));		// 登録日時
+			newRow.createCell(7).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));				// 登録日時
 
-			try (FileOutputStream fos = new FileOutputStream(RESOURCES)) {
+			fos.flush();
+			workbook.write(fos);
 
-				fos.flush();
-				workbook.write(fos);
-			} finally {
-				if (Objects.nonNull(workbook)) {
-					workbook.close();
-				}
-			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

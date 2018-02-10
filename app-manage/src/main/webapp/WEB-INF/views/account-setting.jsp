@@ -50,10 +50,10 @@
 			<table border="1">
 
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="削除" />
 					</th>
-					<td width="250px">
+					<td class="data" width="250px">
 						<div class="radio">
 							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1" checked="checked">
 							<label for="deleteFlagTrue">する</label>
@@ -63,27 +63,27 @@
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<th class="header">
 						<c:out value="ユーザID" />
 					</th>
-					<td>
+					<td class="data">
 						<c:out value="${account.userId}" />
 						<input type="hidden" name="userId" value="${account.userId}" />
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<th class="header">
 						<c:out value="パスワード" />
 					</th>
-					<td>
+					<td class="data">
 						<input type="text" name="password" value="${account.password}" required="required" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="囲い文字を利用" />
 					</th>
-					<td width="250px">
+					<td class="data" width="250px">
 						<div class="radio">
 							<input type="radio" name="fileEnclosureCharFlag" id="fileEnclosureCharFlagTrue" value="1" checked="checked">
 							<label for="fileEnclosureCharFlagTrue">する</label>
@@ -93,24 +93,26 @@
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="メールアドレス" />
 					</th>
-					<td>
+					<td class="data">
 						<input type="email" name="mailAddress" value="${mailInfo.mailAddress}" required="required" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="メールパスワード" />
 					</th>
-					<td>
+					<td class="data">
 						<input type="text" name="mailPassword" value="${mailInfoDto.mailPassword}" required="required" />
 					</td>
 				</tr>
 				<tr>
-					<th><c:out value="備 考" /></th>
-					<td><textarea rows="10" cols="30" name="remarks" ></textarea></td>
+					<th class="header"><c:out value="備 考" /></th>
+					<td class="data">
+						<textarea rows="10" cols="30" name="remarks" ></textarea>
+					</td>
 				</tr>
 			</table>
 			<br><br>

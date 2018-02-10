@@ -1,7 +1,5 @@
 package jp.co.isol.manage.controller;
 
-import java.text.ParseException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -71,12 +69,12 @@ public class LoginController {
 	 * @param model
 	 * @param request
 	 * @param loginForm
+	 * @param result
 	 * @return
-	 * @throws ParseException
 	 */
 	@PostMapping
 	@RequestMapping("/menu.html")
-	public String menu(Model model, HttpServletRequest request, @Valid LoginForm loginForm, BindingResult result) throws ParseException {
+	public String menu(Model model, HttpServletRequest request, @Valid LoginForm loginForm, BindingResult result) {
 
 		if (result.hasErrors()) {
 			// バインドエラー時の処理
@@ -84,10 +82,24 @@ public class LoginController {
 			return ManageView.LOGIN.getName();
 		}
 
+		if (!this.loginService.existAccount(loginForm)) {
+			// アカウント情報を取得出来なかった場合
+			model.addAttribute("errorMessage", "アカウントが存在しません。");
+			return ManageView.LOGIN.getName();
+		}
+
 		if (this.loginService.invalidPassword(loginForm)) {
+			// 入力されたユーザIDと紐付くアカウント情報.パスワードと入力情報.パスワードが異なる場合
 			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");
 			return ManageView.LOGIN.getName();
 		}
+
+		if (this.loginService.invalidAccount(loginForm)) {
+			// アカウント情報が有効期限切の場合
+			model.addAttribute("errorMessage", "ユーザID : " + loginForm.getUserId() + "は有効期限切れです。");
+			return ManageView.LOGIN.getName();
+		}
+
 		// セッションにユーザIDを登録する。
 		this.loginService.registSession(request.getSession(), loginForm.getUserId());
 

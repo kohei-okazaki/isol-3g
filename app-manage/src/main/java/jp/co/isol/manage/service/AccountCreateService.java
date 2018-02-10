@@ -1,5 +1,6 @@
 package jp.co.isol.manage.service;
 
+import jp.co.isol.common.entity.Account;
 import jp.co.isol.manage.form.AccountCreateForm;
 
 /**
@@ -9,8 +10,15 @@ import jp.co.isol.manage.form.AccountCreateForm;
 public interface AccountCreateService {
 
 	/**
-	 * アカウントを作成する
-	 * @param form
+	 * アカウントを作成する<br>
+	 * @param account
 	 */
-	public void create(AccountCreateForm form);
+	public void create(Account account);
+
+	/**
+	 * アカウントEntityに変換する<br>
+	 * @param form
+	 * @return
+	 */
+	public Account toAccount(AccountCreateForm form);
 }

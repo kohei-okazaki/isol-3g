@@ -20,7 +20,7 @@ fieldset {
 
 h1 {
 	background: #32cd32;
-	padding: 20px 0; /*PADDING TODOS OS LADOS DE 20PX*/
+	padding: 20px 0;
 	font-size: 140%;
 	font-weight: 300;
 	text-align: center;
@@ -95,7 +95,25 @@ input[type="submit"] {
 	-webkit-transition: background .3s;
 }
 
+input[type="button"] {
+	width: 100%;
+	background: #32cd32;
+	border: 0;
+	padding: 4%;
+	margin-top: 4%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
+	color: #fff;
+	cursor: pointer;
+	transition: background .3s;
+	-webkit-transition: background .3s;
+}
+
 input[type="submit"]:hover {
+	background: #80ff80;
+}
+
+input[type="button"]:hover {
 	background: #80ff80;
 }
 

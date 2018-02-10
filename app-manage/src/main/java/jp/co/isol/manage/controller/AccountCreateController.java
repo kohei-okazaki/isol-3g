@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.exception.AccountCreateException;
 import jp.co.isol.manage.form.AccountCreateForm;
@@ -77,8 +78,11 @@ public class AccountCreateController extends BaseWizardController<AccountCreateF
 	@PostMapping(value = "/account-create-complete.html")
 	public String complete(Model model, AccountCreateForm form, HttpServletRequest request) throws AccountCreateException {
 
-		// アカウント作成
-		accountCreateService.create(form);
+		// アカウントEntityに変換する
+		Account account = accountCreateService.toAccount(form);
+
+		// アカウントを作成する
+		accountCreateService.create(account);
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 

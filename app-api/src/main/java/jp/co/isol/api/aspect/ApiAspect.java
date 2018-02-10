@@ -18,6 +18,16 @@ import jp.co.isol.common.web.api.BaseResponse;
 @Component
 public class ApiAspect {
 
+	@Before("execution(* *..*Controller.execute(..))*")
+	public void outStartControllerLog(JoinPoint jp) {
+		System.out.println("■■■■■■■■■■■■■■■■■コントローラクラス開始■■■■■■■■■■■■■■■" + jp.toString());
+	}
+
+	@After("execution(* *..*Controller.execute(..))*")
+	public void outEndControllerLog(JoinPoint jp) {
+		System.out.println("■■■■■■■■■■■■■■■■■コントローラクラス終了■■■■■■■■■■■■■■■" + jp.toString());
+	}
+
 	/**
 	 * 開始ログ出力する<br>
 	 * @param jp
