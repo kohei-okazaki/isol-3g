@@ -69,6 +69,7 @@ public class LoginController {
 	 * @param model
 	 * @param request
 	 * @param loginForm
+	 * @param result
 	 * @return
 	 */
 	@PostMapping
@@ -81,10 +82,18 @@ public class LoginController {
 			return ManageView.LOGIN.getName();
 		}
 
+		if (!this.loginService.existAccount(loginForm)) {
+			// アカウント情報を取得出来なかった場合
+			model.addAttribute("errorMessage", "アカウントが存在しません。");
+			return ManageView.LOGIN.getName();
+		}
+
 		if (this.loginService.invalidPassword(loginForm)) {
+			// 入力されたユーザIDと紐付くアカウント情報.パスワードと入力情報.パスワードが異なる場合
 			model.addAttribute("errorMessage", "IDとパスワードが一致しません。");
 			return ManageView.LOGIN.getName();
 		}
+
 		// セッションにユーザIDを登録する。
 		this.loginService.registSession(request.getSession(), loginForm.getUserId());
 

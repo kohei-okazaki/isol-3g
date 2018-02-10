@@ -1,5 +1,7 @@
 package jp.co.isol.manage.service.impl;
 
+import java.util.Objects;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
+import jp.co.isol.common.entity.Account;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.service.AccountSearchService;
@@ -31,7 +34,8 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean invalidPassword(LoginForm loginForm) {
 		String inputPassword = loginForm.getPassword();
-		String userPassword = this.accountSearchService.findAccountByUserId(loginForm.getUserId()).getPassword();
+		Account account = accountSearchService.findAccountByUserId(loginForm.getUserId());
+		String userPassword = account.getPassword();
 		return !inputPassword.equals(userPassword);
 	}
 
@@ -48,6 +52,16 @@ public class LoginServiceImpl implements LoginService {
 		}
 
 		sessionManager.setAttribute(session, ManageSessionKey.USER_ID, userId);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean existAccount(LoginForm loginForm) {
+
+		Account account = accountSearchService.findAccountByUserId(loginForm.getUserId());
+		return Objects.nonNull(account.getUserId());
 	}
 
 }

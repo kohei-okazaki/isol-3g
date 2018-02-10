@@ -24,4 +24,12 @@ public interface LoginService {
 	 */
 	public void registSession(HttpSession session, String userId);
 
+
+	/**
+	 * アカウント情報が存在するかチェック<br>
+	 * @param loginForm
+	 * @return
+	 */
+	public boolean existAccount(LoginForm loginForm);
+
 }

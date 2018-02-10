@@ -26,7 +26,7 @@
 	<br><br>
 	<div align="center">
 		<table border="1">
-			<tr class="headercolor">
+			<tr class="header">
 				<th align="center"><c:out value="身長" /></th>
 				<th align="center"><c:out value="体重" /></th>
 				<th align="center"><c:out value="標準体重" /></th>
@@ -34,7 +34,7 @@
 				<th align="center"><c:out value="登録日時" /></th>
 			</tr>
 			<c:forEach var="result" items="${resultList}">
-				<tr class="datacolor">
+				<tr class="data">
 					<td align="center"><c:out value="${result.height}" /></td>
 					<td align="center"><c:out value="${result.weight}" /></td>
 					<td align="center"><c:out value="${result.standardWeight}" /></td>
