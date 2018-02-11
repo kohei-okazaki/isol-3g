@@ -18,7 +18,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
@@ -85,8 +84,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	 * {@inheritDoc}
 	 */
 	@Override
-	@GetMapping
-	@RequestMapping(value = "/healthInfo-input.html")
+	@GetMapping(value = "/healthInfo-input.html")
 	public String input(Model model, HttpServletRequest request) throws HealthInfoException {
 
 		model.addAttribute("page", PageType.INPUT.getName());
@@ -98,8 +96,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	 * {@inheritDoc}
 	 */
 	@Override
-	@PostMapping
-	@RequestMapping(value = "/healthInfo-confirm.html")
+	@PostMapping(value = "/healthInfo-confirm.html")
 	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) throws HealthInfoException {
 
 		if (result.hasErrors()) {
@@ -119,8 +116,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	 * {@inheritDoc}
 	 */
 	@Override
-	@PostMapping
-	@RequestMapping(value = "/healthInfo-complete.html")
+	@PostMapping(value = "/healthInfo-complete.html")
 	public String complete(Model model, HealthInfoForm form, HttpServletRequest request) throws HealthInfoException {
 
 		ManageSessionManager manager;
@@ -165,8 +161,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	 * @param form
 	 * @return ModelAndView
 	 */
-	@GetMapping
-	@RequestMapping(value = "/healthInfo-excelDownload.html")
+	@GetMapping(value = "/healthInfo-excelDownload.html")
 	public ModelAndView excelDownload(HealthInfoForm form) {
 
 		ManageLogger logger;
@@ -187,8 +182,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	 * @throws ParseException
 	 * @throws IOException
 	 */
-	@GetMapping
-	@RequestMapping(value = "/healthInfo-csvDownload")
+	@GetMapping(value = "/healthInfo-csvDownload")
 	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
 		ManageLogger logger;
@@ -208,8 +202,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	 * @param form
 	 * @return View
 	 */
-	@GetMapping
-	@RequestMapping(value = "/notice.html")
+	@GetMapping(value = "/notice.html")
 	public String execute(HttpServletRequest request, Model model, HealthInfoForm form) {
 
 		ManageLogger logger;
