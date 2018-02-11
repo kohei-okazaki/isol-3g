@@ -106,7 +106,6 @@ public class AccountDaoImpl implements AccountDao {
 			fos.flush();
 			workbook.write(fos);
 
-
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -124,6 +123,44 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public void updateAccount(Account account) {
 		// TODO 更新処理を追加すること
+
+		try (FileInputStream in = new FileInputStream(RESOURCES);
+				Workbook workbook = WorkbookFactory.create(in);
+				FileOutputStream fos = new FileOutputStream(RESOURCES)) {
+
+			Sheet sheet = workbook.getSheet(SHEET);
+
+			Iterator<Row> iteRow = sheet.rowIterator();
+			while (iteRow.hasNext()) {
+
+				// 1行取得
+				Row row = iteRow.next();
+				if (account.getUserId().equals(row.getCell(0).getStringCellValue())) {
+					// ユーザIDをキーにEntityを取得
+					row.getCell(0).setCellValue(account.getUserId());
+					row.getCell(1).setCellValue(account.getPassword());
+					row.getCell(2).setCellValue(account.getInvalidFlag());
+					row.getCell(3).setCellValue(DateUtil.toString(account.getPasswordExpire(), DateFormatDefine.YYYYMMDD_HHMMSS));
+					row.getCell(4).setCellValue(account.getRemarks());
+					row.getCell(5).setCellValue(account.getFileEnclosureCharFlag());
+					row.getCell(6).setCellValue(DateUtil.toString(new Date(), DateFormatDefine.YYYYMMDD_HHMMSS));
+					row.getCell(7).setCellValue(DateUtil.toString(account.getRegDate(), DateFormatDefine.YYYYMMDD_HHMMSS));
+
+				}
+			}
+
+			fos.flush();
+			workbook.write(fos);
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (EncryptedDocumentException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

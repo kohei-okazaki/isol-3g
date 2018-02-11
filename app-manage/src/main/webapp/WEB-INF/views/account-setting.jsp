@@ -134,66 +134,66 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="削除" />
 					</th>
-					<td width="250px">
+					<td class="data" width="250px">
 						<c:if test="${form.deleteFlag == true}">する</c:if>
 						<c:if test="${form.deleteFlag == false}">しない</c:if>
 						<input type="hidden" name="deleteFlag" value="${form.deleteFlag}" />
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<th class="header">
 						<c:out value="ユーザID" />
 					</th>
-					<td>
+					<td class="data">
 						<c:out value="${form.userId}" />
 						<input type="hidden" name="userId" value="${form.userId}" />
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<th class="header">
 						<c:out value="パスワード" />
 					</th>
-					<td>
+					<td class="data">
 						<c:out value="${form.password}" />
 						<input type="hidden" name="password" value="${form.password}" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="囲い文字利用" />
 					</th>
-					<td width="250px">
+					<td class="data" width="250px">
 						<c:if test="${form.fileEnclosureCharFlag == true}">する</c:if>
 						<c:if test="${form.fileEnclosureCharFlag == false}">しない</c:if>
 						<input type="hidden" name="fileEnclosureCharFlag" value="${form.fileEnclosureCharFlag}" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="メールアドレス" />
 					</th>
-					<td>
+					<td class="data">
 						<c:out value="${form.mailAddress}" />
 						<input type="hidden" name="mailAddress" value="${form.mailAddress}" />
 					</td>
 				</tr>
 				<tr>
-					<th width="130px">
+					<th class="header" width="130px">
 						<c:out value="メールパスワード" />
 					</th>
-					<td>
+					<td class="data">
 						<c:out value="${form.mailPassword}" />
 						<input type="hidden" name="mailPassword" value="${form.mailPassword}" />
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<th class="header">
 						<c:out value="備 考" />
 					</th>
-					<td>
+					<td class="data">
 						<c:out value="${form.remarks}" />
 						<input type="hidden" name="remarks" value="${form.remarks}" />
 					</td>

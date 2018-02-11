@@ -36,6 +36,7 @@ public class ManageConfig {
 		return new ManageLogger();
 	}
 
+	/* Dao */
 	@Bean(name = "accountDao")
 	public AccountDao getAccountDao() {
 		return new AccountDaoImpl();

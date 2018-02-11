@@ -1,5 +1,7 @@
 package jp.co.isol.manage.service;
 
+import jp.co.isol.common.entity.Account;
+import jp.co.isol.common.entity.MailInfo;
 import jp.co.isol.manage.form.AccountSettingForm;
 
 /**
@@ -10,9 +12,10 @@ public interface AccountSettingService {
 
 	/**
 	 * 更新処理を行う<br>
-	 * @param form
+	 * @param account
+	 * @param mainlInfo
 	 */
-	public void update(AccountSettingForm form);
+	public void update(Account account, MailInfo mainlInfo);
 
 	/**
 	 * 指定されたアカウント情報の削除をする<br>
@@ -21,12 +24,24 @@ public interface AccountSettingService {
 	public void deleteAccount(AccountSettingForm form);
 
 	/**
-	 * 入力されたアカウント設定フォーム情報が不正かどうか判定する<br>
-	 * 不正な値の場合true, そうでない場合falseを返す<br>
+	 * フォーム情報をアカウント情報にマージする<br>
+	 * @param account
 	 * @param form
-	 * @return 判定結果
+	 * @return
 	 */
-	public boolean invalidForm(AccountSettingForm form);
+	public Account mergeAccount(Account account, AccountSettingForm form);
 
+	/**
+	 * フォーム情報をメール情報に変換する<br>
+	 * @param form
+	 * @return
+	 */
+	public MailInfo convertMailInfo(AccountSettingForm form);
+
+	/**
+	 * アカウント情報を更新する
+	 * @param account
+	 */
+	public void updateAccount(Account account);
 
 }
