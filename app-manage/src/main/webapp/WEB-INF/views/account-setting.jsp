@@ -106,7 +106,7 @@
 						<c:out value="メールパスワード" />
 					</th>
 					<td class="data">
-						<input type="text" name="mailPassword" value="${mailInfoDto.mailPassword}" required="required" />
+						<input type="text" name="mailPassword" value="${mailInfo.mailPassword}" required="required" />
 					</td>
 				</tr>
 				<tr>

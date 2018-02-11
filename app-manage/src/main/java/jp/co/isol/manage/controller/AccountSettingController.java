@@ -141,8 +141,9 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 
 		} else {
 
+			befMailInfo = this.accountSettingService.mergeMailInfo(befMailInfo, form);
 			// 更新処理を行う
-			this.accountSettingService.update(account, mailInfo);
+			this.accountSettingService.update(account, befMailInfo);
 
 		}
 

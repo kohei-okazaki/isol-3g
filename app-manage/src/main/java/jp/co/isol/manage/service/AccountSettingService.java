@@ -44,4 +44,12 @@ public interface AccountSettingService {
 	 */
 	public void updateAccount(Account account);
 
+	/**
+	 * フォーム情報をメール情報にマージする<br>
+	 * @param mailInfo
+	 * @param form
+	 * @return
+	 */
+	public MailInfo mergeMailInfo(MailInfo mailInfo, AccountSettingForm form);
+
 }
