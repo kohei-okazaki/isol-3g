@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="resources/css/layout.css">
 </head>
 <body>
 <img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">

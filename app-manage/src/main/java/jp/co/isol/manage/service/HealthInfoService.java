@@ -21,7 +21,7 @@ public interface HealthInfoService {
 	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId);
 
 	/**
-	 * 入力した体重と最後に入力した体重との差を表示する<br>
+	 * 入力した体重と最後に入力した体重との差からメッセージを返す<br>
 	 * @param form
 	 * @param lastHealthInfo
 	 * @return 体重差のメッセージ
