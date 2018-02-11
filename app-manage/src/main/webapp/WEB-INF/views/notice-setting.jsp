@@ -20,7 +20,7 @@
 		<c:out value="通知設定画面" />
 	</h1>
 
-	<jsp:include page="navigation.jsp" />
+	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
 	<br><br>
 
 

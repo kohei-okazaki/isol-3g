@@ -21,7 +21,7 @@
 	</h1>
 	<hr>
 
-	<jsp:include page="navigation.jsp" />
+	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
 
 	<br><br>
 	<div align="center">

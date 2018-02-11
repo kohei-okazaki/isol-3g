@@ -37,7 +37,7 @@
 
 	<hr>
 
-	<jsp:include page="navigation.jsp" />
+	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
 
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">

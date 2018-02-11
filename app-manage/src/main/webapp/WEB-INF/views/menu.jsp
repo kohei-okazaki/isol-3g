@@ -19,7 +19,7 @@
 		<img class="headericon" alt="入力" src="resources/image/icon_menu.jpg">
 		<c:out value="メニュー画面" />
 	</h1>
-	<jsp:include page="navigation.jsp" />
+	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
 
 
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
