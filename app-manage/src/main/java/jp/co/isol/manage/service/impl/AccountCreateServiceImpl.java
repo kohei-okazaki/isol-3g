@@ -41,7 +41,7 @@ public class AccountCreateServiceImpl implements AccountCreateService {
 		Account account = new Account();
 		account.setUserId(form.getUserId());
 		account.setPassword(form.getPassword());
-		account.setInvalidFlag(CodeManager.getInstance().getValue(MainKey.FLAG, SubKey.FALSE));
+		account.setDeleteFlag(CodeManager.getInstance().getValue(MainKey.FLAG, SubKey.FALSE));
 		account.setRemarks(form.getRemarks());
 		account.setFileEnclosureCharFlag(CodeManager.getInstance().getValue(MainKey.FLAG, SubKey.FALSE));
 		account.setPasswordExpire(DateUtil.addMonth(new Date(), 6));

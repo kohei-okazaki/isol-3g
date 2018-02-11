@@ -138,8 +138,8 @@
 						<c:out value="削除" />
 					</th>
 					<td class="data" width="250px">
-						<c:if test="${form.deleteFlag == true}">する</c:if>
-						<c:if test="${form.deleteFlag == false}">しない</c:if>
+						<c:if test="${form.deleteFlag == '1'}">する</c:if>
+						<c:if test="${form.deleteFlag == '0'}">しない</c:if>
 						<input type="hidden" name="deleteFlag" value="${form.deleteFlag}" />
 					</td>
 				</tr>
@@ -166,8 +166,8 @@
 						<c:out value="囲い文字利用" />
 					</th>
 					<td class="data" width="250px">
-						<c:if test="${form.fileEnclosureCharFlag == true}">する</c:if>
-						<c:if test="${form.fileEnclosureCharFlag == false}">しない</c:if>
+						<c:if test="${form.fileEnclosureCharFlag == '1'}">する</c:if>
+						<c:if test="${form.fileEnclosureCharFlag == '0'}">しない</c:if>
 						<input type="hidden" name="fileEnclosureCharFlag" value="${form.fileEnclosureCharFlag}" />
 					</td>
 				</tr>

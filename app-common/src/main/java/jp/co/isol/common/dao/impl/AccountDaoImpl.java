@@ -54,7 +54,7 @@ public class AccountDaoImpl implements AccountDao {
 				if (userId.equals(row.getCell(0).getStringCellValue())) {
 					account.setUserId(row.getCell(0).getStringCellValue());
 					account.setPassword(row.getCell(1).getStringCellValue());
-					account.setInvalidFlag(row.getCell(2).getStringCellValue());
+					account.setDeleteFlag(row.getCell(2).getStringCellValue());
 					account.setPasswordExpire(DateUtil.formatDate(row.getCell(3).getStringCellValue()));
 					account.setRemarks(row.getCell(4).getStringCellValue());
 					account.setFileEnclosureCharFlag(row.getCell(5).getStringCellValue());
@@ -96,7 +96,7 @@ public class AccountDaoImpl implements AccountDao {
 
 			newRow.createCell(0).setCellValue(account.getUserId());
 			newRow.createCell(1).setCellValue(account.getPassword());
-			newRow.createCell(2).setCellValue(account.getInvalidFlag());
+			newRow.createCell(2).setCellValue(account.getDeleteFlag());
 			newRow.createCell(3).setCellValue(DateUtil.toString(account.getPasswordExpire(), DateFormatDefine.YYYYMMDD_HHMMSS));
 			newRow.createCell(4).setCellValue(account.getRemarks());
 			newRow.createCell(5).setCellValue(account.getFileEnclosureCharFlag());
@@ -139,7 +139,7 @@ public class AccountDaoImpl implements AccountDao {
 					// ユーザIDをキーにEntityを取得
 					row.getCell(0).setCellValue(account.getUserId());
 					row.getCell(1).setCellValue(account.getPassword());
-					row.getCell(2).setCellValue(account.getInvalidFlag());
+					row.getCell(2).setCellValue(account.getDeleteFlag());
 					row.getCell(3).setCellValue(DateUtil.toString(account.getPasswordExpire(), DateFormatDefine.YYYYMMDD_HHMMSS));
 					row.getCell(4).setCellValue(account.getRemarks());
 					row.getCell(5).setCellValue(account.getFileEnclosureCharFlag());

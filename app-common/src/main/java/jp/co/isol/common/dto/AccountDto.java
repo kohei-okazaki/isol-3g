@@ -14,8 +14,8 @@ public class AccountDto {
 	/** パスワード */
 	private String password;
 
-	/** 利用停止フラグ */
-	private String invalidFlag;
+	/** 削除フラグ */
+	private String deleteFlag;
 
 	/** パスワード有効期限 */
 	private Date passwordExpire;
@@ -65,19 +65,19 @@ public class AccountDto {
 	}
 
 	/**
-	 * invalidFlagを返す
-	 * @return invalidFlag
+	 * deleteFlagを返す
+	 * @return deleteFlag
 	 */
-	public String getInvalidFlag() {
-		return invalidFlag;
+	public String getDeleteFlag() {
+		return deleteFlag;
 	}
 
 	/**
-	 * invalidFlagを設定する
-	 * @param invalidFlag
+	 * deleteFlagを設定する
+	 * @param deleteFlag
 	 */
-	public void setInvalidFlag(String invalidFlag) {
-		this.invalidFlag = invalidFlag;
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	/**

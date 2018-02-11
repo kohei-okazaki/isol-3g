@@ -69,6 +69,7 @@ public class AccountSettingServiceImpl implements AccountSettingService {
 		account.setUserId(form.getUserId());
 		account.setPassword(form.getPassword());
 		account.setFileEnclosureCharFlag(form.getFileEnclosureCharFlag());
+		account.setDeleteFlag(form.getDeleteFlag());
 		account.setRemarks(form.getRemarks());
 
 		return account;

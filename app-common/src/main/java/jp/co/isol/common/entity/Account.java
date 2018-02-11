@@ -28,9 +28,9 @@ public class Account implements Serializable {
 	@Column(name = "PASSWORD", nullable = false, length = 16)
 	private String password;
 
-	/** 利用停止フラグ */
-	@Column(name = "INVALID_FLAG", nullable = false, length = 1)
-	private String invalidFlag;
+	/** 削除フラグ */
+	@Column(name = "DELETE_FLAG", nullable = false, length = 1)
+	private String deleteFlag;
 
 	/** パスワード有効期限 */
 	@Column(name = "PASSWORD_EXPIRE", nullable = false)
@@ -85,19 +85,19 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * invalidFlagを返す
-	 * @return invalidFlag
+	 * deleteFlagを返す
+	 * @return deleteFlag
 	 */
-	public String getInvalidFlag() {
-		return invalidFlag;
+	public String getDeleteFlag() {
+		return deleteFlag;
 	}
 
 	/**
-	 * invalidFlagを設定する
-	 * @param invalidFlag
+	 * deleteFlagを設定する
+	 * @param deleteFlag
 	 */
-	public void setInvalidFlag(String invalidFlag) {
-		this.invalidFlag = invalidFlag;
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	/**

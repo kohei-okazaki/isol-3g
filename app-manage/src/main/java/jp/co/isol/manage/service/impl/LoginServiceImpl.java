@@ -74,7 +74,7 @@ public class LoginServiceImpl implements LoginService {
 	public boolean invalidAccount(LoginForm loginForm) {
 
 		Account account = accountSearchService.findAccountByUserId(loginForm.getUserId());
-		return CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, account.getInvalidFlag());
+		return CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, account.getDeleteFlag());
 	}
 
 }
