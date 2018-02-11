@@ -163,8 +163,7 @@
 
 	<br><br>
 	<hr>
-
-	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </body>
 </html>

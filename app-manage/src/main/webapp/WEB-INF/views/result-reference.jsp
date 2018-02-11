@@ -19,9 +19,9 @@
 		<img class="headericon" alt="結果照会" src="resources/image/icon_reference.png">
 		<c:out value="結果照会画面" />
 	</h1>
-	<hr>
 
-	<jsp:include page="navigation.jsp" />
+	<hr>
+	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
 
 	<br><br>
 	<div align="center">
@@ -69,8 +69,7 @@
 	</div>
 
 	<hr>
-
-	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </body>
 </html>

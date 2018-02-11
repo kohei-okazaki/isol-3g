@@ -134,9 +134,6 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		HealthInfo healthInfo = this.healthInfoService.convertHealthInfo(dto);
 
-		// 入力画面から入力した情報を登録する
-		this.healthInfoDao.registHealthInfo(healthInfo);
-
 		// ユーザIDから健康情報のリストを取得
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 
@@ -153,6 +150,9 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
 		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastHealthInfo));
+
+		// 入力画面から入力した情報を登録する
+		this.healthInfoDao.registHealthInfo(healthInfo);
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 

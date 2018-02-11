@@ -10,7 +10,6 @@ import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
-import jp.co.isol.common.manager.MessageManager;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CalcUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
@@ -52,17 +51,20 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	@Override
 	public String getDiffMessage(HealthInfoForm form, HealthInfo healthInfo) {
 
-		MessageManager manager = MessageManager.getInstance();
+		CodeManager manager = CodeManager.getInstance();
+		SubKey subkey;
 		if (form.getWeight().compareTo(healthInfo.getWeight()) == 0) {
 			// 変化なしの場合
-			return manager.getValue("even");
+			subkey = SubKey.EVEN_MESSAGE;
 		} else if (form.getWeight().compareTo(healthInfo.getWeight()) == 1) {
 			// 増加した場合
-			return manager.getValue("increase");
+			subkey = SubKey.INCREASE_MESSAGE;
 		} else {
 			// 減少した場合
-			return manager.getValue("down");
+			subkey = SubKey.DOWN_MESSAGE;
 		}
+		return manager.getValue(MainKey.HEALTH_INFO_USER_STATUS, subkey);
+
 	}
 
 	/**

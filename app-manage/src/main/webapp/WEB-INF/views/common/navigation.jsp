@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<hr>
 	<ul id="dropmenu">
 		<li><a href="#">MENU</a>
 			<ul>
