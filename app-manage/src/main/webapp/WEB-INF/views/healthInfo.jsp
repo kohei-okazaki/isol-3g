@@ -36,7 +36,6 @@
 	</c:if>
 
 	<hr>
-
 	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
 
 	<!-- 入力画面 -->
@@ -108,13 +107,13 @@
 		<c:out value="${beforeWeight}kg→${healthInfo.weight}kg" />
 		<br><br><br>
 		<table class="custom">
-			<tr class="headercolor">
+			<tr class="header">
 				<th align="center"><c:out value="身長" /></th>
 				<th align="center"><c:out value="体重" /></th>
 				<th align="center"><c:out value="標準体重" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
-			<tr class="datacolor">
+			<tr class="data">
 				<td align="center"><c:out value="${healthInfo.height}" /></td>
 				<td align="center"><c:out value="${healthInfo.weight}" /></td>
 				<td align="center"><c:out value="${healthInfo.standardWeight}" /></td>
@@ -178,7 +177,7 @@
 	<br><br>
 
 	<hr>
-	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </body>
 </html>

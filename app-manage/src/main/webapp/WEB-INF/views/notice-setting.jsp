@@ -20,6 +20,7 @@
 		<c:out value="通知設定画面" />
 	</h1>
 
+	<hr>
 	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
 	<br><br>
 
@@ -30,8 +31,7 @@
 
 	<br><br>
 	<hr>
-
-	<img class="browseBack" alt="戻る" src="resources/image/icon_browseBack.jpg" onclick="history.back()">
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </body>
 </html>
