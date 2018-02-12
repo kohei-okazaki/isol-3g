@@ -126,26 +126,39 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		HealthInfoDto dto = this.healthInfoService.convertHealthInfoDto(form, userId);
-
-		HealthInfo healthInfo = this.healthInfoService.convertHealthInfo(dto);
-
 		// ユーザIDから健康情報のリストを取得
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 
-		// 最後に入力した体重をセット
-		int lastIndex = healthInfoList.size() - 1;
-		HealthInfo lastHealthInfo = healthInfoList.get(lastIndex);
-		model.addAttribute("beforeWeight", lastHealthInfo.getWeight());
+		HealthInfoDto dto;
 
-		// Dtoを設定する
+		// 初回登録であるかの判定
+		boolean isFirstReg = healthInfoList.isEmpty();
+		model.addAttribute("isFirstReg", isFirstReg);
+
+		if (isFirstReg) {
+
+			dto = this.healthInfoService.convertHealthInfoDto(form, userId, null);
+
+		} else {
+
+			int lastIndex = healthInfoList.size() - 1;
+			// 最後に登録した健康情報を取得
+			HealthInfo lastHealthInfo = healthInfoList.get(lastIndex);
+			model.addAttribute("beforeWeight", lastHealthInfo.getWeight());
+
+			// 「入力情報.体重」と前回入力した体重の差を設定
+			model.addAttribute("diffWeight", this.healthInfoService.getDiffWeight(form, lastHealthInfo));
+
+			// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
+			model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastHealthInfo));
+
+			dto = this.healthInfoService.convertHealthInfoDto(form, userId, lastHealthInfo);
+		}
+
+		HealthInfo healthInfo = this.healthInfoService.convertHealthInfo(dto);
+
+		// 入力した健康情報を設定する
 		model.addAttribute("healthInfo", healthInfo);
-
-		// 入力した今の体重と前回入力した体重の差を設定
-		model.addAttribute("diffWeight", this.healthInfoService.getDiffWeight(form, lastHealthInfo));
-
-		// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
-		model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastHealthInfo));
 
 		// 入力画面から入力した情報を登録する
 		this.healthInfoDao.registHealthInfo(healthInfo);

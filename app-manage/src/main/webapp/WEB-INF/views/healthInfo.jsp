@@ -101,10 +101,14 @@
 		<c:out value="今のあなたの身長(${healthInfo.height}cm)の" />
 		<br>
 		<c:out value="標準体重は${healthInfo.standardWeight}kgです。" />
-		<br><br>
-		<c:out value="前回より${diffWeight}kg ${resultMessage}" />
-		<br>
-		<c:out value="${beforeWeight}kg→${healthInfo.weight}kg" />
+
+		<c:if test="${isFirstReg == false}">
+			<br><br>
+			<c:out value="前回より${diffWeight}kg ${resultMessage}" />
+			<br>
+			<c:out value="${beforeWeight}kg→${healthInfo.weight}kg" />
+		</c:if>
+
 		<br><br><br>
 		<table class="custom">
 			<tr class="header">
