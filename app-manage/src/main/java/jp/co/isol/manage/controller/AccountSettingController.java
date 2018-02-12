@@ -1,5 +1,7 @@
 package jp.co.isol.manage.controller;
 
+import java.util.Objects;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -17,15 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.MailInfo;
-import jp.co.isol.common.manager.CodeManager;
-import jp.co.isol.common.manager.MainKey;
-import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.AccountSettingException;
 import jp.co.isol.manage.form.AccountSettingForm;
 import jp.co.isol.manage.service.AccountSearchService;
 import jp.co.isol.manage.service.AccountSettingService;
+import jp.co.isol.manage.service.MailInfoCreateService;
 import jp.co.isol.manage.service.MailInfoSearchService;
 import jp.co.isol.manage.validator.AccountSettingValidator;
 import jp.co.isol.manage.web.session.ManageSessionKey;
@@ -49,6 +49,9 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	/** メール情報検索サービス */
 	@Autowired
 	private MailInfoSearchService mailInfoSearchService;
+	/** メール情報作成サービス */
+	@Autowired
+	private MailInfoCreateService mailInfoCreateService;
 
 	/**
 	 * Validateを設定<br>
@@ -103,13 +106,6 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 			return ManageView.ACCOUNT_SETTING.getName();
 		}
 
-		if (this.accountSettingService.invalidForm(form)) {
-			// 入力情報が不正の場合
-			model.addAttribute("page", PageType.INPUT.getName());
-			model.addAttribute("errorMessage", "アカウント設定の変更情報が不正です");
-
-			return ManageView.ACCOUNT_SETTING.getName();
-		}
 		model.addAttribute("form", form);
 		model.addAttribute("page", PageType.CONFIRM.getName());
 
@@ -124,18 +120,36 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	@RequestMapping(value = "/account-setting-complete.html")
 	public String complete(Model model, AccountSettingForm form, HttpServletRequest request) throws AccountSettingException {
 
-		if (CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, form.getDeleteFlag())) {
-			// アカウントを削除する場合
-			this.accountSettingService.deleteAccount(form);
-		}
+//		if (CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, form.getDeleteFlag())) {
+//			// アカウントを削除する場合
+//			this.accountSettingService.deleteAccount(form);
+//		}
 
-		// 更新処理を行う
-		this.accountSettingService.update(form);
+		Account account = this.accountSearchService.findAccountByUserId(form.getUserId());
+		account = this.accountSettingService.mergeAccount(account, form);
+
+		MailInfo mailInfo = this.accountSettingService.convertMailInfo(form);
+
+		// メール情報を検索
+		MailInfo befMailInfo = this.mailInfoSearchService.findMailInfoByUserId(form.getUserId());
+		if (Objects.isNull(befMailInfo.getUserId())) {
+
+			// メール情報が登録されてない場合、新規登録する
+			this.mailInfoCreateService.create(mailInfo);
+			// アカウント情報を更新する
+			this.accountSettingService.updateAccount(account);
+
+		} else {
+
+			befMailInfo = this.accountSettingService.mergeMailInfo(befMailInfo, form);
+			// 更新処理を行う
+			this.accountSettingService.update(account, befMailInfo);
+
+		}
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 
 		return ManageView.ACCOUNT_SETTING.getName();
 	}
-
 
 }

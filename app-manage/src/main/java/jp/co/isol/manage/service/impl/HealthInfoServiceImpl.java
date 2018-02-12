@@ -2,6 +2,7 @@ package jp.co.isol.manage.service.impl;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,18 +32,43 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId) {
+	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId, HealthInfo lastHealthInfo) {
 
 		HealthInfoDto dto = new HealthInfoDto();
 		dto.setUserId(userId);
 		dto.setHeight(form.getHeight());
 		dto.setWeight(form.getWeight());
 		dto.setBmi(this.calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight(), 2));
-		dto.setUserStatus(CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.DOWN));
 		dto.setStandardWeight(this.calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), 2));
+
+		dto.setUserStatus(CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN));
+		if (Objects.nonNull(lastHealthInfo)) {
+			dto.setUserStatus(getUserStatus(form.getWeight(), lastHealthInfo.getWeight()));
+		}
+
 		dto.setRegDate(new Date());
 
 		return dto;
+	}
+
+	/**
+	 * 入力した健康情報.体重と前回入力した健康情報.体重を比較してユーザステータスを返す<br>
+	 * @param inputWeight
+	 * @param beforeWeight
+	 * @return
+	 */
+	private String getUserStatus(BigDecimal inputWeight, BigDecimal beforeWeight) {
+
+		SubKey subkey = null;
+		if (beforeWeight.compareTo(inputWeight) == 0) {
+			subkey = SubKey.EVEN;
+		} else if (beforeWeight.compareTo(inputWeight) == -1) {
+			subkey = SubKey.INCREASE;
+		} else {
+			subkey = SubKey.DOWN;
+		}
+
+		return CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, subkey);
 	}
 
 	/**

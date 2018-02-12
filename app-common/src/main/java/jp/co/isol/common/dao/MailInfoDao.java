@@ -1,5 +1,7 @@
 package jp.co.isol.common.dao;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import jp.co.isol.common.entity.MailInfo;
 
 /**
@@ -26,5 +28,5 @@ public interface MailInfoDao {
 	 * 引数で指定されたメール情報を登録する<br>
 	 * @param mailInfoDto
 	 */
-	public void registMailInfo(MailInfo mailInfo);
+	public void registMailInfo(MailInfo mailInfo) throws DuplicateKeyException;
 }
