@@ -19,6 +19,6 @@ public interface CsvDownloadService {
 	 * @throws ParseException
 	 * @throws IOException
 	 */
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException;
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
 }
