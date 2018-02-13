@@ -1,7 +1,6 @@
 package jp.co.isol.manage.service.impl;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +45,7 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 	 *
 	 */
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		ManageSessionManager sessionManager;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
