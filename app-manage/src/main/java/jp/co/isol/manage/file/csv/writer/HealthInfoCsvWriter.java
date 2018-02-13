@@ -17,7 +17,7 @@ import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
 
 /**
- * 健康情報CSVを書きこむクラス<br>
+ * 健康情報CSVWriterクラス<br>
  *
  */
 public class HealthInfoCsvWriter extends BaseCsvWriter {

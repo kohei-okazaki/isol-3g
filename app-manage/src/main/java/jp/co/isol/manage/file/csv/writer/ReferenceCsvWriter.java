@@ -18,7 +18,7 @@ import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.file.csv.model.ReferenceCsvModel;
 
 /**
- * 結果照会CSV書き込みクラス<br>
+ * 結果照会CSVWriterクラス<br>
  *
  */
 public class ReferenceCsvWriter extends BaseCsvWriter {
