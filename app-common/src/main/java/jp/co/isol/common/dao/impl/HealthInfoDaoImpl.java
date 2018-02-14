@@ -22,7 +22,6 @@ import org.springframework.dao.DuplicateKeyException;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.other.DateFormatDefine;
-import jp.co.isol.common.other.OSDefine;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -30,10 +29,6 @@ import jp.co.isol.common.util.DateUtil;
  *
  */
 public class HealthInfoDaoImpl implements HealthInfoDao {
-
-	private static final String RESOURCES = OSDefine.isWin() ? "C:\\work\\data.xlsx" : "/Applications/data.xlsx";
-	private static final String SHEET = "HEALTH_INFO";
-	private static final int HEADER_POSITION = 0;
 
 	/**
 	 * {@inheritDoc}

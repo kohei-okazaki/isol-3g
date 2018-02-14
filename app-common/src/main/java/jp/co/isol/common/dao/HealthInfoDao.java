@@ -10,7 +10,10 @@ import jp.co.isol.common.entity.HealthInfo;
  * 健康情報のDaoインターフェイス
  *
  */
-public interface HealthInfoDao {
+public interface HealthInfoDao extends BaseDao {
+
+	/** 保存先シート名 */
+	public static final String SHEET = "HEALTH_INFO";
 
 	/**
 	 * 指定したユーザIDの健康情報を返す<br>

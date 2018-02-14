@@ -19,7 +19,6 @@ import org.springframework.dao.DuplicateKeyException;
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.other.DateFormatDefine;
-import jp.co.isol.common.other.OSDefine;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -27,10 +26,6 @@ import jp.co.isol.common.util.DateUtil;
  *
  */
 public class AccountDaoImpl implements AccountDao {
-
-	private static final String RESOURCES = OSDefine.isWin() ? "C:\\work\\data.xlsx" : "/Applications/data.xlsx";
-	private static final String SHEET = "ACCOUNT";
-	private static final int HEADER_POSITION = 0;
 
 	/**
 	 * {@inheritDoc}
