@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -29,6 +30,23 @@ import jp.co.isol.common.util.DateUtil;
  *
  */
 public class HealthInfoDaoImpl implements HealthInfoDao {
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public HealthInfo getLastHealthInfoById(String userId) {
+
+		List<HealthInfo> healthInfoList = getHealthInfoByUserId(userId);
+
+		if (Objects.isNull(healthInfoList) || healthInfoList.isEmpty()) {
+			// 登録がされてなかった場合
+			return null;
+		}
+
+		return healthInfoList.get(healthInfoList.size() - 1);
+
+	}
 
 	/**
 	 * {@inheritDoc}
