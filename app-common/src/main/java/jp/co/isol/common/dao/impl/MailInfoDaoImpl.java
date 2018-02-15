@@ -19,7 +19,6 @@ import org.springframework.dao.DuplicateKeyException;
 import jp.co.isol.common.dao.MailInfoDao;
 import jp.co.isol.common.entity.MailInfo;
 import jp.co.isol.common.other.DateFormatDefine;
-import jp.co.isol.common.other.OSDefine;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -27,10 +26,6 @@ import jp.co.isol.common.util.DateUtil;
  *
  */
 public class MailInfoDaoImpl implements MailInfoDao {
-
-	private static final String RESOURCES = OSDefine.isWin() ? "C:\\work\\data.xlsx" : "/Applications/data.xlsx";
-	private static final String SHEET = "MAIL_INFO";
-	private static final int HEADER_POSITION = 0;
 
 	/**
 	 * {@inheritDoc}

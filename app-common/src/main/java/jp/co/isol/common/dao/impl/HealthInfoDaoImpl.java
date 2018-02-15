@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -22,7 +23,6 @@ import org.springframework.dao.DuplicateKeyException;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.other.DateFormatDefine;
-import jp.co.isol.common.other.OSDefine;
 import jp.co.isol.common.util.DateUtil;
 
 /**
@@ -31,9 +31,22 @@ import jp.co.isol.common.util.DateUtil;
  */
 public class HealthInfoDaoImpl implements HealthInfoDao {
 
-	private static final String RESOURCES = OSDefine.isWin() ? "C:\\work\\data.xlsx" : "/Applications/data.xlsx";
-	private static final String SHEET = "HEALTH_INFO";
-	private static final int HEADER_POSITION = 0;
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public HealthInfo getLastHealthInfoById(String userId) {
+
+		List<HealthInfo> healthInfoList = getHealthInfoByUserId(userId);
+
+		if (Objects.isNull(healthInfoList) || healthInfoList.isEmpty()) {
+			// 登録がされてなかった場合
+			return null;
+		}
+
+		return healthInfoList.get(healthInfoList.size() - 1);
+
+	}
 
 	/**
 	 * {@inheritDoc}

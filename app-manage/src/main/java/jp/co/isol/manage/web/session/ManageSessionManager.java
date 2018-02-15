@@ -4,6 +4,9 @@ import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
 import jp.co.isol.common.util.StringUtil;
 
 /**
@@ -18,7 +21,7 @@ public class ManageSessionManager {
 	 * @param key
 	 * @param value
 	 */
-	public void setAttribute(HttpSession session, ManageSessionKey key, String value) {
+	public void setAttribute(HttpSession session, @NonNull ManageSessionKey key, @Nullable String value) {
 		session.setAttribute(key.getName(), value);
 	}
 
@@ -29,7 +32,7 @@ public class ManageSessionManager {
 	 * @param key
 	 * @return value
 	 */
-	public String getAttribute(HttpSession session, ManageSessionKey key) {
+	public String getAttribute(HttpSession session, @NonNull ManageSessionKey key) {
 
 		Object value = session.getAttribute(key.getName());
 		return Objects.isNull(value) ? StringUtil.EMPTY : value.toString();
@@ -40,7 +43,7 @@ public class ManageSessionManager {
 	 * @param session
 	 * @param key
 	 */
-	public void removeKey(HttpSession session, ManageSessionKey key) {
+	public void removeKey(HttpSession session, @NonNull ManageSessionKey key) {
 		session.removeAttribute(key.getName());
 	}
 

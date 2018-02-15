@@ -3,7 +3,6 @@ package jp.co.isol.api.service.impl;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
 import java.util.Map.Entry;
 import java.util.Objects;
 
@@ -98,7 +97,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		BigDecimal standardWeight = CalcUtil.calcStandardWeight(centiMeterHeight, 2);
 
 		// 最後に登録した健康情報を取得する
-		HealthInfo lastHealthInfo = getLastHealthInfo(userId);
+		HealthInfo lastHealthInfo = healthInfoDao.getLastHealthInfoById(userId);
 		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN);
 		if (Objects.nonNull(lastHealthInfo)) {
 			// 初回登録でない場合
@@ -168,21 +167,6 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		}
 
 		return CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, subkey);
-	}
-
-	/**
-	 * 指定されたユーザIDで最後に登録した健康情報Dtoを返す<br>
-	 * @param userId
-	 * @return
-	 */
-	private HealthInfo getLastHealthInfo(String userId) {
-
-		List<HealthInfo> healthInfoList = healthInfoDao.getHealthInfoByUserId(userId);
-
-		if (healthInfoList.size() == 0) {
-			return null;
-		}
-		return healthInfoList.get(healthInfoList.size() - 1);
 	}
 
 	/**

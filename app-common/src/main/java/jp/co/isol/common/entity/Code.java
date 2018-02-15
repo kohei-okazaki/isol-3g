@@ -1,15 +1,29 @@
-package jp.co.isol.common.dto;
+package jp.co.isol.common.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
- * 定数クラスのDto
+ * 定数Entity
  *
  */
-public class CodeDto {
+@Entity
+@Table(name = "CODE")
+public class Code implements Serializable {
 
+	/** シリアルバージョンUID */
+	private static final Long serialVersionUID = 1L;
+
+	@Column(name = "MAIN_KEY", nullable = false)
 	private String mainKey;
 
+	@Column(name = "SUB_KEY", nullable = false)
 	private String subKey;
 
+	@Column(name = "VALUE", nullable = false)
 	private String value;
 
 	/**

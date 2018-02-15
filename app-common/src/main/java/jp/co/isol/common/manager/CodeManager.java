@@ -16,7 +16,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jp.co.isol.common.dto.CodeDto;
+import jp.co.isol.common.entity.Code;
 import jp.co.isol.common.other.OSDefine;
 import jp.co.isol.common.util.StringUtil;
 
@@ -33,7 +33,7 @@ public class CodeManager {
 			? "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\codeParameter.xlsx"
 			: "/Applications/Eclipse_4.7.2.app/Contents/workspace/isol-3g/app-common/src/main/resources/META-INF/codeParameter.xlsx";
 	/** シート名 */
-	private static final String SHEET_NAME = "PARAMETER";
+	private static final String SHEET_NAME = "CODE";
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -124,13 +124,13 @@ public class CodeManager {
 	 * @param mainKey メインキー
 	 * @return
 	 */
-	public List<CodeDto> getList(MainKey mainKey) {
+	public List<Code> getList(MainKey mainKey) {
 
 		if (Objects.isNull(mainKey)) {
 			return null;
 		}
 
-		List<CodeDto> codeDtoList = new ArrayList<CodeDto>();
+		List<Code> codeList = new ArrayList<Code>();
 		try {
 			Iterator<Row> rowIterator  = getRowIterator();
 			while (rowIterator.hasNext()) {
@@ -139,11 +139,11 @@ public class CodeManager {
 				String cellSubKey = row.getCell(1).getStringCellValue();
 
 				if (cellMainKey.equals(mainKey.name())) {
-					CodeDto codeDto = new CodeDto();
-					codeDto.setMainKey(cellMainKey);
-					codeDto.setSubKey(cellSubKey);
-					codeDto.setValue(row.getCell(2).getStringCellValue());
-					codeDtoList.add(codeDto);
+					Code code = new Code();
+					code.setMainKey(cellMainKey);
+					code.setSubKey(cellSubKey);
+					code.setValue(row.getCell(2).getStringCellValue());
+					codeList.add(code);
 				}
 			}
 		} catch (EncryptedDocumentException e) {
@@ -153,7 +153,7 @@ public class CodeManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return codeDtoList;
+		return codeList;
 	}
 
 	/**

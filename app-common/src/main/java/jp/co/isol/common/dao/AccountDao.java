@@ -8,7 +8,10 @@ import jp.co.isol.common.entity.Account;
  * アカウント情報のDaoインターフェイス
  *
  */
-public interface AccountDao {
+public interface AccountDao extends BaseDao {
+
+	/** 保存先シート名 */
+	public static final String SHEET = "ACCOUNT";
 
 	/**
 	 * 引数で指定されたユーザIDのアカウント情報を取得する
