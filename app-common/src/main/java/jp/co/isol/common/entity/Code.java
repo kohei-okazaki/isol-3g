@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * 定数クラス
+ * 定数Entity
  *
  */
 @Entity
-@Table(name = "PARAMETER")
+@Table(name = "CODE")
 public class Code implements Serializable {
 
 	/** シリアルバージョンUID */

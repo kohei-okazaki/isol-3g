@@ -33,7 +33,7 @@ public class CodeManager {
 			? "C:\\work\\pleiades\\workspace\\isol-3g\\app-common\\src\\main\\resources\\META-INF\\codeParameter.xlsx"
 			: "/Applications/Eclipse_4.7.2.app/Contents/workspace/isol-3g/app-common/src/main/resources/META-INF/codeParameter.xlsx";
 	/** シート名 */
-	private static final String SHEET_NAME = "PARAMETER";
+	private static final String SHEET_NAME = "CODE";
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 

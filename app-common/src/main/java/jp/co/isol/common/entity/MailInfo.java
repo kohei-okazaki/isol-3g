@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * メール情報<br>
+ * メールEntity<br>
  *
  */
 @Entity
