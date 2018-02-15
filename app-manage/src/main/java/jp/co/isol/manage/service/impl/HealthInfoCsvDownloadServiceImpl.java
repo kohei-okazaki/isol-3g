@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -76,13 +77,7 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 	private HealthInfoCsvModel toModel(HealthInfo healthInfo) {
 
 		HealthInfoCsvModel model = new HealthInfoCsvModel();
-		model.setUserId(healthInfo.getUserId());
-		model.setHeight(healthInfo.getHeight());
-		model.setWeight(healthInfo.getWeight());
-		model.setBmi(healthInfo.getBmi());
-		model.setStandardWeight(healthInfo.getStandardWeight());
-		model.setRegDate(healthInfo.getRegDate());
-
+		BeanUtils.copyProperties(healthInfo, model);
 		return model;
 	}
 

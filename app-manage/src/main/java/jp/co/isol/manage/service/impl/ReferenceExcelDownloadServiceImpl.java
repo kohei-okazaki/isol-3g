@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
@@ -25,7 +26,7 @@ public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<L
 	@Override
 	public View execute(List<HealthInfo> historyList) {
 
-		List<ReferenceExcelModel> modelList = toModel(historyList);
+		List<ReferenceExcelModel> modelList = toModelList(historyList);
 
 		return new ResultReferenceExcelBuiler(modelList);
 	}
@@ -35,16 +36,13 @@ public class ReferenceExcelDownloadServiceImpl implements ExcelDownloadService<L
 	 * @param historyList 健康情報リスト履歴リスト
 	 * @return modelList
 	 */
-	private List<ReferenceExcelModel> toModel(List<HealthInfo> historyList) {
+	private List<ReferenceExcelModel> toModelList(List<HealthInfo> historyList) {
 
 		List<ReferenceExcelModel> modelList = new ArrayList<ReferenceExcelModel>();
 		Stream.iterate(0, i -> ++i).limit(historyList.size()).forEach(i -> {
 			ReferenceExcelModel model = new ReferenceExcelModel();
 			HealthInfo healthInfo = historyList.get(i);
-			model.setHeight(healthInfo.getHeight());
-			model.setWeight(healthInfo.getWeight());
-			model.setBmi(healthInfo.getBmi());
-			model.setStandardWeight(healthInfo.getStandardWeight());
+			BeanUtils.copyProperties(healthInfo, model);
 			modelList.add(model);
 		});
 
