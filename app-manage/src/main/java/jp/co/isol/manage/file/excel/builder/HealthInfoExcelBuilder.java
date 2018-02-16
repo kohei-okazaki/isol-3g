@@ -1,19 +1,13 @@
 package jp.co.isol.manage.file.excel.builder;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 
 import jp.co.isol.common.file.excel.annotation.ExcelSheet;
 import jp.co.isol.common.file.excel.builder.BaseExcelBuilder;
-import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.ExcelUtil;
 import jp.co.isol.manage.file.excel.model.HealthInfoExcelModel;
 
@@ -39,22 +33,8 @@ public class HealthInfoExcelBuilder extends BaseExcelBuilder {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void buildExcelDocument(Map<String, Object> model
-								, Workbook workbook
-								, HttpServletRequest request
-								, HttpServletResponse response) throws Exception {
-
-		String fileName = new String("sample.xlsx".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
-		response.setHeader("Content-Desposition", "attachment; filename=" + fileName);
-
-		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
-
-		// ヘッダーを書き込む
-		writeHeader(sheet);
-
-		// データを書き込む
-		writeData(sheet);
-
+	protected String getSheetName() {
+		return ExcelUtil.getSheetName(this.getClass());
 	}
 
 	/**

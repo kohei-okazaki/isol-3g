@@ -9,6 +9,9 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
+import jp.co.isol.common.other.Charset;
+import jp.co.isol.common.util.ExcelUtil;
+
 /**
  * Excel出力の基底クラス<br>
  *
@@ -27,10 +30,28 @@ public abstract class BaseExcelBuilder extends AbstractXlsxView {
 	 * @throws Exception
 	 */
 	@Override
-	protected abstract void buildExcelDocument(Map<String, Object> model
+	protected void buildExcelDocument(Map<String, Object> model
 											, Workbook workbook
 											, HttpServletRequest request
-											, HttpServletResponse response) throws Exception;
+											, HttpServletResponse response) throws Exception {
+
+		String fileName = new String("sample.xlsx".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
+		response.setHeader("Content-Desposition", "attachment; filename=" + fileName);
+
+		Sheet sheet = workbook.createSheet(ExcelUtil.getSheetName(this.getClass()));
+
+		// ヘッダーを書き込む
+		writeHeader(sheet);
+
+		// データを書き込む
+		writeData(sheet);
+	}
+
+	/**
+	 * 継承先の@ExcelSheetからシート名を取得<br>
+	 * @return
+	 */
+	protected abstract String getSheetName();
 
 	/**
 	 * ヘッダーを設定する<br>

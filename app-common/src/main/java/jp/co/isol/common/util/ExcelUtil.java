@@ -23,7 +23,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * セルを返す<br>
+	 * 指定されたシートのrow行目のcol番目のセルを返す<br>
 	 * @param sheet
 	 * @param row
 	 * @param col
