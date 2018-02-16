@@ -6,6 +6,10 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
+import jp.co.isol.common.manager.CodeManager;
+import jp.co.isol.common.manager.MainKey;
+import jp.co.isol.common.manager.SubKey;
+
 /**
  * 文字列のUtilクラス<br>
  * インスタンスの生成を制限<br>
@@ -92,5 +96,23 @@ public class StringUtil {
 		return Objects.isNull(target) || EMPTY.equals(target.trim());
 	}
 
+	/**
+	 * 指定されたflagがtrueかどうか判定する<br>
+	 * @param flag
+	 * @return
+	 */
+	public static boolean isTrue(String flag) {
+		return CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, flag);
+	}
+
+	/**
+	 * 指定されたflagがfalseかどうか判定する<br>
+	 * @see StringUtil#isTrue(String)
+	 * @param flag
+	 * @return
+	 */
+	public static boolean isFalse(String flag) {
+		return !isTrue(flag);
+	}
 
 }
