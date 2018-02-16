@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Map.Entry;
 import java.util.Objects;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -128,15 +129,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	private HealthInfo toEntity(HealthInfoDto dto) {
 
 		HealthInfo healthInfo = new HealthInfo();
-		healthInfo.setDataId(dto.getDataId());
-		healthInfo.setUserId(dto.getUserId());
-		healthInfo.setHeight(dto.getHeight());
-		healthInfo.setWeight(dto.getWeight());
-		healthInfo.setBmi(dto.getBmi());
-		healthInfo.setStandardWeight(dto.getStandardWeight());
-		healthInfo.setUserStatus(dto.getUserStatus());
-		healthInfo.setRegDate(dto.getRegDate());
-
+		BeanUtils.copyProperties(dto, healthInfo);
 		return healthInfo;
 	}
 
