@@ -32,7 +32,8 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * コンストラクタ<br>
+	 * @param enclosureChar
 	 */
 	public HealthInfoCsvWriter(String enclosureChar) {
 		super(enclosureChar);
