@@ -16,10 +16,8 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.HealthInfo;
-import jp.co.isol.common.manager.CodeManager;
-import jp.co.isol.common.manager.MainKey;
-import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.CsvUtil;
+import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.file.csv.model.ReferenceCsvModel;
 import jp.co.isol.manage.file.csv.writer.ReferenceCsvWriter;
@@ -60,7 +58,7 @@ public class ReferenceCsvDownloadServiceImpl implements CsvDownloadService {
 		List<ReferenceCsvModel> modelList = toModelList(healthInfoList);
 
 		Account account = accountSearchService.findAccountByUserId(userId);
-		boolean enclosureFlag = CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, account.getFileEnclosureCharFlag());
+		boolean enclosureFlag = StringUtil.isTrue(account.getFileEnclosureCharFlag());
 
 		// CSVに書き込む
 		ReferenceCsvWriter writer = enclosureFlag ? new ReferenceCsvWriter(CsvUtil.DOBBLE_QUOTE) : new ReferenceCsvWriter();
