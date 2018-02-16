@@ -15,7 +15,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.MailInfo;
@@ -67,8 +66,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	 * {@inheritDoc}
 	 */
 	@Override
-	@GetMapping
-	@RequestMapping(value = "/account-setting-input.html")
+	@GetMapping(value = "/account-setting-input.html")
 	public String input(Model model, HttpServletRequest request) throws AccountSettingException {
 
 		ManageSessionManager sessionManager;
@@ -97,8 +95,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	 * {@inheritDoc}
 	 */
 	@Override
-	@PostMapping
-	@RequestMapping(value = "/account-setting-confirm.html")
+	@PostMapping(value = "/account-setting-confirm.html")
 	public String confirm(Model model, @Valid AccountSettingForm form, BindingResult result) throws AccountSettingException {
 
 		if (result.hasErrors()) {
@@ -116,8 +113,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	 * {@inheritDoc}
 	 */
 	@Override
-	@PostMapping
-	@RequestMapping(value = "/account-setting-complete.html")
+	@PostMapping(value = "/account-setting-complete.html")
 	public String complete(Model model, AccountSettingForm form, HttpServletRequest request) throws AccountSettingException {
 
 //		if (CodeManager.getInstance().isEquals(MainKey.FLAG, SubKey.TRUE, form.getDeleteFlag())) {

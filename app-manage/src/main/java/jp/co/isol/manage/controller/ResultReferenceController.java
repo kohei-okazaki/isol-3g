@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,8 +50,7 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@GetMapping
-	@RequestMapping(value = "/result-reference.html")
+	@GetMapping(value = "/result-reference.html")
 	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
 
 		// ログイン中のユーザの全レコードを検索する
@@ -67,8 +65,7 @@ public class ResultReferenceController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@GetMapping
-	@RequestMapping(value = "/result-reference-excelDownload.html")
+	@GetMapping(value = "/result-reference-excelDownload.html")
 	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
 
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
@@ -82,8 +79,7 @@ public class ResultReferenceController {
 	 * @throws ParseException
 	 * @throws IOException
 	 */
-	@GetMapping
-	@RequestMapping(value = "/result-reference-csvDownload")
+	@GetMapping(value = "/result-reference-csvDownload")
 	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
 
 		this.csvDownloadService.execute(request, response);
