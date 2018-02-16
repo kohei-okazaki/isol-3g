@@ -3,10 +3,12 @@ package jp.co.isol.manage.service.impl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -74,16 +76,13 @@ public class ReferenceCsvDownloadServiceImpl implements CsvDownloadService {
 	private List<ReferenceCsvModel> toModelList(List<HealthInfo> healthInfoList) {
 
 		List<ReferenceCsvModel> modelList = new ArrayList<ReferenceCsvModel>();
-		for (HealthInfo healthInfo : healthInfoList) {
+		Stream.iterate(0, i -> ++i).limit(healthInfoList.size()).forEach(i -> {
 			ReferenceCsvModel model = new ReferenceCsvModel();
-			model.setUserId(healthInfo.getUserId());
-			model.setHeight(healthInfo.getHeight());
-			model.setWeight(healthInfo.getWeight());
-			model.setBmi(healthInfo.getBmi());
-			model.setStandardWeight(healthInfo.getStandardWeight());
-			model.setRegDate(healthInfo.getRegDate());
+			HealthInfo healthInfo = healthInfoList.get(i);
+			BeanUtils.copyProperties(healthInfo, model);
 			modelList.add(model);
-		}
+		});
+
 		return modelList;
 	}
 

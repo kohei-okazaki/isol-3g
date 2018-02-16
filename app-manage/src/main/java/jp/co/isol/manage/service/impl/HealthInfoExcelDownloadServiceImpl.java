@@ -1,5 +1,6 @@
 package jp.co.isol.manage.service.impl;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.View;
 
@@ -32,12 +33,11 @@ public class HealthInfoExcelDownloadServiceImpl implements ExcelDownloadService<
 	 * @return model
 	 */
 	private HealthInfoExcelModel toModel(HealthInfoForm form) {
+
 		HealthInfoExcelModel model = new HealthInfoExcelModel();
-		model.setHeight(form.getHeight());
-		model.setWeight(form.getWeight());
-		model.setBmi(form.getBmi());
-		model.setStandardWeight(form.getStandardWeight());
+		BeanUtils.copyProperties(form, model);
 		return model;
+
 	}
 
 }
