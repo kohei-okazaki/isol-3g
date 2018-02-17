@@ -37,7 +37,6 @@ public abstract class BaseExcelBuilder extends AbstractXlsxView {
 
 		String fileName = new String("sample.xlsx".getBytes(Charset.MS_932.getName()), "ISO-8859-1");
 		response.setHeader("Content-Desposition", "attachment; filename=" + fileName);
-
 		Sheet sheet = workbook.createSheet(getSheetName());
 
 		// ヘッダーを書き込む
