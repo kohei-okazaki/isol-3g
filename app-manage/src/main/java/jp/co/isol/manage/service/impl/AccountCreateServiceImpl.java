@@ -11,6 +11,7 @@ import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.DateUtil;
+import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.form.AccountCreateForm;
 import jp.co.isol.manage.service.AccountCreateService;
 
@@ -47,6 +48,19 @@ public class AccountCreateServiceImpl implements AccountCreateService {
 		account.setPasswordExpire(DateUtil.addMonth(new Date(), 6));
 
 		return account;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean invalidUserId(AccountCreateForm form) {
+
+		// 指定したアカウント情報を検索
+		Account account = accountDao.getAccountByUserId(form.getUserId());
+
+		// ユーザIDが存在する場合true, 存在しない場合false
+		return !StringUtil.isEmpty(account.getUserId());
 	}
 
 }

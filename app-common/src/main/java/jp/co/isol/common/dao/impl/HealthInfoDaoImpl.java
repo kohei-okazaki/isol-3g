@@ -62,10 +62,10 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 			while (iteRow.hasNext()) {
 				HealthInfo healthInfo = new HealthInfo();
 				Row row = iteRow.next();
-				if (row.getRowNum() == HEADER_POSITION) {
-					// ヘッダーの場合、次のレコードに進む
-					continue;
-				}
+
+				// ヘッダーの場合、次のレコードに進む
+				if (row.getRowNum() == HEADER_POSITION) continue;
+
 				if (userId.equals(row.getCell(1).getStringCellValue())) {
 					healthInfo.setDataId(row.getCell(0).getStringCellValue());								// データID
 					healthInfo.setUserId(row.getCell(1).getStringCellValue());								// ユーザID
