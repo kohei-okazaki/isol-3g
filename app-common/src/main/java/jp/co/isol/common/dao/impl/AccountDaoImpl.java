@@ -43,10 +43,10 @@ public class AccountDaoImpl implements AccountDao {
 
 				// 1行取得
 				Row row = iteRow.next();
-				if (row.getRowNum() == HEADER_POSITION) {
-					// ヘッダーの場合、次のレコードに進む
-					continue;
-				}
+
+				// ヘッダーの場合、次のレコードに進む
+				if (row.getRowNum() == HEADER_POSITION) continue;
+
 				if (userId.equals(row.getCell(0).getStringCellValue())) {
 					account.setUserId(row.getCell(0).getStringCellValue());
 					account.setPassword(row.getCell(1).getStringCellValue());

@@ -88,7 +88,8 @@ public class StringUtil {
 	}
 
 	/**
-	 * 空文字かどうか判定する
+	 * 空文字かどうか判定する<br>
+	 * 空文字の場合true, それ以外の場合false<br>
 	 * @param target
 	 * @return 判定結果
 	 */
