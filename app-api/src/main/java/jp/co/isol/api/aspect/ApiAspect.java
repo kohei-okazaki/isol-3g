@@ -64,8 +64,8 @@ public class ApiAspect {
 	public Object outMethodLog(ProceedingJoinPoint pjp) throws Throwable {
 
 		try {
-			Object response = pjp.proceed();
-			System.out.println("メソッド正常終了:" + pjp.getSignature() + " 戻り値:" + ((BaseResponse) response).toString());
+			BaseResponse response = (BaseResponse) pjp.proceed();
+			System.out.println("メソッド正常終了:" + pjp.getSignature() + " 戻り値:" + response.toString());
 			return response;
 
 		} catch (Exception e) {
