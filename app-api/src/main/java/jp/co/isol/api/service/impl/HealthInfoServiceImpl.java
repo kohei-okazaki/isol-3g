@@ -107,18 +107,18 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 		Date regDate = new Date();
 
-		HealthInfoDto healthInfo = new HealthInfoDto();
+		HealthInfoDto healthInfoDto = new HealthInfoDto();
 		String nextDataId = getNextDataId(lastHealthInfo);
-		healthInfo.setDataId(nextDataId);
-		healthInfo.setUserId(userId);
-		healthInfo.setHeight(height);
-		healthInfo.setWeight(weight);
-		healthInfo.setBmi(bmi);
-		healthInfo.setStandardWeight(standardWeight);
-		healthInfo.setUserStatus(userStatus);
-		healthInfo.setRegDate(regDate);
+		healthInfoDto.setDataId(nextDataId);
+		healthInfoDto.setUserId(userId);
+		healthInfoDto.setHeight(height);
+		healthInfoDto.setWeight(weight);
+		healthInfoDto.setBmi(bmi);
+		healthInfoDto.setStandardWeight(standardWeight);
+		healthInfoDto.setUserStatus(userStatus);
+		healthInfoDto.setRegDate(regDate);
 
-		return healthInfo;
+		return healthInfoDto;
 	}
 
 	/**
