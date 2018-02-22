@@ -81,7 +81,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	}
 
 	/**
-	 * 健康情報Dtoにリクエスト情報をつめる
+	 * 健康情報にリクエスト情報をつめる
 	 * @param request
 	 * @return
 	 * @throws ParseException
