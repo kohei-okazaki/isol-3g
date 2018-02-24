@@ -21,7 +21,7 @@ public class Account implements Serializable {
 
 	/** ユーザID */
 	@Id
-	@Column(name = "USER_ID", nullable = false, length = 3)
+	@Column(name = "USER_ID", nullable = false, length = 16)
 	private String userId;
 
 	/** パスワード */
