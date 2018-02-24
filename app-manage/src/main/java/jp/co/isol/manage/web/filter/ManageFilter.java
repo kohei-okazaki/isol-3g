@@ -53,7 +53,7 @@ public class ManageFilter extends BaseFilter {
 			sessionManager = context.getBean(ManageSessionManager.class);
 		}
 
-		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		System.out.println("セッション内のuserId = " + userId);
 		chain.doFilter(req, resp);

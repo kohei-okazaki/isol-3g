@@ -52,7 +52,7 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 		}
 
 		// 最後に登録した健康情報を検索
-		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 		HealthInfo healthInfo = healthInfoList.get(healthInfoList.size() - 1);
 		HealthInfoCsvModel model = toModel(healthInfo);

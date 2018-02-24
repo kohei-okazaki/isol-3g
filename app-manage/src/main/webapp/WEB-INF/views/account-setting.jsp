@@ -56,10 +56,10 @@
 					</th>
 					<td class="data" width="250px">
 						<div class="radio">
-							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1" checked="checked">
-							<label for="deleteFlagTrue">する</label>
-							<input type="radio" name="deleteFlag" id="deleteFlagFalse" value="0">
+							<input type="radio" name="deleteFlag" id="deleteFlagFalse" value="0" checked="checked">
 							<label for="deleteFlagFalse" class="switch-off">しない</label>
+							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1">
+							<label for="deleteFlagTrue">する</label>
 						</div>
 					</td>
 				</tr>

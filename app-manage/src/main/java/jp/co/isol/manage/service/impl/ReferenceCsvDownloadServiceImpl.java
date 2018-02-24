@@ -53,7 +53,7 @@ public class ReferenceCsvDownloadServiceImpl implements CsvDownloadService {
 		}
 
 		// セッションからユーザIDを取得
-		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 		List<ReferenceCsvModel> modelList = toModelList(healthInfoList);
 

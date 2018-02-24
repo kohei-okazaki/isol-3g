@@ -124,7 +124,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 			manager = context.getBean(ManageSessionManager.class);
 		}
 
-		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String userId = (String) manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		// ユーザIDから健康情報のリストを取得
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
