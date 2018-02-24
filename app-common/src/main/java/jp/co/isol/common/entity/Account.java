@@ -40,7 +40,7 @@ public class Account implements Serializable {
 	@Column(name = "REMARKS", nullable = false)
 	private String remarks;
 
-	/** 囲い文字利用フラグ */
+	/** ファイル囲い文字利用フラグ */
 	@Column(name = "FILE_ENCLOSURE_CHAR_FLAG", nullable = true)
 	private String fileEnclosureCharFlag;
 
