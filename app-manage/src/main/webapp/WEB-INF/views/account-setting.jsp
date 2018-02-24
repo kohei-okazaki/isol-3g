@@ -48,8 +48,8 @@
 			<c:if test="${errorMessage != null}">
 				<c:out value="${errorMessage}" />
 			</c:if>
-			<table border="1">
 
+			<table border="1">
 				<tr>
 					<th class="header" width="130px">
 						<c:out value="削除" />
@@ -110,9 +110,11 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="header"><c:out value="備 考" /></th>
+					<th class="header">
+						<c:out value="備 考" />
+					</th>
 					<td class="data">
-						<textarea rows="10" cols="30" name="remarks" ></textarea>
+						<textarea rows="10" cols="30" name="remarks" >${account.remarks}</textarea>
 					</td>
 				</tr>
 			</table>
