@@ -1,12 +1,10 @@
 package jp.co.isol.api.service.impl;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.util.Date;
 import java.util.Map.Entry;
 import java.util.Objects;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,6 @@ import jp.co.isol.api.response.HealthInfoResponse;
 import jp.co.isol.api.service.HealthInfoService;
 import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dao.HealthInfoDao;
-import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.manager.CodeManager;
@@ -47,11 +44,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	@Override
 	public HealthInfoResponse execute(HealthInfoRequest request) {
 
-		// リクエスト情報をDtoにつめる
-		HealthInfoDto dto = toHealthInfoDto(request);
-
-		// DtoをEntityにつめる
-		HealthInfo healthInfo = toEntity(dto);
+		// リクエストをEntityにつめる
+		HealthInfo healthInfo = toEntity(request);
 
 		// 登録処理を行う
 		healthInfoDao.registHealthInfo(healthInfo);
@@ -84,9 +78,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * 健康情報にリクエスト情報をつめる
 	 * @param request
 	 * @return
-	 * @throws ParseException
 	 */
-	private HealthInfoDto toHealthInfoDto(HealthInfoRequest request) {
+	private HealthInfo toEntity(HealthInfoRequest request) {
 
 		String userId = (String) request.get(HealthInfoRequestKey.USER_ID);
 		BigDecimal height = new BigDecimal((String) request.get(HealthInfoRequestKey.HEIGHT));
@@ -107,29 +100,17 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 		Date regDate = new Date();
 
-		HealthInfoDto healthInfoDto = new HealthInfoDto();
-		String nextDataId = getNextDataId(lastHealthInfo);
-		healthInfoDto.setDataId(nextDataId);
-		healthInfoDto.setUserId(userId);
-		healthInfoDto.setHeight(height);
-		healthInfoDto.setWeight(weight);
-		healthInfoDto.setBmi(bmi);
-		healthInfoDto.setStandardWeight(standardWeight);
-		healthInfoDto.setUserStatus(userStatus);
-		healthInfoDto.setRegDate(regDate);
-
-		return healthInfoDto;
-	}
-
-	/**
-	 * DtoをEntityにつめる
-	 * @param dto
-	 * @return
-	 */
-	private HealthInfo toEntity(HealthInfoDto dto) {
-
 		HealthInfo healthInfo = new HealthInfo();
-		BeanUtils.copyProperties(dto, healthInfo);
+		String nextDataId = getNextDataId(lastHealthInfo);
+		healthInfo.setDataId(nextDataId);
+		healthInfo.setUserId(userId);
+		healthInfo.setHeight(height);
+		healthInfo.setWeight(weight);
+		healthInfo.setBmi(bmi);
+		healthInfo.setStandardWeight(standardWeight);
+		healthInfo.setUserStatus(userStatus);
+		healthInfo.setRegDate(regDate);
+
 		return healthInfo;
 	}
 

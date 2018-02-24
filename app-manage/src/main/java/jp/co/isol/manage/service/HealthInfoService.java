@@ -2,7 +2,6 @@ package jp.co.isol.manage.service;
 
 import java.math.BigDecimal;
 
-import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.manage.form.HealthInfoForm;
 
@@ -11,15 +10,6 @@ import jp.co.isol.manage.form.HealthInfoForm;
  *
  */
 public interface HealthInfoService {
-
-	/**
-	 * 入力情報をDtoにつめる<br>
-	 * @param form
-	 * @param userId
-	 * @param lastHealthInfo
-	 * @return
-	 */
-	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId, HealthInfo lastHealthInfo);
 
 	/**
 	 * 入力した体重と最後に入力した体重との差からメッセージを返す<br>
@@ -42,6 +32,6 @@ public interface HealthInfoService {
 	 * @param dto
 	 * @return
 	 */
-	public HealthInfo convertHealthInfo(HealthInfoDto dto);
+	public HealthInfo convertHealthInfo(HealthInfoForm form, String userId, HealthInfo lastHealthInfo);
 
 }
