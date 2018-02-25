@@ -7,6 +7,6 @@ import jp.co.isol.common.exception.BaseApiException;
  *
  * @param <E> 例外クラス
  */
-public abstract class BaseCheck<E extends BaseApiException> {
+public interface BaseCheck<E extends BaseApiException> {
 
 }

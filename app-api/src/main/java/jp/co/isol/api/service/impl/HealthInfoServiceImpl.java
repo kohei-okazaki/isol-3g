@@ -75,11 +75,10 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	}
 
 	/**
-	 * 健康情報にリクエスト情報をつめる
-	 * @param request
-	 * @return
+	 * {@inheritDoc}
 	 */
-	private HealthInfo toEntity(HealthInfoRequest request) {
+	@Override
+	public HealthInfo toEntity(HealthInfoRequest request) {
 
 		String userId = (String) request.get(HealthInfoRequestKey.USER_ID);
 		BigDecimal height = new BigDecimal((String) request.get(HealthInfoRequestKey.HEIGHT));

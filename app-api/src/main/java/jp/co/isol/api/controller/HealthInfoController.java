@@ -19,7 +19,7 @@ import jp.co.isol.common.web.api.BaseApiRestController;
  */
 @RestController
 @RequestMapping(value = "/healthInfo", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-public class HealthInfoController extends BaseApiRestController<HealthInfoRequest, HealthInfoResponse, HealthInfoService, HealthInfoException> {
+public class HealthInfoController implements BaseApiRestController<HealthInfoRequest, HealthInfoResponse, HealthInfoService, HealthInfoException> {
 
 	/** 健康情報サービスクラス */
 	@Autowired
@@ -32,7 +32,7 @@ public class HealthInfoController extends BaseApiRestController<HealthInfoReques
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected HealthInfoResponse execute(HttpServletRequest request) throws HealthInfoException {
+	public HealthInfoResponse execute(HttpServletRequest request) throws HealthInfoException {
 
 		// リクエスト情報をセットする
 		healthInfoRequest.setRequest(request);
