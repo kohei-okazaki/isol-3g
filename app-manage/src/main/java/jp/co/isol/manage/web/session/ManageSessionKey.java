@@ -7,8 +7,9 @@ package jp.co.isol.manage.web.session;
 public enum ManageSessionKey {
 
 	/** ユーザID */
-	USER_ID("userId");
-
+	USER_ID("userId"),
+	/** アカウント情報 */
+	ACCOUNT("account");
 
 	/** キー名 */
 	private String name;

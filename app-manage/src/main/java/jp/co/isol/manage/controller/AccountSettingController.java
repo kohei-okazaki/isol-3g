@@ -75,7 +75,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 		}
 
 		// セッションからユーザIDを取得
-		String userId = sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		// アカウント情報を検索
 		Account account = this.accountSearchService.findAccountByUserId(userId);

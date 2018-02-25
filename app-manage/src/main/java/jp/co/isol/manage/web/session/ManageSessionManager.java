@@ -1,13 +1,9 @@
 package jp.co.isol.manage.web.session;
 
-import java.util.Objects;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
-
-import jp.co.isol.common.util.StringUtil;
 
 /**
  * 管理画面内のsession管理クラス
@@ -21,7 +17,7 @@ public class ManageSessionManager {
 	 * @param key
 	 * @param value
 	 */
-	public void setAttribute(HttpSession session, @NonNull ManageSessionKey key, @Nullable String value) {
+	public void setAttribute(HttpSession session, @NonNull ManageSessionKey key, @Nullable Object value) {
 		session.setAttribute(key.getName(), value);
 	}
 
@@ -32,10 +28,8 @@ public class ManageSessionManager {
 	 * @param key
 	 * @return value
 	 */
-	public String getAttribute(HttpSession session, @NonNull ManageSessionKey key) {
-
-		Object value = session.getAttribute(key.getName());
-		return Objects.isNull(value) ? StringUtil.EMPTY : value.toString();
+	public Object getAttribute(HttpSession session, @NonNull ManageSessionKey key) {
+		return session.getAttribute(key.getName());
 	}
 
 	/**
