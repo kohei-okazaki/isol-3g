@@ -10,32 +10,32 @@
 </head>
 <body>
 	<ul id="dropmenu">
-		<li><a href="#">MENU</a>
+		<li><a class="navigation" href="#">MENU</a>
 			<ul>
-				<li><a href="#">ユーザ情報</a>
+				<li><a class="navigation" href="#">ユーザ情報</a>
 					<ul>
-						<li><a href="/isol-manage/healthInfo-input.html">入力</a></li>
-						<li><a href="/isol-manage/result-reference.html">照会</a></li>
+						<li><a class="navigation" href="/isol-manage/healthInfo-input.html">入力</a></li>
+						<li><a class="navigation" href="/isol-manage/result-reference.html">照会</a></li>
 					</ul>
 				</li>
-				<li><a href="#">通知</a>
+				<li><a class="navigation" href="#">通知</a>
 					<ul>
-						<li><a href="/isol-manage/notice.html">メール</a></li>
+						<li><a class="navigation" href="/isol-manage/notice.html">メール</a></li>
 					</ul>
 				</li>
 			</ul>
 		</li>
-		<li><a href="#">設定</a>
+		<li><a class="navigation" href="#">設定</a>
 			<ul>
-				<li><a href="#">アカウント</a>
+				<li><a class="navigation" href="#">アカウント</a>
 					<ul>
-						<li><a href="/isol-manage/account-setting-input.html">設定変更</a></li>
+						<li><a class="navigation" href="/isol-manage/account-setting-input.html">設定変更</a></li>
 					</ul>
 				</li>
-				<li><a href="#">メール設定</a></li>
+				<li><a class="navigation" href="#">メール設定</a></li>
 			</ul>
 		</li>
-		<li><a href="/isol-manage/login.html">ログアウト</a></li>
+		<li><a class="navigation" href="/isol-manage/login.html">ログアウト</a></li>
 	</ul>
 </body>
 </html>
