@@ -6,31 +6,13 @@ import java.math.RoundingMode;
 import jp.co.isol.common.other.CalcMethod;
 
 /**
- * 計算処理のUtilクラス<br>
- * インスタンス生成を制限<br>
+ * 健康情報Utilクラス<br>
  *
  */
-public class CalcUtil {
+public class HealthInfoUtil {
 
-	private CalcUtil() {
+	private HealthInfoUtil() {
 	}
-
-	/** マイナス */
-	public static final String MINUS = "-";
-
-	/**
-	 * 四則演算を行う<br>
-	 * ex) target1 = 100, method = CalcMethod.SUBTRACT, target2 = 30, result = 70<br>
-	 * ※四捨五入は呼び出し元で行うこと<br>
-	 * @param target1
-	 * @param method
-	 * @param target2
-	 * @return
-	 */
-	public static BigDecimal execute(BigDecimal target1, CalcMethod method, BigDecimal target2) {
-		return method.getOption().apply(target1, target2);
-	}
-
 
 	/**
 	 * 単位を以下に変換する</br>
@@ -60,7 +42,13 @@ public class CalcUtil {
 	 * @return BMIを計算
 	 */
 	public static BigDecimal calcBmi(BigDecimal height, BigDecimal weight, int digit) {
-		return weight.divide(height.multiply(height), digit, RoundingMode.HALF_UP);
+		BigDecimal multiplyResult = CalcUtil.execute(height, CalcMethod.MULTIPLY, weight);
+		BigDecimal result = CalcUtil.execute(weight, CalcMethod.DIVIDE, multiplyResult);
+		result = result.setScale(digit, RoundingMode.HALF_UP);
+
+		// 修正前
+		BigDecimal bef = weight.divide(height.multiply(height), digit, RoundingMode.HALF_UP);
+		return result;
 	}
 
 	/**
@@ -72,5 +60,4 @@ public class CalcUtil {
 	public static BigDecimal calcStandardWeight(BigDecimal height, int digit) {
 		return height.multiply(height).multiply(new BigDecimal(22)).setScale(digit, RoundingMode.HALF_UP);
 	}
-
 }
