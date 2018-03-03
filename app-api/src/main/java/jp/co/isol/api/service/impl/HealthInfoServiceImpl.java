@@ -25,6 +25,7 @@ import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.other.DateFormatDefine;
 import jp.co.isol.common.util.DateUtil;
 import jp.co.isol.common.util.HealthInfoUtil;
+import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.common.web.api.BaseRequestKey;
 
 /**
@@ -157,6 +158,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		if (Objects.isNull(account.getUserId())) {
 			// アカウント情報が存在しない場合
 			throw new HealthInfoException(ErrorCodeDefine.ACCOUNT_ILLEGAL, "アカウントが存在しません");
+		} else if (StringUtil.isTrue(account.getDeleteFlag())) {
+			// アカウント情報が削除済の場合
+			throw new HealthInfoException(ErrorCodeDefine.ACCOUNT_DELETE, "アカウントが削除されています(ユーザID:" + account.getUserId() + ")");
 		}
 
 		for (Entry<BaseRequestKey, Object> entry : request.getKeyValue()) {
