@@ -7,17 +7,22 @@ package jp.co.isol.common.exception;
 public enum ErrorCodeDefine {
 
 	/** 必須エラー */
-	REQUIRE("REQUIRE", "必須エラーです"),
+	REQUIRE("REQUIRE", "", "必須エラーです"),
 	/** 属性エラー*/
-	TYPE("TYPE", "属性エラーです"),
+	TYPE("TYPE", "", "属性エラーです"),
 	/** 桁数エラー */
-	LENGTH("LENGTH", "桁数エラーです"),
+	LENGTH("LENGTH", "", "桁数エラーです"),
 
-	/** アカウント不正エラー */
-	ACCOUNT_ILLEGAL("ACCOUNT_ILLEGAL"," アカウントが存在しません");
+	/** アカウント存在チェックエラー */
+	ACCOUNT_ILLEGAL("ACCOUNT_ILLEGAL", "WARN", "アカウントが存在しません"),
+	/** アカウント不整合エラー */
+	ACCOUNT_DELETE("ACCOUNT_DELETE", "WARN", "アカウントが削除済です");
+
 
 	/** エラーコード */
 	private String errorCode;
+	/** ログレベル */
+	private String logLevel;
 	/** エラーメッセージ */
 	private String errorMessage;
 
@@ -26,25 +31,34 @@ public enum ErrorCodeDefine {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	private ErrorCodeDefine(String errorCode, String errorMessage) {
+	private ErrorCodeDefine(String errorCode, String logLevel, String errorMessage) {
 		this.errorCode = errorCode;
+		this.logLevel = logLevel;
 		this.errorMessage = errorMessage;
 	}
 
 	/**
-	 * エラーコードを返す<br>
-	 * @return
+	 * errorCodeを返す
+	 * @return errorCode
 	 */
 	public String getErrorCode() {
-		return this.errorCode;
+		return errorCode;
 	}
 
 	/**
-	 * エラーメッセージを返す<br>
-	 * @return
+	 * logLevelを返す
+	 * @return logLevel
+	 */
+	public String getLogLevel() {
+		return logLevel;
+	}
+
+	/**
+	 * errorMessageを返す
+	 * @return errorMessage
 	 */
 	public String getErrorMessage() {
-		return this.errorMessage;
+		return errorMessage;
 	}
 
 }

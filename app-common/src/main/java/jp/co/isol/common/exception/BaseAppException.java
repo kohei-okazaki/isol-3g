@@ -1,5 +1,7 @@
 package jp.co.isol.common.exception;
 
+import java.util.StringJoiner;
+
 /**
  * APP内で扱う基底例外クラス<br>
  *
@@ -7,9 +9,9 @@ package jp.co.isol.common.exception;
 public abstract class BaseAppException extends Exception {
 
 	/** エラーコード */
-	protected ErrorCodeDefine errorCode;
+	private ErrorCodeDefine errorCode;
 	/** エラーメッセージ */
-	protected String errorMessage;
+	private String errorMessage;
 
 	/**
 	 * 例外コンストラクタ<br>
@@ -29,11 +31,31 @@ public abstract class BaseAppException extends Exception {
 	}
 
 	/**
-	 * ErrorCodeDefineを返す<br>
+	 * errorCodeを返す
 	 * @return errorCode
 	 */
-	public ErrorCodeDefine getErrorCodeDefine() {
+	public ErrorCodeDefine getErrorCode() {
 		return errorCode;
+	}
+
+	/**
+	 * errorMessageを返す
+	 * @return errorMessage
+	 */
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	/**
+	 * エラーメッセージを組み立てて返す<br>
+	 */
+	@Override
+	public String toString() {
+		StringJoiner joiner = new StringJoiner(" ");
+		joiner.add(this.errorCode.getLogLevel());
+		joiner.add(this.errorCode.getErrorCode());
+		joiner.add(this.errorMessage);
+		return joiner.toString();
 	}
 
 }
