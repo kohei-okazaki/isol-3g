@@ -1,7 +1,6 @@
 package jp.co.isol.api.response;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import jp.co.isol.common.web.api.BaseResponse;
 
@@ -26,7 +25,7 @@ public class HealthInfoResponse extends BaseResponse {
 	/** ユーザステータス */
 	private String userStatus;
 	/** 登録日時 */
-	private Date regDate;
+	private String regDate;
 
 	/**
 	 * dataIdを返す
@@ -144,7 +143,7 @@ public class HealthInfoResponse extends BaseResponse {
 	 * regDateを返す
 	 * @return regDate
 	 */
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 
@@ -152,7 +151,7 @@ public class HealthInfoResponse extends BaseResponse {
 	 * regDateを設定する
 	 * @param regDate
 	 */
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 

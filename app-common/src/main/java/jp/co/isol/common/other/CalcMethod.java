@@ -1,7 +1,7 @@
 package jp.co.isol.common.other;
 
 import java.math.BigDecimal;
-import java.util.function.BinaryOperator;
+import java.math.RoundingMode;
 
 /**
  * 四則演算メソッド定義<br>
@@ -10,25 +10,35 @@ import java.util.function.BinaryOperator;
 public enum CalcMethod {
 
 	/** 和 */
-	ADD((num1, num2) -> num1.add(num2)),
+	ADD((BigDecimal target1, BigDecimal target2, int degit, RoundingMode roudingMode) -> {
+		return target1.add(target2).setScale(degit, roudingMode);
+	}),
 	/** 差 */
-	SUBTRACT((num1, num2) -> num1.subtract(num2)),
+	SUBTRACT((BigDecimal target1, BigDecimal target2, int degit, RoundingMode roudingMode) -> {
+		return target1.subtract(target2).setScale(degit, roudingMode);
+	}),
 	/** 積 */
-	MULTIPLY((num1, num2) -> num1.multiply(num2)),
+	MULTIPLY((BigDecimal target1, BigDecimal target2, int degit, RoundingMode roudingMode) -> {
+		return target1.multiply(target2).setScale(degit, roudingMode);
+	}),
 	/** 商 */
-	DIVIDE((num1, num2) -> num1.divide(num2));
+	DIVIDE((BigDecimal target1, BigDecimal target2, int degit, RoundingMode roudingMode) -> {
+		return target1.divide(target2, degit, roudingMode);
+	});
 
-	private BinaryOperator<BigDecimal> option;
+	/** 四則演算オペレータインターフェース */
+	private CalcOperator operator;
 
-	private CalcMethod(BinaryOperator<BigDecimal> option) {
-		this.option = option;
+	private CalcMethod(CalcOperator operator) {
+		this.operator = operator;
 	}
 
 	/**
-	 * 四則演算関数を返す<br>
-	 * @return
+	 * 四則演算オペレータを返す<br>
+	 * @return operator
 	 */
-	public BinaryOperator<BigDecimal> getOption() {
-		return option;
+	public CalcOperator getOperator() {
+		return operator;
 	}
+
 }

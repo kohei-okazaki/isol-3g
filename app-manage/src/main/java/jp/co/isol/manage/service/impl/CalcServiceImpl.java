@@ -5,11 +5,11 @@ import java.math.RoundingMode;
 
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.common.util.CalcUtil;
+import jp.co.isol.common.util.HealthInfoUtil;
 import jp.co.isol.manage.service.CalcService;
 
 /**
- * 体重計算サービス実装クラス
+ * 計算サービス実装クラス
  *
  */
 @Service
@@ -20,7 +20,7 @@ public class CalcServiceImpl implements CalcService {
 	 */
 	@Override
 	public BigDecimal calcBmi(BigDecimal height, BigDecimal weight, int digit) {
-		return CalcUtil.calcBmi(height, weight, digit);
+		return HealthInfoUtil.calcBmi(height, weight, digit);
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class CalcServiceImpl implements CalcService {
 	 */
 	@Override
 	public BigDecimal calcStandardWeight(BigDecimal height, int digit) {
-		return CalcUtil.calcStandardWeight(height, digit);
+		return HealthInfoUtil.calcStandardWeight(height, digit);
 	}
 
 	/**

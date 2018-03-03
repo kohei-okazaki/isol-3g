@@ -45,26 +45,47 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
+		<!-- ログイン画面 -->
 		<url-pattern>/login.html</url-pattern>
+		<!-- 健康情報入力画面 -->
 		<url-pattern>/healthInfo-input.html</url-pattern>
+		<!-- 健康情報確認画面 -->
 		<url-pattern>/healthInfo-confirm.html</url-pattern>
+		<!-- 健康情報完了画面 -->
 		<url-pattern>/healthInfo-complete.html</url-pattern>
+		<!-- メニュー画面 -->
 		<url-pattern>/menu.html</url-pattern>
+		<!-- 通知 -->
 		<url-pattern>/notice.html</url-pattern>
+		<!-- 健康情報Excelダウンロード-->
 		<url-pattern>/healthInfo-excelDownload.html</url-pattern>
+		<!-- 健康情報CSVダウンロード -->
 		<url-pattern>/healthInfo-csvDownload</url-pattern>
+		<!-- 結果照会画面 -->
 		<url-pattern>/result-reference.html</url-pattern>
+		<!-- 結果照会Excelダウンロード-->
 		<url-pattern>/result-reference-excelDownload.html</url-pattern>
+		<!-- 結果照会CSVダウンロード -->
 		<url-pattern>/result-reference-csvDownload</url-pattern>
+		<!-- アカウント設定入力画面 -->
 		<url-pattern>/account-setting-input.html</url-pattern>
+		<!-- アカウント設定確認画面 -->
 		<url-pattern>/account-setting-confirm.html</url-pattern>
+		<!-- アカウント設定完了画面 -->
 		<url-pattern>/account-setting-complete.html</url-pattern>
+		<!-- 通知設定画面 -->
 		<url-pattern>/notice-setting.html</url-pattern>
+		<!-- アカウント作成入力画面 -->
 		<url-pattern>/account-create-input.html</url-pattern>
+		<!-- アカウント作成確認画面 -->
 		<url-pattern>/account-create-confirm.html</url-pattern>
+		<!-- アカウント作成完了画面 -->
 		<url-pattern>/account-create-complete.html</url-pattern>
+		<!-- 健康情報入力画面 -->
 		<url-pattern>/notice-setting-input.html</url-pattern>
+		<!-- 健康情報入力画面 -->
 		<url-pattern>/notice-setting-confirm.html</url-pattern>
+		<!-- 健康情報入力画面 -->
 		<url-pattern>/notice-setting-complete.html</url-pattern>
 	</servlet-mapping>
 

@@ -36,28 +36,32 @@ public class HealthInfoUtil {
 
 	/**
 	 * BMIを計算</br>
+	 * 体重(kg) / (身長(m) × 身長(m))</br>
 	 * @param height 身長
 	 * @param weight 体重
 	 * @param digit 四捨五入桁数
 	 * @return BMIを計算
 	 */
 	public static BigDecimal calcBmi(BigDecimal height, BigDecimal weight, int digit) {
-		BigDecimal multiplyResult = CalcUtil.execute(height, CalcMethod.MULTIPLY, weight);
-		BigDecimal result = CalcUtil.execute(weight, CalcMethod.DIVIDE, multiplyResult);
-		result = result.setScale(digit, RoundingMode.HALF_UP);
-
-		// 修正前
-		BigDecimal bef = weight.divide(height.multiply(height), digit, RoundingMode.HALF_UP);
+		BigDecimal multiplyResult = CalcUtil.execute(height, CalcMethod.MULTIPLY, height, 2, RoundingMode.HALF_UP);
+		BigDecimal result = CalcUtil.execute(weight, CalcMethod.DIVIDE, multiplyResult, 2, RoundingMode.HALF_UP);
 		return result;
+		// 修正前
+//		BigDecimal bef = weight.divide(height.multiply(height), digit, RoundingMode.HALF_UP);
+//		return bef;
 	}
 
 	/**
 	 * 標準体重を計算</br>
+	 * (身長(m) × 身長(m)) × 22</br>
 	 * @param height 身長
 	 * @param digit 四捨五入桁数
 	 * @return 標準体重を計算
 	 */
 	public static BigDecimal calcStandardWeight(BigDecimal height, int digit) {
-		return height.multiply(height).multiply(new BigDecimal(22)).setScale(digit, RoundingMode.HALF_UP);
+		BigDecimal result = CalcUtil.execute(height, CalcMethod.MULTIPLY, height, digit, RoundingMode.HALF_UP);
+		result = CalcUtil.execute(result, CalcMethod.MULTIPLY, new BigDecimal(22), digit, RoundingMode.HALF_UP);
+		return result;
+//		return height.multiply(height).multiply(new BigDecimal(22)).setScale(digit, RoundingMode.HALF_UP);
 	}
 }

@@ -11,7 +11,7 @@ import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
-import jp.co.isol.common.util.CalcUtil;
+import jp.co.isol.common.util.HealthInfoUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoService;
@@ -38,8 +38,8 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		healthInfo.setUserId(userId);
 		healthInfo.setHeight(form.getHeight());
 		healthInfo.setWeight(form.getWeight());
-		healthInfo.setBmi(this.calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight(), 2));
-		healthInfo.setStandardWeight(this.calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), 2));
+		healthInfo.setBmi(this.calcService.calcBmi(HealthInfoUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight(), 2));
+		healthInfo.setStandardWeight(this.calcService.calcStandardWeight(HealthInfoUtil.convertMeterFromCentiMeter(form.getHeight()), 2));
 
 		String userStatus = null;
 		if (Objects.isNull(lastHealthInfo)) {

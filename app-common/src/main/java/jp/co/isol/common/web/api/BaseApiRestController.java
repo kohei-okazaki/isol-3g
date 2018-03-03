@@ -28,8 +28,18 @@ public interface BaseApiRestController<Rq extends BaseRequest
 	 * @throws E
 	 */
 	@GetMapping
-	default Rs doGet(HttpServletRequest request) throws E {
-		return this.execute(request);
+	default Rs doGet(HttpServletRequest request) {
+
+		Rs response = null;
+
+		try {
+			response = this.execute(request);
+		} catch (BaseApiException e) {
+			System.out.println(e.getErrorCodeDefine().getErrorMessage());
+			e.printStackTrace();
+		}
+
+		return response;
 	}
 
 	/**
@@ -40,7 +50,7 @@ public interface BaseApiRestController<Rq extends BaseRequest
 	 */
 	@PostMapping
 	default Rs doPost(HttpServletRequest request) throws E {
-		return this.execute(request);
+		return doGet(request);
 	}
 
 	/**

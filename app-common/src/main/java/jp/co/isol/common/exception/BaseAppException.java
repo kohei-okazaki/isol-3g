@@ -12,7 +12,7 @@ public abstract class BaseAppException extends Exception {
 	protected String errorMessage;
 
 	/**
-	 * コンストラクタ<br>
+	 * 例外コンストラクタ<br>
 	 */
 	public BaseAppException() {
 
@@ -26,6 +26,14 @@ public abstract class BaseAppException extends Exception {
 	public BaseAppException(ErrorCodeDefine errorCode, String errorMessage) {
 		this.errorCode = errorCode;
 		this.errorMessage = errorMessage;
+	}
+
+	/**
+	 * ErrorCodeDefineを返す<br>
+	 * @return errorCode
+	 */
+	public ErrorCodeDefine getErrorCodeDefine() {
+		return errorCode;
 	}
 
 }
