@@ -67,6 +67,12 @@ input[type="submit"] {
 	cursor: pointer;
 	transition: background .3s;
 	-webkit-transition: background .3s;
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px 3px hsla(0, 0%, 0%, .6);
+	cursor: pointer;
+	letter-spacing: 4px;
+	text-align: center;
+	text-shadow: 0 2px 0 hsla(0, 0%, 0%, .25);
 }
 
 input[type="reset"] {
@@ -81,6 +87,12 @@ input[type="reset"] {
 	cursor: pointer;
 	transition: background .3s;
 	-webkit-transition: background .3s;
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px 3px hsla(0, 0%, 0%, .6);
+	cursor: pointer;
+	letter-spacing: 4px;
+	text-align: center;
+	text-shadow: 0 2px 0 hsla(0, 0%, 0%, .25);
 }
 
 input[type="button"] {
@@ -95,19 +107,28 @@ input[type="button"] {
 	cursor: pointer;
 	transition: background .3s;
 	-webkit-transition: background .3s;
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px 3px hsla(0, 0%, 0%, .6);
+	cursor: pointer;
+	letter-spacing: 4px;
+	text-align: center;
+	text-shadow: 0 2px 0 hsla(0, 0%, 0%, .25);
 }
 
 /* type=submitをマウスオーバーしたとき */
 input[type="submit"]:hover {
 	background: #80ff80;
+	box-shadow: none;
 }
 
 input[type="reset"]:hover {
 	background: #80ff80;
+	box-shadow: none;
 }
 
 input[type="button"]:hover {
 	background: #80ff80;
+	box-shadow: none;
 }
 
 /* 入力タグをクリックしたとき */
@@ -345,4 +366,8 @@ ul>li:hover>a {
 
 .radio input[type="radio"]:checked+label {
 	background-color: #80ff80;
+}
+
+.navigation {
+	text-shadow: 0 2px 0 hsla(0, 0%, 0%, .25);
 }

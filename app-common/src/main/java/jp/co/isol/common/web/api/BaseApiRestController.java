@@ -16,7 +16,7 @@ import jp.co.isol.common.exception.BaseApiException;
  * @param <S> サービスクラス
  * @param <E> 例外クラス
  */
-public abstract class BaseApiRestController<Rq extends BaseRequest
+public interface BaseApiRestController<Rq extends BaseRequest
 										, Rs extends BaseResponse
 										, S extends BaseApiService<Rq, Rs, E>
 										, E extends BaseApiException> {
@@ -28,8 +28,18 @@ public abstract class BaseApiRestController<Rq extends BaseRequest
 	 * @throws E
 	 */
 	@GetMapping
-	Rs doGet(HttpServletRequest request) throws E {
-		return this.execute(request);
+	default Rs doGet(HttpServletRequest request) {
+
+		Rs response = null;
+
+		try {
+			response = this.execute(request);
+		} catch (BaseApiException e) {
+			System.out.println(e.getErrorCodeDefine().getErrorMessage());
+			e.printStackTrace();
+		}
+
+		return response;
 	}
 
 	/**
@@ -39,8 +49,8 @@ public abstract class BaseApiRestController<Rq extends BaseRequest
 	 * @throws E
 	 */
 	@PostMapping
-	Rs doPost(HttpServletRequest request) throws E {
-		return this.execute(request);
+	default Rs doPost(HttpServletRequest request) throws E {
+		return doGet(request);
 	}
 
 	/**
@@ -49,6 +59,6 @@ public abstract class BaseApiRestController<Rq extends BaseRequest
 	 * @return
 	 * @throws E
 	 */
-	protected abstract Rs execute(HttpServletRequest request) throws E;
+	Rs execute(HttpServletRequest request) throws E;
 
 }

@@ -11,7 +11,10 @@ public enum ErrorCodeDefine {
 	/** 属性エラー*/
 	TYPE("TYPE", "属性エラーです"),
 	/** 桁数エラー */
-	LENGTH("LENGTH", "桁数エラーです");
+	LENGTH("LENGTH", "桁数エラーです"),
+
+	/** アカウント不正エラー */
+	ACCOUNT_ILLEGAL("ACCOUNT_ILLEGAL"," アカウントが存在しません");
 
 	/** エラーコード */
 	private String errorCode;

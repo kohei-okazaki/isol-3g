@@ -112,9 +112,9 @@
 		<br><br><br>
 		<table class="custom">
 			<tr class="header">
-				<th align="center"><c:out value="身長" /></th>
-				<th align="center"><c:out value="体重" /></th>
-				<th align="center"><c:out value="標準体重" /></th>
+				<th align="center"><c:out value="身長(cm)" /></th>
+				<th align="center"><c:out value="体重(kg)" /></th>
+				<th align="center"><c:out value="標準体重(kg)" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
 			<tr class="data">

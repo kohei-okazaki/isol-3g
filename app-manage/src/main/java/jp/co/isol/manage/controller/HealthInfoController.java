@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
-import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.web.mvc.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
@@ -124,12 +123,12 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 			manager = context.getBean(ManageSessionManager.class);
 		}
 
-		String userId = manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String userId = (String) manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
 		// ユーザIDから健康情報のリストを取得
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 
-		HealthInfoDto dto;
+		HealthInfo healthInfo;
 
 		// 初回登録であるかの判定
 		boolean isFirstReg = healthInfoList.isEmpty();
@@ -137,7 +136,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		if (isFirstReg) {
 
-			dto = this.healthInfoService.convertHealthInfoDto(form, userId, null);
+			healthInfo = this.healthInfoService.convertHealthInfo(form, userId, null);
 
 		} else {
 
@@ -152,10 +151,8 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 			// 「入力情報.体重」と前回入力した体重の結果からメッセージを設定
 			model.addAttribute("resultMessage", this.healthInfoService.getDiffMessage(form, lastHealthInfo));
 
-			dto = this.healthInfoService.convertHealthInfoDto(form, userId, lastHealthInfo);
+			healthInfo = this.healthInfoService.convertHealthInfo(form, userId, lastHealthInfo);
 		}
-
-		HealthInfo healthInfo = this.healthInfoService.convertHealthInfo(dto);
 
 		// 入力した健康情報を設定する
 		model.addAttribute("healthInfo", healthInfo);

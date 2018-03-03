@@ -12,7 +12,7 @@ import jp.co.isol.common.web.api.BaseCheck;
  * 健康情報のチェックを行うクラス<br>
  *
  */
-public class HealthInfoCheck extends BaseCheck<HealthInfoException> {
+public class HealthInfoCheck implements BaseCheck<HealthInfoException> {
 
 	/**
 	 * 必須チェックを行う<br>

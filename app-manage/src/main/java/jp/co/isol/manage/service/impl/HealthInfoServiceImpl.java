@@ -7,12 +7,11 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.isol.common.dto.HealthInfoDto;
 import jp.co.isol.common.entity.HealthInfo;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
-import jp.co.isol.common.util.CalcUtil;
+import jp.co.isol.common.util.HealthInfoUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoService;
@@ -32,23 +31,26 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public HealthInfoDto convertHealthInfoDto(HealthInfoForm form, String userId, HealthInfo lastHealthInfo) {
+	public HealthInfo convertHealthInfo(HealthInfoForm form, String userId, HealthInfo lastHealthInfo) {
 
-		HealthInfoDto dto = new HealthInfoDto();
-		dto.setUserId(userId);
-		dto.setHeight(form.getHeight());
-		dto.setWeight(form.getWeight());
-		dto.setBmi(this.calcService.calcBmi(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight(), 2));
-		dto.setStandardWeight(this.calcService.calcStandardWeight(CalcUtil.convertMeterFromCentiMeter(form.getHeight()), 2));
+		HealthInfo healthInfo = new HealthInfo();
+		healthInfo.setDataId(Objects.isNull(lastHealthInfo) ? "" : lastHealthInfo.getDataId());
+		healthInfo.setUserId(userId);
+		healthInfo.setHeight(form.getHeight());
+		healthInfo.setWeight(form.getWeight());
+		healthInfo.setBmi(this.calcService.calcBmi(HealthInfoUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight(), 2));
+		healthInfo.setStandardWeight(this.calcService.calcStandardWeight(HealthInfoUtil.convertMeterFromCentiMeter(form.getHeight()), 2));
 
-		dto.setUserStatus(CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN));
-		if (Objects.nonNull(lastHealthInfo)) {
-			dto.setUserStatus(getUserStatus(form.getWeight(), lastHealthInfo.getWeight()));
+		String userStatus = null;
+		if (Objects.isNull(lastHealthInfo)) {
+			userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN);
+		} else {
+			userStatus = getUserStatus(form.getWeight(), lastHealthInfo.getWeight());
 		}
 
-		dto.setRegDate(new Date());
-
-		return dto;
+		healthInfo.setUserStatus(userStatus);
+		healthInfo.setRegDate(new Date());
+		return healthInfo;
 	}
 
 	/**
@@ -101,21 +103,4 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		return this.calcService.calcDiffWeight(healthInfo.getWeight(), form.getWeight());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public HealthInfo convertHealthInfo(HealthInfoDto dto) {
-
-		HealthInfo healthInfo = new HealthInfo();
-		healthInfo.setDataId(dto.getDataId());
-		healthInfo.setUserId(dto.getUserId());
-		healthInfo.setHeight(dto.getHeight());
-		healthInfo.setWeight(dto.getWeight());
-		healthInfo.setBmi(dto.getBmi());
-		healthInfo.setStandardWeight(dto.getStandardWeight());
-		healthInfo.setUserStatus(dto.getUserStatus());
-		healthInfo.setRegDate(dto.getRegDate());
-		return healthInfo;
-	}
 }

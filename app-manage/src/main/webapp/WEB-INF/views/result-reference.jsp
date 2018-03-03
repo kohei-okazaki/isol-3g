@@ -27,9 +27,9 @@
 	<div align="center">
 		<table border="1">
 			<tr class="header">
-				<th align="center"><c:out value="身長" /></th>
-				<th align="center"><c:out value="体重" /></th>
-				<th align="center"><c:out value="標準体重" /></th>
+				<th align="center"><c:out value="身長(cm)" /></th>
+				<th align="center"><c:out value="体重(kg)" /></th>
+				<th align="center"><c:out value="標準体重(kg)" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 				<th align="center"><c:out value="登録日時" /></th>
 			</tr>

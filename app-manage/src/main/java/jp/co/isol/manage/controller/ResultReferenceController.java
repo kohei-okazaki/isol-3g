@@ -60,7 +60,7 @@ public class ResultReferenceController {
 	}
 
 	/**
-	 * ファイルダウンロードを実行する
+	 * Excelファイルをダウンロードする<br>
 	 * @param userId
 	 * @return
 	 * @throws ParseException

@@ -9,12 +9,12 @@ import jp.co.isol.common.dao.impl.AccountDaoImpl;
 import jp.co.isol.common.dao.impl.HealthInfoDaoImpl;
 
 /**
- * APIコンフィグクラス<br>
+ * APIDaoコンフィグクラス<br>
  * app-commonのクラスで使いたいBeanはここに登録する<br>
  * app-commonのクラスはservlet-context.xmlに定義できないため
  */
 @Configuration
-public class ApiConfig {
+public class ApiDaoConfig {
 
 	/* Dao */
 	@Bean("healthInfoDao")

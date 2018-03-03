@@ -48,18 +48,18 @@
 			<c:if test="${errorMessage != null}">
 				<c:out value="${errorMessage}" />
 			</c:if>
-			<table border="1">
 
+			<table border="1">
 				<tr>
 					<th class="header" width="130px">
 						<c:out value="削除" />
 					</th>
 					<td class="data" width="250px">
 						<div class="radio">
-							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1" checked="checked">
-							<label for="deleteFlagTrue">する</label>
-							<input type="radio" name="deleteFlag" id="deleteFlagFalse" value="0">
+							<input type="radio" name="deleteFlag" id="deleteFlagFalse" value="0" checked="checked">
 							<label for="deleteFlagFalse" class="switch-off">しない</label>
+							<input type="radio" name="deleteFlag" id="deleteFlagTrue" value="1">
+							<label for="deleteFlagTrue">する</label>
 						</div>
 					</td>
 				</tr>
@@ -110,9 +110,11 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="header"><c:out value="備 考" /></th>
+					<th class="header">
+						<c:out value="備 考" />
+					</th>
 					<td class="data">
-						<textarea rows="10" cols="30" name="remarks" ></textarea>
+						<textarea rows="10" cols="30" name="remarks" >${account.remarks}</textarea>
 					</td>
 				</tr>
 			</table>

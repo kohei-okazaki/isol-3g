@@ -30,6 +30,8 @@ public class AccountCreateValidator extends BaseValidator<AccountCreateForm> {
 
 		// 必須チェックを行う
 		checkRequire(errors);
+		// 最大桁数チェック
+		checkMaxLength(errors, form);
 
 	}
 
@@ -41,6 +43,16 @@ public class AccountCreateValidator extends BaseValidator<AccountCreateForm> {
 
 		ValidationUtil.rejectIfEmpty(errors, "height");
 		ValidationUtil.rejectIfEmpty(errors, "weight");
+	}
+
+	/**
+	 * 桁数超過チェックを行う<br>
+	 * @param errors
+	 * @param form
+	 */
+	private void checkMaxLength(Errors errors, AccountCreateForm form) {
+		// TODO 自動生成されたメソッド・スタブ
+
 	}
 
 }

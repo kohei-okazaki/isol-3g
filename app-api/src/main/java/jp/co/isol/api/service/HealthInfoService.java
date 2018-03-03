@@ -13,9 +13,17 @@ import jp.co.isol.common.web.api.BaseApiService;
 public interface HealthInfoService extends BaseApiService<HealthInfoRequest, HealthInfoResponse, HealthInfoException> {
 
 	/**
-	 * 健康情報Dtoを健康情報レスポンスクラスに変換する<br>
-	 * @param dto
+	 * 健康情報Entityを健康情報レスポンスクラスに変換する<br>
+	 * @param healthInfo
 	 * @return
 	 */
 	public HealthInfoResponse toResponse(HealthInfo healthInfo);
+
+	/**
+	 * 健康情報にリクエスト情報をつめる
+	 * @param request
+	 * @return
+	 */
+	public HealthInfo toEntity(HealthInfoRequest request);
+
 }
