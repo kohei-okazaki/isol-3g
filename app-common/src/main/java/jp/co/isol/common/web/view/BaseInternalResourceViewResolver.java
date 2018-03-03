@@ -8,12 +8,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * 要修正
  *
  */
-public class CommonInternalResourceViewResolver extends InternalResourceViewResolver {
+public class BaseInternalResourceViewResolver extends InternalResourceViewResolver {
 
 	/**
 	 * コンストラクタ<br>
 	 */
-	public CommonInternalResourceViewResolver() {
+	public BaseInternalResourceViewResolver() {
 		super();
 	}
 
