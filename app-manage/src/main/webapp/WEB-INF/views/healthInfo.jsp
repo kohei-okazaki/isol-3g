@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="manage" uri="/WEB-INF/tag.tld"%>
 
 <html>
 
@@ -100,27 +101,34 @@
 		<br>
 		<c:out value="今のあなたの身長(${healthInfo.height}cm)の" />
 		<br>
-		<c:out value="標準体重は${healthInfo.standardWeight}kgです。" />
+		<c:out value="標準体重は" />
+		<manage:weight weight="${healthInfo.standardWeight}" />
+		<c:out value="です" />
 
 		<c:if test="${isFirstReg == false}">
 			<br><br>
-			<c:out value="前回より${diffWeight}kg ${resultMessage}" />
+			<c:out value="前回より" />
+			<manage:weight weight="${diffWeight}" />
+			<c:out value="${resultMessage}" />
 			<br>
-			<c:out value="${beforeWeight}kg→${healthInfo.weight}kg" />
+
+			<manage:weight weight="${beforeWeight}" />
+			<c:out value="→" />
+			<manage:weight weight="${healthInfo.weight}" />
 		</c:if>
 
 		<br><br><br>
 		<table class="custom">
 			<tr class="header">
-				<th align="center"><c:out value="身長(cm)" /></th>
-				<th align="center"><c:out value="体重(kg)" /></th>
-				<th align="center"><c:out value="標準体重(kg)" /></th>
+				<th align="center"><c:out value="身長" /></th>
+				<th align="center"><c:out value="体重" /></th>
+				<th align="center"><c:out value="標準体重" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
 			<tr class="data">
 				<td align="center"><c:out value="${healthInfo.height}" /></td>
-				<td align="center"><c:out value="${healthInfo.weight}" /></td>
-				<td align="center"><c:out value="${healthInfo.standardWeight}" /></td>
+				<td align="center"><manage:weight weight="${healthInfo.weight}" /></td>
+				<td align="center"><manage:weight weight="${healthInfo.standardWeight}" /></td>
 				<td align="center"><c:out value="${healthInfo.bmi}" /></td>
 			</tr>
 		</table>
