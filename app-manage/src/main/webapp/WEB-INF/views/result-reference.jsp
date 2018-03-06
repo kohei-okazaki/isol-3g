@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="manage" uri="/WEB-INF/tag.tld"%>
 
 <html>
 
@@ -27,19 +28,19 @@
 	<div align="center">
 		<table border="1">
 			<tr class="header">
-				<th align="center"><c:out value="身長(cm)" /></th>
-				<th align="center"><c:out value="体重(kg)" /></th>
-				<th align="center"><c:out value="標準体重(kg)" /></th>
+				<th align="center"><c:out value="身長" /></th>
+				<th align="center"><c:out value="体重" /></th>
+				<th align="center"><c:out value="標準体重" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 				<th align="center"><c:out value="登録日時" /></th>
 			</tr>
 			<c:forEach var="result" items="${resultList}">
 				<tr class="data">
-					<td align="center"><c:out value="${result.height}" /></td>
-					<td align="center"><c:out value="${result.weight}" /></td>
-					<td align="center"><c:out value="${result.standardWeight}" /></td>
+					<td align="center"><manage:centiMeterHeight height="${result.height}" /></td>
+					<td align="center"><manage:weight weight="${result.weight}" /></td>
+					<td align="center"><manage:weight weight="${result.standardWeight}" /></td>
 					<td align="center"><c:out value="${result.bmi}" /></td>
-					<td align="center"><c:out value="${result.regDate}" /></td>
+					<td align="center"><manage:date date="${result.regDate}" /></td>
 				</tr>
 			</c:forEach>
 		</table>

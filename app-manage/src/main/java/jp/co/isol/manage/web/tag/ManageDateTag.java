@@ -1,23 +1,26 @@
 package jp.co.isol.manage.web.tag;
 
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.log4j.Logger;
 
+import jp.co.isol.common.other.DateFormatDefine;
+import jp.co.isol.common.util.DateUtil;
+
 /**
- * 管理画面の体重タグクラス<br>
+ * 管理画面の時刻表示タグ<br>
  *
  */
-public class ManageWeightTag extends TagSupport {
+public class ManageDateTag extends TagSupport {
 
-	/** 体重(kg) */
-	private BigDecimal weight;
+	/** 時刻 */
+	private Date date;
 
-	public void setWeight(BigDecimal weight) {
-		this.weight = weight;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/**
@@ -26,8 +29,9 @@ public class ManageWeightTag extends TagSupport {
 	@Override
 	public int doStartTag() {
 
+		String resultDate = DateUtil.toString(this.date, DateFormatDefine.YYYYMMDD_HHMMSS);
 		try {
-			pageContext.getOut().print(weight + " kg");
+			pageContext.getOut().print(resultDate);
 		} catch (IOException e) {
 			Logger.getLogger(this.getClass().getName());
 		}

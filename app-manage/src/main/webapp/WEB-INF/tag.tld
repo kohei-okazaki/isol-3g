@@ -22,13 +22,25 @@
 
 	<tag>
 		<name>centiMeterHeight</name>
-		<tag-class>jp.co.isol.manage.web.tag.ManageCentiMeterHeight</tag-class>
+		<tag-class>jp.co.isol.manage.web.tag.ManageCentiMeterHeightTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
-			<name>weight</name>
+			<name>height</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.math.BigDecimal</type>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>date</name>
+		<tag-class>jp.co.isol.manage.web.tag.ManageDateTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>date</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.util.Datel</type>
 		</attribute>
 	</tag>
 

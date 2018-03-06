@@ -11,15 +11,14 @@ import org.apache.log4j.Logger;
  * 管理画面身長タグクラス<br>
  *
  */
-public class ManageCentiMeterHeight extends TagSupport {
+public class ManageCentiMeterHeightTag extends TagSupport {
 
 	/** 身長(cm) */
 	private BigDecimal height;
 
-	public void serHeight(BigDecimal height) {
+	public void setHeight(BigDecimal height) {
 		this.height = height;
 	}
-
 
 	/**
 	 * {@inheritDoc}

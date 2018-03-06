@@ -126,7 +126,7 @@
 				<th align="center"><c:out value="BMI" /></th>
 			</tr>
 			<tr class="data">
-				<td align="center"><c:out value="${healthInfo.height}" /></td>
+				<td align="center"><manage:centiMeterHeight height="${healthInfo.height}" /></td>
 				<td align="center"><manage:weight weight="${healthInfo.weight}" /></td>
 				<td align="center"><manage:weight weight="${healthInfo.standardWeight}" /></td>
 				<td align="center"><c:out value="${healthInfo.bmi}" /></td>
