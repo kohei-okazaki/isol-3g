@@ -20,7 +20,7 @@
 <script type="text/javascript" src="resources/js/common/common.js"></script>
 </head>
 
-<body class="main">
+<body>
 <div class="top">
 	<div class="colors"></div>
 </div>
