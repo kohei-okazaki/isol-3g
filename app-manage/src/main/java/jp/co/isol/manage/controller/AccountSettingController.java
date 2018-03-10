@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.MailInfo;
-import jp.co.isol.common.web.mvc.BaseWizardController;
+import jp.co.isol.common.web.manage.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.AccountSettingException;
 import jp.co.isol.manage.form.AccountSettingForm;

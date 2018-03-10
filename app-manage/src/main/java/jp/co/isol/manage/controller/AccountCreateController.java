@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jp.co.isol.common.entity.Account;
-import jp.co.isol.common.web.mvc.BaseWizardController;
+import jp.co.isol.common.web.manage.BaseWizardController;
 import jp.co.isol.manage.exception.AccountCreateException;
 import jp.co.isol.manage.form.AccountCreateForm;
 import jp.co.isol.manage.service.AccountCreateService;

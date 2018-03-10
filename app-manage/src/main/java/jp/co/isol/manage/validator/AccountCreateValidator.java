@@ -3,7 +3,7 @@ package jp.co.isol.manage.validator;
 import org.springframework.validation.Errors;
 
 import jp.co.isol.common.util.ValidationUtil;
-import jp.co.isol.common.web.mvc.BaseValidator;
+import jp.co.isol.common.web.manage.BaseValidator;
 import jp.co.isol.manage.form.AccountCreateForm;
 
 /**

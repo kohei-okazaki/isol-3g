@@ -1,4 +1,4 @@
-package jp.co.isol.common.web.filter;
+package jp.co.isol.common.web.manage;
 
 import java.io.IOException;
 

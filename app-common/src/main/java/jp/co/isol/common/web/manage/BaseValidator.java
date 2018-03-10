@@ -1,4 +1,4 @@
-package jp.co.isol.common.web.mvc;
+package jp.co.isol.common.web.manage;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

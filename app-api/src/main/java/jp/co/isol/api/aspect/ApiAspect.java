@@ -22,7 +22,7 @@ public class ApiAspect {
 	 * コントローラクラスの開始ログを出力する<br>
 	 * @param jp
 	 */
-	@Before("execution(* *..*Controller.execute(..))*")
+	@Before("execution(* *..*Controller.*(..))*")
 	public void outStartControllerLog(JoinPoint jp) {
 		System.out.println("■■■■■■■■■■■■■■■■■コントローラクラス開始■■■■■■■■■■■■■■■" + jp.toString());
 	}
@@ -31,7 +31,7 @@ public class ApiAspect {
 	 * コントローラクラスの終了ログを出力する<br>
 	 * @param jp
 	 */
-	@After("execution(* *..*Controller.execute(..))*")
+	@After("execution(* *..*Controller.*(..))*")
 	public void outEndControllerLog(JoinPoint jp) {
 		System.out.println("■■■■■■■■■■■■■■■■■コントローラクラス終了■■■■■■■■■■■■■■■" + jp.toString());
 	}

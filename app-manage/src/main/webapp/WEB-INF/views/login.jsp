@@ -11,7 +11,9 @@
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/loginLayout.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/baseLayout.css">
-<script type="text/javascript" src="resources/js/app.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/headericon.css">
+<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript" src="resources/js/accountCreate.js"></script>
 </head>
 <body>
 

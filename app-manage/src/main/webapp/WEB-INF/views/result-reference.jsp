@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="manage" uri="/WEB-INF/tag.tld"%>
 
 <html>
 
@@ -11,7 +12,12 @@
 <title>健康アプリ_結果照会画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
-<script type="text/javascript" src="resources/js/app.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/navigation.css">
+<link rel="stylesheet" type="text/css" href="resources/css/menuicon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/headericon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/table.css">
+<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript" src="resources/js/reference.js"></script>
 </head>
 
 <body class="main">
@@ -27,19 +33,19 @@
 	<div align="center">
 		<table border="1">
 			<tr class="header">
-				<th align="center"><c:out value="身長(cm)" /></th>
-				<th align="center"><c:out value="体重(kg)" /></th>
-				<th align="center"><c:out value="標準体重(kg)" /></th>
+				<th align="center"><c:out value="身長" /></th>
+				<th align="center"><c:out value="体重" /></th>
+				<th align="center"><c:out value="標準体重" /></th>
 				<th align="center"><c:out value="BMI" /></th>
 				<th align="center"><c:out value="登録日時" /></th>
 			</tr>
 			<c:forEach var="result" items="${resultList}">
 				<tr class="data">
-					<td align="center"><c:out value="${result.height}" /></td>
-					<td align="center"><c:out value="${result.weight}" /></td>
-					<td align="center"><c:out value="${result.standardWeight}" /></td>
+					<td align="center"><manage:centiMeterHeight height="${result.height}" /></td>
+					<td align="center"><manage:weight weight="${result.weight}" /></td>
+					<td align="center"><manage:weight weight="${result.standardWeight}" /></td>
 					<td align="center"><c:out value="${result.bmi}" /></td>
-					<td align="center"><c:out value="${result.regDate}" /></td>
+					<td align="center"><manage:date date="${result.regDate}" /></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -50,19 +56,17 @@
 		<table>
 			<tr>
 				<td align="center">
-					<form action="/isol-manage/result-reference-excelDownload.html" method="get">
-						<div>
-							<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
-						</div>
-					</form>
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png" onclick="referenceExcelDownload()" >
+					</div>
 				</td>
 				<td>　　</td>
 				<td align="center">
-					<form action="/isol-manage/result-reference-csvDownload">
+					<%-- <form action="/isol-manage/result-reference-csvDownload"> --%>
 						<div>
-							<input class="menuicon" type="image" src="resources/image/icon_csv.png">
+							<input class="menuicon" type="image" src="resources/image/icon_csv.png" onclick="referenceCsvDownload()">
 						</div>
-					</form>
+					<%-- </form> --%>
 				</td>
 			</tr>
 		</table>

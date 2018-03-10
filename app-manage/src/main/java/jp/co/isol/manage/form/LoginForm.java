@@ -2,7 +2,7 @@ package jp.co.isol.manage.form;
 
 import java.io.Serializable;
 
-import jp.co.isol.common.web.mvc.BaseForm;
+import jp.co.isol.common.web.manage.BaseForm;
 
 /**
  * ログインフォームクラス

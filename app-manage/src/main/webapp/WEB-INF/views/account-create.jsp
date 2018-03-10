@@ -11,7 +11,10 @@
 <title>健康アプリ_アカウント作成画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
-<script type="text/javascript" src="resources/js/app.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/headericon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/input.css">
+<link rel="stylesheet" type="text/css" href="resources/css/table.css">
+<script type="text/javascript" src="resources/js/accountCreate.js"></script>
 </head>
 
 <body class="main">
@@ -23,13 +26,13 @@
 		</h1>
 	</c:if>
 	<c:if test="${page == 1}">
-		<h1 class="title">
+		<h1>
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
 			<c:out value="アカウント作成確認画面" />
 		</h1>
 	</c:if>
 	<c:if test="${page == 2}">
-		<h1 class="title">
+		<h1>
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
 			<c:out value="アカウント作成完了画面" />
 		</h1>
@@ -125,7 +128,7 @@
 						<c:out value="備 考" />
 					</th>
 					<td class="data">
-						<textarea rows="10" cols="30" name="remarks" value="${form.remarks}"></textarea>
+						<textarea rows="10" cols="30" name="remarks" >${form.remarks}</textarea>
 					</td>
 				</tr>
 			</table>
@@ -157,9 +160,6 @@
 			</table>
 		</div>
 	</c:if>
-
-
-
 
 	<br><br>
 	<hr>

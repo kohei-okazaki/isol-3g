@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.isol.common.web.mvc.BaseWizardController;
+import jp.co.isol.common.web.manage.BaseWizardController;
 import jp.co.isol.manage.exception.NoticeSettingException;
 import jp.co.isol.manage.form.NoticeSettingForm;
 import jp.co.isol.manage.validator.NoticeSettingValidator;

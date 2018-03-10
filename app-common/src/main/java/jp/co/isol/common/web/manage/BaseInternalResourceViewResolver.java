@@ -1,4 +1,4 @@
-package jp.co.isol.common.web.view;
+package jp.co.isol.common.web.manage;
 
 import org.springframework.web.servlet.view.AbstractUrlBasedView;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;

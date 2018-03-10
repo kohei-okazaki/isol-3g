@@ -1,4 +1,4 @@
-package jp.co.isol.common.web.mvc;
+package jp.co.isol.common.web.manage;
 
 import javax.servlet.http.HttpServletRequest;
 
