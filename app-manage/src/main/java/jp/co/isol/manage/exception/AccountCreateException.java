@@ -1,13 +1,13 @@
 package jp.co.isol.manage.exception;
 
-import jp.co.isol.common.exception.BaseMvcException;
+import jp.co.isol.common.exception.BaseManageException;
 import jp.co.isol.common.exception.ErrorCodeDefine;
 
 /**
  * アカウント作成例外クラス
  *
  */
-public class AccountCreateException extends BaseMvcException {
+public class AccountCreateException extends BaseManageException {
 
 	/**
 	 * コンストラクタ<br>

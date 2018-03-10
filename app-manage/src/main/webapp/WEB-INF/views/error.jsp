@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
 <link rel="stylesheet" type="text/css" href="resources/css/navigation.css">
-<link rel="stylesheet" type="text/css" href="resources/css/headericon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/headericon.css">
 <script type="text/javascript" src="resources/js/common.js"></script>
 </head>
 

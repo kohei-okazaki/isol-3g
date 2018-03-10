@@ -4,12 +4,12 @@ package jp.co.isol.common.exception;
  * 管理画面で共通で継承する例外クラス<br>
  *
  */
-public abstract class BaseMvcException extends BaseAppException {
+public abstract class BaseManageException extends BaseAppException {
 
 	/**
 	 * コンストラクタ<br>
 	 */
-	public BaseMvcException() {
+	public BaseManageException() {
 		super();
 	}
 
@@ -18,7 +18,7 @@ public abstract class BaseMvcException extends BaseAppException {
 	 * @param errorCode エラーコード
 	 * @param errorMessage エラーメッセージ
 	 */
-	protected BaseMvcException(ErrorCodeDefine errorCode, String errorMessage) {
+	protected BaseManageException(ErrorCodeDefine errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 
-import jp.co.isol.common.exception.BaseMvcException;
+import jp.co.isol.common.exception.BaseManageException;
 
 /**
  * ウィザード型式の基底コントローラ<br>
@@ -14,7 +14,7 @@ import jp.co.isol.common.exception.BaseMvcException;
  * @param <F> 対象formクラス
  * @param <E> 例外クラス
  */
-public abstract class BaseWizardController<F extends BaseForm, E extends BaseMvcException> {
+public abstract class BaseWizardController<F extends BaseForm, E extends BaseManageException> {
 
 	/**
 	 * Validateを設定<br>
