@@ -62,11 +62,9 @@
 				</td>
 				<td>　　</td>
 				<td align="center">
-					<%-- <form action="/isol-manage/result-reference-csvDownload"> --%>
-						<div>
-							<input class="menuicon" type="image" src="resources/image/icon_csv.png" onclick="referenceCsvDownload()">
-						</div>
-					<%-- </form> --%>
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_csv.png" onclick="referenceCsvDownload()">
+					</div>
 				</td>
 			</tr>
 		</table>

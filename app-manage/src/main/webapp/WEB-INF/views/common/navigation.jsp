@@ -7,6 +7,11 @@
 
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="resources/css/common/bmiModal.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/standardWeightModal.css">
+<script type="text/javascript" src="resources/js/common/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/common/bmiModal.js"></script>
+<script type="text/javascript" src="resources/js/common/standardWeightModal.js"></script>
 </head>
 <body>
 	<ul id="dropmenu">
@@ -35,7 +40,37 @@
 				<li><a class="navigation" href="#">メール設定</a></li>
 			</ul>
 		</li>
+		<li><a class="navigation" href="#">その他</a>
+			<ul>
+				<li><a class="navigation" href="#">健康情報</a>
+					<ul>
+						<li><a id="bmi-modal-open" class="bmi-button-link">BMI</a></li>
+						<li><a id="standardWeight-modal-open" class="standardWeight-button-link">標準体重</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
 		<li><a class="navigation" href="/isol-manage/login.html">ログアウト</a></li>
 	</ul>
+
+
+<!-- ここからBMIモーダルウィンドウ -->
+<div id="bmi-modal-content">
+	BMIとは。。。
+	<p><a id="bmi-modal-close" class="bmi-button-link">閉じる</a></p>
+	<!-- モーダルウィンドウのコンテンツ終了 -->
+</div>
+<!-- ここまでBMIモーダルウィンドウ -->
+
+<!-- ここから標準体重モーダルウィンドウ -->
+<div id="standardWeight-modal-content">
+	標準体重とは。。。
+	<p><a id="standardWeight-modal-close" class="standardWeight-button-link">閉じる</a></p>
+	<!-- モーダルウィンドウのコンテンツ終了 -->
+</div>
+<!-- ここから標準体重モーダルウィンドウ -->
+
+
+
 </body>
 </html>
