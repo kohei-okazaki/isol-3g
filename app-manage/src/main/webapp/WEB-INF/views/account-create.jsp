@@ -161,9 +161,6 @@
 		</div>
 	</c:if>
 
-
-
-
 	<br><br>
 	<hr>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
