@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import jp.co.isol.common.web.filter.BaseFilter;
+import jp.co.isol.common.web.manage.BaseFilter;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
@@ -55,7 +55,6 @@ public class ManageFilter extends BaseFilter {
 
 		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 
-		System.out.println("セッション内のuserId = " + userId);
 		chain.doFilter(req, resp);
 
 	}

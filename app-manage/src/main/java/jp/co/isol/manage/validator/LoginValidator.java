@@ -5,7 +5,7 @@ import org.springframework.validation.ValidationUtils;
 
 import jp.co.isol.common.exception.ErrorCodeDefine;
 import jp.co.isol.common.util.StringUtil;
-import jp.co.isol.common.web.mvc.BaseValidator;
+import jp.co.isol.common.web.manage.BaseValidator;
 import jp.co.isol.manage.form.LoginForm;
 
 /**
