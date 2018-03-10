@@ -13,12 +13,17 @@
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/headericon.css">
 <link rel="stylesheet" type="text/css" href="resources/css/input.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/fort.css">
 <link rel="stylesheet" type="text/css" href="resources/css/table.css">
+<script type="text/javascript" src="resources/js/common/fort.js"></script>
 <script type="text/javascript" src="resources/js/accountCreate.js"></script>
+<script type="text/javascript" src="resources/js/common/common.js"></script>
 </head>
 
 <body class="main">
-
+<div class="top">
+	<div class="colors"></div>
+</div>
 	<c:if test="${page == 0}">
 		<h1>
 			<img class="headericon" alt="入力" src="resources/image/icon_input.jpg">
