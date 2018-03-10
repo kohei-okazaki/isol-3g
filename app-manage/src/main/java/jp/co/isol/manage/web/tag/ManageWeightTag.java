@@ -16,6 +16,10 @@ public class ManageWeightTag extends TagSupport {
 	/** 体重(kg) */
 	private BigDecimal weight;
 
+	/**
+	 * weightを設定する
+	 * @param weight
+	 */
 	public void setWeight(BigDecimal weight) {
 		this.weight = weight;
 	}

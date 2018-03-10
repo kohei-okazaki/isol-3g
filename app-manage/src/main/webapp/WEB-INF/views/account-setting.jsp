@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="manage" uri="/WEB-INF/tag.tld"%>
 
 <html>
 
@@ -11,7 +12,12 @@
 <title>健康アプリ_アカウント設定画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
-<script type="text/javascript" src="resources/js/app.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/input.css">
+<link rel="stylesheet" type="text/css" href="resources/css/navigation.css">
+<link rel="stylesheet" type="text/css" href="resources/css/menuicon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/headericon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/table.css">
+<script type="text/javascript" src="resources/js/common.js"></script>
 </head>
 
 <body class="main">
@@ -196,7 +202,8 @@
 						<c:out value="備 考" />
 					</th>
 					<td class="data">
-						<c:out value="${form.remarks}" />
+						<!--<c:out value="${form.remarks}" />-->
+						<manage:textArea count="20" value="${form.remarks}" />
 						<input type="hidden" name="remarks" value="${form.remarks}" />
 					</td>
 				</tr>

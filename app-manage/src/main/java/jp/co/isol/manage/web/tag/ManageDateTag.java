@@ -19,6 +19,10 @@ public class ManageDateTag extends TagSupport {
 	/** 時刻 */
 	private Date date;
 
+	/**
+	 * dateを設定する
+	 * @param date
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}

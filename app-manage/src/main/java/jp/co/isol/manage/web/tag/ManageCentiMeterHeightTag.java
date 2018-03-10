@@ -16,6 +16,10 @@ public class ManageCentiMeterHeightTag extends TagSupport {
 	/** 身長(cm) */
 	private BigDecimal height;
 
+	/**
+	 * heightを設定する
+	 * @param height
+	 */
 	public void setHeight(BigDecimal height) {
 		this.height = height;
 	}

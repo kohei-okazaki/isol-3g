@@ -8,3 +8,9 @@
 	font-weight: bold;
 	border: 2px #FF0000 dashed;
 }
+
+.main {
+	margin: 20px;
+	padding: 20px;
+	font-family: 'Open Sans', sans-serif;
+}

@@ -1,8 +1,3 @@
-function finish() {
-	var finishMessage = document.write('出力しました');
-	alert(finishMessage);
-}
-
 function referenceExcelDownload() {
 	var form = document.createElement('form');
 	form.action = '/isol-manage/result-reference-excelDownload.html';
@@ -11,11 +6,10 @@ function referenceExcelDownload() {
 	form.submit();
 }
 
-function accountCreate() {
+function referenceCsvDownload() {
 	var form = document.createElement('form');
-	form.action = '/isol-manage/account-create-input.html';
+	form.action = '/isol-manage/result-reference-csvDownload';
 	form.method = 'get';
 	document.body.appendChild(form);
 	form.submit();
 }
-
