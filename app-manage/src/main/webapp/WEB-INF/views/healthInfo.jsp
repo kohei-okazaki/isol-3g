@@ -12,7 +12,7 @@
 <title>健康アプリ_健康情報画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
-<link rel="stylesheet" type="text/css" href="resources/css/headericon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/headericon.css">
 <link rel="stylesheet" type="text/css" href="resources/css/menuicon.css">
 <link rel="stylesheet" type="text/css" href="resources/css/navigation.css">
 <link rel="stylesheet" type="text/css" href="resources/css/healthInfo.css">

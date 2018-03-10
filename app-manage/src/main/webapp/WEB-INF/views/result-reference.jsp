@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
 <link rel="stylesheet" type="text/css" href="resources/css/navigation.css">
 <link rel="stylesheet" type="text/css" href="resources/css/menuicon.css">
-<link rel="stylesheet" type="text/css" href="resources/css/headericon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/headericon.css">
 <link rel="stylesheet" type="text/css" href="resources/css/table.css">
 <script type="text/javascript" src="resources/js/common.js"></script>
 <script type="text/javascript" src="resources/js/reference.js"></script>

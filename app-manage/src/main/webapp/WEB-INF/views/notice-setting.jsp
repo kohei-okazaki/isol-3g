@@ -11,6 +11,7 @@
 <title>健康アプリ_通知設定画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/headericon.css">
 <script type="text/javascript" src="resources/js/app.js"></script>
 </head>
 

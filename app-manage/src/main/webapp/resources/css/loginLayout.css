@@ -1,6 +1,4 @@
-@import
-	url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Raleway:700);
 
 * {
@@ -54,8 +52,7 @@ input[type="password"] {
 	padding: 4% 4% 4% 4%;
 	margin-bottom: 4%;
 	background-repeat: no-repeat;
-	background-image:
-		url(https://cdn4.iconfinder.com/data/icons/font-awesome-2/2048/f09c-32.png);
+	background-image: url(https://cdn4.iconfinder.com/data/icons/font-awesome-2/2048/f09c-32.png);
 	background-position: center;
 	border: 1px solid #ccc;
 }
@@ -68,8 +65,7 @@ input[type="password"] {
 	padding: 4% 4% 4% 4%;
 	margin-bottom: 4%;
 	background-repeat: no-repeat;
-	background-image:
-		url(https://cdn4.iconfinder.com/data/icons/font-awesome-2/2048/f007-32.png);
+	background-image: url(https://cdn4.iconfinder.com/data/icons/font-awesome-2/2048/f007-32.png);
 	background-position: center;
 	border: 1px solid #ccc;
 }

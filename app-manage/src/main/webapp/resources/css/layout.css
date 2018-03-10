@@ -43,14 +43,14 @@
 	display: none;
 }
 
-.menu ul li ul {
+/* .menu ul li ul {
 	display: none;
 }
 
 .menu ul li:hover ul {
 	display: block;
 }
-
+ */
 ul>li {
 	display: inline-block;
 }

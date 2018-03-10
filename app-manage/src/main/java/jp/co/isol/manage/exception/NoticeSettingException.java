@@ -1,13 +1,13 @@
 package jp.co.isol.manage.exception;
 
-import jp.co.isol.common.exception.BaseMvcException;
+import jp.co.isol.common.exception.BaseManageException;
 import jp.co.isol.common.exception.ErrorCodeDefine;
 
 /**
  * 通知設定例外クラス<br>
  *
  */
-public class NoticeSettingException extends BaseMvcException {
+public class NoticeSettingException extends BaseManageException {
 
 	/**
 	 * コンストラクタ<br>
