@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/healthInfo.css">
 <link rel="stylesheet" type="text/css" href="resources/css/input.css">
 <link rel="stylesheet" type="text/css" href="resources/css/table.css">
-<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript" src="resources/js/common/common.js"></script>
 </head>
 
 <body class="main">

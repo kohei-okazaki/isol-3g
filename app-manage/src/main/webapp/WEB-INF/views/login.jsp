@@ -12,7 +12,9 @@
 <link rel="stylesheet" type="text/css" href="resources/css/loginLayout.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/baseLayout.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/headericon.css">
-<script type="text/javascript" src="resources/js/common.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/common/fort.css">
+<script type="text/javascript" src="resources/js/common/common.js"></script>
+<script type="text/javascript" src="resources/js/common/fort.js"></script>
 <script type="text/javascript" src="resources/js/accountCreate.js"></script>
 </head>
 <body>
@@ -20,7 +22,9 @@
 <c:if test="${errorMessage != null}">
 	<div class="errorMessage"><c:out value="${errorMessage}" /></div>
 </c:if>
-
+<div class="top">
+	<div class="colors"></div>
+</div>
 	<fieldset>
 		<h1>健康管理アプリ</h1>
 		<form action="/isol-manage/menu.html" method="post">
