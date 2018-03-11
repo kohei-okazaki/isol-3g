@@ -124,7 +124,7 @@
 		</c:if>
 
 		<br><br><br>
-		<table class="custom">
+		<table class="custom" border="1">
 			<tr class="header">
 				<th align="center"><c:out value="身長" /></th>
 				<th align="center"><c:out value="体重" /></th>
