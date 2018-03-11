@@ -233,7 +233,9 @@ var Fort = {
 			function cback(e) {
 				var t = [];
 				for (var n = inputs.length; n--;) {
-					if (!inputs[n].value.length) t.push(inputs[n]);
+					if (!inputs[n].value.length) {
+						t.push(inputs[n]);
+					}
 				}
 				var r = t.length;
 				var i = inputs.length;
