@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/input.css">
 <link rel="stylesheet" type="text/css" href="resources/css/table.css">
 <script type="text/javascript" src="resources/js/common/common.js"></script>
+<script type="text/javascript" src="resources/js/healthInfo.js"></script>
 </head>
 
 <body class="main">
@@ -105,7 +106,9 @@
 	<c:if test="${page == 2}">
 	<div align="center">
 		<br>
-		<c:out value="今のあなたの身長(${healthInfo.height}cm)の" />
+		<c:out value="今のあなたの身長(" />
+		<manage:centiMeterHeight height="${healthInfo.height}"/>
+		<c:out value=")の" />
 		<br>
 		<c:out value="標準体重は" />
 		<manage:weight weight="${healthInfo.standardWeight}" />
@@ -171,20 +174,16 @@
 				<td>　　</td>
 				<td align="center">
 				<!-- CSV出力 -->
-				<form action="/isol-manage/healthInfo-csvDownload" method="get">
-					<div>
-						<input class="menuicon" type="image" src="resources/image/icon_csv.png">
-					</div>
-				</form>
+				<div>
+					<input class="menuicon" type="image" src="resources/image/icon_csv.png" onclick="healthInfoCsvDownload()">
+				</div>
 				</td>
 				<td>　　</td>
 				<td align="center">
 				<!-- メニュー画面へ -->
-				<form action="/isol-manage/menu.html" method="get">
-					<div>
-						<input class="menuicon" type="image" src="resources/image/icon_menu.jpg">
-					</div>
-				</form>
+				<div>
+					<input class="menuicon" type="image" src="resources/image/icon_menu.jpg" onclick="toMenu()">
+				</div>
 				</td>
 			</tr>
 		</table>
