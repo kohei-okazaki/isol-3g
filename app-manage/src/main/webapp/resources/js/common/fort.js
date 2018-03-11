@@ -4,18 +4,21 @@ var Fort = {
 			for (var i = forms.length; i--;) {
 				var nonemptyelements = forms[i].querySelectorAll("input, textarea, select");
 				Array.prototype.forEach.call(nonemptyelements, function(el) {
-					if (el.value.length != 0 )
-						if (el.classList)
+					if (el.value.length != 0 ) {
+						if (el.classList) {
 							el.classList.add('ignore');
-						else
+						} else {
 							el.className += ' ' + 'ignore';
+						}
+					}
 				});
 				var hiddenInputs = forms[i].querySelectorAll('input[type=hidden]')
-				Array.prototype.forEach.call(hiddenInputs, function(el){
-					if (el.classList)
+				Array.prototype.forEach.call(hiddenInputs, function(el) {
+					if (el.classList) {
 						el.classList.add('ignore');
-					else
+					} else {
 						el.className += ' ' + 'ignore';
+					}
 				});
 			};
 		},
@@ -67,7 +70,9 @@ var Fort = {
 			function cback(e) {
 				var t = [];
 				for (var n = inputs.length; n--;) {
-					if (!inputs[n].value.length) t.push(inputs[n]);
+					if (!inputs[n].value.length) {
+						t.push(inputs[n]);
+					}
 				}
 				var r = t.length;
 				var i = inputs.length;
@@ -111,7 +116,9 @@ var Fort = {
 			function cback(e) {
 				var t = [];
 				for (var n = inputs.length; n--;) {
-					if (!inputs[n].value.length) t.push(inputs[n]);
+					if (!inputs[n].value.length) {
+						t.push(inputs[n]);
+					}
 				}
 				var r = t.length;
 				var i = inputs.length;
@@ -145,7 +152,9 @@ var Fort = {
 				var result = [],
 				step = 0;
 				for (i = 0; i < input.length * 2; i++) {
-					if (i % 2) step++;
+					if (i % 2) {
+						step++;
+					}
 					var perc = Math.floor(step * 1000 / input.length) / 10;
 					result.push([input[i - step], perc + "%"]);
 				}
@@ -182,7 +191,9 @@ var Fort = {
 			function cback(e) {
 				var t = [];
 				for (var n = inputs.length; n--;) {
-					if (!inputs[n].value.length) t.push(inputs[n]);
+					if (!inputs[n].value.length) {
+						t.push(inputs[n]);
+					}
 				}
 				var r = t.length;
 				var i = inputs.length;
@@ -222,7 +233,9 @@ var Fort = {
 			function cback(e) {
 				var t = [];
 				for (var n = inputs.length; n--;) {
-					if (!inputs[n].value.length) t.push(inputs[n]);
+					if (!inputs[n].value.length) {
+						t.push(inputs[n]);
+					}
 				}
 				var r = t.length;
 				var i = inputs.length;
