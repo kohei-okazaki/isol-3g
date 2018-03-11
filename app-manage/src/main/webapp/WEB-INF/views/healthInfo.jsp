@@ -48,10 +48,7 @@
 
 	<!-- 入力画面 -->
 	<c:if test="${page == 0}">
-	<div align="center">
-		<p>身長と体重を入力して下さい</p>
-	</div>
-	<br>
+	<br><br>
 	<div align="center">
 		<form action="/isol-manage/healthInfo-confirm.html" method="post">
 			<c:out value="身長：" />
