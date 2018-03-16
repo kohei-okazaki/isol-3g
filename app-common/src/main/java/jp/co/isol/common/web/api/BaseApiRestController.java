@@ -35,6 +35,7 @@ public interface BaseApiRestController<Rq extends BaseRequest
 		try {
 			response = this.execute(request);
 		} catch (BaseApiException e) {
+			response.setResult(1);
 			e.printStackTrace();
 		}
 

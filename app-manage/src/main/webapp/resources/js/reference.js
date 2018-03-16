@@ -5,7 +5,6 @@ function referenceExcelDownload() {
 	document.body.appendChild(form);
 	form.submit();
 }
-
 function referenceCsvDownload() {
 	var form = document.createElement('form');
 	form.action = '/isol-manage/result-reference-csvDownload';
