@@ -4,7 +4,7 @@ package jp.co.isol.common.exception;
  * エラーコードの定義<br>
  * API, MVCでのエラーコードをそれぞれ定義する<br>
  */
-public enum ErrorCodeDefine {
+public enum ErrorCode {
 
 	/** 必須エラー */
 	REQUIRE("REQUIRE", "", "必須エラーです"),
@@ -31,7 +31,7 @@ public enum ErrorCodeDefine {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	private ErrorCodeDefine(String errorCode, String logLevel, String errorMessage) {
+	private ErrorCode(String errorCode, String logLevel, String errorMessage) {
 		this.errorCode = errorCode;
 		this.logLevel = logLevel;
 		this.errorMessage = errorMessage;
@@ -59,6 +59,21 @@ public enum ErrorCodeDefine {
 	 */
 	public String getErrorMessage() {
 		return errorMessage;
+	}
+
+	/**
+	 * 指定されたエラーコードと一致するErrorCodeを返す<br>
+	 * @param errorCode
+	 * @return
+	 */
+	public static ErrorCode of(String errorCode) {
+
+		for (ErrorCode code : ErrorCode.values()) {
+			if (code.errorCode.equals(errorCode)) {
+				return code;
+			}
+		}
+		return null;
 	}
 
 }

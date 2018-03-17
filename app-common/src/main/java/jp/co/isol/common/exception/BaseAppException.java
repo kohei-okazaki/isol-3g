@@ -9,7 +9,7 @@ import java.util.StringJoiner;
 public abstract class BaseAppException extends Exception {
 
 	/** エラーコード */
-	private ErrorCodeDefine errorCode;
+	private ErrorCode errorCode;
 	/** エラーメッセージ */
 	private String errorMessage;
 
@@ -25,7 +25,7 @@ public abstract class BaseAppException extends Exception {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	public BaseAppException(ErrorCodeDefine errorCode, String errorMessage) {
+	public BaseAppException(ErrorCode errorCode, String errorMessage) {
 		this.errorCode = errorCode;
 		this.errorMessage = errorMessage;
 	}
@@ -34,7 +34,7 @@ public abstract class BaseAppException extends Exception {
 	 * errorCodeを返す
 	 * @return errorCode
 	 */
-	public ErrorCodeDefine getErrorCode() {
+	public ErrorCode getErrorCode() {
 		return errorCode;
 	}
 
