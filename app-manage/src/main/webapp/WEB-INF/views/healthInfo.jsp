@@ -51,13 +51,11 @@
 	<br><br>
 	<div align="center">
 		<form action="/isol-manage/healthInfo-confirm.html" method="post">
-			<c:out value="身長：" />
-			<input type="text" name="height" size="6" required>
+			<input type="text" name="height" size="6" required placeholder="身長" >
 			<c:out value="cm" />
 			<p class="attention"><c:out value="※半角数字で入力してください" /></p>
 			<br><br>
-			<c:out value="体重：" />
-			<input type="text" name="weight" size="6" required>
+			<input type="text" name="weight" size="6" required placeholder="体重" >
 			<c:out value="kg" />
 			<p class="attention"><c:out value="※半角数字で入力してください" /></p>
 			<br>
