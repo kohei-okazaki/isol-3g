@@ -84,6 +84,8 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		// FIXME
@@ -201,6 +203,8 @@ public class HealthInfoDaoImpl implements HealthInfoDao {
 		} catch (EncryptedDocumentException e) {
 			e.printStackTrace();
 		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

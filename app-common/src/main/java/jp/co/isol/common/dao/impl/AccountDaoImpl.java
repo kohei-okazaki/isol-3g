@@ -64,6 +64,8 @@ public class AccountDaoImpl implements AccountDao {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 //		AccountDto dto = new AccountDto();
@@ -110,6 +112,8 @@ public class AccountDaoImpl implements AccountDao {
 			e.printStackTrace();
 		} catch (InvalidFormatException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -155,6 +159,8 @@ public class AccountDaoImpl implements AccountDao {
 		} catch (EncryptedDocumentException e) {
 			e.printStackTrace();
 		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
