@@ -109,7 +109,7 @@ input[type="email"]:focus, texture:focus {
     box-shadow: 0 0 7px #80ff00;
     border: 1px solid #80ff00;
 }
-input[type="text"] {
+input[type="text"], texture:focus {
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     transition: all .3s;

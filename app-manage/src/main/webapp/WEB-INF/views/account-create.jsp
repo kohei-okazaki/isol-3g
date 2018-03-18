@@ -55,40 +55,13 @@
 			<c:if test="${errorMessage != null}">
 				<c:out value="${errorMessage}" />
 			</c:if>
-			<table border="1">
-				<tr>
-					<th class="header" width="130px">
-						<c:out value="ユーザID" />
-					</th>
-					<td class="data" width="250px">
-						<input type="text" name="userId" maxlength="16" required="required" />
-					</td>
-				</tr>
-				<tr>
-					<th class="header" width="130px">
-						<c:out value="パスワード" />
-					</th>
-					<td class="data" width="250px">
-						<input type="text" name="password" maxlength="16" required="required" />
-					</td>
-				</tr>
-				<tr>
-					<th class="header">
-						<c:out value="確認用 パスワード" />
-					</th>
-					<td class="data" width="250px">
-						<input type="text" name="confirmPassword" maxlength="16" required="required" />
-					</td>
-				</tr>
-				<tr>
-					<th class="header">
-						<c:out value="備 考" />
-					</th>
-					<td class="data">
-						<textarea rows="10" cols="30" name="remarks" ></textarea>
-					</td>
-				</tr>
-			</table>
+			<input type="text" name="userId" maxlength="16" required="required" placeholder="ユーザID" />
+			<br><br>
+			<input type="text" name="password" maxlength="16" required="required" placeholder="パスワード" />
+			<br><br>
+			<input type="text" name="confirmPassword" maxlength="16" required="required" placeholder="確認用パスワード" />
+			<br><br>
+			<textarea rows="10" cols="30" name="remarks" ></textarea>
 			<br><br>
 			<table>
 				<tr>
