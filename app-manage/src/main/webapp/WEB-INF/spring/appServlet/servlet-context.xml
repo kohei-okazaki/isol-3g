@@ -37,5 +37,7 @@
 	 <beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 	 	<beans:property name="validationMessageSource" ref="messageSource" />
 	</beans:bean> -->
+	<beans:bean class="jp.co.isol.manage.exception.ManageExceptionHandler">
+	</beans:bean>
 
 </beans:beans>
