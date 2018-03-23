@@ -16,7 +16,9 @@ public enum ErrorCode {
 	/** アカウント存在チェックエラー */
 	ACCOUNT_ILLEGAL("ACCOUNT_ILLEGAL", "WARN", "アカウントが存在しません"),
 	/** アカウント不整合エラー */
-	ACCOUNT_DELETE("ACCOUNT_DELETE", "WARN", "アカウントが削除済です");
+	ACCOUNT_DELETE("ACCOUNT_DELETE", "WARN", "アカウントが削除済です"),
+	/** ファイル処理エラー */
+	FILE_WRITE_ERROR("FILE_WRITE_ERROR", "ERROR", "ファイルの処理に失敗しました");
 
 
 	/** エラーコード */

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.entity.HealthInfo;
+import jp.co.isol.common.web.manage.BaseController;
 import jp.co.isol.manage.service.CsvDownloadService;
 import jp.co.isol.manage.service.ExcelDownloadService;
 import jp.co.isol.manage.service.HealthInfoSearchService;
@@ -27,7 +28,7 @@ import jp.co.isol.manage.web.view.ManageView;
  *
  */
 @Controller
-public class ResultReferenceController {
+public class ResultReferenceController implements BaseController {
 
 	/** 健康情報検索サービス */
 	@Autowired
@@ -48,28 +49,30 @@ public class ResultReferenceController {
 	 * @param model
 	 * @param userId
 	 * @return
-	 * @throws ParseException
 	 */
 	@GetMapping(value = "/result-reference.html")
-	public String resultReference(Model model, @SessionAttribute String userId) throws ParseException {
+	public String resultReference(Model model, @SessionAttribute String userId) {
 
 		// ログイン中のユーザの全レコードを検索する
 		model.addAttribute("resultList", this.healthInfoSearchService.findHealthInfoByUserId(userId));
 
-		return ManageView.RESULT_REFFERNCE.getName();
+		return getView(ManageView.RESULT_REFFERNCE);
 	}
 
 	/**
 	 * Excelファイルをダウンロードする<br>
 	 * @param userId
 	 * @return
-	 * @throws ParseException
 	 */
 	@GetMapping(value = "/result-reference-excelDownload.html")
-	public ModelAndView excelDownload(@SessionAttribute String userId) throws ParseException {
+	public ModelAndView excelDownload(@SessionAttribute String userId) {
 
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
-		return new ModelAndView(this.fileDownloadService.execute(healthInfoList));
+
+		ModelAndView model = new ModelAndView(this.fileDownloadService.execute(healthInfoList));
+		model.setViewName(getView(ManageView.RESULT_REFFERNCE));
+
+		return model;
 	}
 
 	/**

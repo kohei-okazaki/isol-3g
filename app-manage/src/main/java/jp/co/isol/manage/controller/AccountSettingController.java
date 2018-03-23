@@ -87,7 +87,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 
 		model.addAttribute("page", PageType.INPUT.getName());
 
-		return ManageView.ACCOUNT_SETTING.getName();
+		return getView(ManageView.ACCOUNT_SETTING);
 	}
 
 
@@ -100,13 +100,13 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 
 		if (result.hasErrors()) {
 			model.addAttribute("page", PageType.INPUT.getName());
-			return ManageView.ACCOUNT_SETTING.getName();
+			return getView(ManageView.ACCOUNT_SETTING);
 		}
 
 		model.addAttribute("form", form);
 		model.addAttribute("page", PageType.CONFIRM.getName());
 
-		return ManageView.ACCOUNT_SETTING.getName();
+		return getView(ManageView.ACCOUNT_SETTING);
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 
-		return ManageView.ACCOUNT_SETTING.getName();
+		return getView(ManageView.ACCOUNT_SETTING);
 	}
 
 }

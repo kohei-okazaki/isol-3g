@@ -7,6 +7,8 @@ import java.util.StringJoiner;
 
 import javax.servlet.http.HttpServletResponse;
 
+import jp.co.isol.common.exception.AppIOException;
+import jp.co.isol.common.exception.ErrorCode;
 import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
@@ -69,6 +71,8 @@ public class ReferenceCsvWriter extends BaseCsvWriter {
 			writeHeader(recordJoiner);
 			modelList.stream().forEach(model -> writeData(recordJoiner, model));
 			writer.print(recordJoiner.toString());
+		} catch (AppIOException e) {
+			throw new AppIOException(ErrorCode.FILE_WRITE_ERROR, "ファイルの出力処理に失敗しました");
 		}
 	}
 

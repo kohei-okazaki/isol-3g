@@ -23,6 +23,7 @@ public class StringUtil {
 	public static final String EMPTY = "";
 	public static final String EQUAL = "=";
 	public static final String NEW_LINE = "\r\n";
+	public static final String SPACE = " ";
 
 	/** 半角数字 */
 	public static final String HALF_NUMBER = "^[0-9]*$";

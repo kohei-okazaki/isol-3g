@@ -45,7 +45,7 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 
 		model.addAttribute("page", PageType.INPUT.getName());
 
-		return ManageView.NOTICE_SETTING.getName();
+		return getView(ManageView.NOTICE_SETTING);
 	}
 
 	/**
@@ -58,12 +58,12 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 
 		if (result.hasErrors()) {
 			model.addAttribute("page", PageType.INPUT.getName());
-			return ManageView.NOTICE_SETTING.getName();
+			return getView(ManageView.NOTICE_SETTING);
 		}
 
 		model.addAttribute("page", PageType.CONFIRM.getName());
 
-		return ManageView.NOTICE_SETTING.getName();
+		return getView(ManageView.NOTICE_SETTING);
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 
-		return ManageView.NOTICE_SETTING.getName();
+		return getView(ManageView.NOTICE_SETTING);
 	}
 
 }

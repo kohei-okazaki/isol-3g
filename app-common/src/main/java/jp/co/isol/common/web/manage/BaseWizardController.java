@@ -14,7 +14,7 @@ import jp.co.isol.common.exception.BaseManageException;
  * @param <F> 対象formクラス
  * @param <E> 例外クラス
  */
-public abstract class BaseWizardController<F extends BaseForm, E extends BaseManageException> {
+public abstract class BaseWizardController<F extends BaseForm, E extends BaseManageException> implements BaseController {
 
 	/**
 	 * Validateを設定<br>

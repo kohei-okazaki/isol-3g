@@ -88,7 +88,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		model.addAttribute("page", PageType.INPUT.getName());
 
-		return ManageView.HEALTH_INFO.getName();
+		return getView(ManageView.HEALTH_INFO);
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		if (result.hasErrors()) {
 			model.addAttribute("page", PageType.INPUT.getName());
-			return ManageView.HEALTH_INFO.getName();
+			return getView(ManageView.HEALTH_INFO);
 		}
 
 		// 入力情報を設定
@@ -108,7 +108,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		model.addAttribute("page", PageType.CONFIRM.getName());
 
-		return ManageView.HEALTH_INFO.getName();
+		return getView(ManageView.HEALTH_INFO);
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 
-		return ManageView.HEALTH_INFO.getName();
+		return getView(ManageView.HEALTH_INFO);
 	}
 
 
@@ -225,7 +225,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		model.addAttribute("page", PageType.COMPLETE.getName());
 
-		return ManageView.MENU.getName();
+		return getView(ManageView.MENU);
 	}
 
 }

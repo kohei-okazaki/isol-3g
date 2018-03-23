@@ -1,11 +1,13 @@
 package jp.co.isol.manage.web.view;
 
+import jp.co.isol.common.web.manage.BaseView;
+
 /**
  * ビューEnum<br>
  * 画面遷移先定義<br>
  *
  */
-public enum ManageView {
+public enum ManageView implements BaseView {
 
 	/** ログイン画面URL */
 	LOGIN("login"),
