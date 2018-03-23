@@ -10,6 +10,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
+import jp.co.isol.common.exception.BaseManageException;
+
 /**
  * 管理画面Aspectクラス<br>
  *
@@ -55,10 +57,10 @@ public class ManageAspect {
 
 			return result;
 
-		} catch (Exception e) {
+		} catch (BaseManageException e) {
 
-			System.out.println("メソッド異常終了:" + pjp.getSignature());
-			e.printStackTrace();
+			System.err.println("メソッド異常終了:" + pjp.getSignature());
+			System.err.println(e.toString());
 			throw e;
 		}
 	}

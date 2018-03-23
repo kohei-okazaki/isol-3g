@@ -1,6 +1,11 @@
+/*************/
+/* table.css */
+/*************/
+
 table.custom {
 	border: 67;
-	width: 500px;
+	/* width: 500px; */
+	width: auto;
 	background-color: #daf7d7;
 	cellpadding: 1;
 	cellspacing: 1;
