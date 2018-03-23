@@ -1,0 +1,172 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>健康アプリ_健康情報画面</title>
+<link rel="icon" type="image/png" href="resources/image/people.png">
+<link rel="stylesheet" type="text/css" href="resources/css/layout.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/headericon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/menuicon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/navigation.css">
+<link rel="stylesheet" type="text/css" href="resources/css/healthInfo.css">
+<link rel="stylesheet" type="text/css" href="resources/css/input.css">
+<link rel="stylesheet" type="text/css" href="resources/css/table.css">
+<script type="text/javascript" src="resources/js/common/common.js"></script>
+<script type="text/javascript" src="resources/js/healthInfo.js"></script>
+</head>
+
+<body class="main">
+
+	<div th:if="${page} == 0">
+		<h1>
+			<img class="headericon" alt="入力" src="resources/image/icon_input.jpg">
+			健康情報入力画面
+		</h1>
+	</div>
+	<div th:if="${page} == 1">
+		<h1 class="title">
+			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
+			健康情報入力確認画面
+		</h1>
+	</div>
+	<div th:if="${page} == 2">
+		<h1 class="title">
+			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
+			健康情報入力完了画面
+		</h1>
+	</div>
+
+	<hr>
+	<div th:include="common/navigation.html"></div>
+
+	<!-- 入力画面 -->
+	<div th:if="${page} == 0" align="center">
+	<br><br><br>
+		<form action="/isol-manage/healthInfo-confirm.html" method="post">
+			<input type="text" name="height" size="6" required placeholder="身長" >　cm
+			<p class="attention">※半角数字で入力してください</p>
+			<br><br>
+			<input type="text" name="weight" size="6" required placeholder="体重" >　kg
+			<p class="attention">※半角数字で入力してください</p>
+			<br>
+			<br>
+			<table>
+				<tr>
+					<td>
+						<input type="submit" value="確認">
+					</td>
+					<td>
+						<p>　　</p>
+					</td>
+					<td>
+						<input type="reset" value="リセット">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<!-- 確認画面 -->
+	<div th:if="${page} == 1" align="center">
+	<br><br><br>
+		<form action="/isol-manage/healthInfo-complete.html" method="post">
+			<p>身長：
+			<input type="text" name="height" th:field="${form.height}" size="6" readonly>
+			cm</p>
+			<br>
+			<p>体重：
+			<input type="text" name="weight" th:field="${form.weight}" size="6" readonly>
+			kg</p>
+			<br><br>
+			<table>
+				<tr>
+					<td><input type="submit" value="確定"></td>
+					<td><p>　　</p></td>
+					<td><input type="button" value="戻る" onclick="history.back()"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<!-- 完了画面 -->
+	<div th:if="${page} == 2" align="center">
+		<br><br><br>
+		<p th:text="'今のあなたの身長(' + ${healthInfo.height} + 'cm)の'" />
+		<p th:text="'標準体重は ' + ${healthInfo.standardWeight} + 'kg です'" />
+
+		<div th:if="${!isFirstReg}">
+			<p th:text="'前回より' + ${diffWeight} + 'kg ' + ${resultMessage}" />
+			<p th:text="${beforeWeight} + 'kg → ' + ${healthInfo.weight} + 'kg'" />
+		</div>
+
+		<br><br><br>
+		<table class="custom" border="1">
+			<tr class="header">
+				<th align="center"><p>身長</p></th>
+				<th align="center"><p>体重</p></th>
+				<th align="center"><p>標準体重</p></th>
+				<th align="center"><p>BMI</p></th>
+			</tr>
+			<tr class="data">
+				<td align="center"><p th:text="${healthInfo.height}" /></td>
+				<td align="center"><p th:text="${healthInfo.weight}" /></td>
+				<td align="center"><p th:text="${healthInfo.standardWeight}" /></td>
+				<td align="center"><p th:text="${healthInfo.bmi}" /></td>
+			</tr>
+		</table>
+		<br><br>
+
+
+		<table>
+			<tr>
+				<td align="center">
+				<!-- 通知  -->
+				<form action="/isol-manage/notice.html" method="post">
+					<input type="hidden" name="height" value="${healthInfo.height}">
+					<input type="hidden" name="weight" value="${healthInfo.weight}">
+					<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
+					<input type="hidden" name="bmi" value="${healthInfo.bmi}">
+					<div align="center">
+						<input class="menuicon" type="image" src="resources/image/icon_mail.png">
+					</div>
+				</form>
+				</td>
+				<td>　　</td>
+				<td align="center">
+				<!-- Excel出力 -->
+				<form action="/isol-manage/healthInfo-excelDownload.html" method="get">
+					<input type="hidden" name="height" value="${healthInfo.height}">
+					<input type="hidden" name="weight" value="${healthInfo.weight}">
+					<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
+					<input type="hidden" name="bmi" value="${healthInfo.bmi}">
+					<div align="center">
+						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
+					</div>
+				</form>
+				</td>
+				<td>　　</td>
+				<td align="center">
+					<!-- CSV出力 -->
+					<div align="center">
+						<input class="menuicon" type="image" src="resources/image/icon_csv.png" onclick="healthInfoCsvDownload()">
+					</div>
+				</td>
+				<td>　　</td>
+				<td align="center">
+					<!-- メニュー画面へ -->
+					<div align="center">
+						<input class="menuicon" type="image" src="resources/image/icon_menu.jpg" onclick="toMenu()">
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<br><br>
+
+	<hr>
+	<div th:include="common/footer.html"></div>
+
+</body>
+</html>

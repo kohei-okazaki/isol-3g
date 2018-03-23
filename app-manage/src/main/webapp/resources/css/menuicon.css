@@ -1,3 +1,7 @@
+/****************/
+/* menuicon.css */
+/****************/
+
 /* type=imageをマウスオーバーしたとき */
 .menuicon:hover {
 	-webkit-transform: scale(1.5);

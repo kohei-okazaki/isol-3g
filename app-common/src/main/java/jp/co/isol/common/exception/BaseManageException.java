@@ -18,7 +18,7 @@ public abstract class BaseManageException extends BaseAppException {
 	 * @param errorCode エラーコード
 	 * @param errorMessage エラーメッセージ
 	 */
-	protected BaseManageException(ErrorCodeDefine errorCode, String errorMessage) {
+	protected BaseManageException(ErrorCode errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 

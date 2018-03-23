@@ -1,7 +1,7 @@
 package jp.co.isol.manage.exception;
 
 import jp.co.isol.common.exception.BaseManageException;
-import jp.co.isol.common.exception.ErrorCodeDefine;
+import jp.co.isol.common.exception.ErrorCode;
 
 /**
  * アカウント設定例外クラス<br>
@@ -21,7 +21,7 @@ public class AccountSettingException extends BaseManageException {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	public AccountSettingException(ErrorCodeDefine errorCode, String errorMessage) {
+	public AccountSettingException(ErrorCode errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 

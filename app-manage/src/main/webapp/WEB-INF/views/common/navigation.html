@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<html>
-
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/bmiModal.css">
 <link rel="stylesheet" type="text/css" href="resources/css/table.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/standardWeightModal.css">
@@ -15,6 +10,8 @@
 <script type="text/javascript" src="resources/js/common/standardWeightModal.js"></script>
 </head>
 <body>
+
+
 	<ul id="dropmenu">
 		<li><a class="navigation" href="#">MENU</a>
 			<ul>
@@ -55,59 +52,12 @@
 	</ul>
 
 
-<!-- ここからBMIモーダルウィンドウ -->
-<div id="bmi-modal-content">
-	<p>BMIとは。。。</p>
-	<p>計算式</p>
-	<p>体重(kg) / 身長(m)の2剰 で計算しています。</p>
-	<div align="center">
-	<table border="1" class="custom">
-		<tr>
-			<th class="header">範囲</th>
-			<th class="header">肥満度</th>
-		</tr>
-		<tr>
-			<td class="data">18.5未満</td>
-			<td class="data">低体重</td>
-		</tr>
-		<tr>
-			<td class="data">18.5 ~ 25未満</td>
-			<td class="data">普通体重</td>
-		</tr>
-		<tr>
-			<td class="data">25 ~ 30未満</td>
-			<td class="data">肥満(1)</td>
-		</tr>
-		<tr>
-			<td class="data">30 ~ 35未満</td>
-			<td class="data">肥満(2)</td>
-		</tr>
-		<tr>
-			<td class="data">35 ~ 40未満</td>
-			<td class="data">肥満(3)</td>
-		</tr>
-		<tr>
-			<td class="data">40以上</td>
-			<td class="data">肥満(4)</td>
-		</tr>
-	</table>
-	</div>
-	<br><br>
-	<!--
-	<p><a id="bmi-modal-close" class="bmi-button-link">閉じる</a></p>
-	 -->
-	<!-- モーダルウィンドウのコンテンツ終了 -->
-</div>
-<!-- ここまでBMIモーダルウィンドウ -->
+<!-- BMIのモーダルを描画 -->
+<div th:include="common/bmiModal.html"></div>
 
-<!-- ここから標準体重モーダルウィンドウ -->
-<div id="standardWeight-modal-content">
-	標準体重とは。。。
-	<p><a id="standardWeight-modal-close" class="standardWeight-button-link">閉じる</a></p>
-	<!-- モーダルウィンドウのコンテンツ終了 -->
-</div>
-<!-- ここから標準体重モーダルウィンドウ -->
 
+<!-- 標準体重のモーダルを描画 -->
+<div th:include="common/standardWeightModal.html"></div>
 
 
 </body>

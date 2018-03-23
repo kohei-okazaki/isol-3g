@@ -18,7 +18,7 @@ public abstract class BaseApiException extends BaseAppException {
 	 * @param errorCode エラーコード
 	 * @param errorMessage エラーメッセージ
 	 */
-	protected BaseApiException(ErrorCodeDefine errorCode, String errorMessage) {
+	protected BaseApiException(ErrorCode errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 

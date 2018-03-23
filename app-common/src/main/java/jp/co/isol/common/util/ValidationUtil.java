@@ -3,7 +3,7 @@ package jp.co.isol.common.util;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
-import jp.co.isol.common.exception.ErrorCodeDefine;
+import jp.co.isol.common.exception.ErrorCode;
 
 /**
  * validatenのUtilクラス<br>
@@ -24,7 +24,7 @@ public class ValidationUtil {
 	 * @param field
 	 */
 	public static void rejectIfEmpty(Errors errors, String field) {
-		ValidationUtils.rejectIfEmpty(errors, field, ErrorCodeDefine.REQUIRE.getErrorCode());
+		ValidationUtils.rejectIfEmpty(errors, field, ErrorCode.REQUIRE.getErrorCode());
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class ValidationUtil {
 	public static void rejectIfLengthMax(Errors errors, String field, int max) {
 		String fieldValue = errors.getFieldValue(field).toString();
 		if (max < fieldValue.length()) {
-			errors.rejectValue(fieldValue, ErrorCodeDefine.LENGTH.getErrorCode());
+			errors.rejectValue(fieldValue, ErrorCode.LENGTH.getErrorCode());
 		}
 	}
 
@@ -49,7 +49,7 @@ public class ValidationUtil {
 	public static void rejectIfLengthMin(Errors errors, String field, int min) {
 		String fieldValue = errors.getFieldValue(field).toString();
 		if (fieldValue.length() < min) {
-			errors.rejectValue(fieldValue, ErrorCodeDefine.LENGTH.getErrorCode());
+			errors.rejectValue(fieldValue, ErrorCode.LENGTH.getErrorCode());
 		}
 	}
 

@@ -1,7 +1,7 @@
 package jp.co.isol.manage.exception;
 
 import jp.co.isol.common.exception.BaseManageException;
-import jp.co.isol.common.exception.ErrorCodeDefine;
+import jp.co.isol.common.exception.ErrorCode;
 
 /**
  * 通知設定例外クラス<br>
@@ -14,7 +14,7 @@ public class NoticeSettingException extends BaseManageException {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	public NoticeSettingException(ErrorCodeDefine errorCode, String errorMessage) {
+	public NoticeSettingException(ErrorCode errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 

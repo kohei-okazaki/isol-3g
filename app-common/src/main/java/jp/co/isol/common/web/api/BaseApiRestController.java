@@ -35,7 +35,6 @@ public interface BaseApiRestController<Rq extends BaseRequest
 		try {
 			response = this.execute(request);
 		} catch (BaseApiException e) {
-			response.setResult(1);
 			e.printStackTrace();
 		}
 
@@ -49,7 +48,7 @@ public interface BaseApiRestController<Rq extends BaseRequest
 	 * @throws E
 	 */
 	@PostMapping
-	default Rs doPost(HttpServletRequest request) throws E {
+	default Rs doPost(HttpServletRequest request) {
 		return doGet(request);
 	}
 

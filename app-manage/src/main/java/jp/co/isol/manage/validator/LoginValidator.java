@@ -3,7 +3,7 @@ package jp.co.isol.manage.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
-import jp.co.isol.common.exception.ErrorCodeDefine;
+import jp.co.isol.common.exception.ErrorCode;
 import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.common.web.manage.BaseValidator;
 import jp.co.isol.manage.form.LoginForm;
@@ -47,7 +47,7 @@ public class LoginValidator extends BaseValidator<LoginForm> {
 
 		if (!StringUtil.isHalfChar(form.getUserId()) || !StringUtil.isHalfChar(form.getPassword())) {
 			// 半角英数字であるない場合
-			errors.rejectValue("userId", ErrorCodeDefine.TYPE.toString());
+			errors.rejectValue("userId", ErrorCode.TYPE.toString());
 		}
 
 	}
@@ -60,7 +60,7 @@ public class LoginValidator extends BaseValidator<LoginForm> {
 	private void checkLength(LoginForm form, Errors errors) {
 
 		if (!(2 < form.getUserId().length() && form.getUserId().length() <= 10)) {
-			ValidationUtils.rejectIfEmpty(errors, "userId", ErrorCodeDefine.LENGTH.toString());
+			ValidationUtils.rejectIfEmpty(errors, "userId", ErrorCode.LENGTH.toString());
 		}
 
 	}
@@ -71,8 +71,8 @@ public class LoginValidator extends BaseValidator<LoginForm> {
 	 */
 	private void checkRequire(Errors errors) {
 
-		ValidationUtils.rejectIfEmpty(errors, "userId", ErrorCodeDefine.REQUIRE.toString());
-		ValidationUtils.rejectIfEmpty(errors, "password", ErrorCodeDefine.REQUIRE.toString());
+		ValidationUtils.rejectIfEmpty(errors, "userId", ErrorCode.REQUIRE.toString());
+		ValidationUtils.rejectIfEmpty(errors, "password", ErrorCode.REQUIRE.toString());
 	}
 
 }

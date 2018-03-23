@@ -18,7 +18,7 @@ import jp.co.isol.common.dao.AccountDao;
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.HealthInfo;
-import jp.co.isol.common.exception.ErrorCodeDefine;
+import jp.co.isol.common.exception.ErrorCode;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
@@ -157,10 +157,10 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 
 		if (Objects.isNull(account.getUserId())) {
 			// アカウント情報が存在しない場合
-			throw new HealthInfoException(ErrorCodeDefine.ACCOUNT_ILLEGAL, "アカウントが存在しません");
+			throw new HealthInfoException(ErrorCode.ACCOUNT_ILLEGAL, "アカウントが存在しません");
 		} else if (StringUtil.isTrue(account.getDeleteFlag())) {
 			// アカウント情報が削除済の場合
-			throw new HealthInfoException(ErrorCodeDefine.ACCOUNT_DELETE, "アカウントが削除されています(ユーザID:" + account.getUserId() + ")");
+			throw new HealthInfoException(ErrorCode.ACCOUNT_DELETE, "アカウントが削除されています(ユーザID:" + account.getUserId() + ")");
 		}
 
 		for (Entry<BaseRequestKey, Object> entry : request.getKeyValue()) {

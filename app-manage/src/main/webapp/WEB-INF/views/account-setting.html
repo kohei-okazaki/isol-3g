@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="manage" uri="/WEB-INF/tag.tld"%>
-
-<html>
-
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>健康アプリ_アカウント設定画面</title>
 <link rel="icon" type="image/png" href="resources/image/people.png">
 <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
@@ -21,44 +14,43 @@
 </head>
 
 <body class="main">
-
-	<c:if test="${page == 0}">
+	<div th:if="${page} == 0">
 		<h1>
 			<img class="headericon" alt="入力" src="resources/image/icon_input.jpg">
-			<c:out value="アカウント設定画面" />
+			アカウント設定画面
 		</h1>
-	</c:if>
-	<c:if test="${page == 1}">
+	</div>
+	<div th:if="${page} == 1">
 		<h1 class="title">
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
-			<c:out value="アカウント設定確認画面" />
+			アカウント設定確認画面
 		</h1>
-	</c:if>
-	<c:if test="${page == 2}">
+	</div>
+	<div th:if="${page} == 2">
 		<h1 class="title">
 			<img class="headericon" alt="確認" src="resources/image/icon_confirm.png">
-			<c:out value="アカウント設定完了画面" />
+			アカウント設定完了画面
 		</h1>
-	</c:if>
+	</div>
 
 	<hr>
-	<jsp:include page="/WEB-INF/views/common/navigation.jsp" />
+	<div th:include="common/navigation.html"></div>
 
 	<br><br>
 
 	<!-- 入力画面 -->
-	<c:if test="${page == 0}">
+	<div th:if="${page} == 0">
 		<form action="/isol-manage/account-setting-confirm.html" method="post">
 		<div align="center">
 
-			<c:if test="${errorMessage != null}">
-				<c:out value="${errorMessage}" />
-			</c:if>
+			<div th:if="${errorMessage} != null">
+				<p th:text="${errorMessage}"></p>
+			</div>
 
 			<table border="1">
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="削除" />
+						<p>削除</p>
 					</th>
 					<td class="data" width="250px">
 						<div class="radio">
@@ -71,24 +63,24 @@
 				</tr>
 				<tr>
 					<th class="header">
-						<c:out value="ユーザID" />
+						<p>ユーザID</p>
 					</th>
 					<td class="data">
-						<c:out value="${account.userId}" />
-						<input type="hidden" name="userId" value="${account.userId}" />
+						<p th:text="${account.userId}"></p>
+						<input type="hidden" name="userId" th:field="${account.userId}" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header">
-						<c:out value="パスワード" />
+						<p>パスワード</p>
 					</th>
 					<td class="data">
-						<input type="text" name="password" value="${account.password}" required="required" />
+						<input type="text" name="password" th:field="${account.password}" required="required" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="囲い文字を利用" />
+						<p>囲い文字を利用</p>
 					</th>
 					<td class="data" width="250px">
 						<div class="radio">
@@ -101,26 +93,26 @@
 				</tr>
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="メールアドレス" />
+						<p>メールアドレス</p>
 					</th>
 					<td class="data">
-						<input type="email" name="mailAddress" value="${mailInfo.mailAddress}" required="required" />
+						<input type="email" name="mailAddress" th:field="${mailInfo.mailAddress}" required="required" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="メールパスワード" />
+						<p>メールパスワード</p>
 					</th>
 					<td class="data">
-						<input type="text" name="mailPassword" value="${mailInfo.mailPassword}" required="required" />
+						<input type="text" name="mailPassword" th:field="${mailInfo.mailPassword}" required="required" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header">
-						<c:out value="備 考" />
+						<p>備 考</p>
 					</th>
 					<td class="data">
-						<textarea rows="10" cols="30" name="remarks" >${account.remarks}</textarea>
+						<textarea rows="10" cols="30" name="remarks" th:field="${account.remarks}"></textarea>
 					</td>
 				</tr>
 			</table>
@@ -134,77 +126,76 @@
 			</table>
 		</div>
 		</form>
-	</c:if>
+	</div>
 
 	<!-- 確認画面 -->
-	<c:if test="${page == 1}">
+	<div th:if="${page} == 1">
 		<form action="/isol-manage/account-setting-complete.html" method="post">
 		<div align="center">
 			<table border="1">
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="削除" />
+						<p>削除</p>
 					</th>
 					<td class="data" width="250px">
-						<c:if test="${form.deleteFlag == '1'}">する</c:if>
-						<c:if test="${form.deleteFlag == '0'}">しない</c:if>
-						<input type="hidden" name="deleteFlag" value="${form.deleteFlag}" />
+						<div th:if="${form.deleteFlag} == 1">
+							<p>する</p>
+						</div>
+						<div th:if="${form.deleteFlag} == 0">
+							<p>しない</p>
+						</div>
+						<input type="hidden" name="deleteFlag" th:field="${form.deleteFlag}" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header">
-						<c:out value="ユーザID" />
+						<p>ユーザID</p>
 					</th>
 					<td class="data">
-						<c:out value="${form.userId}" />
-						<input type="hidden" name="userId" value="${form.userId}" />
+						<p th:text="${form.userId}"></p>
+						<input type="hidden" name="userId" th:field="${form.userId}" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header">
-						<c:out value="パスワード" />
+						<p>パスワード</p>
 					</th>
 					<td class="data">
-						<c:out value="${form.password}" />
-						<input type="hidden" name="password" value="${form.password}" />
+						<input type="text" name="password" required="required" th:field="${form.password}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="囲い文字利用" />
+						<p>囲い文字利用</p>
 					</th>
 					<td class="data" width="250px">
-						<c:if test="${form.fileEnclosureCharFlag == '1'}">する</c:if>
-						<c:if test="${form.fileEnclosureCharFlag == '0'}">しない</c:if>
-						<input type="hidden" name="fileEnclosureCharFlag" value="${form.fileEnclosureCharFlag}" />
+						<div th:if="${form.fileEnclosureCharFlag} == 1">する</div>
+						<div th:if="${form.fileEnclosureCharFlag} == 0">しない</div>
+						<input type="hidden" name="fileEnclosureCharFlag" th:field="${form.fileEnclosureCharFlag}" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="メールアドレス" />
+						<p>メールアドレス</p>
 					</th>
 					<td class="data">
-						<c:out value="${form.mailAddress}" />
-						<input type="hidden" name="mailAddress" value="${form.mailAddress}" />
+						<input type="text" name="mailAddress" required="required" th:field="${form.mailAddress}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header" width="130px">
-						<c:out value="メールパスワード" />
+						<p>メールパスワード</p>
 					</th>
 					<td class="data">
-						<c:out value="${form.mailPassword}" />
-						<input type="hidden" name="mailPassword" value="${form.mailPassword}" />
+						<input type="text" name="mailPassword" required="required" th:field="${form.mailPassword}" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>
 					<th class="header">
-						<c:out value="備 考" />
+						<p>備 考</p>
 					</th>
 					<td class="data">
-						<!--<c:out value="${form.remarks}" />-->
-						<manage:textArea count="20" value="${form.remarks}" />
-						<input type="hidden" name="remarks" value="${form.remarks}" />
+						<textarea rows="10" cols="30" name="remarks" th:field="${form.remarks}" readonly="readonly"></textarea>
 					</td>
 				</tr>
 			</table>
@@ -215,7 +206,7 @@
 						<input type="submit" value="確 定" />
 					</td>
 					<td>
-						<c:out value="　　" />
+						　　
 					</td>
 					<td>
 						<input type="button" value="戻 る" onclick="history.back()">
@@ -224,12 +215,12 @@
 			</table>
 		</div>
 		</form>
-	</c:if>
+	</div>
 
 	<!-- 完了画面 -->
-	<c:if test="${page == 2}">
+	<div th:if="${page} == 2">
 		<div align="center">
-			<c:out value="完了しました" />
+			<p>完了しました</p>
 			<br><br>
 			<table>
 				<tr>
@@ -244,11 +235,12 @@
 				</tr>
 			</table>
 		</div>
-	</c:if>
+	</div>
 
 	<br><br>
 	<hr>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<div th:include="common/footer.html"></div>
+
 
 </body>
 </html>

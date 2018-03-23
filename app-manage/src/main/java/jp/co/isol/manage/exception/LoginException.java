@@ -1,7 +1,7 @@
 package jp.co.isol.manage.exception;
 
 import jp.co.isol.common.exception.BaseManageException;
-import jp.co.isol.common.exception.ErrorCodeDefine;
+import jp.co.isol.common.exception.ErrorCode;
 
 /**
  * ログイン画面のExceptionクラス<br>
@@ -14,7 +14,7 @@ public class LoginException extends BaseManageException {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	public LoginException(ErrorCodeDefine errorCode, String errorMessage) {
+	public LoginException(ErrorCode errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 }

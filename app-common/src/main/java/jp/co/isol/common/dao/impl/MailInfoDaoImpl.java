@@ -61,6 +61,8 @@ public class MailInfoDaoImpl implements MailInfoDao {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 //		MailInfo mailInfo = new MailInfo();
@@ -111,6 +113,8 @@ public class MailInfoDaoImpl implements MailInfoDao {
 			e.printStackTrace();
 		} catch (InvalidFormatException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -144,6 +148,8 @@ public class MailInfoDaoImpl implements MailInfoDao {
 		} catch (EncryptedDocumentException e) {
 			e.printStackTrace();
 		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

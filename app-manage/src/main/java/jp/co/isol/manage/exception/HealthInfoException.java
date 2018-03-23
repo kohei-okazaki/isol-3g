@@ -1,7 +1,7 @@
 package jp.co.isol.manage.exception;
 
 import jp.co.isol.common.exception.BaseManageException;
-import jp.co.isol.common.exception.ErrorCodeDefine;
+import jp.co.isol.common.exception.ErrorCode;
 
 /**
  * 健康情報Exceptionクラス<br>
@@ -14,7 +14,7 @@ public class HealthInfoException extends BaseManageException {
 	 * @param errorCode
 	 * @param errorMessage
 	 */
-	public HealthInfoException(ErrorCodeDefine errorCode, String errorMessage) {
+	public HealthInfoException(ErrorCode errorCode, String errorMessage) {
 		super(errorCode, errorMessage);
 	}
 
