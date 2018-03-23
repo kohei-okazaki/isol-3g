@@ -8,7 +8,7 @@ import jp.co.isol.common.web.manage.BaseForm;
  * アカウント作成Form
  *
  */
-public class AccountCreateForm extends BaseForm implements Serializable {
+public class AccountCreateForm implements BaseForm, Serializable {
 
 	/** ユーザID */
 	private String userId;

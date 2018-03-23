@@ -5,13 +5,6 @@ package jp.co.isol.common.web.manage;
  * すべてのFormクラスはこのクラスを継承すること<br>
  *
  */
-public abstract class BaseForm {
-
-	/**
-	 * デフォルトコンストラクタ<br>
-	 */
-	public BaseForm() {
-
-	}
+public interface BaseForm {
 
 }

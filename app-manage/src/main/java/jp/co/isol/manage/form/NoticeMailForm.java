@@ -8,7 +8,7 @@ import jp.co.isol.common.web.manage.BaseForm;
  * 送信するメールオブジェクトクラス
  *
  */
-public class NoticeMailForm extends BaseForm implements Serializable {
+public class NoticeMailForm implements BaseForm, Serializable {
 
 	/** from */
 	private String from;

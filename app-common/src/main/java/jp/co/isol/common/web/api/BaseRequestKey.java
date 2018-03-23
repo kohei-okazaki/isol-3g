@@ -7,6 +7,10 @@ package jp.co.isol.common.web.api;
  */
 public interface BaseRequestKey {
 
-	public String getValue();
+	/**
+	 * 値を返す<br>
+	 * @return
+	 */
+	String getValue();
 
 }

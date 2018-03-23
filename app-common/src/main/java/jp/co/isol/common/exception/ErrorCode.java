@@ -29,6 +29,7 @@ public enum ErrorCode {
 	/**
 	 * コンストラクタ<br>
 	 * @param errorCode
+	 * @param logLevel
 	 * @param errorMessage
 	 */
 	private ErrorCode(String errorCode, String logLevel, String errorMessage) {
@@ -68,7 +69,7 @@ public enum ErrorCode {
 	 */
 	public static ErrorCode of(String errorCode) {
 
-		for (ErrorCode code : ErrorCode.values()) {
+		for (ErrorCode code : ErrorCode.class.getEnumConstants()) {
 			if (code.errorCode.equals(errorCode)) {
 				return code;
 			}

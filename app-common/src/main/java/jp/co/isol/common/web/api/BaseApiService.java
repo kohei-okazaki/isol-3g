@@ -16,7 +16,7 @@ public interface BaseApiService<Rq extends BaseRequest, Rs extends BaseResponse,
 	 * @param Rq Request実装クラス
 	 * @throws E 例外実装クラス
 	 */
-	public void checkRequest(Rq request) throws E;
+	void checkRequest(Rq request) throws E;
 
 	/**
 	 * メイン処理<br>
@@ -25,6 +25,6 @@ public interface BaseApiService<Rq extends BaseRequest, Rs extends BaseResponse,
 	 * @return Rs Response実装クラス
 	 * @throws E
 	 */
-	public Rs execute(Rq request) throws E;
+	Rs execute(Rq request) throws E;
 
 }
