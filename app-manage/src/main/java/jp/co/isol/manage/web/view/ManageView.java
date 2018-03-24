@@ -21,11 +21,15 @@ public enum ManageView implements BaseView {
 	/** 結果照会画面URL */
 	RESULT_REFFERNCE("result-reference"),
 	/** アカウント設定画面URL */
-	ACCOUNT_SETTING("account-setting"),
+	ACCOUNT_SETTING_INPUT("account-setting-input"),
+	ACCOUNT_SETTING_CONFIRM("account-setting-confirm"),
+	ACCOUNT_SETTING_COMPLETE("account-setting-complete"),
 	/** 通知設定画面URL */
 	NOTICE_SETTING("notice-setting"),
 	/** アカウント作成画面URL */
-	ACCOUNT_CREATE("account-create");
+	ACCOUNT_CREATE_INPUT("account-create-input"),
+	ACCOUNT_CREATE_CONFIRM("account-create-confirm"),
+	ACCOUNT_CREATE_COMPLETE("account-create-complete");
 
 	/** view名 */
 	private String name;

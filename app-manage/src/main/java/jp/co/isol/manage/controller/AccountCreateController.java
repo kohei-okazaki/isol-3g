@@ -19,7 +19,6 @@ import jp.co.isol.manage.form.AccountCreateForm;
 import jp.co.isol.manage.service.AccountCreateService;
 import jp.co.isol.manage.validator.AccountCreateValidator;
 import jp.co.isol.manage.web.view.ManageView;
-import jp.co.isol.manage.web.view.PageType;
 
 /**
  * 健康管理_アカウント作成コントローラ<br>
@@ -47,9 +46,7 @@ public class AccountCreateController extends BaseWizardController<AccountCreateF
 	@Override
 	@GetMapping(value = "account-create-input.html")
 	public String input(Model model, HttpServletRequest request) throws AccountCreateException {
-
-		model.addAttribute("page", PageType.INPUT.getName());
-		return ManageView.ACCOUNT_CREATE.getName();
+		return getView(ManageView.ACCOUNT_CREATE_INPUT);
 	}
 
 	/**
@@ -61,14 +58,12 @@ public class AccountCreateController extends BaseWizardController<AccountCreateF
 
 		if (result.hasErrors()) {
 			// validatationエラーの場合
-			model.addAttribute("page", PageType.INPUT.getName());
-			return ManageView.ACCOUNT_CREATE.getName();
+			return getView(ManageView.ACCOUNT_CREATE_INPUT);
 		}
 
 		model.addAttribute("form", form);
-		model.addAttribute("page", PageType.CONFIRM.getName());
 
-		return ManageView.ACCOUNT_CREATE.getName();
+		return getView(ManageView.ACCOUNT_CREATE_CONFIRM);
 	}
 
 	/**
@@ -84,9 +79,7 @@ public class AccountCreateController extends BaseWizardController<AccountCreateF
 		// アカウントを作成する
 		accountCreateService.create(account);
 
-		model.addAttribute("page", PageType.COMPLETE.getName());
-
-		return ManageView.ACCOUNT_CREATE.getName();
+		return getView(ManageView.ACCOUNT_CREATE_COMPLETE);
 	}
 
 }
