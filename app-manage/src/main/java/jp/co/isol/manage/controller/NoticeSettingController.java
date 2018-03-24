@@ -17,7 +17,6 @@ import jp.co.isol.manage.exception.NoticeSettingException;
 import jp.co.isol.manage.form.NoticeSettingForm;
 import jp.co.isol.manage.validator.NoticeSettingValidator;
 import jp.co.isol.manage.web.view.ManageView;
-import jp.co.isol.manage.web.view.PageType;
 
 /**
  * 健康管理_通知設定コントローラクラス<br>
@@ -42,9 +41,6 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 	@GetMapping
 	@RequestMapping(value = "/notice-setting-input.html")
 	public String input(Model model, HttpServletRequest request) throws NoticeSettingException {
-
-		model.addAttribute("page", PageType.INPUT.getName());
-
 		return getView(ManageView.NOTICE_SETTING);
 	}
 
@@ -57,11 +53,8 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 	public String confirm(Model model, @Valid NoticeSettingForm form, BindingResult result) throws NoticeSettingException {
 
 		if (result.hasErrors()) {
-			model.addAttribute("page", PageType.INPUT.getName());
 			return getView(ManageView.NOTICE_SETTING);
 		}
-
-		model.addAttribute("page", PageType.CONFIRM.getName());
 
 		return getView(ManageView.NOTICE_SETTING);
 	}
@@ -73,9 +66,6 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 	@PostMapping
 	@RequestMapping(value = "/notice-setting-complete.html")
 	public String complete(Model model, NoticeSettingForm form, HttpServletRequest request) throws NoticeSettingException {
-
-		model.addAttribute("page", PageType.COMPLETE.getName());
-
 		return getView(ManageView.NOTICE_SETTING);
 	}
 

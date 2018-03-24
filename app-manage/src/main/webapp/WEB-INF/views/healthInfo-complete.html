@@ -39,16 +39,32 @@
 	<br><br><br>
 	<table class="custom" border="1">
 		<tr class="header">
-			<th align="center"><p>身長</p></th>
-			<th align="center"><p>体重</p></th>
-			<th align="center"><p>標準体重</p></th>
-			<th align="center"><p>BMI</p></th>
+			<th align="center">
+				<p>身長</p>
+			</th>
+			<th align="center">
+				<p>体重</p>
+			</th>
+			<th align="center">
+				<p>標準体重</p>
+				</th>
+			<th align="center">
+				<p>BMI</p>
+			</th>
 		</tr>
 		<tr class="data">
-			<td align="center"><p th:text="${healthInfo.height}" /></td>
-			<td align="center"><p th:text="${healthInfo.weight}" /></td>
-			<td align="center"><p th:text="${healthInfo.standardWeight}" /></td>
-			<td align="center"><p th:text="${healthInfo.bmi}" /></td>
+			<td align="center">
+				<p th:text="${healthInfo.height}" />
+			</td>
+			<td align="center">
+				<p th:text="${healthInfo.weight}" />
+			</td>
+			<td align="center">
+				<p th:text="${healthInfo.standardWeight}" />
+			</td>
+			<td align="center">
+				<p th:text="${healthInfo.bmi}" />
+			</td>
 		</tr>
 	</table>
 	<br><br>

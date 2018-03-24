@@ -38,7 +38,6 @@ import jp.co.isol.manage.validator.HealthInfoValidator;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 import jp.co.isol.manage.web.view.ManageView;
-import jp.co.isol.manage.web.view.PageType;
 
 /**
  * 健康管理_健康情報入力画面コントローラ<br>
@@ -96,7 +95,6 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) throws HealthInfoException {
 
 		if (result.hasErrors()) {
-			model.addAttribute("page", PageType.INPUT.getName());
 			return getView(ManageView.HEALTH_INFO_INPUT);
 		}
 
@@ -216,9 +214,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		this.mailService.sendMail(form);
 
-		model.addAttribute("page", PageType.COMPLETE.getName());
-
-		return getView(ManageView.MENU);
+		return getView(ManageView.HEALTH_INFO_COMPLETE);
 	}
 
 }
