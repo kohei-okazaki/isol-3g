@@ -1,14 +1,7 @@
 package jp.co.isol.manage.file.csv.writer;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import java.util.StringJoiner;
 
-import javax.servlet.http.HttpServletResponse;
-
-import jp.co.isol.common.exception.AppIOException;
-import jp.co.isol.common.exception.ErrorCode;
 import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
 import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
@@ -23,10 +16,7 @@ import jp.co.isol.manage.file.csv.model.ReferenceCsvModel;
  * 結果照会CSVWriterクラス<br>
  *
  */
-public class ReferenceCsvWriter extends BaseCsvWriter {
-
-	/** モデルリスト */
-	private List<ReferenceCsvModel> modelList;
+public class ReferenceCsvWriter extends BaseCsvWriter<ReferenceCsvModel> {
 
 	/**
 	 * デフォルトコンストラクタ<br>
@@ -43,56 +33,22 @@ public class ReferenceCsvWriter extends BaseCsvWriter {
 	}
 
 	/**
-	 * modelListを返す
-	 * @return modelList
+	 * {@inheritDoc}
 	 */
-	public List<ReferenceCsvModel> getModelList() {
-		return modelList;
-	}
+	@Override
+	protected void writeHeader(StringJoiner recordJoiner) {
 
-	/**
-	 * modelListを設定する
-	 * @param modelList
-	 */
-	public void setModelList(List<ReferenceCsvModel> modelList) {
-		this.modelList = modelList;
+		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);
+		CsvUtil.getHeaderList(ReferenceCsvModel.class).stream().forEach(headerName -> write(joiner, headerName));
+		recordJoiner.add(joiner.toString());
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(HttpServletResponse response) throws IOException {
-
-		String fileName = getFileName();
-		init(response, fileName);
-		try (PrintWriter writer = response.getWriter()) {
-			StringJoiner recordJoiner = new StringJoiner(StringUtil.NEW_LINE);
-			writeHeader(recordJoiner);
-			modelList.stream().forEach(model -> writeData(recordJoiner, model));
-			writer.print(recordJoiner.toString());
-		} catch (AppIOException e) {
-			throw new AppIOException(ErrorCode.FILE_WRITE_ERROR, "ファイルの出力処理に失敗しました");
-		}
-	}
-
-	/**
-	 * ヘッダレコードをつめる<br>
-	 * @param recordJoiner
-	 */
-	private void writeHeader(StringJoiner recordJoiner) {
-
-		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);
-		CsvUtil.getHeaderList(ReferenceCsvModel.class).stream().forEach(headerName -> write(joiner, headerName));
-		recordJoiner.add(joiner.toString());
-	}
-
-	/**
-	 * データレコードをつめる<br>
-	 * @param recordJoiner
-	 * @param model
-	 */
-	private void writeData(StringJoiner recordJoiner, ReferenceCsvModel model) {
+	protected void writeData(StringJoiner recordJoiner, ReferenceCsvModel model) {
 
 		// 1項目ごと区切る
 		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);
