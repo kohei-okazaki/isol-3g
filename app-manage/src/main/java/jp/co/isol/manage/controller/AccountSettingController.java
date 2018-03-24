@@ -30,7 +30,6 @@ import jp.co.isol.manage.validator.AccountSettingValidator;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 import jp.co.isol.manage.web.view.ManageView;
-import jp.co.isol.manage.web.view.PageType;
 
 /**
  * 健康管理_アカウント設定コントローラ<br>
@@ -85,8 +84,6 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 		MailInfo mailInfo = this.mailInfoSearchService.findMailInfoByUserId(userId);
 		model.addAttribute("mailInfo", mailInfo);
 
-		model.addAttribute("page", PageType.INPUT.getName());
-
 		return getView(ManageView.ACCOUNT_SETTING_INPUT);
 	}
 
@@ -99,12 +96,10 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 	public String confirm(Model model, @Valid AccountSettingForm form, BindingResult result) throws AccountSettingException {
 
 		if (result.hasErrors()) {
-			model.addAttribute("page", PageType.INPUT.getName());
 			return getView(ManageView.ACCOUNT_SETTING_INPUT);
 		}
 
 		model.addAttribute("form", form);
-		model.addAttribute("page", PageType.CONFIRM.getName());
 
 		return getView(ManageView.ACCOUNT_SETTING_CONFIRM);
 	}
@@ -142,8 +137,6 @@ public class AccountSettingController extends BaseWizardController<AccountSettin
 			this.accountSettingService.update(account, befMailInfo);
 
 		}
-
-		model.addAttribute("page", PageType.COMPLETE.getName());
 
 		return getView(ManageView.ACCOUNT_SETTING_COMPLETE);
 	}
