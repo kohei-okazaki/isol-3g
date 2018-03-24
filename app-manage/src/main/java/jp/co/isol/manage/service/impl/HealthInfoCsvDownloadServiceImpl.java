@@ -1,6 +1,7 @@
 package jp.co.isol.manage.service.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.HealthInfo;
+import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.config.ManageConfig;
@@ -55,28 +57,35 @@ public class HealthInfoCsvDownloadServiceImpl implements CsvDownloadService {
 		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
 		HealthInfo healthInfo = healthInfoList.get(healthInfoList.size() - 1);
-		HealthInfoCsvModel model = toModel(healthInfo);
 
+		// CSV出力モデルリストに変換する
+		List<HealthInfoCsvModel> modelList = toModelList(healthInfo);
+
+		// ファイル囲い文字利用フラグを取得
 		Account account = accountSearchService.findAccountByUserId(userId);
 		boolean enclosureFlag = StringUtil.isTrue(account.getFileEnclosureCharFlag());
 
 		// CSVに書き込む
-		HealthInfoCsvWriter writer = enclosureFlag ? new HealthInfoCsvWriter(CsvUtil.DOBBLE_QUOTE) : new HealthInfoCsvWriter();
-		writer.setModel(model);
+		BaseCsvWriter<HealthInfoCsvModel> writer = enclosureFlag ? new HealthInfoCsvWriter(CsvUtil.DOBBLE_QUOTE) : new HealthInfoCsvWriter();
+
+		writer.setModelList(modelList);
 		writer.execute(response);
 
 	}
 
 	/**
-	 * CSVモデルにDtoに変換する<br>
+	 * CSVモデルリストに変換する<br>
 	 * @param healthInfo
-	 * @return model
+	 * @return modelList
 	 */
-	private HealthInfoCsvModel toModel(HealthInfo healthInfo) {
+	private List<HealthInfoCsvModel> toModelList(HealthInfo healthInfo) {
 
+		List<HealthInfoCsvModel> modelList = new ArrayList<HealthInfoCsvModel>();
 		HealthInfoCsvModel model = new HealthInfoCsvModel();
 		BeanUtils.copyProperties(healthInfo, model);
-		return model;
+		modelList.add(model);
+
+		return modelList;
 	}
 
 }

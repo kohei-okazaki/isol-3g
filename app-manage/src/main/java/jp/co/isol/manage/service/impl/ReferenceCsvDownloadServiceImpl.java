@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import jp.co.isol.common.entity.Account;
 import jp.co.isol.common.entity.HealthInfo;
+import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
 import jp.co.isol.common.util.CsvUtil;
 import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.config.ManageConfig;
@@ -52,16 +53,19 @@ public class ReferenceCsvDownloadServiceImpl implements CsvDownloadService {
 			sessionManager = context.getBean(ManageSessionManager.class);
 		}
 
-		// セッションからユーザIDを取得
+		// 結果照会する健康情報を取得する　
 		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
+
+		// CSV出力モデルリストに変換する
 		List<ReferenceCsvModel> modelList = toModelList(healthInfoList);
 
+		// ファイル囲い文字利用フラグを取得
 		Account account = accountSearchService.findAccountByUserId(userId);
 		boolean enclosureFlag = StringUtil.isTrue(account.getFileEnclosureCharFlag());
 
 		// CSVに書き込む
-		ReferenceCsvWriter writer = enclosureFlag ? new ReferenceCsvWriter(CsvUtil.DOBBLE_QUOTE) : new ReferenceCsvWriter();
+		BaseCsvWriter<ReferenceCsvModel> writer = enclosureFlag ? new ReferenceCsvWriter(CsvUtil.DOBBLE_QUOTE) : new ReferenceCsvWriter();
 		writer.setModelList(modelList);
 		writer.execute(response);
 	}

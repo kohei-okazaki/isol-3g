@@ -1,23 +1,30 @@
 package jp.co.isol.common.file.csv.writer;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.StringJoiner;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.util.MimeTypeUtils;
 
+import jp.co.isol.common.exception.AppIOException;
+import jp.co.isol.common.exception.ErrorCode;
+import jp.co.isol.common.file.csv.model.BaseCsvModel;
 import jp.co.isol.common.other.Charset;
 import jp.co.isol.common.util.StringUtil;
 
 /**
  * CSV書き込み基底クラス<br>
- *
+ * @param <M>CSV出力モデルリスト
  */
-public abstract class BaseCsvWriter {
+public abstract class BaseCsvWriter<M extends BaseCsvModel> {
 
 	/** 囲い文字(デフォルトでは空文字(未指定)) */
 	protected String enclosureChar = StringUtil.EMPTY;
+	/** モデルリスト */
+	protected List<M> modelList;
 
 	/**
 	 * コンストラクタ<br>
@@ -35,12 +42,48 @@ public abstract class BaseCsvWriter {
 	}
 
 	/**
+	 * modelListを返す
+	 * @return modelList
+	 */
+	public List<M> getModelList() {
+		return modelList;
+	}
+
+	/**
+	 * modelListを設定する
+	 * @param modelList
+	 */
+	public void setModelList(List<M> modelList) {
+		this.modelList = modelList;
+	}
+
+	/**
 	 * メイン処理を実施<br>
-	 * 継承先でそれぞれ実装<br>
 	 * @param response
 	 * @throws IOException
 	 */
-	protected abstract void execute(HttpServletResponse response) throws IOException;
+	public void execute(HttpServletResponse response) throws IOException {
+
+		// ファイル名を取得
+		String fileName = getFileName();
+
+		// 初期化処理
+		this.init(response, fileName);
+
+		try (PrintWriter writer = response.getWriter()) {
+			StringJoiner recordJoiner = new StringJoiner(StringUtil.NEW_LINE);
+			// ヘッダーを書込
+			writeHeader(recordJoiner);
+
+			// データを書込
+			modelList.stream().forEach(model -> writeData(recordJoiner, model));
+			writer.print(recordJoiner.toString());
+
+		} catch (AppIOException e) {
+			throw new AppIOException(ErrorCode.FILE_WRITE_ERROR, "ファイルの出力処理に失敗しました");
+		}
+
+	}
 
 	/**
 	 * 初期処理<br>
@@ -68,5 +111,18 @@ public abstract class BaseCsvWriter {
 	 * @return fileName
 	 */
 	protected abstract String getFileName();
+
+	/**
+	 * ヘッダーレコードをつめる<br>
+	 * @param recordJoiner
+	 */
+	protected abstract void writeHeader(StringJoiner recordJoiner);
+
+	/**
+	 * データレコードをつめる<br>
+	 * @param recordJoiner
+	 * @param model
+	 */
+	protected abstract void writeData(StringJoiner recordJoiner, M model);
 
 }

@@ -38,7 +38,6 @@ import jp.co.isol.manage.validator.HealthInfoValidator;
 import jp.co.isol.manage.web.session.ManageSessionKey;
 import jp.co.isol.manage.web.session.ManageSessionManager;
 import jp.co.isol.manage.web.view.ManageView;
-import jp.co.isol.manage.web.view.PageType;
 
 /**
  * 健康管理_健康情報入力画面コントローラ<br>
@@ -85,10 +84,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	@Override
 	@GetMapping(value = "/healthInfo-input.html")
 	public String input(Model model, HttpServletRequest request) throws HealthInfoException {
-
-		model.addAttribute("page", PageType.INPUT.getName());
-
-		return ManageView.HEALTH_INFO.getName();
+		return getView(ManageView.HEALTH_INFO_INPUT);
 	}
 
 	/**
@@ -99,16 +95,13 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	public String confirm(Model model, @Valid HealthInfoForm form, BindingResult result) throws HealthInfoException {
 
 		if (result.hasErrors()) {
-			model.addAttribute("page", PageType.INPUT.getName());
-			return ManageView.HEALTH_INFO.getName();
+			return getView(ManageView.HEALTH_INFO_INPUT);
 		}
 
 		// 入力情報を設定
 		model.addAttribute("form", form);
 
-		model.addAttribute("page", PageType.CONFIRM.getName());
-
-		return ManageView.HEALTH_INFO.getName();
+		return getView(ManageView.HEALTH_INFO_CONFIRM);
 	}
 
 	/**
@@ -160,9 +153,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 		// 入力画面から入力した情報を登録する
 		this.healthInfoDao.registHealthInfo(healthInfo);
 
-		model.addAttribute("page", PageType.COMPLETE.getName());
-
-		return ManageView.HEALTH_INFO.getName();
+		return getView(ManageView.HEALTH_INFO_COMPLETE);
 	}
 
 
@@ -223,9 +214,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		this.mailService.sendMail(form);
 
-		model.addAttribute("page", PageType.COMPLETE.getName());
-
-		return ManageView.MENU.getName();
+		return getView(ManageView.HEALTH_INFO_COMPLETE);
 	}
 
 }

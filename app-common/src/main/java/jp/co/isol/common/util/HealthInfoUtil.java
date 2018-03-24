@@ -46,9 +46,6 @@ public class HealthInfoUtil {
 		BigDecimal multiplyResult = CalcUtil.execute(height, CalcMethod.MULTIPLY, height, 2, RoundingMode.HALF_UP);
 		BigDecimal result = CalcUtil.execute(weight, CalcMethod.DIVIDE, multiplyResult, 2, RoundingMode.HALF_UP);
 		return result;
-		// 修正前
-//		BigDecimal bef = weight.divide(height.multiply(height), digit, RoundingMode.HALF_UP);
-//		return bef;
 	}
 
 	/**
@@ -62,6 +59,5 @@ public class HealthInfoUtil {
 		BigDecimal result = CalcUtil.execute(height, CalcMethod.MULTIPLY, height, digit, RoundingMode.HALF_UP);
 		result = CalcUtil.execute(result, CalcMethod.MULTIPLY, new BigDecimal(22), digit, RoundingMode.HALF_UP);
 		return result;
-//		return height.multiply(height).multiply(new BigDecimal(22)).setScale(digit, RoundingMode.HALF_UP);
 	}
 }

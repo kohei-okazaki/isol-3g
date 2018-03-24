@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.isol.common.web.manage.BaseController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.form.LoginForm;
 import jp.co.isol.manage.service.LoginService;
@@ -29,7 +30,7 @@ import jp.co.isol.manage.web.view.ManageView;
  *
  */
 @Controller
-public class LoginController {
+public class LoginController implements BaseController {
 
 	/** ログインサービス */
 	@Autowired
@@ -61,7 +62,7 @@ public class LoginController {
 
 		sessionManager.removeKey(request.getSession(), ManageSessionKey.USER_ID);
 
-		return ManageView.LOGIN.getName();
+		return getView(ManageView.LOGIN);
 	}
 
 	/**
@@ -103,7 +104,7 @@ public class LoginController {
 		// セッションにユーザIDを登録する。
 		this.loginService.registSession(request.getSession(), loginForm.getUserId());
 
-		return ManageView.MENU.getName();
+		return getView(ManageView.MENU);
 
 	}
 
@@ -113,7 +114,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/menu.html", method = RequestMethod.GET)
 	public String menu() {
-		return ManageView.MENU.getName();
+		return getView(ManageView.MENU);
 	}
 
 }

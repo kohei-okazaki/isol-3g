@@ -17,13 +17,13 @@ public interface HealthInfoService extends BaseApiService<HealthInfoRequest, Hea
 	 * @param healthInfo
 	 * @return
 	 */
-	public HealthInfoResponse toResponse(HealthInfo healthInfo);
+	HealthInfoResponse toResponse(HealthInfo healthInfo);
 
 	/**
 	 * 健康情報にリクエスト情報をつめる
 	 * @param request
 	 * @return
 	 */
-	public HealthInfo toEntity(HealthInfoRequest request);
+	HealthInfo toEntity(HealthInfoRequest request);
 
 }

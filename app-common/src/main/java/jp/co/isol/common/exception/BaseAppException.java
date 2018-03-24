@@ -2,6 +2,8 @@ package jp.co.isol.common.exception;
 
 import java.util.StringJoiner;
 
+import jp.co.isol.common.util.StringUtil;
+
 /**
  * APP内で扱う基底例外クラス<br>
  *
@@ -17,7 +19,6 @@ public abstract class BaseAppException extends Exception {
 	 * 例外コンストラクタ<br>
 	 */
 	public BaseAppException() {
-
 	}
 
 	/**
@@ -51,7 +52,7 @@ public abstract class BaseAppException extends Exception {
 	 */
 	@Override
 	public String toString() {
-		StringJoiner joiner = new StringJoiner(" ");
+		StringJoiner joiner = new StringJoiner(StringUtil.SPACE);
 		joiner.add(this.errorCode.getLogLevel());
 		joiner.add(this.errorCode.getErrorCode());
 		joiner.add(this.errorMessage);

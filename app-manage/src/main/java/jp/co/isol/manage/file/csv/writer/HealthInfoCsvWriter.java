@@ -1,10 +1,6 @@
 package jp.co.isol.manage.file.csv.writer;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.StringJoiner;
-
-import javax.servlet.http.HttpServletResponse;
 
 import jp.co.isol.common.file.csv.writer.BaseCsvWriter;
 import jp.co.isol.common.manager.CodeManager;
@@ -20,10 +16,7 @@ import jp.co.isol.manage.file.csv.model.HealthInfoCsvModel;
  * 健康情報CSVWriterクラス<br>
  *
  */
-public class HealthInfoCsvWriter extends BaseCsvWriter {
-
-	/** 健康情報CSVモデル */
-	private HealthInfoCsvModel model;
+public class HealthInfoCsvWriter extends BaseCsvWriter<HealthInfoCsvModel> {
 
 	/**
 	 * デフォルトコンストラクタ<br>
@@ -40,53 +33,22 @@ public class HealthInfoCsvWriter extends BaseCsvWriter {
 	}
 
 	/**
-	 * modelを返す
-	 * @return model
+	 * {@inheritDoc}
 	 */
-	public HealthInfoCsvModel getModel() {
-		return model;
-	}
+	@Override
+	protected void writeHeader(StringJoiner recordJoiner) {
 
-	/**
-	 * modelを設定する
-	 * @param model
-	 */
-	public void setModel(HealthInfoCsvModel model) {
-		this.model = model;
+		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);
+		CsvUtil.getHeaderList(HealthInfoCsvModel.class).stream().forEach(headerName -> write(joiner, headerName));
+		recordJoiner.add(joiner.toString());
+
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void execute(HttpServletResponse response) throws IOException {
-
-		String fileName = getFileName();
-		init(response, fileName);
-
-		try (PrintWriter writer = response.getWriter()) {
-			StringJoiner recordJoiner = new StringJoiner(StringUtil.NEW_LINE);
-			writeHeader(recordJoiner);
-			writeData(recordJoiner);
-			writer.print(recordJoiner.toString());
-		}
-	}
-
-	/**
-	 * ヘッダレコードをつめる<br>
-	 * @param recordJoiner
-	 */
-	private void writeHeader(StringJoiner recordJoiner) {
-
-		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);
-		CsvUtil.getHeaderList(model.getClass()).stream().forEach(headerName -> write(joiner, headerName));
-		recordJoiner.add(joiner.toString());
-	}
-
-	/**
-	 * データレコードをつめる<br>
-	 * @param recordJoiner
-	 */
-	private void writeData(StringJoiner recordJoiner) {
+	@Override
+	protected void writeData(StringJoiner recordJoiner, HealthInfoCsvModel model) {
 
 		// 1項目ごと区切る
 		StringJoiner joiner = new StringJoiner(StringUtil.COMMA);

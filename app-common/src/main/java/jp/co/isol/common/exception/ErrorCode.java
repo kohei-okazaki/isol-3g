@@ -16,7 +16,9 @@ public enum ErrorCode {
 	/** アカウント存在チェックエラー */
 	ACCOUNT_ILLEGAL("ACCOUNT_ILLEGAL", "WARN", "アカウントが存在しません"),
 	/** アカウント不整合エラー */
-	ACCOUNT_DELETE("ACCOUNT_DELETE", "WARN", "アカウントが削除済です");
+	ACCOUNT_DELETE("ACCOUNT_DELETE", "WARN", "アカウントが削除済です"),
+	/** ファイル処理エラー */
+	FILE_WRITE_ERROR("FILE_WRITE_ERROR", "ERROR", "ファイルの処理に失敗しました");
 
 
 	/** エラーコード */
@@ -29,6 +31,7 @@ public enum ErrorCode {
 	/**
 	 * コンストラクタ<br>
 	 * @param errorCode
+	 * @param logLevel
 	 * @param errorMessage
 	 */
 	private ErrorCode(String errorCode, String logLevel, String errorMessage) {
@@ -68,7 +71,7 @@ public enum ErrorCode {
 	 */
 	public static ErrorCode of(String errorCode) {
 
-		for (ErrorCode code : ErrorCode.values()) {
+		for (ErrorCode code : ErrorCode.class.getEnumConstants()) {
 			if (code.errorCode.equals(errorCode)) {
 				return code;
 			}

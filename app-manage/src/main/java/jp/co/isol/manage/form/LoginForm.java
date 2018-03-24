@@ -8,7 +8,7 @@ import jp.co.isol.common.web.manage.BaseForm;
  * ログインフォームクラス
  *
  */
-public class LoginForm extends BaseForm implements Serializable {
+public class LoginForm implements BaseForm, Serializable {
 
 	/** ユーザID */
 	private String userId;

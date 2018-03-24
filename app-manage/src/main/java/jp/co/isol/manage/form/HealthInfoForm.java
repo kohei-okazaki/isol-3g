@@ -9,7 +9,7 @@ import jp.co.isol.common.web.manage.BaseForm;
  * 健康情報フォームクラス
  *
  */
-public class HealthInfoForm extends BaseForm implements Serializable {
+public class HealthInfoForm implements BaseForm, Serializable {
 
 	/** ユーザID */
 	private String userId;

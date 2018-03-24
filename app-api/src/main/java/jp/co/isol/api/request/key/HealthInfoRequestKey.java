@@ -21,8 +21,24 @@ public enum HealthInfoRequestKey implements BaseRequestKey {
 		this.value = value;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getValue() {
 		return this.value;
+	}
+
+	/**
+	 * 指定された値と一致するEnumを返す<br>
+	 */
+	public static BaseRequestKey of(String value) {
+
+		for (HealthInfoRequestKey key : HealthInfoRequestKey.class.getEnumConstants()) {
+			if (key.value.equals(value)) {
+				return key;
+			}
+		}
+		return null;
 	}
 }
