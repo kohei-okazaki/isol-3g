@@ -3,6 +3,7 @@ package jp.co.isol.manage.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.isol.common.dao.HealthInfoDao;
 import jp.co.isol.common.entity.HealthInfo;
+import jp.co.isol.common.exception.ErrorCode;
 import jp.co.isol.common.web.manage.BaseWizardController;
 import jp.co.isol.manage.config.ManageConfig;
 import jp.co.isol.manage.exception.HealthInfoException;
@@ -117,6 +119,9 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 		}
 
 		String userId = (String) manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		if (Objects.isNull(userId)) {
+			throw new HealthInfoException(ErrorCode.REQUEST_UNFO_ERROR, "リクエスト情報が不正です");
+		}
 
 		// ユーザIDから健康情報のリストを取得
 		List<HealthInfo> healthInfoList = this.healthInfoSearchService.findHealthInfoByUserId(userId);
