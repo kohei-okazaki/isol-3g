@@ -54,6 +54,7 @@ public class ManageFilter extends BaseFilter {
 		}
 
 		String userId = (String) sessionManager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
+		String reqUri = request.getRequestURI();
 
 		chain.doFilter(req, resp);
 
