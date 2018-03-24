@@ -5,14 +5,15 @@ import jp.co.isol.common.web.manage.BaseView;
 /**
  * ビューEnum<br>
  * 画面遷移先定義<br>
- *
  */
 public enum ManageView implements BaseView {
 
 	/** ログイン画面URL */
 	LOGIN("login"),
 	/** 健康情報画面URL */
-	HEALTH_INFO("healthInfo"),
+	HEALTH_INFO_INPUT("healthInfo-input"),
+	HEALTH_INFO_CONFIRM("healthInfo-confirm"),
+	HEALTH_INFO_COMPLETE("healthInfo-complete"),
 	/** メニュー画面URL */
 	MENU("menu"),
 	/** エラー画面URL */
@@ -41,6 +42,7 @@ public enum ManageView implements BaseView {
 	 * 名前を返す
 	 * @return
 	 */
+	@Override
 	public String getName() {
 		return this.name;
 	}

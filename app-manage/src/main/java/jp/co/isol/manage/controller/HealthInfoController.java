@@ -85,10 +85,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 	@Override
 	@GetMapping(value = "/healthInfo-input.html")
 	public String input(Model model, HttpServletRequest request) throws HealthInfoException {
-
-		model.addAttribute("page", PageType.INPUT.getName());
-
-		return getView(ManageView.HEALTH_INFO);
+		return getView(ManageView.HEALTH_INFO_INPUT);
 	}
 
 	/**
@@ -100,15 +97,13 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 		if (result.hasErrors()) {
 			model.addAttribute("page", PageType.INPUT.getName());
-			return getView(ManageView.HEALTH_INFO);
+			return getView(ManageView.HEALTH_INFO_INPUT);
 		}
 
 		// 入力情報を設定
 		model.addAttribute("form", form);
 
-		model.addAttribute("page", PageType.CONFIRM.getName());
-
-		return getView(ManageView.HEALTH_INFO);
+		return getView(ManageView.HEALTH_INFO_CONFIRM);
 	}
 
 	/**
@@ -160,9 +155,7 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 		// 入力画面から入力した情報を登録する
 		this.healthInfoDao.registHealthInfo(healthInfo);
 
-		model.addAttribute("page", PageType.COMPLETE.getName());
-
-		return getView(ManageView.HEALTH_INFO);
+		return getView(ManageView.HEALTH_INFO_COMPLETE);
 	}
 
 
