@@ -1,8 +1,6 @@
 /****************/
 /* menuicon.css */
 /****************/
-
-/* type=imageをマウスオーバーしたとき */
 .menuicon:hover {
 	-webkit-transform: scale(1.5);
 	-moz-transform: scale(1.5);
@@ -27,12 +25,4 @@
 	-o-transition: -o-transform 3.0s linear;
 	-ms-transition: -ms-transform 3.0s linear;
 	transition: transform 3.0s linear;
-}
-
-.menuicon img:hover {
-	-webkit-transform: scale(1.2);
-	-moz-transform: scale(1.2);
-	-o-transform: scale(1.2);
-	-ms-transform: scale(1.2);
-	transform: scale(1.2);
 }
