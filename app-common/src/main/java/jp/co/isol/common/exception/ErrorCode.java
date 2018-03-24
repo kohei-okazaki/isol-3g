@@ -18,7 +18,9 @@ public enum ErrorCode {
 	/** アカウント不整合エラー */
 	ACCOUNT_DELETE("ACCOUNT_DELETE", "WARN", "アカウントが削除済です"),
 	/** ファイル処理エラー */
-	FILE_WRITE_ERROR("FILE_WRITE_ERROR", "ERROR", "ファイルの処理に失敗しました");
+	FILE_WRITE_ERROR("FILE_WRITE_ERROR", "ERROR", "ファイルの処理に失敗しました"),
+	/** リクエスト情報エラー */
+	REQUEST_UNFO_ERROR("REQUEST_UNFO_ERROR", "ERROR", "不正リクエストエラーです");
 
 
 	/** エラーコード */
