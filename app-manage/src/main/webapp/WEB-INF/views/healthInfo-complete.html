@@ -28,91 +28,91 @@
 	<!-- 完了画面 -->
 	<br><br><br>
 	<div align="center">
-	<p th:text="'今のあなたの身長(' + ${healthInfo.height} + 'cm)の'" />
-	<p th:text="'標準体重は ' + ${healthInfo.standardWeight} + 'kg です'" />
+		<p th:text="'今のあなたの身長(' + ${healthInfo.height} + 'cm)の'" />
+		<p th:text="'標準体重は ' + ${healthInfo.standardWeight} + 'kg です'" />
 
-	<div th:if="${!isFirstReg}">
-		<p th:text="'前回より' + ${diffWeight} + 'kg ' + ${resultMessage}" />
-		<p th:text="${beforeWeight} + 'kg → ' + ${healthInfo.weight} + 'kg'" />
-	</div>
+		<div th:if="${!isFirstReg}">
+			<p th:text="'前回より' + ${diffWeight} + 'kg ' + ${resultMessage}" />
+			<p th:text="${beforeWeight} + 'kg → ' + ${healthInfo.weight} + 'kg'" />
+		</div>
 
-	<br><br><br>
-	<table class="custom" border="1">
-		<tr class="header">
-			<th align="center">
-				<p>身長</p>
-			</th>
-			<th align="center">
-				<p>体重</p>
-			</th>
-			<th align="center">
-				<p>標準体重</p>
+		<br><br><br>
+		<table class="custom" border="1">
+			<tr class="header">
+				<th align="center">
+					<p>身長</p>
 				</th>
-			<th align="center">
-				<p>BMI</p>
-			</th>
-		</tr>
-		<tr class="data">
-			<td align="center">
-				<p th:text="${healthInfo.height}" />
-			</td>
-			<td align="center">
-				<p th:text="${healthInfo.weight}" />
-			</td>
-			<td align="center">
-				<p th:text="${healthInfo.standardWeight}" />
-			</td>
-			<td align="center">
-				<p th:text="${healthInfo.bmi}" />
-			</td>
-		</tr>
-	</table>
-	<br><br>
+				<th align="center">
+					<p>体重</p>
+				</th>
+				<th align="center">
+					<p>標準体重</p>
+					</th>
+				<th align="center">
+					<p>BMI</p>
+				</th>
+			</tr>
+			<tr class="data">
+				<td align="center">
+					<p th:text="${healthInfo.height}" />
+				</td>
+				<td align="center">
+					<p th:text="${healthInfo.weight}" />
+				</td>
+				<td align="center">
+					<p th:text="${healthInfo.standardWeight}" />
+				</td>
+				<td align="center">
+					<p th:text="${healthInfo.bmi}" />
+				</td>
+			</tr>
+		</table>
+		<br><br>
 
 
-	<table>
-		<tr>
-			<td align="center">
-			<!-- 通知  -->
-			<form action="/isol-manage/notice.html" method="post">
-				<input type="hidden" name="height" value="${healthInfo.height}">
-				<input type="hidden" name="weight" value="${healthInfo.weight}">
-				<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
-				<input type="hidden" name="bmi" value="${healthInfo.bmi}">
-				<div align="center">
-					<input class="menuicon" type="image" src="resources/image/icon_mail.png">
-				</div>
-			</form>
-			</td>
-			<td>　　</td>
-			<td align="center">
-			<!-- Excel出力 -->
-			<form action="/isol-manage/healthInfo-excelDownload.html" method="get">
-				<input type="hidden" name="height" value="${healthInfo.height}">
-				<input type="hidden" name="weight" value="${healthInfo.weight}">
-				<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
-				<input type="hidden" name="bmi" value="${healthInfo.bmi}">
-				<div align="center">
-					<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
-				</div>
-			</form>
-			</td>
-			<td>　　</td>
-			<td align="center">
-				<!-- CSV出力 -->
-				<div align="center">
-					<input class="menuicon" type="image" src="resources/image/icon_csv.png" onclick="healthInfoCsvDownload()">
-				</div>
-			</td>
-			<td>　　</td>
-			<td align="center">
-			<!-- メニュー画面へ -->
-				<div align="center">
-					<input class="menuicon" type="image" src="resources/image/icon_menu.jpg" onclick="toMenu()">
-				</div>
-			</td>
-		</tr>
-	</table>
+		<table>
+			<tr>
+				<td>
+				<!-- 通知  -->
+				<form action="/isol-manage/notice.html" method="post">
+					<input type="hidden" name="height" value="${healthInfo.height}">
+					<input type="hidden" name="weight" value="${healthInfo.weight}">
+					<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
+					<input type="hidden" name="bmi" value="${healthInfo.bmi}">
+					<div align="center">
+						<input class="menuicon" type="image" src="resources/image/icon_mail.png">
+					</div>
+				</form>
+				</td>
+				<td>　　</td>
+				<td>
+				<!-- Excel出力 -->
+				<form action="/isol-manage/healthInfo-excelDownload.html" method="get">
+					<input type="hidden" name="height" value="${healthInfo.height}">
+					<input type="hidden" name="weight" value="${healthInfo.weight}">
+					<input type="hidden" name="standardWeight" value="${healthInfo.standardWeight}">
+					<input type="hidden" name="bmi" value="${healthInfo.bmi}">
+					<div align="center">
+						<input class="menuicon" type="image" src="resources/image/icon_xlsx.png">
+					</div>
+				</form>
+				</td>
+				<td>　　</td>
+				<td>
+					<!-- CSV出力 -->
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_csv.png" onclick="healthInfoCsvDownload()">
+					</div>
+				</td>
+				<td>　　</td>
+				<td>
+				<!-- メニュー画面へ -->
+					<div>
+						<input class="menuicon" type="image" src="resources/image/icon_menu.jpg" onclick="toMenu()">
+					</div>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<br><br>
 
