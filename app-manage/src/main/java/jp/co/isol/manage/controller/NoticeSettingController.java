@@ -41,7 +41,7 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 	@GetMapping
 	@RequestMapping(value = "/notice-setting-input.html")
 	public String input(Model model, HttpServletRequest request) throws NoticeSettingException {
-		return getView(ManageView.NOTICE_SETTING);
+		return getView(ManageView.NOTICE_SETTING_INPUT);
 	}
 
 	/**
@@ -53,10 +53,10 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 	public String confirm(Model model, @Valid NoticeSettingForm form, BindingResult result) throws NoticeSettingException {
 
 		if (result.hasErrors()) {
-			return getView(ManageView.NOTICE_SETTING);
+			return getView(ManageView.NOTICE_SETTING_INPUT);
 		}
 
-		return getView(ManageView.NOTICE_SETTING);
+		return getView(ManageView.NOTICE_SETTING_CONFIRM);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class NoticeSettingController extends BaseWizardController<NoticeSettingF
 	@PostMapping
 	@RequestMapping(value = "/notice-setting-complete.html")
 	public String complete(Model model, NoticeSettingForm form, HttpServletRequest request) throws NoticeSettingException {
-		return getView(ManageView.NOTICE_SETTING);
+		return getView(ManageView.NOTICE_SETTING_COMPLETE);
 	}
 
 }

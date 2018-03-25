@@ -84,11 +84,11 @@
 		<url-pattern>/account-create-confirm.html</url-pattern>
 		<!-- アカウント作成完了画面 -->
 		<url-pattern>/account-create-complete.html</url-pattern>
-		<!-- 健康情報入力画面 -->
+		<!-- 通知設定入力画面 -->
 		<url-pattern>/notice-setting-input.html</url-pattern>
-		<!-- 健康情報入力画面 -->
+		<!-- 通知設定入力確認画面 -->
 		<url-pattern>/notice-setting-confirm.html</url-pattern>
-		<!-- 健康情報入力画面 -->
+		<!-- 通知設定入力完了画面 -->
 		<url-pattern>/notice-setting-complete.html</url-pattern>
 	</servlet-mapping>
 
