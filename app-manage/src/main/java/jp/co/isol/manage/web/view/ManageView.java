@@ -25,7 +25,9 @@ public enum ManageView implements BaseView {
 	ACCOUNT_SETTING_CONFIRM("account-setting-confirm"),
 	ACCOUNT_SETTING_COMPLETE("account-setting-complete"),
 	/** 通知設定画面URL */
-	NOTICE_SETTING("notice-setting"),
+	NOTICE_SETTING_INPUT("notice-setting-input"),
+	NOTICE_SETTING_CONFIRM("notice-setting-confirm"),
+	NOTICE_SETTING_COMPLETE("notice-setting-complete"),
 	/** アカウント作成画面URL */
 	ACCOUNT_CREATE_INPUT("account-create-input"),
 	ACCOUNT_CREATE_CONFIRM("account-create-confirm"),
