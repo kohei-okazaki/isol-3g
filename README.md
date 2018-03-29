@@ -1,13 +1,13 @@
 # isol(旧2グループ課題(2016年度))  
-#manage(管理画面)  
+#manage  
 
  - 健康情報管理画面サイト  
  
-#api(API)  
+#api  
 
  - WebAPI  
 
-#common(共通ロジック)  
+#common  
 
  - Util  
  - Dao  
@@ -15,7 +15,7 @@
  - Base系  
 
 
-#resource(リソース)  
+#resource  
 
  - data.xlsx  
  
