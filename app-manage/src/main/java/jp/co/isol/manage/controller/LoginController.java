@@ -53,7 +53,7 @@ public class LoginController implements BaseController {
 	 */
 	@GetMapping
 	@RequestMapping("/login.html")
-	public String input(Model model, HttpServletRequest request) {
+	public String login(Model model, HttpServletRequest request) {
 
 		ManageSessionManager sessionManager;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
