@@ -14,13 +14,13 @@ import jp.co.isol.common.exception.BaseManageException;
  * @param <F> 対象formクラス
  * @param <E> 例外クラス
  */
-public abstract class BaseWizardController<F extends BaseForm, E extends BaseManageException> implements BaseController {
+public interface BaseWizardController<F extends BaseForm, E extends BaseManageException> extends BaseController {
 
 	/**
 	 * Validateを設定<br>
 	 * @param binder
 	 */
-	public abstract void initBinder(WebDataBinder binder);
+	void initBinder(WebDataBinder binder);
 
 	/**
 	 * 入力画面
@@ -28,7 +28,7 @@ public abstract class BaseWizardController<F extends BaseForm, E extends BaseMan
 	 * @param request
 	 * @return
 	 */
-	public abstract String input(Model model, HttpServletRequest request) throws E;
+	String input(Model model, HttpServletRequest request) throws E;
 
 	/**
 	 * 確認画面
@@ -37,7 +37,7 @@ public abstract class BaseWizardController<F extends BaseForm, E extends BaseMan
 	 * @param result
 	 * @return
 	 */
-	public abstract String confirm(Model model, F form, BindingResult result) throws E;
+	String confirm(Model model, F form, BindingResult result) throws E;
 
 	/**
 	 * 完了画面
@@ -46,6 +46,6 @@ public abstract class BaseWizardController<F extends BaseForm, E extends BaseMan
 	 * @param request
 	 * @return
 	 */
-	public abstract String complete(Model model, F form, HttpServletRequest request) throws E;
+	String complete(Model model, F form, HttpServletRequest request) throws E;
 
 }

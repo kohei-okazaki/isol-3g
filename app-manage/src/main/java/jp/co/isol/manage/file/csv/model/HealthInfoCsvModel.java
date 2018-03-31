@@ -125,6 +125,4 @@ public class HealthInfoCsvModel implements BaseCsvModel {
 		this.regDate = regDate;
 	}
 
-
-
 }

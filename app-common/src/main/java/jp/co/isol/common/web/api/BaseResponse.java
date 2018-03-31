@@ -25,4 +25,18 @@ public abstract class BaseResponse {
 		this.result = result;
 	}
 
+	/**
+	 * 正常系の時の結果をセットする<br>
+	 */
+	protected void setSuccessResult() {
+		this.result = 0;
+	}
+
+	/**
+	 * 異常系の時の結果をセットする<br>
+	 */
+	protected void setErrorResult() {
+		this.result = 1;
+	}
+
 }
