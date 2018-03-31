@@ -30,7 +30,6 @@ public abstract class BaseCsvWriter<M extends BaseCsvModel> {
 	 * コンストラクタ<br>
 	 */
 	public BaseCsvWriter() {
-
 	}
 
 	/**
