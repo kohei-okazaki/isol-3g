@@ -1,7 +1,6 @@
 package jp.co.isol.manage.controller;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 import java.util.Objects;
 
@@ -184,11 +183,10 @@ public class HealthInfoController implements BaseWizardController<HealthInfoForm
 	 * @param request
 	 * @param response
 	 * @return
-	 * @throws ParseException
 	 * @throws IOException
 	 */
 	@GetMapping(value = "/healthInfo-csvDownload")
-	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
+	public void csvDownload(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		ManageLogger logger;
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ManageConfig.class)) {
