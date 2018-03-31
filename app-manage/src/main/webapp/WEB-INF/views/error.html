@@ -18,7 +18,7 @@
 
 	<hr>
 
-	<div th:if="${message == null}">
+	<div th:if="${message} == null">
 		<p>入力情報に誤りがあります。もう一度入力してください</p>
 	</div>
 	<p th:text="${message}"></p>
