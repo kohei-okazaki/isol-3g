@@ -118,7 +118,7 @@ public class HealthInfoController implements BaseWizardController<HealthInfoForm
 
 		String userId = (String) manager.getAttribute(request.getSession(), ManageSessionKey.USER_ID);
 		if (Objects.isNull(userId)) {
-			throw new HealthInfoException(ErrorCode.REQUEST_UNFO_ERROR, "リクエスト情報が不正です");
+			throw new HealthInfoException(ErrorCode.REQUEST_INFO_ERROR, "リクエスト情報が不正です");
 		}
 
 		// ユーザIDから健康情報のリストを取得
