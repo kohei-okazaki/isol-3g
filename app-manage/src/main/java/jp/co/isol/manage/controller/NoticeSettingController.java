@@ -23,7 +23,7 @@ import jp.co.isol.manage.web.view.ManageView;
  *
  */
 @Controller
-public class NoticeSettingController extends BaseWizardController<NoticeSettingForm, NoticeSettingException> {
+public class NoticeSettingController implements BaseWizardController<NoticeSettingForm, NoticeSettingException> {
 
 	/**
 	 * {@inheritDoc}

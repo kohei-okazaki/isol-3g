@@ -36,7 +36,7 @@ import jp.co.isol.manage.web.view.ManageView;
  *
  */
 @Controller
-public class AccountSettingController extends BaseWizardController<AccountSettingForm, AccountSettingException> {
+public class AccountSettingController implements BaseWizardController<AccountSettingForm, AccountSettingException> {
 
 	/** アカウント検索サービス */
 	@Autowired

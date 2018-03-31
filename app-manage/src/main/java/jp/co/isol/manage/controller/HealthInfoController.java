@@ -46,7 +46,7 @@ import jp.co.isol.manage.web.view.ManageView;
  *
  */
 @Controller
-public class HealthInfoController extends BaseWizardController<HealthInfoForm, HealthInfoException> {
+public class HealthInfoController implements BaseWizardController<HealthInfoForm, HealthInfoException> {
 
 	/** 健康情報入力サービス */
 	@Autowired
@@ -71,11 +71,10 @@ public class HealthInfoController extends BaseWizardController<HealthInfoForm, H
 
 	/**
 	 * Validateを設定<br>
-	 * formを指定しないとなぜかDtoがvalidate対象になってしまうのでvalueにformクラスに指定する<br>
 	 * @param binder
 	 */
 	@Override
-	@InitBinder(value = "HealthInfoForm")
+	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setValidator(new HealthInfoValidator());
 	}
