@@ -20,7 +20,7 @@ public class ManageExceptionHandler implements BaseExceptionHandler {
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {
 
 		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName(ERROR_JSP);
+		modelView.setViewName(ERROR_PAGE);
 
 		return modelView;
 	}
