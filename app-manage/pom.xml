@@ -13,12 +13,12 @@
 
 	<properties>
 		<java-version>9</java-version>
-		<org.springframework-version>5.0.4.RELEASE</org.springframework-version>
-		<org.springsecurity-version>5.0.2.RELEASE</org.springsecurity-version>
-		<org.aspectj-version>1.8.13</org.aspectj-version>
+		<org.springframework-version>5.0.5.RELEASE</org.springframework-version>
+		<org.springsecurity-version>5.0.4.RELEASE</org.springsecurity-version>
+		<org.aspectj-version>1.9.0</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 		<poi-version>3.17</poi-version>
-		<jackson-version>2.9.4</jackson-version>
+		<jackson-version>2.9.5</jackson-version>
 		<lombok-version>1.16.20</lombok-version>
 		<org.thymeleaf-version>3.0.9.RELEASE</org.thymeleaf-version>
 	</properties>
