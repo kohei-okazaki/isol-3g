@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * 定数Entity
+ * 定数Entity<br>
  *
  */
 @Entity

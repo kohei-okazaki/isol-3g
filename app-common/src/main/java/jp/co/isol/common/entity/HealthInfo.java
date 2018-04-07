@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 健康情報Entity
+ * 健康情報Entity<br>
  */
 @Entity
 @Table(name = "HEALTH_INFO")
