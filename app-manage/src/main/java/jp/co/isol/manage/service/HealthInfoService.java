@@ -28,8 +28,10 @@ public interface HealthInfoService {
 	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfo lastHealthInfo);
 
 	/**
-	 * 健康情報Dtoを健康情報Entityにつめる<br>
-	 * @param dto
+	 * 健康情報formを健康情報Entityにつめる<br>
+	 * @param form
+	 * @param userId
+	 * @param lastHealthInfo
 	 * @return
 	 */
 	public HealthInfo convertHealthInfo(HealthInfoForm form, String userId, HealthInfo lastHealthInfo);

@@ -12,6 +12,7 @@ import jp.co.isol.common.manager.CodeManager;
 import jp.co.isol.common.manager.MainKey;
 import jp.co.isol.common.manager.SubKey;
 import jp.co.isol.common.util.HealthInfoUtil;
+import jp.co.isol.common.util.StringUtil;
 import jp.co.isol.manage.form.HealthInfoForm;
 import jp.co.isol.manage.service.CalcService;
 import jp.co.isol.manage.service.HealthInfoService;
@@ -34,14 +35,14 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	public HealthInfo convertHealthInfo(HealthInfoForm form, String userId, HealthInfo lastHealthInfo) {
 
 		HealthInfo healthInfo = new HealthInfo();
-		healthInfo.setDataId(Objects.isNull(lastHealthInfo) ? "" : lastHealthInfo.getDataId());
+		healthInfo.setDataId(Objects.isNull(lastHealthInfo) ? StringUtil.EMPTY : lastHealthInfo.getDataId());
 		healthInfo.setUserId(userId);
 		healthInfo.setHeight(form.getHeight());
 		healthInfo.setWeight(form.getWeight());
 		healthInfo.setBmi(this.calcService.calcBmi(HealthInfoUtil.convertMeterFromCentiMeter(form.getHeight()), form.getWeight(), 2));
 		healthInfo.setStandardWeight(this.calcService.calcStandardWeight(HealthInfoUtil.convertMeterFromCentiMeter(form.getHeight()), 2));
 
-		String userStatus = null;
+		String userStatus;
 		if (Objects.isNull(lastHealthInfo)) {
 			userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN);
 		} else {
@@ -61,7 +62,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	private String getUserStatus(BigDecimal inputWeight, BigDecimal beforeWeight) {
 
-		SubKey subkey = null;
+		SubKey subkey;
 		if (beforeWeight.compareTo(inputWeight) == 0) {
 			subkey = SubKey.EVEN;
 		} else if (beforeWeight.compareTo(inputWeight) == -1) {
