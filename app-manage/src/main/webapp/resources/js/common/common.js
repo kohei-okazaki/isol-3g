@@ -5,7 +5,7 @@ function finish() {
 
 function toMenu() {
 	var form = document.createElement('form');
-	form.action = '/isol-manage/menu.html';
+	form.action = '/isol-web/menu.html';
 	form.method = 'get';
 	document.body.appendChild(form);
 	form.submit();

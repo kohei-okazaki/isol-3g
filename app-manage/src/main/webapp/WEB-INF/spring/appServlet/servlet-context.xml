@@ -41,11 +41,11 @@
 		<beans:property name="characterEncoding" value="UTF-8" />
 	</beans:bean>
 
-	<context:component-scan base-package="jp.co.isol.manage.controller" />
-	<context:component-scan base-package="jp.co.isol.manage.service.impl" />
-	<context:component-scan base-package="jp.co.isol.manage.service.annotation" />
-	<context:component-scan base-package="jp.co.isol.manage.config" />
-	<context:component-scan base-package="jp.co.isol.manage.aspect" />
+	<context:component-scan base-package="jp.co.isol.web.controller" />
+	<context:component-scan base-package="jp.co.isol.web.service.impl" />
+	<context:component-scan base-package="jp.co.isol.web.service.annotation" />
+	<context:component-scan base-package="jp.co.isol.web.config" />
+	<context:component-scan base-package="jp.co.isol.web.aspect" />
 
 <!-- 	 <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<beans:property name="basename" value="classpath:/messages" />
@@ -54,6 +54,6 @@
 	 <beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 	 	<beans:property name="validationMessageSource" ref="messageSource" />
 	</beans:bean> -->
-	<beans:bean class="jp.co.isol.manage.exception.ManageExceptionHandler"></beans:bean>
+	<beans:bean class="jp.co.isol.web.exception.ManageExceptionHandler"></beans:bean>
 
 </beans:beans>
