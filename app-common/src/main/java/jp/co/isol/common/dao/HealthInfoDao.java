@@ -41,6 +41,6 @@ public interface HealthInfoDao extends BaseDao {
 	 * @param userId
 	 * @return HealthInfo
 	 */
-	public HealthInfo getLastHealthInfoById(String userId);
+	public HealthInfo getLastHealthInfoByUserId(String userId);
 
 }
