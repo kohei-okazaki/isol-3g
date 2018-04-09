@@ -94,7 +94,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 		BigDecimal standardWeight = HealthInfoUtil.calcStandardWeight(centiMeterHeight, 2);
 
 		// 最後に登録した健康情報を取得する
-		HealthInfo lastHealthInfo = healthInfoDao.getLastHealthInfoById(userId);
+		HealthInfo lastHealthInfo = healthInfoDao.getLastHealthInfoByUserId(userId);
 		String userStatus = CodeManager.getInstance().getValue(MainKey.HEALTH_INFO_USER_STATUS, SubKey.EVEN);
 		if (Objects.nonNull(lastHealthInfo)) {
 			// 初回登録でない場合
@@ -134,7 +134,7 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	 */
 	private String getUserStatus(BigDecimal inputWeight, BigDecimal beforeWeight) {
 
-		SubKey subkey = null;
+		SubKey subkey;
 		if (beforeWeight.compareTo(inputWeight) == 0) {
 			subkey = SubKey.EVEN;
 		} else if (beforeWeight.compareTo(inputWeight) == -1) {

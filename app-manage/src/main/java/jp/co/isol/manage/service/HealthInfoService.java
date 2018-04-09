@@ -17,7 +17,7 @@ public interface HealthInfoService {
 	 * @param lastHealthInfo
 	 * @return 体重差のメッセージ
 	 */
-	public String getDiffMessage(HealthInfoForm form, HealthInfo lastHealthInfo);
+	String getDiffMessage(HealthInfoForm form, HealthInfo lastHealthInfo);
 
 	/**
 	 * 最後に入力した体重とフォームから体重差を返却
@@ -25,7 +25,7 @@ public interface HealthInfoService {
 	 * @param lastHealthInfo
 	 * @return 体重差
 	 */
-	public BigDecimal getDiffWeight(HealthInfoForm form, HealthInfo lastHealthInfo);
+	BigDecimal getDiffWeight(HealthInfoForm form, HealthInfo lastHealthInfo);
 
 	/**
 	 * 健康情報formを健康情報Entityにつめる<br>
@@ -34,6 +34,6 @@ public interface HealthInfoService {
 	 * @param lastHealthInfo
 	 * @return
 	 */
-	public HealthInfo convertHealthInfo(HealthInfoForm form, String userId, HealthInfo lastHealthInfo);
+	HealthInfo convertHealthInfo(HealthInfoForm form, String userId, HealthInfo lastHealthInfo);
 
 }
