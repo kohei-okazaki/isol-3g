@@ -1,4 +1,4 @@
-package jp.co.isol.web.web.filter;
+package jp.co.isol.web.filter;
 
 import java.io.IOException;
 
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import jp.co.isol.common.web.manage.BaseFilter;
 import jp.co.isol.web.config.ManageConfig;
-import jp.co.isol.web.web.session.ManageSessionKey;
-import jp.co.isol.web.web.session.ManageSessionManager;
+import jp.co.isol.web.session.ManageSessionKey;
+import jp.co.isol.web.session.ManageSessionManager;
 
 /**
  * 健康情報管理画面フィルタークラス<br>

@@ -16,7 +16,7 @@ import jp.co.isol.common.web.manage.BaseWizardController;
 import jp.co.isol.web.exception.NoticeSettingException;
 import jp.co.isol.web.form.NoticeSettingForm;
 import jp.co.isol.web.validator.NoticeSettingValidator;
-import jp.co.isol.web.web.view.ManageView;
+import jp.co.isol.web.view.ManageView;
 
 /**
  * 健康管理_通知設定コントローラクラス<br>

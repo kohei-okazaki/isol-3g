@@ -21,7 +21,7 @@ import jp.co.isol.web.service.ExcelDownloadService;
 import jp.co.isol.web.service.HealthInfoSearchService;
 import jp.co.isol.web.service.annotation.ReferenceCsv;
 import jp.co.isol.web.service.annotation.ReferenceExcel;
-import jp.co.isol.web.web.view.ManageView;
+import jp.co.isol.web.view.ManageView;
 
 /**
  * 健康管理_健康情報結果照会画面コントローラクラス<br>

@@ -17,8 +17,8 @@ import jp.co.isol.web.config.ManageConfig;
 import jp.co.isol.web.form.LoginForm;
 import jp.co.isol.web.service.AccountSearchService;
 import jp.co.isol.web.service.LoginService;
-import jp.co.isol.web.web.session.ManageSessionKey;
-import jp.co.isol.web.web.session.ManageSessionManager;
+import jp.co.isol.web.session.ManageSessionKey;
+import jp.co.isol.web.session.ManageSessionManager;
 
 /**
  * ログインサービス実装クラス

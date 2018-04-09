@@ -26,10 +26,10 @@ import jp.co.isol.web.service.AccountSearchService;
 import jp.co.isol.web.service.AccountSettingService;
 import jp.co.isol.web.service.MailInfoCreateService;
 import jp.co.isol.web.service.MailInfoSearchService;
+import jp.co.isol.web.session.ManageSessionKey;
+import jp.co.isol.web.session.ManageSessionManager;
 import jp.co.isol.web.validator.AccountSettingValidator;
-import jp.co.isol.web.web.session.ManageSessionKey;
-import jp.co.isol.web.web.session.ManageSessionManager;
-import jp.co.isol.web.web.view.ManageView;
+import jp.co.isol.web.view.ManageView;
 
 /**
  * 健康管理_アカウント設定コントローラ<br>

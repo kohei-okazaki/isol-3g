@@ -1,4 +1,4 @@
-package jp.co.isol.web.web.session;
+package jp.co.isol.web.session;
 
 import javax.servlet.http.HttpSession;
 

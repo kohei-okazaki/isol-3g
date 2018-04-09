@@ -18,7 +18,7 @@ import jp.co.isol.web.exception.AccountCreateException;
 import jp.co.isol.web.form.AccountCreateForm;
 import jp.co.isol.web.service.AccountCreateService;
 import jp.co.isol.web.validator.AccountCreateValidator;
-import jp.co.isol.web.web.view.ManageView;
+import jp.co.isol.web.view.ManageView;
 
 /**
  * 健康管理_アカウント作成コントローラ<br>

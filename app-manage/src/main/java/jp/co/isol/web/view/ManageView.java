@@ -1,4 +1,4 @@
-package jp.co.isol.web.web.view;
+package jp.co.isol.web.view;
 
 import jp.co.isol.common.web.manage.BaseView;
 

@@ -35,10 +35,10 @@ import jp.co.isol.web.service.HealthInfoService;
 import jp.co.isol.web.service.MailService;
 import jp.co.isol.web.service.annotation.HealthInfoCsv;
 import jp.co.isol.web.service.annotation.HealthInfoExcel;
+import jp.co.isol.web.session.ManageSessionKey;
+import jp.co.isol.web.session.ManageSessionManager;
 import jp.co.isol.web.validator.HealthInfoValidator;
-import jp.co.isol.web.web.session.ManageSessionKey;
-import jp.co.isol.web.web.session.ManageSessionManager;
-import jp.co.isol.web.web.view.ManageView;
+import jp.co.isol.web.view.ManageView;
 
 /**
  * 健康管理_健康情報入力画面コントローラ<br>

@@ -24,8 +24,8 @@ import jp.co.isol.web.file.csv.writer.HealthInfoCsvWriter;
 import jp.co.isol.web.service.AccountSearchService;
 import jp.co.isol.web.service.CsvDownloadService;
 import jp.co.isol.web.service.HealthInfoSearchService;
-import jp.co.isol.web.web.session.ManageSessionKey;
-import jp.co.isol.web.web.session.ManageSessionManager;
+import jp.co.isol.web.session.ManageSessionKey;
+import jp.co.isol.web.session.ManageSessionManager;
 
 /**
  * 健康情報CSVダウンロードサービス実装クラス<br>

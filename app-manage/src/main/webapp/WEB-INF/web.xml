@@ -65,7 +65,7 @@
   </servlet-mapping>
   <filter>
     <filter-name>ManageFilter</filter-name>
-    <filter-class>jp.co.isol.web.web.filter.ManageFilter</filter-class>
+    <filter-class>jp.co.isol.web.filter.ManageFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>ManageFilter</filter-name>

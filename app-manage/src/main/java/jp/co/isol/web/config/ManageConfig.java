@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import jp.co.isol.common.other.DBConnecter;
 import jp.co.isol.web.log.ManageLogger;
-import jp.co.isol.web.web.session.ManageSessionManager;
+import jp.co.isol.web.session.ManageSessionManager;
 
 /**
  * 管理画面コンフィグクラス<br>
